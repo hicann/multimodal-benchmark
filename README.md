@@ -74,6 +74,7 @@ python orchestrator.py --task-dir /path/to/task \
 cd data_tools/ai-msf-benchmark
 
 # 生成亮度腐蚀图像（严重度 3）
+# 以下示例的 input_dir 需替换为你自己的数据集路径（仓库内仅提供 calib 样例）
 python -m corruption.main simulate_image \
   --input_dir "./corruption/example/input_dir/image" \
   --output_dir "./corruption/example/output_dir/image/" \
