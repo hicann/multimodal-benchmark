@@ -4,5 +4,7 @@ opencv-python
 wand
 natsort
 tqdm
-skimage
+scikit-image
+matplotlib
+Pillow
 fire
