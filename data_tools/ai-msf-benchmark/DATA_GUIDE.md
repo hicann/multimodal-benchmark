@@ -73,7 +73,7 @@ path_config = {
 
 ### 腐蚀数据生成
 
-运行 `corruption/main.py` 后，生成的退化数据放在你指定的 `--output_dir` 中：
+`simulate_image`、`simulate_lidar`、`simulate_calib` 和 `simulate_delay` 使用 `--output_dir`。`simulate_weather` 分别使用 `--output_dir_c`（相机）和 `--output_dir_l`（LiDAR），不接受统一的 `--output_dir`。以下是调用方可采用的目录组织示例，实际输出位置由对应参数指定：
 
 ```
 <output_dir>/
