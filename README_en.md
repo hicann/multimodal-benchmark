@@ -172,4 +172,4 @@ This repository belongs to the CANN community [multimodal-ai SIG](https://gitcod
 
 ## Issue Reporting
 
-For questions or suggestions, please submit feedback via [Issues](../../issues).
+For questions or suggestions, please submit feedback via [Issues](https://gitcode.com/cann/multimodal-benchmark/issues).
