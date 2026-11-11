@@ -7,11 +7,12 @@
 # See LICENSE in the root of the software repository for the full text of the License.
 
 import logging
+import os
 
 LOGGER = logging.getLogger(__name__)
 path_config = {
-    "project_dir": "/home/niangao/PycharmProjects/fusion",
-    "corruption_base_public_dir": "/home/niangao/disk3/kitti_corruption",
+    "project_dir": os.environ.get("MSF_PROJECT_DIR", os.getcwd()),
+    "corruption_base_public_dir": os.environ.get("MSF_CORRUPTION_DIR", "./kitti_corruption"),
     "dataset": "kitti",
 }
 
@@ -51,8 +52,6 @@ task_system_map = {
 
 
 def get_config(name):
-    import os
-
     if name in task_system_map["object"]:
         base_config = object_config.copy()
     elif name in task_system_map["tracking"]:

@@ -45,7 +45,16 @@ git clone https://github.com/velatkilic/LISA.git .
 #   <base_dir>/object/training/label_2/      ← 标注文件
 ```
 
-使用前需修改 `config.py` 中的路径配置：
+路径配置方式二选一：
+
+**方式 A（推荐）**：设置环境变量，无需修改任何源码
+
+```bash
+export MSF_PROJECT_DIR=/your/project/path             # 项目根目录（工作目录基于它创建）
+export MSF_CORRUPTION_DIR=/your/kitti/path            # KITTI 腐蚀数据根目录
+```
+
+**方式 B**：直接修改 `config.py` 中的路径配置
 
 ```python
 path_config = {
@@ -54,6 +63,8 @@ path_config = {
     "dataset": "kitti"
 }
 ```
+
+> 未设置环境变量时的默认值：`project_dir` 为当前工作目录（`os.getcwd()`），`corruption_base_public_dir` 为 `./kitti_corruption`。
 
 ### 各 MSF 系统的权重和环境
 
