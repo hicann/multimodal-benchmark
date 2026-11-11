@@ -1,0 +1,6 @@
+# 反例 SUB-LOD-009：入口含仅限位置参数。
+submit_id: invalid-demo
+operators:
+  - name: Exp
+    entry: exp
+    path: operators/exp/kernel.py

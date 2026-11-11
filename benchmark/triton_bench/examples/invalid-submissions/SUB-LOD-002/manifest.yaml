@@ -1,0 +1,9 @@
+# 反例 SUB-LOD-002：清单声明了注册表里没有的算子。
+#
+# 实现文件必须真实存在——否则会先被 SUB-LOD-003（文件不存在）拦下，
+# 报出的编号就不是这一条了。样例要能**单独**命中它对应的规则。
+submit_id: invalid-demo
+operators:
+  - name: NotAnOperator
+    entry: not_an_operator
+    path: operators/not_an_operator/kernel.py

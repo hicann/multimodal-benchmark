@@ -1,0 +1,6 @@
+# 反例 SUB-LOD-008：实现路径逃出提交目录。
+submit_id: invalid-demo
+operators:
+  - name: Exp
+    entry: exp
+    path: ../../invalid-submissions/SUB-STR-001/operators/exp/kernel.py

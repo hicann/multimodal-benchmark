@@ -1,0 +1,772 @@
+{
+  "kind": "archived_real_TTIR_regression_not_new_device_execution",
+  "record": "20261027-092553-890191",
+  "code_commit": "ff2b638797c81b73d072d5ab222a8a1b609b58c1",
+  "manifest_hash": "95ba03ce7a13bb2e79223e9f710e95c00921499521e0987d036a1c82bc4c3ed1",
+  "cases": [
+    {
+      "case": {
+        "code": "pattern-cummin-002",
+        "operator": "Cummin",
+        "dtype": "float32",
+        "shape": [
+          1,
+          1048576
+        ],
+        "attrs": {
+          "dim": 1
+        },
+        "contiguous": true
+      },
+      "observation_sha256": "d36c40886978fe88bf9202e252a72e1b1dfcbd4fa36033cac717a7a5e5153cc3",
+      "data": {
+        "input_bindings": [
+          {
+            "tensor_id": 0,
+            "storage_id": 0,
+            "dtype": "torch.float32",
+            "shape": [
+              1,
+              1048576
+            ],
+            "stride": [
+              1048576,
+              1
+            ]
+          }
+        ],
+        "output_bindings": [
+          {
+            "tensor_id": 7,
+            "storage_id": 7,
+            "dtype": "torch.float32",
+            "shape": [
+              1,
+              1048576
+            ],
+            "stride": [
+              1048576,
+              1
+            ]
+          },
+          {
+            "tensor_id": 8,
+            "storage_id": 8,
+            "dtype": "torch.int64",
+            "shape": [
+              1,
+              1048576
+            ],
+            "stride": [
+              1048576,
+              1
+            ]
+          }
+        ]
+      },
+      "launches": [
+        {
+          "name": "_pattern_scan_local",
+          "runtime_arg_names": [
+            "X",
+            "LocalValues",
+            "LocalIndices",
+            "Totals",
+            "TotalIndices"
+          ],
+          "compiler_specialization_hash": "41ad2cd4ca1e408792e309a8468ebf93a70aceb45cf653d26c7892370b10a9a3",
+          "source_text": "def _pattern_scan_local(X, LocalValues, LocalIndices, Totals, TotalIndices,\n                        AXIS: tl.constexpr, INNER: tl.constexpr, CHUNKS: tl.constexpr, BLOCK: tl.constexpr):\n    chunk = tl.program_id(0)\n    line = tl.program_id(1)\n    positions = chunk * BLOCK + tl.arange(0, BLOCK)\n    base = line // INNER * AXIS * INNER + line % INNER\n    values = tl.load(X + base + positions * INNER, positions < AXIS, other=float('inf')).to(tl.float32)\n    indices = tl.where(positions < AXIS, positions, -1)\n    scanned, scanned_indices = tl.associative_scan((values, indices), 0, _pattern_min_pair)\n    tl.store(LocalValues + base + positions * INNER, scanned, positions < AXIS)\n    tl.store(LocalIndices + base + positions * INNER, scanned_indices, positions < AXIS)\n    last_lane = tl.minimum(BLOCK - 1, AXIS - chunk * BLOCK - 1)\n    is_last = tl.arange(0, BLOCK) == last_lane\n    minimum = tl.sum(tl.where(is_last, scanned, 0), 0)\n    last_index = tl.max(tl.where(is_last, scanned_indices, -1), 0)\n    tl.store(Totals + line * CHUNKS + chunk, minimum)\n    tl.store(TotalIndices + line * CHUNKS + chunk, last_index)\n",
+          "arguments": {
+            "X": {
+              "kind": "tensor",
+              "tensor_id": 0,
+              "storage_id": 0,
+              "dtype": "torch.float32",
+              "shape": [
+                1,
+                1048576
+              ],
+              "stride": [
+                1048576,
+                1
+              ]
+            },
+            "LocalValues": {
+              "kind": "tensor",
+              "tensor_id": 1,
+              "storage_id": 1,
+              "dtype": "torch.float32",
+              "shape": [
+                1,
+                1048576
+              ],
+              "stride": [
+                1048576,
+                1
+              ]
+            },
+            "LocalIndices": {
+              "kind": "tensor",
+              "tensor_id": 2,
+              "storage_id": 2,
+              "dtype": "torch.int64",
+              "shape": [
+                1,
+                1048576
+              ],
+              "stride": [
+                1048576,
+                1
+              ]
+            },
+            "Totals": {
+              "kind": "tensor",
+              "tensor_id": 3,
+              "storage_id": 3,
+              "dtype": "torch.float32",
+              "shape": [
+                1,
+                2048
+              ],
+              "stride": [
+                2048,
+                1
+              ]
+            },
+            "TotalIndices": {
+              "kind": "tensor",
+              "tensor_id": 4,
+              "storage_id": 4,
+              "dtype": "torch.int64",
+              "shape": [
+                1,
+                2048
+              ],
+              "stride": [
+                2048,
+                1
+              ]
+            },
+            "AXIS": {
+              "kind": "scalar",
+              "value": 1048576,
+              "constexpr": true
+            },
+            "INNER": {
+              "kind": "scalar",
+              "value": 1,
+              "constexpr": true
+            },
+            "CHUNKS": {
+              "kind": "scalar",
+              "value": 2048,
+              "constexpr": true
+            },
+            "BLOCK": {
+              "kind": "scalar",
+              "value": 512,
+              "constexpr": true
+            }
+          },
+          "grid": [
+            2048,
+            1
+          ],
+          "ttir_file": "pattern-cummin-002-_pattern_scan_local.ttir",
+          "ttir_sha256": "a9efd515ca5ba31e3244a1408b9c0e6b849b1386beb4da3a1e0640735ae6a082"
+        },
+        {
+          "name": "_pattern_scan_carry",
+          "runtime_arg_names": [
+            "Totals",
+            "TotalIndices",
+            "Carry",
+            "CarryIndices"
+          ],
+          "compiler_specialization_hash": "4a2c465a2c501aa76875a4027785fba538ed1dc9a1bef14b34ece2c2ee5f4579",
+          "source_text": "def _pattern_scan_carry(Totals, TotalIndices, Carry, CarryIndices,\n                        CHUNKS: tl.constexpr, BLOCK: tl.constexpr):\n    line = tl.program_id(0)\n    offsets = tl.arange(0, BLOCK)\n    values = tl.load(Totals + line * CHUNKS + offsets, offsets < CHUNKS, other=float('inf'))\n    indices = tl.load(TotalIndices + line * CHUNKS + offsets, offsets < CHUNKS, other=-1).to(tl.int32)\n    scanned, scanned_indices = tl.associative_scan((values, indices), 0, _pattern_min_pair)\n    tl.store(Carry + line * CHUNKS + offsets + 1, scanned, offsets + 1 < CHUNKS)\n    tl.store(CarryIndices + line * CHUNKS + offsets + 1, scanned_indices, offsets + 1 < CHUNKS)\n    tl.store(Carry + line * CHUNKS, float('inf'))\n    tl.store(CarryIndices + line * CHUNKS, -1)\n",
+          "arguments": {
+            "Totals": {
+              "kind": "tensor",
+              "tensor_id": 3,
+              "storage_id": 3,
+              "dtype": "torch.float32",
+              "shape": [
+                1,
+                2048
+              ],
+              "stride": [
+                2048,
+                1
+              ]
+            },
+            "TotalIndices": {
+              "kind": "tensor",
+              "tensor_id": 4,
+              "storage_id": 4,
+              "dtype": "torch.int64",
+              "shape": [
+                1,
+                2048
+              ],
+              "stride": [
+                2048,
+                1
+              ]
+            },
+            "Carry": {
+              "kind": "tensor",
+              "tensor_id": 5,
+              "storage_id": 5,
+              "dtype": "torch.float32",
+              "shape": [
+                1,
+                2048
+              ],
+              "stride": [
+                2048,
+                1
+              ]
+            },
+            "CarryIndices": {
+              "kind": "tensor",
+              "tensor_id": 6,
+              "storage_id": 6,
+              "dtype": "torch.int64",
+              "shape": [
+                1,
+                2048
+              ],
+              "stride": [
+                2048,
+                1
+              ]
+            },
+            "CHUNKS": {
+              "kind": "scalar",
+              "value": 2048,
+              "constexpr": true
+            },
+            "BLOCK": {
+              "kind": "scalar",
+              "value": 2048,
+              "constexpr": true
+            }
+          },
+          "grid": [
+            1
+          ],
+          "ttir_file": "pattern-cummin-002-_pattern_scan_carry.ttir",
+          "ttir_sha256": "c978595cdf2d317f678f3aa6668c67eeded210b16f881342fe82a5e7f819e550"
+        },
+        {
+          "name": "_pattern_scan_finish",
+          "runtime_arg_names": [
+            "LocalValues",
+            "LocalIndices",
+            "Carry",
+            "CarryIndices",
+            "Values",
+            "Indices"
+          ],
+          "compiler_specialization_hash": "0331ef575a5eff57c54bd78f8f5e43baa252543d939d2ac7f923fc6ad863a6e9",
+          "source_text": "def _pattern_scan_finish(LocalValues, LocalIndices, Carry, CarryIndices, Values, Indices,\n                         AXIS: tl.constexpr, INNER: tl.constexpr, CHUNKS: tl.constexpr, BLOCK: tl.constexpr):\n    chunk = tl.program_id(0)\n    line = tl.program_id(1)\n    positions = chunk * BLOCK + tl.arange(0, BLOCK)\n    base = line // INNER * AXIS * INNER + line % INNER\n    local = tl.load(LocalValues + base + positions * INNER, positions < AXIS, other=float('inf'))\n    local_index = tl.load(LocalIndices + base + positions * INNER, positions < AXIS, other=-1)\n    carry = tl.load(Carry + line * CHUNKS + chunk)\n    carry_index = tl.load(CarryIndices + line * CHUNKS + chunk)\n    take_carry = (carry < local) | ((carry == local) & (carry_index > local_index))\n    tl.store(Values + base + positions * INNER, tl.where(take_carry, carry, local), positions < AXIS)\n    tl.store(Indices + base + positions * INNER, tl.where(take_carry, carry_index, local_index), positions < AXIS)\n",
+          "arguments": {
+            "LocalValues": {
+              "kind": "tensor",
+              "tensor_id": 1,
+              "storage_id": 1,
+              "dtype": "torch.float32",
+              "shape": [
+                1,
+                1048576
+              ],
+              "stride": [
+                1048576,
+                1
+              ]
+            },
+            "LocalIndices": {
+              "kind": "tensor",
+              "tensor_id": 2,
+              "storage_id": 2,
+              "dtype": "torch.int64",
+              "shape": [
+                1,
+                1048576
+              ],
+              "stride": [
+                1048576,
+                1
+              ]
+            },
+            "Carry": {
+              "kind": "tensor",
+              "tensor_id": 5,
+              "storage_id": 5,
+              "dtype": "torch.float32",
+              "shape": [
+                1,
+                2048
+              ],
+              "stride": [
+                2048,
+                1
+              ]
+            },
+            "CarryIndices": {
+              "kind": "tensor",
+              "tensor_id": 6,
+              "storage_id": 6,
+              "dtype": "torch.int64",
+              "shape": [
+                1,
+                2048
+              ],
+              "stride": [
+                2048,
+                1
+              ]
+            },
+            "Values": {
+              "kind": "tensor",
+              "tensor_id": 7,
+              "storage_id": 7,
+              "dtype": "torch.float32",
+              "shape": [
+                1,
+                1048576
+              ],
+              "stride": [
+                1048576,
+                1
+              ]
+            },
+            "Indices": {
+              "kind": "tensor",
+              "tensor_id": 8,
+              "storage_id": 8,
+              "dtype": "torch.int64",
+              "shape": [
+                1,
+                1048576
+              ],
+              "stride": [
+                1048576,
+                1
+              ]
+            },
+            "AXIS": {
+              "kind": "scalar",
+              "value": 1048576,
+              "constexpr": true
+            },
+            "INNER": {
+              "kind": "scalar",
+              "value": 1,
+              "constexpr": true
+            },
+            "CHUNKS": {
+              "kind": "scalar",
+              "value": 2048,
+              "constexpr": true
+            },
+            "BLOCK": {
+              "kind": "scalar",
+              "value": 512,
+              "constexpr": true
+            }
+          },
+          "grid": [
+            2048,
+            1
+          ],
+          "ttir_file": "pattern-cummin-002-_pattern_scan_finish.ttir",
+          "ttir_sha256": "e4f3c397970172f2a328576136eb44427d668796b52df23b91f97837326cea6b"
+        }
+      ]
+    },
+    {
+      "case": {
+        "code": "pattern-cummin-003",
+        "operator": "Cummin",
+        "dtype": "float32",
+        "shape": [
+          1,
+          1048833
+        ],
+        "attrs": {
+          "dim": -1
+        },
+        "contiguous": true
+      },
+      "observation_sha256": "e3de12f28888fd4e808801bc58fd679d89c1bb39df27c9c5c1d032f28cac4645",
+      "data": {
+        "input_bindings": [
+          {
+            "tensor_id": 0,
+            "storage_id": 0,
+            "dtype": "torch.float32",
+            "shape": [
+              1,
+              1048833
+            ],
+            "stride": [
+              1048833,
+              1
+            ]
+          }
+        ],
+        "output_bindings": [
+          {
+            "tensor_id": 7,
+            "storage_id": 7,
+            "dtype": "torch.float32",
+            "shape": [
+              1,
+              1048833
+            ],
+            "stride": [
+              1048833,
+              1
+            ]
+          },
+          {
+            "tensor_id": 8,
+            "storage_id": 8,
+            "dtype": "torch.int64",
+            "shape": [
+              1,
+              1048833
+            ],
+            "stride": [
+              1048833,
+              1
+            ]
+          }
+        ]
+      },
+      "launches": [
+        {
+          "name": "_pattern_scan_local",
+          "runtime_arg_names": [
+            "X",
+            "LocalValues",
+            "LocalIndices",
+            "Totals",
+            "TotalIndices"
+          ],
+          "compiler_specialization_hash": "c836cee0456ae1fe87fd50010d8fe0ba90d947969cd18421a268807b6165b61e",
+          "source_text": "def _pattern_scan_local(X, LocalValues, LocalIndices, Totals, TotalIndices,\n                        AXIS: tl.constexpr, INNER: tl.constexpr, CHUNKS: tl.constexpr, BLOCK: tl.constexpr):\n    chunk = tl.program_id(0)\n    line = tl.program_id(1)\n    positions = chunk * BLOCK + tl.arange(0, BLOCK)\n    base = line // INNER * AXIS * INNER + line % INNER\n    values = tl.load(X + base + positions * INNER, positions < AXIS, other=float('inf')).to(tl.float32)\n    indices = tl.where(positions < AXIS, positions, -1)\n    scanned, scanned_indices = tl.associative_scan((values, indices), 0, _pattern_min_pair)\n    tl.store(LocalValues + base + positions * INNER, scanned, positions < AXIS)\n    tl.store(LocalIndices + base + positions * INNER, scanned_indices, positions < AXIS)\n    last_lane = tl.minimum(BLOCK - 1, AXIS - chunk * BLOCK - 1)\n    is_last = tl.arange(0, BLOCK) == last_lane\n    minimum = tl.sum(tl.where(is_last, scanned, 0), 0)\n    last_index = tl.max(tl.where(is_last, scanned_indices, -1), 0)\n    tl.store(Totals + line * CHUNKS + chunk, minimum)\n    tl.store(TotalIndices + line * CHUNKS + chunk, last_index)\n",
+          "arguments": {
+            "X": {
+              "kind": "tensor",
+              "tensor_id": 0,
+              "storage_id": 0,
+              "dtype": "torch.float32",
+              "shape": [
+                1,
+                1048833
+              ],
+              "stride": [
+                1048833,
+                1
+              ]
+            },
+            "LocalValues": {
+              "kind": "tensor",
+              "tensor_id": 1,
+              "storage_id": 1,
+              "dtype": "torch.float32",
+              "shape": [
+                1,
+                1048833
+              ],
+              "stride": [
+                1048833,
+                1
+              ]
+            },
+            "LocalIndices": {
+              "kind": "tensor",
+              "tensor_id": 2,
+              "storage_id": 2,
+              "dtype": "torch.int64",
+              "shape": [
+                1,
+                1048833
+              ],
+              "stride": [
+                1048833,
+                1
+              ]
+            },
+            "Totals": {
+              "kind": "tensor",
+              "tensor_id": 3,
+              "storage_id": 3,
+              "dtype": "torch.float32",
+              "shape": [
+                1,
+                2049
+              ],
+              "stride": [
+                2049,
+                1
+              ]
+            },
+            "TotalIndices": {
+              "kind": "tensor",
+              "tensor_id": 4,
+              "storage_id": 4,
+              "dtype": "torch.int64",
+              "shape": [
+                1,
+                2049
+              ],
+              "stride": [
+                2049,
+                1
+              ]
+            },
+            "AXIS": {
+              "kind": "scalar",
+              "value": 1048833,
+              "constexpr": true
+            },
+            "INNER": {
+              "kind": "scalar",
+              "value": 1,
+              "constexpr": true
+            },
+            "CHUNKS": {
+              "kind": "scalar",
+              "value": 2049,
+              "constexpr": true
+            },
+            "BLOCK": {
+              "kind": "scalar",
+              "value": 512,
+              "constexpr": true
+            }
+          },
+          "grid": [
+            2049,
+            1
+          ],
+          "ttir_file": "pattern-cummin-003-_pattern_scan_local.ttir",
+          "ttir_sha256": "003efc9ba0827d45173df24966a844495ab48c2215af473e35968f2da60e63d9"
+        },
+        {
+          "name": "_pattern_scan_carry",
+          "runtime_arg_names": [
+            "Totals",
+            "TotalIndices",
+            "Carry",
+            "CarryIndices"
+          ],
+          "compiler_specialization_hash": "f8634a817f7dac9aa1f7fd1b2ef3c954d5bfd54228a7a33948c600b4e85d7687",
+          "source_text": "def _pattern_scan_carry(Totals, TotalIndices, Carry, CarryIndices,\n                        CHUNKS: tl.constexpr, BLOCK: tl.constexpr):\n    line = tl.program_id(0)\n    offsets = tl.arange(0, BLOCK)\n    values = tl.load(Totals + line * CHUNKS + offsets, offsets < CHUNKS, other=float('inf'))\n    indices = tl.load(TotalIndices + line * CHUNKS + offsets, offsets < CHUNKS, other=-1).to(tl.int32)\n    scanned, scanned_indices = tl.associative_scan((values, indices), 0, _pattern_min_pair)\n    tl.store(Carry + line * CHUNKS + offsets + 1, scanned, offsets + 1 < CHUNKS)\n    tl.store(CarryIndices + line * CHUNKS + offsets + 1, scanned_indices, offsets + 1 < CHUNKS)\n    tl.store(Carry + line * CHUNKS, float('inf'))\n    tl.store(CarryIndices + line * CHUNKS, -1)\n",
+          "arguments": {
+            "Totals": {
+              "kind": "tensor",
+              "tensor_id": 3,
+              "storage_id": 3,
+              "dtype": "torch.float32",
+              "shape": [
+                1,
+                2049
+              ],
+              "stride": [
+                2049,
+                1
+              ]
+            },
+            "TotalIndices": {
+              "kind": "tensor",
+              "tensor_id": 4,
+              "storage_id": 4,
+              "dtype": "torch.int64",
+              "shape": [
+                1,
+                2049
+              ],
+              "stride": [
+                2049,
+                1
+              ]
+            },
+            "Carry": {
+              "kind": "tensor",
+              "tensor_id": 5,
+              "storage_id": 5,
+              "dtype": "torch.float32",
+              "shape": [
+                1,
+                2049
+              ],
+              "stride": [
+                2049,
+                1
+              ]
+            },
+            "CarryIndices": {
+              "kind": "tensor",
+              "tensor_id": 6,
+              "storage_id": 6,
+              "dtype": "torch.int64",
+              "shape": [
+                1,
+                2049
+              ],
+              "stride": [
+                2049,
+                1
+              ]
+            },
+            "CHUNKS": {
+              "kind": "scalar",
+              "value": 2049,
+              "constexpr": true
+            },
+            "BLOCK": {
+              "kind": "scalar",
+              "value": 4096,
+              "constexpr": true
+            }
+          },
+          "grid": [
+            1
+          ],
+          "ttir_file": "pattern-cummin-003-_pattern_scan_carry.ttir",
+          "ttir_sha256": "73bf77862fdb3c31dcdc114afc08800b9360d81841ce26afb81c40e39cf1cd1d"
+        },
+        {
+          "name": "_pattern_scan_finish",
+          "runtime_arg_names": [
+            "LocalValues",
+            "LocalIndices",
+            "Carry",
+            "CarryIndices",
+            "Values",
+            "Indices"
+          ],
+          "compiler_specialization_hash": "2d9cdde56530a7e83840475c3e1ef9125c89245ae4ebc2a20a65f62caee2a8d8",
+          "source_text": "def _pattern_scan_finish(LocalValues, LocalIndices, Carry, CarryIndices, Values, Indices,\n                         AXIS: tl.constexpr, INNER: tl.constexpr, CHUNKS: tl.constexpr, BLOCK: tl.constexpr):\n    chunk = tl.program_id(0)\n    line = tl.program_id(1)\n    positions = chunk * BLOCK + tl.arange(0, BLOCK)\n    base = line // INNER * AXIS * INNER + line % INNER\n    local = tl.load(LocalValues + base + positions * INNER, positions < AXIS, other=float('inf'))\n    local_index = tl.load(LocalIndices + base + positions * INNER, positions < AXIS, other=-1)\n    carry = tl.load(Carry + line * CHUNKS + chunk)\n    carry_index = tl.load(CarryIndices + line * CHUNKS + chunk)\n    take_carry = (carry < local) | ((carry == local) & (carry_index > local_index))\n    tl.store(Values + base + positions * INNER, tl.where(take_carry, carry, local), positions < AXIS)\n    tl.store(Indices + base + positions * INNER, tl.where(take_carry, carry_index, local_index), positions < AXIS)\n",
+          "arguments": {
+            "LocalValues": {
+              "kind": "tensor",
+              "tensor_id": 1,
+              "storage_id": 1,
+              "dtype": "torch.float32",
+              "shape": [
+                1,
+                1048833
+              ],
+              "stride": [
+                1048833,
+                1
+              ]
+            },
+            "LocalIndices": {
+              "kind": "tensor",
+              "tensor_id": 2,
+              "storage_id": 2,
+              "dtype": "torch.int64",
+              "shape": [
+                1,
+                1048833
+              ],
+              "stride": [
+                1048833,
+                1
+              ]
+            },
+            "Carry": {
+              "kind": "tensor",
+              "tensor_id": 5,
+              "storage_id": 5,
+              "dtype": "torch.float32",
+              "shape": [
+                1,
+                2049
+              ],
+              "stride": [
+                2049,
+                1
+              ]
+            },
+            "CarryIndices": {
+              "kind": "tensor",
+              "tensor_id": 6,
+              "storage_id": 6,
+              "dtype": "torch.int64",
+              "shape": [
+                1,
+                2049
+              ],
+              "stride": [
+                2049,
+                1
+              ]
+            },
+            "Values": {
+              "kind": "tensor",
+              "tensor_id": 7,
+              "storage_id": 7,
+              "dtype": "torch.float32",
+              "shape": [
+                1,
+                1048833
+              ],
+              "stride": [
+                1048833,
+                1
+              ]
+            },
+            "Indices": {
+              "kind": "tensor",
+              "tensor_id": 8,
+              "storage_id": 8,
+              "dtype": "torch.int64",
+              "shape": [
+                1,
+                1048833
+              ],
+              "stride": [
+                1048833,
+                1
+              ]
+            },
+            "AXIS": {
+              "kind": "scalar",
+              "value": 1048833,
+              "constexpr": true
+            },
+            "INNER": {
+              "kind": "scalar",
+              "value": 1,
+              "constexpr": true
+            },
+            "CHUNKS": {
+              "kind": "scalar",
+              "value": 2049,
+              "constexpr": true
+            },
+            "BLOCK": {
+              "kind": "scalar",
+              "value": 512,
+              "constexpr": true
+            }
+          },
+          "grid": [
+            2049,
+            1
+          ],
+          "ttir_file": "pattern-cummin-003-_pattern_scan_finish.ttir",
+          "ttir_sha256": "6f8ac3fbda0c6226d20bd69acae24e17051da2fa761666a04febb53e9dc4d0c4"
+        }
+      ]
+    }
+  ]
+}

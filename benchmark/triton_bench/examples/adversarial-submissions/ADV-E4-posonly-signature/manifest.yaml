@@ -1,0 +1,5 @@
+submit_id: adv-e4-posonly-signature
+operators:
+  - name: Exp
+    entry: exp
+    path: operators/exp/kernel.py

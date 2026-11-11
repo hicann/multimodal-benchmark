@@ -1,0 +1,5 @@
+submit_id: adv-d2-chained-call
+operators:
+  - name: Softmax
+    entry: softmax
+    path: operators/softmax/kernel.py

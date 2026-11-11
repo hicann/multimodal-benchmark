@@ -1,0 +1,58 @@
+# 对抗正控制组：14 个算子全部提交。
+#
+# 全部为「零框架依赖」手写实现：不用任何被禁的 torch 计算接口，
+# 只靠张量下标读取 + math 标量数学 + torch.tensor 构造。
+# 覆盖：多输入（maximum/masked_scale/rms_norm/gather/scatter/grouped_matmul/
+# cross_entropy_loss）、多输出（cummin 元组）、全属性变体（base/scale/shift/
+# approximate/dim/perm/keepdim/epsilon/group_list/reduction/ignore_index）。
+#
+# 预期：除 Scatter 外全部 PASS。
+# Scatter 预期 RUNTIME_FAIL——评测方按 make_inputs 顺序位置传参
+# (data, index, updates) 且关键字传 dim，与规格签名
+# scatter(data, dim, indices, updates, reduce) 结构冲突，
+# 任何合规签名都会 TypeError: got multiple values for argument 'dim'。
+
+submit_id: adv-c1-fullhouse
+operators:
+  - name: Exp
+    entry: exp
+    path: operators/scalar_kernels.py
+  - name: Gelu
+    entry: gelu
+    path: operators/scalar_kernels.py
+  - name: Cummin
+    entry: cummin
+    path: operators/scalar_kernels.py
+  - name: Maximum
+    entry: maximum
+    path: operators/scalar_kernels.py
+  - name: MaskedScale
+    entry: masked_scale
+    path: operators/scalar_kernels.py
+  - name: Softmax
+    entry: softmax
+    path: operators/scalar_kernels.py
+  - name: RmsNorm
+    entry: rms_norm
+    path: operators/scalar_kernels.py
+  - name: Gather
+    entry: gather
+    path: operators/scalar_kernels.py
+  - name: Scatter
+    entry: scatter
+    path: operators/scalar_kernels.py
+  - name: GroupedMatmul
+    entry: grouped_matmul
+    path: operators/scalar_kernels.py
+  - name: Transpose
+    entry: transpose
+    path: operators/scalar_kernels.py
+  - name: ArgMax
+    entry: arg_max
+    path: operators/scalar_kernels.py
+  - name: CrossEntropyLoss
+    entry: cross_entropy_loss
+    path: operators/scalar_kernels.py
+  - name: SwiGlu
+    entry: swi_glu
+    path: operators/scalar_kernels.py

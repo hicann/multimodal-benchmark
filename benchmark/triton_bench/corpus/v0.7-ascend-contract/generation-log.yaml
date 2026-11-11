@@ -1,0 +1,180 @@
+# Copyright (c) 2025-2026 Huawei Technologies Co., Ltd.
+# This program is free software, you can redistribute it and/or modify it under the terms and conditions of
+# CANN Open Software License Agreement Version 2.0 (the "License").
+# Please refer to the License for details. You may not use this file except in compliance with the License.
+# THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+# INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE.
+# See LICENSE in the root of the software repository for the full text of the License.
+
+- ts: '2026-10-23T04:05:58.765277+00:00'
+  step: log_header
+  log_format: 1
+  note: 追加式生成日志；每行一个事件，ts 为 UTC ISO8601
+- ts: '2026-10-23T04:05:58.765735+00:00'
+  step: build_start
+  version: v0.7-ascend-contract
+  device: cpu
+  verify_refs: true
+- ts: '2026-10-23T04:05:58.844769+00:00'
+  step: guided_selection
+  pool_size: 324
+  selected: 220
+  per_category:
+    AssignReqToTokenPool: 20
+    CausalConv1d: 20
+    GatherScatter: 20
+    DiscreteMemoryAccess: 20
+    VectorAdd: 20
+    InsertSlice: 20
+    VectorCmp: 20
+    ExtractSlice: 20
+    DecodeGroupedAttention: 20
+    BinnedGatherScatter: 20
+    PaddedGatherScatter: 20
+  coverage:
+    counts:
+      FA-DT-INT32: 35
+      FA-SHAPE-FLAT: 60
+      FA-PROG-GRID1D: 60
+      FA-LOAD-SMALL: 83
+      FA-LOAD-MASKED-EDGE: 59
+      FA-LOAD-CONTIG: 220
+      FA-ATTR-NONDEFAULT: 120
+      FA-DT-BF16: 40
+      FA-SHAPE-CUBE: 40
+      FA-PROG-GRID3D: 40
+      FA-DT-FP16: 60
+      FA-PROG-GRID2D: 120
+      FA-LOAD-MEDIUM: 113
+      FA-LOAD-ALIGNED: 161
+      FA-DT-FP32: 79
+      FA-DT-INT64: 6
+      FA-SHAPE-SKINNY: 52
+      FA-LOAD-LARGE: 20
+      FA-PAT-VEC-LOAD: 14
+      FA-LOAD-XLARGE: 4
+      FA-NUM-EXTREME: 10
+      FA-PAT-COALESCE-GATHER: 44
+      FA-SHAPE-SQUARE: 4
+    covered:
+    - FA-ATTR-NONDEFAULT
+    - FA-DT-BF16
+    - FA-DT-FP16
+    - FA-DT-FP32
+    - FA-DT-INT32
+    - FA-DT-INT64
+    - FA-LOAD-ALIGNED
+    - FA-LOAD-CONTIG
+    - FA-LOAD-LARGE
+    - FA-LOAD-MASKED-EDGE
+    - FA-LOAD-MEDIUM
+    - FA-LOAD-SMALL
+    - FA-LOAD-XLARGE
+    - FA-NUM-EXTREME
+    - FA-PAT-COALESCE-GATHER
+    - FA-PAT-VEC-LOAD
+    - FA-PROG-GRID1D
+    - FA-PROG-GRID2D
+    - FA-PROG-GRID3D
+    - FA-SHAPE-CUBE
+    - FA-SHAPE-FLAT
+    - FA-SHAPE-SKINNY
+    - FA-SHAPE-SQUARE
+    missing: []
+    unknown_atoms: []
+    rate: 1.0
+- ts: '2026-10-23T04:06:10.787178+00:00'
+  step: reference_gate
+  device: cpu
+  failures: {}
+- ts: '2026-10-23T04:06:10.848430+00:00'
+  step: evaluation_assets
+  assets_hash: a196eddd33c53896edbd7fbce69e1505dd67ba9f38e39a41d3c8ade386041108
+- ts: '2026-10-23T04:06:10.848539+00:00'
+  step: build_end
+  manifest_written: false
+  manifest_hash: 3b46ed7755b95f598ce81a7f8458fbc870b678f36b508f364ecf19fceb9d8775
+- ts: '2026-10-23T04:15:36.764776+00:00'
+  step: build_start
+  version: v0.7-ascend-contract
+  device: cpu
+  verify_refs: true
+- ts: '2026-10-23T04:15:36.832676+00:00'
+  step: guided_selection
+  pool_size: 324
+  selected: 220
+  per_category:
+    AssignReqToTokenPool: 20
+    CausalConv1d: 20
+    GatherScatter: 20
+    DiscreteMemoryAccess: 20
+    VectorAdd: 20
+    InsertSlice: 20
+    VectorCmp: 20
+    ExtractSlice: 20
+    DecodeGroupedAttention: 20
+    BinnedGatherScatter: 20
+    PaddedGatherScatter: 20
+  coverage:
+    counts:
+      FA-DT-INT32: 35
+      FA-SHAPE-FLAT: 60
+      FA-PROG-GRID1D: 60
+      FA-LOAD-SMALL: 83
+      FA-LOAD-MASKED-EDGE: 59
+      FA-LOAD-CONTIG: 220
+      FA-ATTR-NONDEFAULT: 120
+      FA-DT-BF16: 40
+      FA-SHAPE-CUBE: 40
+      FA-PROG-GRID3D: 40
+      FA-DT-FP16: 60
+      FA-PROG-GRID2D: 120
+      FA-LOAD-MEDIUM: 113
+      FA-LOAD-ALIGNED: 161
+      FA-DT-FP32: 79
+      FA-DT-INT64: 6
+      FA-SHAPE-SKINNY: 52
+      FA-LOAD-LARGE: 20
+      FA-PAT-VEC-LOAD: 14
+      FA-LOAD-XLARGE: 4
+      FA-NUM-EXTREME: 10
+      FA-PAT-COALESCE-GATHER: 44
+      FA-SHAPE-SQUARE: 4
+    covered:
+    - FA-ATTR-NONDEFAULT
+    - FA-DT-BF16
+    - FA-DT-FP16
+    - FA-DT-FP32
+    - FA-DT-INT32
+    - FA-DT-INT64
+    - FA-LOAD-ALIGNED
+    - FA-LOAD-CONTIG
+    - FA-LOAD-LARGE
+    - FA-LOAD-MASKED-EDGE
+    - FA-LOAD-MEDIUM
+    - FA-LOAD-SMALL
+    - FA-LOAD-XLARGE
+    - FA-NUM-EXTREME
+    - FA-PAT-COALESCE-GATHER
+    - FA-PAT-VEC-LOAD
+    - FA-PROG-GRID1D
+    - FA-PROG-GRID2D
+    - FA-PROG-GRID3D
+    - FA-SHAPE-CUBE
+    - FA-SHAPE-FLAT
+    - FA-SHAPE-SKINNY
+    - FA-SHAPE-SQUARE
+    missing: []
+    unknown_atoms: []
+    rate: 1.0
+- ts: '2026-10-23T04:15:49.933701+00:00'
+  step: reference_gate
+  device: cpu
+  failures: {}
+- ts: '2026-10-23T04:15:49.997679+00:00'
+  step: evaluation_assets
+  assets_hash: 85f1d5b7f9e0fc3df28dad66fdfd552cb60e6bbe695ab97f55e086041e262c33
+- ts: '2026-10-23T04:15:49.997818+00:00'
+  step: build_end
+  manifest_written: false
+  manifest_hash: 3b46ed7755b95f598ce81a7f8458fbc870b678f36b508f364ecf19fceb9d8775

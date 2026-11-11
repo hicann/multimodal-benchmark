@@ -1,0 +1,1 @@
+(npu-smi version 不支持，写入占位)

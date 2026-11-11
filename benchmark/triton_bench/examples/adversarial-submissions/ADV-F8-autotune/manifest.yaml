@@ -1,0 +1,5 @@
+submit_id: adv-f8-autotune
+operators:
+  - name: Exp
+    entry: exp
+    path: operators/exp/kernel.py

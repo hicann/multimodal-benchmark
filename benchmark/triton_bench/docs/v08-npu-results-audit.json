@@ -1,0 +1,1239 @@
+{
+  "record": "20261023-120902-701382",
+  "code_commit": "87f1066e6deabdc70b775005fbad7c2472b48046",
+  "results_commit": "c8ed79288286529ca81112d2f69ce029b485e2df",
+  "candidate_manifest_hash": "249394cfdc651dd2db8b1237b4b7b4a56748f2b80d0d8bf748990a638bbabd11",
+  "frozen_manifest_hash": "5e6e6f4e8301ba3881ff419f317704da462fdf2bc108d88c11490d194c3b1154",
+  "expected_cases": 1360,
+  "recorded_cases": 1300,
+  "by_status": {
+    "PASS": 1273,
+    "COMPILE_FAIL": 26,
+    "RUNTIME_FAIL": 1
+  },
+  "reference_gate_blocked_cases": 60,
+  "whole_operators_passed": 63,
+  "countable_whole_operators_passed": 59,
+  "selected_operators": [
+    "Matmul",
+    "Add",
+    "BitwiseAnd",
+    "BitwiseNot",
+    "Abs",
+    "SwiGlu",
+    "Gather",
+    "Concat",
+    "Flip",
+    "Transpose",
+    "Equal",
+    "LogicalAnd",
+    "Where",
+    "LayerNorm",
+    "RmsNorm",
+    "Softmax",
+    "ReduceSum",
+    "CumSum",
+    "ArgMin",
+    "SortValues",
+    "Sub",
+    "BitwiseOr",
+    "Neg",
+    "NotEqual",
+    "LogicalOr",
+    "ReduceMean",
+    "CumProd",
+    "Mul",
+    "BitwiseXor",
+    "Exp",
+    "Greater",
+    "ReduceMax",
+    "Div",
+    "Expm1",
+    "GreaterEqual",
+    "ReduceMin",
+    "Mod",
+    "Log",
+    "Less",
+    "Maximum",
+    "Log1p",
+    "LessEqual",
+    "Minimum",
+    "Sqrt",
+    "Rsqrt",
+    "Sin",
+    "Cos",
+    "Tan",
+    "Tanh",
+    "Sinh"
+  ],
+  "frozen_cases": 1000,
+  "frozen_operators": 50,
+  "label_coverage": 0.4647887323943662,
+  "covered_atoms": 33,
+  "missing_atoms": [
+    "FA-AXIS-FIRST",
+    "FA-AXIS-INNER",
+    "FA-CONCUR-ACCUM",
+    "FA-CTRL-STATIC-UNROLL",
+    "FA-DT-BF16",
+    "FA-DT-INT16",
+    "FA-DT-INT64",
+    "FA-DT-INT8",
+    "FA-DT-UINT8",
+    "FA-FUSE-2STAGE",
+    "FA-FUSE-CROSS-CATEGORY",
+    "FA-FUSE-ELEM-INTRA",
+    "FA-FUSE-INTERM-ELIDE",
+    "FA-FUSE-RED-INTRA",
+    "FA-IDX-SCATTER",
+    "FA-LINALG-BIAS",
+    "FA-LOAD-LARGE",
+    "FA-LOAD-STRIDED",
+    "FA-LOAD-XLARGE",
+    "FA-MATH-GELU",
+    "FA-MULTI-OUTPUT",
+    "FA-NUM-EXTREME",
+    "FA-NUM-MIXED",
+    "FA-NUM-ZEROS",
+    "FA-PAT-COALESCE-GATHER",
+    "FA-PAT-MASK-TAIL",
+    "FA-PAT-MULTIPASS-REDUCE",
+    "FA-PAT-SCAN-BLOCKED",
+    "FA-PAT-SPLIT-K",
+    "FA-PAT-TILE-GEMM",
+    "FA-PAT-VEC-BROADCAST",
+    "FA-PAT-VEC-LOAD",
+    "FA-PROG-GRID1D",
+    "FA-PROG-GRID3D",
+    "FA-PROG-GRID4D",
+    "FA-SHAPE-CUBE",
+    "FA-SHAPE-FLAT",
+    "FA-STABLE-LOGSUMEXP"
+  ],
+  "profile": "smoke",
+  "environment": {
+    "npu_model": "910B3",
+    "arch": "aarch64",
+    "cann_version": "9.0.0",
+    "compiler_version": "3.2.0",
+    "torch_version": "2.7.1+cpu",
+    "torch_npu_version": "2.7.1.post4"
+  },
+  "independent_evidence_audit": "original candidate and submission fingerprints verified; operator eligibility and evidence hashes recomputed and matched; recovered frozen corpus verified with original code",
+  "publication_intact": false,
+  "publication_defect": "overbroad URL redaction corrupted official-catalog.json JSON and SHA256",
+  "recovery": {
+    "format": 1,
+    "candidate_manifest_hash": "249394cfdc651dd2db8b1237b4b7b4a56748f2b80d0d8bf748990a638bbabd11",
+    "frozen_manifest_hash": "5e6e6f4e8301ba3881ff419f317704da462fdf2bc108d88c11490d194c3b1154",
+    "repaired_file": "official-catalog.json",
+    "recovered_sha256": "081e73b03e6b32aaf89f74c454fee559a60a12d02a3460dc16d243119c0b68d4",
+    "published_sha256": "7bfa00a66a4f04e6d1a95d65fcf03dc032c6bf234c634b4104de9e30ed2193a2",
+    "method": "reconstructed from pinned candidate catalogue and selected operators; original SHA256 matched",
+    "framework_validation": "requires original execution code revision"
+  },
+  "operators": {
+    "Abs": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "67f0b7fb0cf3f8c4de676e1d82e5e877e37ca2abbe37491278899382c3640c2b",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "ac9340bed377f10918fb6885ae6bff00ee18a777d747a259671d0f474390faae"
+      }
+    },
+    "Add": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "b73aa3dd58062484c345248c81503f08fbbf45c4f250adb3479894b14cc69525",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "e7bfd7e4ef9bed7b33c643ac3f75c418f2d6ce0f51bbb927483794df66a8aa9e"
+      }
+    },
+    "ArgMax": {
+      "expected_cases": 20,
+      "result_rows": 0,
+      "by_status": {},
+      "eligible": false,
+      "ineligibility_reasons": [
+        "requires exactly 20 complete PASS records in one operator run",
+        "missing successful independent CPU and NPU reference gates",
+        "run, scoring or report command failed or is missing"
+      ],
+      "missing": [
+        "official-arg_max-float16-00",
+        "official-arg_max-float16-01",
+        "official-arg_max-float16-02",
+        "official-arg_max-float16-03",
+        "official-arg_max-float16-04",
+        "official-arg_max-float16-05",
+        "official-arg_max-float16-06",
+        "official-arg_max-float16-07",
+        "official-arg_max-float32-00",
+        "official-arg_max-float32-01",
+        "official-arg_max-float32-02",
+        "official-arg_max-float32-03",
+        "official-arg_max-float32-04",
+        "official-arg_max-float32-05",
+        "official-arg_max-float32-06",
+        "official-arg_max-float32-07",
+        "official-arg_max-float32-11",
+        "official-arg_max-float32-13",
+        "official-arg_max-float32-17",
+        "official-arg_max-float32-21"
+      ],
+      "evidence_sha256": {}
+    },
+    "ArgMin": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "16b6c5ca087bbbba1909087a94b36286124a7d1261b16b7b3a37e6e1f143ea7c",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "4a9e016ad59df556d3801da8a323d0351e38660c79306d4628d221da2c238439"
+      }
+    },
+    "BitwiseAnd": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "68bdd49a26abe441da899c55c3a5646127c0f1f49e505dde8cdabc92997a8f70",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "203f8b69c86d1f82e8f19f17dc1f0b2a2de44fc2db6f333a1a5e67d84f8b680e"
+      }
+    },
+    "BitwiseNot": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "4f35f16a564030437a22a6255f763dff42b45b6660a4d6536f09c08f8b8bc99a",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "7498fd4b34f66fa3b1020c1c5016f8717dfbe710eeeabf3764d9f74784536e57"
+      }
+    },
+    "BitwiseOr": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "5f5e343bb0e0f78cdb81d0a4f20d337f890712bec19b88c86e33289763f05ec2",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "075fa6df32fcad361ee8ab6ae938884846b4d7962c3428ba9e64cb37b67f82f5"
+      }
+    },
+    "BitwiseXor": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "22edd685f8d3dba2965761faaa8cb58bdff904bbaa713e7e4a30620871e728ca",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "ea13d30fa3490539be8d76c1c32b8646ed19d12480438a0b923485710e47411a"
+      }
+    },
+    "Ceil": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "b084d02f74c8ed89ae303e0050a0a10028d9b940ff8cd4728fd5763a01fcfb6d",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "e19da0e12de103b28520dbd90d84055a1b0ffb3f5f5d2960a4b197dcb738f0fa"
+      }
+    },
+    "Clamp": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "72546dab4843ee78358b353ffb03dcbea4ea7641885799fc14c2447d5cd16722",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "a14f08e90400bcd7abad800511d1ee194abc29a404262e6f6acb68d44b51415f"
+      }
+    },
+    "Concat": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "1645ba2248978221587c29dc25aaa689ce4b4b26c8239ef36ef7d84c03a7dcca",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "c36b1f24878ca638a6304182cc0ea04550e5d5cb4406798d6ce821f9c1cca3a1"
+      }
+    },
+    "Cos": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "cf9b7bad9d976df69f2f6e38dbc883ab1ae694d93790ab5b50cff8ab64ce86c4",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "96a15856086388419245b965904043f04558270fa7e7b2a2b3f8aff6e2385d09"
+      }
+    },
+    "Cosh": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "a3a2fb78d0dc5d0dd282860abc29930a3b762cc9e36fdf2a7e6f2d594212d35b",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "50ed6fce2d9cb7c037a0b82aebe2a9dc34fac76f28964cd405f8a17dff68813f"
+      }
+    },
+    "CumProd": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "ace0cf810ed0461c3f1bb103f94a43ad1ad41438448ac668fb15586337ac11b4",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "8867dc60ba5d82ee7dc379a85229ee78277a2e68c71a1f7c5beb9217194e8fe0"
+      }
+    },
+    "CumSum": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "585ecde8e92dbabb72179a54d23a154f7593c8a7e76b7c28c627b23e5d9a338b",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "b690ea32296ea7993dccc1e49ca3d45027006c41d6f86db33bc03e763f985316"
+      }
+    },
+    "Div": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "dcddcde84e2f2168148bff66be6769a30830c1d83705972e7277daf00e929747",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "c594212c55d08961ae1db5199cb74b7297945460937cb5c62335606ca5a2f6fa"
+      }
+    },
+    "Equal": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "172344165c0dc702b3b8affe629014e350da2d3b4d98e2606e6a57428fb3aef0",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "81939183a35ace5fbdba15390f6a51ef7dfbe365f5274d55695fdef287f50f26"
+      }
+    },
+    "Exp": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "9101673b4135979d150c81c6ea61b0ed6b993c908e17b111956f8aee7240b5ce",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "7013928edac0a4450b852f5fdc0a573683e34e6768ce00a706e5e9ee7abd33fe"
+      }
+    },
+    "Exp2": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "85255d5eaae180f7d5207180aed7b4997114fe57acff4efd31794b6a9bea557c",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "e4c4fce568b9dfc1a482e9bfda47420cc5d81b87f00519ad699ece6b2e71e741"
+      }
+    },
+    "Expm1": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "da7a9b0d336a6e62ae1f8fc85d1605fcde4268e03e8227e66cd8ccfffeaadec2",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "1a8c354a05c409357b2a53cd93e01559485a6239d1ae06aec95cd20ecf3d68fd"
+      }
+    },
+    "Flip": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "7aa55c3d36cc0560b4f32cd45db990d5b589617838a90aba7c2e908f0b6fb0ab",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "b9ae88231688d4aab98d4d55c27f0a22dd42187c51241babe3f04c42a21ae075"
+      }
+    },
+    "Floor": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "b0f5e0c93f1390bc8cccda055295dda032974bd99dab0bb164b4c34199f97ba6",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "ab29a94ba89129217178f7300193ffebf714266848ab4a7b424bbf3ef02b86e0"
+      }
+    },
+    "FloorDiv": {
+      "expected_cases": 20,
+      "result_rows": 0,
+      "by_status": {},
+      "eligible": false,
+      "ineligibility_reasons": [
+        "requires exactly 20 complete PASS records in one operator run",
+        "missing successful independent CPU and NPU reference gates",
+        "run, scoring or report command failed or is missing"
+      ],
+      "missing": [
+        "official-floor_div-int32-00",
+        "official-floor_div-int32-01",
+        "official-floor_div-int32-02",
+        "official-floor_div-int32-03",
+        "official-floor_div-int32-04",
+        "official-floor_div-int32-05",
+        "official-floor_div-int32-06",
+        "official-floor_div-int32-07",
+        "official-floor_div-int32-08",
+        "official-floor_div-int32-09",
+        "official-floor_div-int32-10",
+        "official-floor_div-int32-11",
+        "official-floor_div-int32-12",
+        "official-floor_div-int32-13",
+        "official-floor_div-int32-14",
+        "official-floor_div-int32-15",
+        "official-floor_div-int32-16",
+        "official-floor_div-int32-17",
+        "official-floor_div-int32-18",
+        "official-floor_div-int32-21"
+      ],
+      "evidence_sha256": {}
+    },
+    "Gather": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "6a87514e1799cfa3f8bc182b6f3d2c9d2ed46b81a3eb12dbe32778b331998e83",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "709c2eccd619a7844925c380cb24c9a5e8dcd6463ba192001f9dcc2b13c51134"
+      }
+    },
+    "Gelu": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "8bed1fb6ae38fefc19f7af2947814a627b76d495e7b2af969442470aec18eea3",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "57d4620a47db626061e8536e7523d76dd957fc8be32f96a2d2ceba585265ab1c"
+      }
+    },
+    "Greater": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "b0146d2efb52d75cc8b8a7250a96bf77b4c88217938e783e5f1031d66e0b7ae3",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "0c823e7421f96dfd2bd5895fcfa4be0510bbde3dc2d183b4e4e28c6f8fd8981a"
+      }
+    },
+    "GreaterEqual": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "48ab6f974b47ea2c181ab89a4f834051602eee216cd250394eb1d2216da80b67",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "df359e960fb12a7fbaad8ac27498af3e87987816dbebc7209dd05e628c3504b7"
+      }
+    },
+    "LayerNorm": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "f2ed7290a42b90cca91bf69f7c054b6f8931eb4ce2f731ec3272bc453971ca6f",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "dcf89d7a2e6c41ba53de8b6d7bb2d861844cd1a6b1f40892185a231be507546b"
+      }
+    },
+    "Less": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "14f6ed7933a52b8f54bdc322fcf74b487a82ebb66c3343ba48563a2232fc20d5",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "d9bd09404773e8f0afc287d6b83e27581a84dd0f6262edc5f1ed7026afa01fd2"
+      }
+    },
+    "LessEqual": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "53dd00961aee4b345b8f13661407ca2453bd96bedf99d18acc4794a1db33fbb7",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "b2b21a76202687316f2ddc9177b4f9b6dd6c4e11e9bd9420ea2b43d65fba778b"
+      }
+    },
+    "Log": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "40e7110d063475c65431f842051d46bee3a976bab71b9fc60f29eb427d180827",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "46d2632e645564d72d49349f19a6113ccdf61553c6e9b6ac88a1c53f7a0137b7"
+      }
+    },
+    "Log10": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "3c27a646311e4c6786f029a857bb889563ed4a83b57b0e49d3632f26b3ad1a7d",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "39c12935144b7bcc82e4d2892d3c09ce3ff95f4ef0cf5963cd8a12b955de84d4"
+      }
+    },
+    "Log1p": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "e5178bf68407e97a4ba91ba984961d22416d4c57a5542fb871c1454aece79953",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "21aed46a4f37d7709953daf13db273275725fd03a621026fec88baf0423d4059"
+      }
+    },
+    "Log2": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "7b6111f88820ec673232c321aba16277693d9ee1541f11ea34a88ff16c6395de",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "5e3e214782af1dd6a415cda6410963430ddf53c33d101fbba68be7f0eea17990"
+      }
+    },
+    "LogicalAnd": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "2533a0afe58478b5b54f04ff96945c33e7846cc611e0d815370cdaf4e7a25928",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "5447e618af635164469765c750dc5c35bc3666c164f97d4a2e3459570811f002"
+      }
+    },
+    "LogicalOr": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "571c0aaaad764f0e1b09d9c9f7e92834d28a6ce0453ce1e2177834eeb6dbc164",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "a73fccddea16d7b8f7326f0d15adb1ece30f0dd5c1c3cc1f594a74ef64d9ffe2"
+      }
+    },
+    "Matmul": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "5f972097004985cc61606a46ab5ff93b2dc945d284c618b3102f0092b021cffa",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "321b44da54f00a9636dc4e95b24a1088a8b6d9235b084813cf8fe3b67eed4fa7"
+      }
+    },
+    "Maximum": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "0e87b96d63c5c2c8c10931b4c6509c053f762f60c819c33298d36f76bd17058a",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "c6910d0a6b96ff9ebdbd8b9dfc2bfa525c2f77d68083d5c083a83b29385a8c7a"
+      }
+    },
+    "Minimum": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "08c28628e1e32285383b438628b280652d021e64e8676219e6f0eab97fb75d67",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "ae54df20975440304a31397ec45f39ed78db58988ec53ba4751aa71c54f5d8f6"
+      }
+    },
+    "Mish": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "45852ff8ef15ecc47c748195438040126805b8d508585f4a25d85ed4a6d0871a",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "d98f65c2e59abfba5cc4b59100ee07d1096673da37717da6daf9a0253bc7b0bb"
+      }
+    },
+    "Mod": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "81311c7aa5c6ad7a42ef5d19f189bfc175eb46d86a55da79605d50d29fe78c1e",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "d232bbab6bf6975b896cfb637e0ccf9ad31e41cef1b03b5236a18f3225608d1e"
+      }
+    },
+    "Mul": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "117911b7d3396aed245bdcc1968fc5c36ebf83d80a9a5be3acba25202b69ec4a",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "755f9c0f9d24fabf47e702593fe876f1effebf6a7206ed20f9a9c494f11c97f1"
+      }
+    },
+    "Neg": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "814a4804a2851bc127f9b46f92e027a0c12ed8169d6a62e37ab1c9dca621119d",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "0aa27e70cafa6e7654a9e9b3d5bce26388685454d8e7cdd8a84cac3f2c19cd6a"
+      }
+    },
+    "NotEqual": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "f0ac15ac2ad991c9788a8f073ef6732d1399fad2e482716bd8d4ae3f475078ea",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "241b161959cad2a600242fd8ded342b955fe57b22dc2f7e55e42e27d7f70fec9"
+      }
+    },
+    "Pow": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "COMPILE_FAIL": 20
+      },
+      "eligible": false,
+      "ineligibility_reasons": [
+        "requires exactly 20 complete PASS records in one operator run"
+      ],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "5cd3a936ec88c6e403e629cf2bfcb5be36d1be3ef0088be2e14e8fb5eb3294fa",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "f20cc5edef28af549f70046b5b2d81f5c760b8bb1ba10826eef37f29ebb3bf90"
+      }
+    },
+    "ReduceMax": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "857b3a56edd939a152e21e69f7c457a277b80c0e70f46bc1b8e00fff72b8a227",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "1003044d3f1f39348fd7559183abc49eb5bd96641769a8a37482a2bdb6be4b2d"
+      }
+    },
+    "ReduceMean": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "91ca0edbe4bfdbfc7c5dfa1c89838513b31368e680ae21a2104af856c66fc258",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "786350beb9b45b6a660de415a5958bba001166bb0be6e238cb3e372b94bebad4"
+      }
+    },
+    "ReduceMin": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "aabe46f70104a10bf2bb8594bd59424480cb2336df6093b6783760cba2180ae8",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "889fa98337dc8d53ede2234cbc10e47b9094e659e258f805efdd57b323b9b4c6"
+      }
+    },
+    "ReduceSum": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "5d72d532ead24af092d3234bb5b356cad1e6b382f2f8bb50f6ffca8bea07ce30",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "d30515f8e2497c7174db51a6fb253f393219b0749b4173458745729c7e3ef042"
+      }
+    },
+    "Relu": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "e0983ebb14b5b2d0a482222fd350d998a31abc7bb9e18ab7c91a593e2601af4a",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "7287740daac4b266be58c13fab0f482d3a2e02a6d26d1040fc1c94630d3092d0"
+      }
+    },
+    "RmsNorm": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "4379817ead2a7a954b0053f9e527345de4400619c3ff560a12166c2da2459e49",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "559e3453433b7f5b0da7373328467e594f02cafa409ae15cff65b99ff81d10ac"
+      }
+    },
+    "Rsqrt": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "5a2d93ee9b60e3ebb2a735f312107cd85c4d6ceac7366e5a42c592df258b0f10",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "339e41723a64cf764caf456b3d1cdf964cf8777a5f95bcb7d63c51a46511d5b9"
+      }
+    },
+    "Sigmoid": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "0023e410cf8a12796c66c110b69bf699d393879aaef4b94b29dcd7638cfb6762",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "8e1fd4a6c510b271612da704dc7b675e1221732120be5467e26a2dd01135913c"
+      }
+    },
+    "Signbit": {
+      "expected_cases": 20,
+      "result_rows": 0,
+      "by_status": {},
+      "eligible": false,
+      "ineligibility_reasons": [
+        "requires exactly 20 complete PASS records in one operator run",
+        "missing successful independent CPU and NPU reference gates",
+        "run, scoring or report command failed or is missing"
+      ],
+      "missing": [
+        "official-signbit-float16-00",
+        "official-signbit-float16-01",
+        "official-signbit-float16-02",
+        "official-signbit-float16-03",
+        "official-signbit-float16-04",
+        "official-signbit-float16-05",
+        "official-signbit-float16-06",
+        "official-signbit-float16-07",
+        "official-signbit-float32-00",
+        "official-signbit-float32-01",
+        "official-signbit-float32-02",
+        "official-signbit-float32-03",
+        "official-signbit-float32-04",
+        "official-signbit-float32-05",
+        "official-signbit-float32-06",
+        "official-signbit-float32-07",
+        "official-signbit-float32-11",
+        "official-signbit-float32-13",
+        "official-signbit-float32-17",
+        "official-signbit-float32-21"
+      ],
+      "evidence_sha256": {}
+    },
+    "Sin": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "da27b98f6b005dfa8ae0d3bf87279d953877933ade11b664f0d1414c1e7ab20f",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "755a80d4e5f99118c978a0379dd4712283bdf09e63598edd0e131a112981c925"
+      }
+    },
+    "Sinh": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "f2b65b72a02783251a4ff89f062082c0dbb922e5ee99b21a3712ed0ff5532f35",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "d72456c3699fdb7e64698399e35ee15bedfc91cd3f0117ab28c7a3753f66e655"
+      }
+    },
+    "Softmax": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "bb6ea40d9cd86aff1840ad906f815576726106f0f0664c8585e9e07a23b80f05",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "69627932e0fc4f817e64f910a6443417caabc829d9bb308faed0b772e39a0985"
+      }
+    },
+    "SortValues": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "bb3817c86f797863eeabf902f3d1f00269aea95241678de7eab3217ce31e1b03",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "75226784473beb745fd1e2853722c56c09b704cb002bc341b382d9597ed46a28"
+      }
+    },
+    "Sqrt": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "e059e158d2796066f685bcf2ab29788f933c5598d0000fb3b130d7a92e7c2dab",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "9236025cd0654f9650d2f565d36900447ec971d7791eef498d99e5b603176a26"
+      }
+    },
+    "Sub": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "f345ece969b7b9b47cbb13a55e2839eca5bdf872a622975dcb0cb9f9ef654aee",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "b32282cfa9e7d34ff649974f772c84b53cbfc522b28d201dc96cc99e45d9d187"
+      }
+    },
+    "SwiGlu": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "49e37f99efa7fa5b5c29944aa023f6d0f981eb0e10a106047359dcad476cab1d",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "147d91984411aff27969d5ac8f243fb7d0c8119ba161951bc4a37acd40ac173b"
+      }
+    },
+    "Tan": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "d71fa79d732ff1126bcbe1be56d189442ae5468875395ee53f3eeb04c3088a1f",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "d555d71f6f5cf47fa2c3aa1471508ebfae74346eee7f3253f3e3c92d791eea3f"
+      }
+    },
+    "Tanh": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "f3aa50e009c299b33e779e262a312eb7d8ebf4aad1c86d4bb503f46573487086",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "adbbb7f84ac45e89ed0654a055fe2e7bb02544d70cffe51605a377fcbc30674c"
+      }
+    },
+    "TopKValues": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "COMPILE_FAIL": 6,
+        "PASS": 13,
+        "RUNTIME_FAIL": 1
+      },
+      "eligible": false,
+      "ineligibility_reasons": [
+        "requires exactly 20 complete PASS records in one operator run"
+      ],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "bc0da9a6583a00a7f0519d4c28bd1086e5034766484043940a59540077c06fb0",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "67c96bcb8b8660a508ed5673291c014b8e533fde37ec41c1a29839fd652e32fc"
+      }
+    },
+    "Transpose": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "d0acc10666d3fbd4d8bb3aaad1a1f45003f11564e32d5301458050be1ed603d3",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "2e32e4c9acaf7cbcca463d465afa563bb6ac14759daac177f3e1047d26238098"
+      }
+    },
+    "Trunc": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "ceb2274821213d1387e30cccdcd9a66ad6a1719385b577815e60ec052de950fa",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "0c26594c95b4265df5bdd14d83e2762763f7325be5fc8f7a2ffc7ba67f02ef7a"
+      }
+    },
+    "Where": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "d6f73b092591ea6a5d1c7d8de050a646e2cd9de615cbe0f026b0b2a7f26915c5",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "f1e168ef168ec7ad15d924cbfc0eea89b069844eef6cae0c9d806573d46fb221"
+      }
+    },
+    "XorSum": {
+      "expected_cases": 20,
+      "result_rows": 20,
+      "by_status": {
+        "PASS": 20
+      },
+      "eligible": true,
+      "ineligibility_reasons": [],
+      "missing": [],
+      "evidence_sha256": {
+        "run-1/results.jsonl": "3440b41d5b0c76de43de7e88d4d632e1f7d5ee96b2a70aadd652353a67c6b005",
+        "run-1/integrity.json": "9f27f529117201840adc16207a317c263ec1a196ff528a39179fd125832cdf85",
+        "run-1/env.json": "21c211ce1bdba617b6ebdc044fea4c45eb2240db184d3d2b46367deebf2026fc"
+      }
+    }
+  },
+  "local_validation": {
+    "pytest": {
+      "passed": 600,
+      "skipped": 163,
+      "duration_s": 93.94
+    },
+    "cpu_reference_gate": {
+      "cases": 1360,
+      "failures": 0,
+      "corpus_version": "v0.8.1-official-candidates"
+    },
+    "new_manifest_hash": "a614114dbc93ca0780378cf4c2c6f606e8055dd353c042890326a5b6e9aa2c10",
+    "case_parameters_unchanged": true,
+    "recovered_publication_files_byte_identical": 105,
+    "python": "3.9.6",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "npu_revalidation_completed": false
+  }
+}

@@ -1,0 +1,752 @@
+{
+  "format": 1,
+  "audit_date": "2026-10-23",
+  "repositories": {
+    "ops-math": {
+      "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+      "files": 14931,
+      "paths_named_triton": 0
+    },
+    "ops-nn": {
+      "commit": "c710376161d1528ceaeb6af9f9865af141c6ced4",
+      "files": 26731,
+      "paths_named_triton": 0
+    },
+    "ops-transformer": {
+      "commit": "48c515e8d1564861f00fd0dd703d41ee93060512",
+      "files": 15973,
+      "paths_named_triton": 0
+    }
+  },
+  "operators": [
+    {
+      "name": "Abs",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/abs/README.md",
+        "sha256": "4f2c9cec3913679a1c8dd85181ba6e55083d29e9b30bc1ea4a020e7c539e73bc"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Neg",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/neg/README.md",
+        "sha256": "8c998374438c139cfab157efbdce9cc6e6c4b336a564ae4c96fac3d2e79508a4"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Exp",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/exp/README.md",
+        "sha256": "ef84b0384617626d629c6dfadae4f4c1e86d3c17207f82aa20b69713f213c7f4"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "base/scale/shift follow CANN Exp; official Triton exp is adapted by an affine exponent and logarithm of base."
+    },
+    {
+      "name": "Exp2",
+      "cann_source": null,
+      "relation": "Official Triton primitive; no direct CANN README match",
+      "qualification_mapping": "Compiler-language primitive only; no direct operator README found in these three pinned CANN repository trees."
+    },
+    {
+      "name": "Expm1",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/expm1/README.md",
+        "sha256": "96b5db11f890aef22e8004bf679aad69444bcd3dfe7ebf006f82c116c4e01e14"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Log",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/log/README.md",
+        "sha256": "d1ce41ad934a50b97d9fc870573aedeb4590429b13e49063448897c08acc003f"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Log2",
+      "cann_source": null,
+      "relation": "Official Triton primitive; no direct CANN README match",
+      "qualification_mapping": "Compiler-language primitive only; no direct operator README found in these three pinned CANN repository trees."
+    },
+    {
+      "name": "Log10",
+      "cann_source": null,
+      "relation": "Official Triton primitive; no direct CANN README match",
+      "qualification_mapping": "Compiler-language primitive only; no direct operator README found in these three pinned CANN repository trees."
+    },
+    {
+      "name": "Log1p",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/log1p/README.md",
+        "sha256": "62963c46d46d21207241f9a09858d3d662f6afeeb98b1d0148211031894150ee"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Sqrt",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/sqrt/README.md",
+        "sha256": "6af39916788b39de56ec9b40597ab85f225b4101bba3dd2e0d9fc7d81bb15b67"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Rsqrt",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/rsqrt/README.md",
+        "sha256": "2aaf915d135cdac82129cd363e7a8ff374a4115ee5adbdd1544c849cd28a7e25"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Sin",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/sin/README.md",
+        "sha256": "774c2cd30ee7ab8c1bc7a8fecdff47f61da6aa1bad7e6d7de9638a9bfcb21d54"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Cos",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/cos/README.md",
+        "sha256": "c7f4bc7642df4010b8f9d73b738a3ea93c2688ba30da7e3272a053f0ba5cf885"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Tan",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/tan/README.md",
+        "sha256": "9558a43bb3cc89224b063d0935a1c73ec33e2b2ab4d3c7caddd52abb394c6edc"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Tanh",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/tanh/README.md",
+        "sha256": "e19b1c831cf1db31bffdb46c6a6b4b464fb1e43d861dfb70967c7f6f60ac1908"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Sinh",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/sinh/README.md",
+        "sha256": "fc6e910a5d449522ecd9fde3033d1cbc0e631724716483b4814df027ad29885e"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Cosh",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/cosh/README.md",
+        "sha256": "b451e4c0bfbf763fa6ba9611cb01c3113f2bce0cab08d32fdf6bc06059bb0650"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Floor",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/floor/README.md",
+        "sha256": "8a365f027c8f16bdceca94fbd71bdeb812e28b9e449001beedd631824aeda07c"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Ceil",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/ceil/README.md",
+        "sha256": "42ddff859c71277d2280d2d241afe5337f2ef6c098a57d25e5351601be2d5a76"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Trunc",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/trunc/README.md",
+        "sha256": "e43a2baf7205cb661b5801e34dc232db7972fe28002648e738f6e0f1b2af6a52"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Relu",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-nn",
+        "commit": "c710376161d1528ceaeb6af9f9865af141c6ced4",
+        "path": "activation/relu/README.md",
+        "sha256": "73308105d091844e6afb5bc6a8bca9c5e681c2bf922f944c5b7f9cb6fe932636"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Sigmoid",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-nn",
+        "commit": "c710376161d1528ceaeb6af9f9865af141c6ced4",
+        "path": "activation/sigmoid/README.md",
+        "sha256": "52dae68858a937a91b76860898101366e9d3ef91398e828b02588e72a79466f6"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Signbit",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/signbit/README.md",
+        "sha256": "bc48eec686c97dad43af471e20a90ffea049db3155303a1c7f31216a878c6572"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Add",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/add/README.md",
+        "sha256": "61a6910951aa0835c2166003b51bfcacaf849f1127a285713cadbc0bcb27f422"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Sub",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/sub/README.md",
+        "sha256": "cb56b460914061efa3d7a0750bcf5c16ed2868f919776ee104a70158df085bfb"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Mul",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/mul/README.md",
+        "sha256": "feacf55c387e0543556fd62d34dc013583e3d76c9d900950f7646320f6ea5ad0"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Div",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/real_div/README.md",
+        "sha256": "a9b8e0c8af50bedb02f1cd8587ffcd5620269090ffa565faf03bab2f8abde5d6"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "FloorDiv",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/floor_div/README.md",
+        "sha256": "164e856ebc303fc848e4e9315632c0dc047af17cf4627318fb6fc3d4e0e797c7"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Mod",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/mod/README.md",
+        "sha256": "0860ed1aa054e55b91c818da013d2c1c19c00590dda6204ef8873009e4d907ac"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "CANN Mod uses truncating fmod, including negative operands; Python remainder is different."
+    },
+    {
+      "name": "Pow",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/pow/README.md",
+        "sha256": "3d91367eb30e1d9a23aae57d4b2e96ec189790b82f571ffcf52b50ce806b6fd1"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Maximum",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/maximum/README.md",
+        "sha256": "c0e22ac9389600682b9f2e1eec901c9ea5bf8f2bb55b45ed34db40fe2de56b79"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Minimum",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/minimum/README.md",
+        "sha256": "ab0c3e130e2c60ee6d0951738e0ab23db6175906f42d4487cf46425a0f54b4fc"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Equal",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/equal/README.md",
+        "sha256": "fbf14aefbeb3335ad493ac6ed1ca8c4a8a70fb0ef868e749763aeea58391f0c4"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "NotEqual",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/not_equal/README.md",
+        "sha256": "3fd819724282608700f279769559c84bac765a2402107baaa9590daa1eb15b22"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Greater",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/greater/README.md",
+        "sha256": "15322308c0a4335382cd38d34e25b0b3f476e78e485de18e2c949845bbb6749a"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "GreaterEqual",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/greater_equal/README.md",
+        "sha256": "c262e18a97381e57d16995fcc2ac19a03b741b364f5a54f74226e6ee707e3c86"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Less",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/less/README.md",
+        "sha256": "b00089a4cf423025cfc377dc99ea00da6caa8ac178123096b7911fc6b27b87b9"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "LessEqual",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/less_equal/README.md",
+        "sha256": "632e1744a052adcd96fad5ae28541ac6c2be79926ece1a315cded3d706a2ec08"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "BitwiseAnd",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/bitwise_and/README.md",
+        "sha256": "3d3191c4199413d1a50dfa8ee5f3c6cfa6036be75a320a2f3da53e58384f9045"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "BitwiseOr",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/bitwise_or/README.md",
+        "sha256": "a9560e62ec29cd0c9b93f0d97e224dd9120d5d558e32f1b4496a5e0cd55c3c1d"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "BitwiseXor",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/bitwise_xor/README.md",
+        "sha256": "acc845689fcae5158ec75c9918c7501c104296897626fc64a2b802b0adac62e4"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "BitwiseNot",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/invert/README.md",
+        "sha256": "25c70e20df56fde7299245100fb6982169928101f2a3681484f34b331859e3bb"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "LogicalAnd",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/logical_and/README.md",
+        "sha256": "e884e8ab69e86379a751f44dcaaa7a6b96195160d62c2f9a0b08e29b0d61f015"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "LogicalOr",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/logical_or/README.md",
+        "sha256": "e36bc91890338d5fd35ec3f0545ae0055c547ca94087423fbce0516eb924106b"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Clamp",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "conversion/clip_by_value/README.md",
+        "sha256": "cba1d1f15795a9f9a2fb02970383e71ad4677ed022f584148ec9e05fd777253b"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Scalar min/max bounds mapped to ClipByValue; tensor-valued and broadcasting bounds are outside this domain."
+    },
+    {
+      "name": "Where",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/select/README.md",
+        "sha256": "f64d729620d35842eab3c18551f83c83ec18ff30282fbca896c01d56edd9228d"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "ReduceSum",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/reduce_sum/README.md",
+        "sha256": "c9c54d05c47f67f6915b33d242f543283e9e07e62b03e44734e7e8c809fef540"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "ReduceMean",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/reduce_mean/README.md",
+        "sha256": "44b91359f84fbc0f78d182dfeac4ac3b48309b87830d6f2314b10a894fcae276"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "ReduceMax",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/reduce_max/README.md",
+        "sha256": "a35c1c294c1dafb5500850152b7a6d2419efb252b0a704c49d878ef1d85ff4e0"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "ReduceMin",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/reduce_min/README.md",
+        "sha256": "799d9eb121e694da43e7d9b3420b344e0c301984d27d8dc0ecb1aeb1701f06b4"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "ArgMax",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/arg_max_v2/README.md",
+        "sha256": "d5e1b938287806a680c1871e526ea250ae98297828e451dc08a208f8ddc094ff"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "First-index tie break; last axis with keepdim=False and int64 indices, a restricted ArgMaxV2 domain."
+    },
+    {
+      "name": "ArgMin",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/arg_min/README.md",
+        "sha256": "f87ca29f74c7b0578347193472ad18998586d141899379154b1f5894efc90c2c"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "First-index tie break; last axis with keepdim=False and int64 indices, a restricted ArgMin domain."
+    },
+    {
+      "name": "XorSum",
+      "cann_source": null,
+      "relation": "Official Triton primitive; no direct CANN README match",
+      "qualification_mapping": "Compiler-language primitive only; no direct operator README found in these three pinned CANN repository trees."
+    },
+    {
+      "name": "CumSum",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/cumsum/README.md",
+        "sha256": "ee3f32f62f85638d966d5aa4d366fba7ab718b726a5f8cb218ffd31b8c7de603"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "CumProd",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/cumprod/README.md",
+        "sha256": "96a0d40cd0ee1bc6ea618f3186c63746bdaf6c568bb3da756c7817201a3efa29"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Transpose",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "conversion/transpose/README.md",
+        "sha256": "e724c3098670f9ec57adcfa7134190dc9ddac5dc7ea6c47cad8ddd0e7129b831"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Concat",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "conversion/concat/README.md",
+        "sha256": "61423a18c9604afe55be1aaa67a7307e17ad32a582a81dbe14e0d8c87e9bf658"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Flip",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-nn",
+        "commit": "c710376161d1528ceaeb6af9f9865af141c6ced4",
+        "path": "index/reverse_v2/README.md",
+        "sha256": "4e7ceeb18b590521ec188189bbcb35b5b1cb61d96db486ace8d709332b10e646"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Gather",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-nn",
+        "commit": "c710376161d1528ceaeb6af9f9865af141c6ced4",
+        "path": "index/gather_elements/README.md",
+        "sha256": "c6522bffa787dd0a2793af7dba4213a92a7752025cce7d960f21a3aae1bf28e4"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "CANN GatherElements at last axis; not row Gather/embedding and not Scatter."
+    },
+    {
+      "name": "SortValues",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/sort/README.md",
+        "sha256": "c83fd83a287c5942d577bae392ba724d65802545fd1a42b00d0190bfe4a27264"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Only the values projection is evaluated; the CANN Sort indices output is explicitly excluded."
+    },
+    {
+      "name": "TopKValues",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-math",
+        "commit": "58ca191f0cf82dffa61b3082f3cd0fc704eb6a7c",
+        "path": "math/top_k_v2/README.md",
+        "sha256": "d2eceb365f4bd9fdf361c12f7ce4133d153201439edbbce225ed2a04f8d29f07"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Only sorted largest values are evaluated. CANN TopKV2 indices and scalar-Tensor k ABI are not claimed."
+    },
+    {
+      "name": "Softmax",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-nn",
+        "commit": "c710376161d1528ceaeb6af9f9865af141c6ced4",
+        "path": "activation/softmax_v2/README.md",
+        "sha256": "47e604c357f63618a3a0b748cec24f6c805e257e517d473c0707517ef534de3a"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "RmsNorm",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-nn",
+        "commit": "c710376161d1528ceaeb6af9f9865af141c6ced4",
+        "path": "norm/rms_norm/README.md",
+        "sha256": "98387c46c76d6870ebd1b24bd4cd99795816a3e6323500dd4041d2f3ed9854b4"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Only forward y is evaluated. CANN rstd output is outside this qualification interface."
+    },
+    {
+      "name": "LayerNorm",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-nn",
+        "commit": "c710376161d1528ceaeb6af9f9865af141c6ced4",
+        "path": "norm/layer_norm/README.md",
+        "sha256": "867ea7400e8d5145f703e137694f43907f8add311da75bc9c9f88d92b54bbb4d"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Only forward y is evaluated. CANN mean/variance outputs and general begin-axis attributes are excluded."
+    },
+    {
+      "name": "Matmul",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-nn",
+        "commit": "c710376161d1528ceaeb6af9f9865af141c6ced4",
+        "path": "matmul/mat_mul_v3/README.md",
+        "sha256": "fb00e4accd0d671f89ea1867c005adad6e3e81c6ca5fb1f9c312c2ed297777d6"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Two non-transposed contiguous float16 matrices; no bias, batching, transpose flags or quantization."
+    },
+    {
+      "name": "Mish",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-nn",
+        "commit": "c710376161d1528ceaeb6af9f9865af141c6ced4",
+        "path": "activation/mish/README.md",
+        "sha256": "3ca7daa8c9adeb20f6fb74c643bed9f5820d22c0c4565ae5ebab6bd4348a4246"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Same mathematical operation on the declared contiguous 2D, finite-input, last-axis subdomain; no full ACLNN ABI claim."
+    },
+    {
+      "name": "Gelu",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-nn",
+        "commit": "c710376161d1528ceaeb6af9f9865af141c6ced4",
+        "path": "activation/gelu/README.md",
+        "sha256": "1fd688708f521651b1b56297cfe774243bfc073f246cdce97b3193d17b828625"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "CANN Gelu README describes tanh approximation. Candidate also includes exact erf from official Triton; exact mode is not mapped to this CANN Gelu definition."
+    },
+    {
+      "name": "SwiGlu",
+      "cann_source": {
+        "repository": "https://gitcode.com/cann/ops-nn",
+        "commit": "c710376161d1528ceaeb6af9f9865af141c6ced4",
+        "path": "activation/swi_glu/README.md",
+        "sha256": "3264812c535fed169afaa1755f4e04f44d6ef51555ffc84cb40ceb0ddf54cff4"
+      },
+      "relation": "Mathematical correspondence; qualification ABI and domain are explicit subsets, not a full ACLNN interface claim",
+      "qualification_mapping": "Packed halves agree with CANN SwiGlu and CANN Bench; official Triton two-input arithmetic is adapted explicitly."
+    }
+  ],
+  "inventory_method": "git ls-tree -r at each pinned commit; selected README bytes read and hashed. Zero paths containing triton is an inventory observation, not proof of language absence."
+}

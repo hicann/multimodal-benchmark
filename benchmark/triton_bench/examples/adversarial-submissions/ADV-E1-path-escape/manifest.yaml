@@ -1,0 +1,15 @@
+# ADV-E1：清单路径逃逸出提交根目录。
+#
+# path 用 ../ 引到提交目录之外（绝对路径同理）。
+# 静态扫描、模块加载都照常工作；但
+#   1. 目录契约「operators/<op>/kernel.py」形同虚设；
+#   2. 提交快照（snapshot/指纹）只扫提交根 rglob，逃逸文件不在指纹里
+#      ——评测后无法证明「测的就是当时那一份」；
+#   3. 评测不可变约束（verify_unchanged）在 run 循环里从未被调用，
+#      逃逸文件在评测期间被改掉也不会有任何告警。
+
+submit_id: adv-e1-path-escape
+operators:
+  - name: Exp
+    entry: exp
+    path: ../_shared/escapee.py

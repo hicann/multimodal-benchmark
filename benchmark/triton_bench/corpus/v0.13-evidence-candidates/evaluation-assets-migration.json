@@ -1,0 +1,179 @@
+{
+  "format": 1,
+  "revision": "submission-constexpr-20261110-payload-score",
+  "origin_assets_hash": "6b8fd84b8b292c7f7d71b2aed3be2ec75a92d87a6720ec5b0e8525397266bc71",
+  "manifest_hash": "a5cab486bef01773fddb5fee591516121746bce3af96a6d72fcaa800ba303ec3",
+  "reason": "Repair Ascend 3.2.1 grouped constexpr payload access across all maintained kernels and reviewed bindings. Preserve case identities, weights, scoring formula and historical indexes; fresh NPU validation required.",
+  "hardware_validation": "NOT_RUN",
+  "previous_revisions": [
+    {
+      "assets_hash": "39fb6ecc1cd5a1e394c085b9df10debe625332294d299902f29311eb58b84262",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 441,
+        "sha256": "3abf82229d8276d761f781651423138bcbd48d191238cf53ec8cf443bdd843aa"
+      }
+    },
+    {
+      "assets_hash": "78023a4e4b7dcd87c18c5d5219d0ab29841217bf5bdf641d042669fa2ab4ca9a",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 1045,
+        "sha256": "88e177d3e7c5a78186404ea6034c30f4c835f295944cf4c983dee64d6f8bf7ee"
+      }
+    },
+    {
+      "assets_hash": "6914f3608836831f10305e8b9b9017f085612cd2861932a4dc238f4efcbe2cde",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 2287,
+        "sha256": "8645ae571e1162d2eceddf74aca130049aff92f9d2aa7c208644c36f0c9abfbb"
+      }
+    },
+    {
+      "assets_hash": "9b73f3c5574ae1dea81f85f6e7de3e7efa9e3457be84fb80fe30998ebf4c6e59",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 5005,
+        "sha256": "c7619c31ae3753270c259702902e4d9c4c71abade4f1f12cf14806185bdebb4f"
+      }
+    },
+    {
+      "assets_hash": "bf8449183bd534161a38c87af0f6120b1bfb2edabda3d4dacfdcd8c14607a66e",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 11006,
+        "sha256": "810115d1b991136c5168537421e8bb3164fdd40707c60e4c4af437a753e878fe"
+      }
+    },
+    {
+      "assets_hash": "fcce1d0d1e2ec894ffa8c29d5d570decd957b53e087e7b124ba845f6407c6e05",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 24751,
+        "sha256": "a39049a185b6b5fb4bf656686668ee17e01c8acc08255c66f2d12e1726b9840e"
+      }
+    },
+    {
+      "assets_hash": "3087eed2f91e03b3dce29ddfb2513238dac53380c7cfd92bcc5aa6a73adf81f6",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 57424,
+        "sha256": "38c342d3f2c1ace0905d1c783e42cf14b5a728ed396c1aff3089c362827d6937"
+      }
+    },
+    {
+      "assets_hash": "99c170fd8d77f8d54c067d53b3bddb7b05e6adec4097d607cc2f0959f7d3ec2a",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 138311,
+        "sha256": "c2ccf7727508919253d3222e40455bba74c216549d2f2d67df92659e629ecff1"
+      }
+    },
+    {
+      "assets_hash": "af4f407fa426944c7eb647234fc09d1066291c41a8af3cbef65c8a1607b33bb4",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 346753,
+        "sha256": "ac10835260a1f9da5c165f814f50da42a2920ee6d55511fcedb6a0891f227e1d"
+      }
+    },
+    {
+      "assets_hash": "f1b4a99766ce49d0da38628e8853c872937c0dc5667c81aa40d3a0c6f81ee810",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 903607,
+        "sha256": "699487aba647f85e12ae731222644d429b868629131379bfc1d69da1fa0436db"
+      }
+    },
+    {
+      "assets_hash": "aee84684d7b82bae722816cb35fceb56f359445b722ad140c1568e61873877f2",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 2437224,
+        "sha256": "a56e500e6c4aca48aff58c60dd6feebebaf8a88c231af44ea67a1751c1ecc217"
+      }
+    },
+    {
+      "assets_hash": "6807af4075e923943fc5452acfa732e51426e5327332b0aebd31ef50de27b0b7",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 6764164,
+        "sha256": "e4c19638f0301031634ea932e1a6dcdfe97c0822e8cb5f37f8a098f9e852c3d9"
+      }
+    },
+    {
+      "assets_hash": "d8080767a33ab22126088f6ba0dc59616da54d32ba5f48c3cec736b6a2b1922e",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 19197205,
+        "sha256": "1d59892375c6b6b2d0b19b570e65a96a3534bd80416c1cac3fcbf40ed0476256"
+      }
+    },
+    {
+      "assets_hash": "6ffbe7fd073ae49add2a741738cfac23d14f01878f734d03e682014df3fdf7e2",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 55400686,
+        "sha256": "0630ead932266698b2b52f9de448e3fec7e78c0c79a3f45523fdcc1cb377a252"
+      }
+    },
+    {
+      "assets_hash": "45539ed40911f4ec2263e70e5f4885209c14649000062a1047b2dd18343e305f",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 4511,
+        "sha256": "fa2f8d4b2bf1eb6042087337e1ec88706fbe1c939dc2d4081cd41ecccfdbbafe"
+      }
+    },
+    {
+      "assets_hash": "dfd61906263f3a8acb51fdf8c0b5efe9319b38f61cc423e70c69d00351e23478",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 4790,
+        "sha256": "47f6ec30ca6ec4bdedb3a14286986f5dac5b406779727a6b3737ef9cec5f3958"
+      }
+    },
+    {
+      "assets_hash": "ab7e027066a894b708c964d719af18bbb8ae9bfcaf6979f01c2f9c4c1d18582e",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 5160,
+        "sha256": "9892426ea237dde1faf24fdf0ed9039927e5338b874fffae95f1403cf7fef863"
+      }
+    },
+    {
+      "assets_hash": "b0d0962c30736237d7680e13d6f823cef9bc0e791905e295b9eaa7d150652727",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 5373,
+        "sha256": "e4af14f59e3ae90910a2a6f86a2141c63a5e4704dc20cbaaff167d79cb615105"
+      }
+    },
+    {
+      "assets_hash": "a38cd871bbf4c35489aefbfdb7c16b84b1b31809c25944ae57da43e93fc4e6c7",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 5652,
+        "sha256": "dc0ef6dcdc388f7bb7af3d559e930732dd60d188510593f74892f71d703110c0"
+      }
+    },
+    {
+      "assets_hash": "efb52187e55b170596bc85be414efb642f691add5e64682194baeeb2653b9433",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 5948,
+        "sha256": "4e44298a452ce02166812fadd435d9cbf43a538763e3121708730f72e11de9b6"
+      }
+    },
+    {
+      "assets_hash": "7c7cb9f22ab34111ee8731ecae946feec1362a46f3e45f0c2196d607125aca35",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 6366,
+        "sha256": "2c9a7b5ab5819e14f88e2b0e3f9cdb0eef45df478be9e4617fe79989485fbaf9"
+      }
+    }
+  ],
+  "metadata_storage": "detached-zlib-base64-v1"
+}

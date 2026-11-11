@@ -1,0 +1,76 @@
+# 合法提交样例
+#
+# 目录契约（零构建）：
+#     <submission>/
+#     ├── manifest.yaml
+#     └── operators/<op>/kernel.py
+#
+# 用法：
+#     python -m triton_eval run --profile smoke --submission examples/demo-submission
+#
+# 覆盖范围：25 个算子中的 19 个（8 个原语 + 11 个融合，2026-10-13 起）。
+# 未覆盖的算子其用例判 SUBMISSION_INVALID（不计入分母），这是「提交方
+# 没交」而非「评测方没测」——两者必须可区分。原语侧剩 6 个（cummin /
+# arg_max / gather / scatter / grouped_matmul / cross_entropy_loss）涉及
+# 扫描、归约选择与分组矩阵乘；融合侧 linear_gelu 显性不支持（erf 依赖
+# libdevice 未验证，见其 kernel.py 的说明）。
+
+submit_id: demo-001
+operators:
+  - name: Exp
+    entry: exp
+    path: operators/exp/kernel.py
+  - name: Gelu
+    entry: gelu
+    path: operators/gelu/kernel.py
+  - name: Maximum
+    entry: maximum
+    path: operators/maximum/kernel.py
+  - name: MaskedScale
+    entry: masked_scale
+    path: operators/masked_scale/kernel.py
+  - name: Softmax
+    entry: softmax
+    path: operators/softmax/kernel.py
+  - name: RmsNorm
+    entry: rms_norm
+    path: operators/rms_norm/kernel.py
+  - name: Transpose
+    entry: transpose
+    path: operators/transpose/kernel.py
+  - name: SwiGlu
+    entry: swi_glu
+    path: operators/swi_glu/kernel.py
+  - name: LinearGelu
+    entry: linear_gelu
+    path: operators/linear_gelu/kernel.py
+  - name: RmsNormLinear
+    entry: rms_norm_linear
+    path: operators/rms_norm_linear/kernel.py
+  - name: GroupedMatmulSwiGlu
+    entry: grouped_matmul_swiglu
+    path: operators/grouped_matmul_swiglu/kernel.py
+  - name: TransposeLinear
+    entry: transpose_linear
+    path: operators/transpose_linear/kernel.py
+  - name: MaskedSoftmax
+    entry: masked_softmax
+    path: operators/masked_softmax/kernel.py
+  - name: MaskedGelu
+    entry: masked_gelu
+    path: operators/masked_gelu/kernel.py
+  - name: GatherExp
+    entry: gather_exp
+    path: operators/gather_exp/kernel.py
+  - name: AddRmsNorm
+    entry: add_rms_norm
+    path: operators/add_rms_norm/kernel.py
+  - name: ApplyRotaryPosEmb
+    entry: apply_rotary_pos_emb
+    path: operators/apply_rotary_pos_emb/kernel.py
+  - name: MoeGatingTopKSoftmax
+    entry: moe_gating_top_k_softmax
+    path: operators/moe_gating_top_k_softmax/kernel.py
+  - name: UnsortedSegmentSum
+    entry: unsorted_segment_sum
+    path: operators/unsorted_segment_sum/kernel.py

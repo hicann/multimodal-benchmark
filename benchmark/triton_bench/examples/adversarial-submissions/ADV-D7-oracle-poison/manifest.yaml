@@ -1,0 +1,5 @@
+submit_id: adv-d7-oracle-poison
+operators:
+  - name: Softmax
+    entry: softmax
+    path: operators/softmax/kernel.py

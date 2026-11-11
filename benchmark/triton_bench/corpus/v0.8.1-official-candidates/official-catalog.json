@@ -1,0 +1,5173 @@
+{
+  "format": 1,
+  "version": "v0.8.1-official-candidates",
+  "status": "CANDIDATE_NOT_NPU_QUALIFIED",
+  "target_operators": 50,
+  "cases_per_operator": 20,
+  "sources": {
+    "format": 1,
+    "source_commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+    "operators": [
+      {
+        "name": "Abs",
+        "path": "third_party/ascend/unittest/pytest_ut/test_abs.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_abs.py",
+        "sha256": "7ec2ba2d6828141f9d904034f9dffa9459c72b6ccb32c14b7446461e9915a2a2",
+        "bytes": 2858,
+        "expression": "abs(x)",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.abs",
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Neg",
+        "path": "third_party/ascend/unittest/pytest_ut/test_neg.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_neg.py",
+        "sha256": "c2735503fba3815cc4817ee95586c64da9503fe7880847f1c0c65ed165a2dc3d",
+        "bytes": 2199,
+        "expression": "-x",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Exp",
+        "path": "third_party/ascend/unittest/pytest_ut/test_exp.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_exp.py",
+        "sha256": "ce30f0888f6e79dde2167e5bea4b14471bc142fce5df055d24ff5c4feedfc81c",
+        "bytes": 3180,
+        "expression": "exp(x * scale + shift) if base == -1 else base ** (x * scale + shift)",
+        "notes": "The official primitive is exp(x); base/scale/shift are explicit CANN Bench attributes.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.exp",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": [],
+        "cann_bench_assets": {
+          "reference/cann-bench/tasks/level1/exp/proto.yaml": "2d6a11ffcb7dcc9d5f2b2f899ffae55fd9de9750bad468c9efde20314807e981",
+          "reference/cann-bench/tasks/level1/exp/golden.py": "3549ad7ddd315c58d6c4ab4a526ffd802c168ce61b4396a62aefc63aed1c27f3"
+        }
+      },
+      {
+        "name": "Exp2",
+        "path": "third_party/ascend/unittest/pytest_ut/test_exp2.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_exp2.py",
+        "sha256": "481842b595ed98b9b2d2f1c7b5d6943209e8eb6b9007b050ff2309c9f7e10324",
+        "bytes": 2283,
+        "expression": "2 ** x",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.exp2",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Expm1",
+        "path": "third_party/ascend/unittest/pytest_ut/test_expm1.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_expm1.py",
+        "sha256": "cb8eabdd3c38a7f4e9feb2af4dc4d9c371f689dc7fd9ba855f56cd7fd7323387",
+        "bytes": 2433,
+        "expression": "exp(x) - 1",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "libdevice.expm1",
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": [
+          "@pytest.mark.skip(reason=\"expm1 failed sometimes, wait for fix\")"
+        ]
+      },
+      {
+        "name": "Log",
+        "path": "third_party/ascend/unittest/pytest_ut/test_log.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_log.py",
+        "sha256": "19d0781e8fef5ffad59cf6a75a2a2da46756bbb7a2d9477d8081d7392e700c31",
+        "bytes": 2233,
+        "expression": "ln(x), x > 0",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.math.log",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Log2",
+        "path": "third_party/ascend/unittest/pytest_ut/test_log2.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_log2.py",
+        "sha256": "f951cd83856fbe1480b7f0bf7fba8ae804c15d0c473966e54b52a20ad2472131",
+        "bytes": 2254,
+        "expression": "log2(x), x > 0",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.log2",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Log10",
+        "path": "third_party/ascend/unittest/pytest_ut/test_log10.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_log10.py",
+        "sha256": "e64e957b5009c739ff73a4ab9c1d7221abfa8639b4637551a009bae832073729",
+        "bytes": 3059,
+        "expression": "log10(x), x > 0",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "libdevice.log10",
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Log1p",
+        "path": "docs/zh/python-api/_examples/triton.language.extra.cann.libdevice.log1p.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/docs/zh/python-api/_examples/triton.language.extra.cann.libdevice.log1p.py",
+        "sha256": "5d06dc1b996fb2f7c58d22b84997a0262d7c357f8895bf51d81013e157ab6334",
+        "bytes": 1653,
+        "expression": "ln(1 + x), x > -1",
+        "notes": "Use the pure log1p API example; test_log1p.py is an add+log1p fusion.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "libdevice.log1p",
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": [
+          "@pytest.mark.skipif(not triton_enable_libdevice_simt(), reason=_SIMT_SKIP_MSG)"
+        ]
+      },
+      {
+        "name": "Sqrt",
+        "path": "third_party/ascend/unittest/pytest_ut/test_sqrt.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_sqrt.py",
+        "sha256": "f604e26b6e0ba4912b816aec9ca70093955a542718ffa399860581929c5a18f5",
+        "bytes": 2944,
+        "expression": "sqrt(x), x >= 0",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.math.sqrt",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Rsqrt",
+        "path": "third_party/ascend/unittest/pytest_ut/test_rsqrt.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_rsqrt.py",
+        "sha256": "8ae661ed2b0303083edc9171d8489a7d97e5ecfc2bd12aa176d035ba4f1586a9",
+        "bytes": 2607,
+        "expression": "1 / sqrt(x), x > 0",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.rsqrt",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Sin",
+        "path": "third_party/ascend/unittest/pytest_ut/test_sin.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_sin.py",
+        "sha256": "e1985c390c2e22e6381670eab39807a444a9c62c115548b4807c66aaf02d4a8c",
+        "bytes": 3032,
+        "expression": "sin(x)",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.sin",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Cos",
+        "path": "third_party/ascend/unittest/pytest_ut/test_cos.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_cos.py",
+        "sha256": "356ce6beff369fa3384ca5cf1164dd411b99b15bf3b50b0c0134da9011e8880f",
+        "bytes": 3032,
+        "expression": "cos(x)",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.cos",
+          "tl.load",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Tan",
+        "path": "third_party/ascend/unittest/pytest_ut/test_tan.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_tan.py",
+        "sha256": "9587610574f3014e2bb8059c0ad44b388b06eaab3df9ad2d46093ef5ad166213",
+        "bytes": 3153,
+        "expression": "tan(x), excluding poles",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "libdevice.tan",
+          "tl.arange",
+          "tl.load",
+          "tl.store"
+        ],
+        "skip_annotations": [
+          "@pytest.mark.skip(reason=\"randomly failed accuracy test\")"
+        ]
+      },
+      {
+        "name": "Tanh",
+        "path": "third_party/ascend/unittest/pytest_ut/test_tanh.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_tanh.py",
+        "sha256": "1e3ad48a8a877f85e51dbc04805227fd74219c1106240a1a4de9d4636afd2ca5",
+        "bytes": 2309,
+        "expression": "tanh(x)",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "libdevice.tanh",
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Sinh",
+        "path": "third_party/ascend/unittest/pytest_ut/test_sinh.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_sinh.py",
+        "sha256": "5f90031c88f6bc1beac26c8791aa93361e32a79d6e2af15f0f8401220c691f7a",
+        "bytes": 2565,
+        "expression": "sinh(x)",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "libdevice.sinh",
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Cosh",
+        "path": "third_party/ascend/unittest/pytest_ut/test_cosh.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_cosh.py",
+        "sha256": "9029d9485fa25fab0b40d1ac4e22ac2bd8f857a619d9639bd30545c84edeed21",
+        "bytes": 2565,
+        "expression": "cosh(x)",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "libdevice.cosh",
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Floor",
+        "path": "third_party/ascend/unittest/pytest_ut/test_floor.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_floor.py",
+        "sha256": "e3222344ca41958c2d0e0a1a1f42df6dfdff074a0cb0cd9163a8d36e24e689dc",
+        "bytes": 2376,
+        "expression": "floor(x)",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.floor",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Ceil",
+        "path": "third_party/ascend/unittest/pytest_ut/test_ceil.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_ceil.py",
+        "sha256": "37d9fa7b85772212952ae2c56bc293fb353a37c90d5555ff6ee0c6eb84d25087",
+        "bytes": 2405,
+        "expression": "ceil(x)",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.ceil",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Trunc",
+        "path": "third_party/ascend/unittest/pytest_ut/test_trunc.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_trunc.py",
+        "sha256": "776006c3a4945e92be05861aa4d84bfa9886ab19187c138a0d176a6129ba3bbb",
+        "bytes": 2282,
+        "expression": "truncate toward zero",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "libdevice.trunc",
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Relu",
+        "path": "third_party/ascend/unittest/pytest_ut/test_relu.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_relu.py",
+        "sha256": "3877cf3b935bed0eb0023eb67d60ab5b352afe5e084c78cf7b18aeedc9199e8d",
+        "bytes": 2503,
+        "expression": "max(x, 0)",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "libdevice.relu",
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Sigmoid",
+        "path": "third_party/ascend/unittest/pytest_ut/test_sigmoid.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_sigmoid.py",
+        "sha256": "84b777fcc7ffede48895356ac3caafe98ad84d46c84b3c00b09c52d12f4345e9",
+        "bytes": 2403,
+        "expression": "1 / (1 + exp(-x))",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.sigmoid",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Signbit",
+        "path": "third_party/ascend/unittest/pytest_ut/test_signbit.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_signbit.py",
+        "sha256": "c2238bb770332903e5219d3c512d1555c48b54bf27fc33c26d4eda76d91912a3",
+        "bytes": 3230,
+        "expression": "IEEE sign bit, including negative zero",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "libdevice.signbit",
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Add",
+        "path": "third_party/ascend/unittest/pytest_ut/test_add.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_add.py",
+        "sha256": "2307481227063f0d1bf8b1240b1fec405bb7563b871d773bef727bf9d76aa54a",
+        "bytes": 3562,
+        "expression": "x + y",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Sub",
+        "path": "third_party/ascend/unittest/pytest_ut/test_sub.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_sub.py",
+        "sha256": "95ef86901c4a23e6b59726512bc6480ee25d2f8d0f1e91544f0b33911d16cbf1",
+        "bytes": 2543,
+        "expression": "x - y",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Mul",
+        "path": "third_party/ascend/unittest/pytest_ut/test_mul.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_mul.py",
+        "sha256": "b65bcab697857655db455e964679f6aa529b7fa55525dfbe6c6ab43e7861c4f8",
+        "bytes": 2498,
+        "expression": "x * y",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Div",
+        "path": "third_party/ascend/unittest/pytest_ut/test_div.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_div.py",
+        "sha256": "f45a7012d4033c91d0abd063a5f8f36d688c45ffa21cdc93e6058dc9d2b8c634",
+        "bytes": 2543,
+        "expression": "x / y, y != 0",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "FloorDiv",
+        "path": "third_party/ascend/unittest/pytest_ut/test_floordiv.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_floordiv.py",
+        "sha256": "5cb7d29a9559055b6d8e2161044338de7a24dbf237a5290aa7d3fc144382d1f0",
+        "bytes": 2156,
+        "expression": "floor(x / y), signed operands",
+        "notes": "Python floor division; signed Triton truncating division needs a remainder correction.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Mod",
+        "path": "third_party/ascend/unittest/pytest_ut/test_mod.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_mod.py",
+        "sha256": "1184ccec1635817ec385d1570d4bfa595971d04440b243e8e3ead8f00d019e87",
+        "bytes": 3320,
+        "expression": "x - trunc(x / y) * y",
+        "notes": "Truncating remainder (fmod), not Python floor remainder.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Pow",
+        "path": "third_party/ascend/unittest/pytest_ut/test_pow.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_pow.py",
+        "sha256": "fac0e98596c1b26fe63d2276dd17b17a175217cc070e1507d31742ecd4027c32",
+        "bytes": 3924,
+        "expression": "x ** y, x > 0",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Maximum",
+        "path": "third_party/ascend/unittest/pytest_ut/test_maximum.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_maximum.py",
+        "sha256": "429deebc64ccc0b775350e72ed91764ba3ad5e04fbd9171fb98cf115f83538ca",
+        "bytes": 2502,
+        "expression": "elementwise maximum",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.maximum",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Minimum",
+        "path": "third_party/ascend/unittest/pytest_ut/test_minimum.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_minimum.py",
+        "sha256": "dc9b87efd63345aa16c4726aced3b5630ceb42e603bd5c3694170dcfa41fca52",
+        "bytes": 2479,
+        "expression": "elementwise minimum",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.minimum",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Equal",
+        "path": "third_party/ascend/unittest/pytest_ut/test_eq.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_eq.py",
+        "sha256": "c0d777f7d293448bfa596b48828c4e440f52c5607b5c08fde3207f0a7af5b05e",
+        "bytes": 2631,
+        "expression": "x == y",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "NotEqual",
+        "path": "third_party/ascend/unittest/pytest_ut/test_ne.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_ne.py",
+        "sha256": "01f9b859403849f57bd9f47aa4a4ce336d154c14ce903ffbb09d54f37b3be418",
+        "bytes": 3102,
+        "expression": "x != y",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Greater",
+        "path": "third_party/ascend/unittest/pytest_ut/test_gt.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_gt.py",
+        "sha256": "4e50e53918421b93f1636645c490686bc5880cbc8b154b6ea321bb7a06a5f520",
+        "bytes": 2436,
+        "expression": "x > y",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "GreaterEqual",
+        "path": "third_party/ascend/unittest/pytest_ut/test_ge.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_ge.py",
+        "sha256": "b34e064b2f71d0b8b7e69a5c7b6b3cedf1410579cd22908fdb801ee865670291",
+        "bytes": 2631,
+        "expression": "x >= y",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Less",
+        "path": "third_party/ascend/unittest/pytest_ut/test_lt.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_lt.py",
+        "sha256": "56b743aa1a5e4c4019ae33c66ec58b8d4cf082ff3add4a8c0aa59ef8aa62410f",
+        "bytes": 2380,
+        "expression": "x < y",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "LessEqual",
+        "path": "third_party/ascend/unittest/pytest_ut/test_le.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_le.py",
+        "sha256": "01597156122037be57bf285c2b1eccbab6b703b1c9e3a2e2ddc8ac0be8164f47",
+        "bytes": 2631,
+        "expression": "x <= y",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "BitwiseAnd",
+        "path": "third_party/ascend/unittest/pytest_ut/test_and.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_and.py",
+        "sha256": "a65ac4ab142a1e896beb91c1495030b680dfa9e38fa3225168f24fa2d69ad519",
+        "bytes": 2363,
+        "expression": "x & y",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "BitwiseOr",
+        "path": "third_party/ascend/unittest/pytest_ut/test_or.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_or.py",
+        "sha256": "ee112d9389715d23be60db3f2596a127580a44ea3e71424568cdf2a75e9e0407",
+        "bytes": 2359,
+        "expression": "x | y",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "BitwiseXor",
+        "path": "third_party/ascend/unittest/pytest_ut/test_xor.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_xor.py",
+        "sha256": "e4940c0e5c24e749652e2573e3c2a0ba95b5ee223d3f17612b3d96f078fbbfe2",
+        "bytes": 3091,
+        "expression": "x ^ y",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "BitwiseNot",
+        "path": "third_party/ascend/unittest/pytest_ut/test_invert.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_invert.py",
+        "sha256": "507e57c1348f3ecd85ce6d78623aa736d9d3ee3f537cd6d74d68d560ad8e0026",
+        "bytes": 2462,
+        "expression": "~x",
+        "notes": "Use test_invert.py (~integer), not test_not.py (boolean logical NOT).",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "LogicalAnd",
+        "path": "third_party/ascend/unittest/pytest_ut/test_logical_and.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_logical_and.py",
+        "sha256": "1a119d10772a6300662f24cf90d92e63d3ff7b11e5a3b2b0fd20d786a13c7f28",
+        "bytes": 3159,
+        "expression": "bool(x) and bool(y)",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "LogicalOr",
+        "path": "third_party/ascend/unittest/pytest_ut/test_logical_or.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_logical_or.py",
+        "sha256": "e43f831da24ef7e16fa128da728ad30baa8e36cb87b6dfe028c156c38679aeec",
+        "bytes": 3160,
+        "expression": "bool(x) or bool(y)",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Clamp",
+        "path": "third_party/ascend/unittest/pytest_ut/test_clamp.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_clamp.py",
+        "sha256": "25133d188466fe735ce2e748fef6b5f3694b8dbe5517e6d41a90a891dc43200c",
+        "bytes": 2357,
+        "expression": "min(max(x, lower), upper)",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.clamp",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Where",
+        "path": "third_party/ascend/unittest/pytest_ut/test_where_mask.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_where_mask.py",
+        "sha256": "a277824dc0cde368434ef82b8d6a1f92ebe1fe4e17d82604d7b385f6ac2571f0",
+        "bytes": 2504,
+        "expression": "condition ? x : y",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store",
+          "tl.where"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "ReduceSum",
+        "path": "third_party/ascend/unittest/pytest_ut/test_sum_dim1.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_sum_dim1.py",
+        "sha256": "f35aca153c2b81f36651a9367dd1f8776a0760c0bb652303bcf84f04160504ef",
+        "bytes": 4352,
+        "expression": "sum over last axis",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.store",
+          "tl.sum"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "ReduceMean",
+        "path": "third_party/ascend/unittest/pytest_ut/test_mean_dim1.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_mean_dim1.py",
+        "sha256": "e4ed43fb3d11bf716694e1aab97402be47c8874febe54445b5b03df0d991ffc1",
+        "bytes": 4792,
+        "expression": "mean over last axis",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.store",
+          "tl.sum"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "ReduceMax",
+        "path": "third_party/ascend/unittest/pytest_ut/test_max_dim1.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_max_dim1.py",
+        "sha256": "352fe986602a44eff677087852beefc454b146b7dd3aa223f09c6d3fc5916a9a",
+        "bytes": 4519,
+        "expression": "maximum over last axis",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.max",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "ReduceMin",
+        "path": "third_party/ascend/unittest/pytest_ut/test_min_dim1.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_min_dim1.py",
+        "sha256": "0cbbf3e8ce9206822d79ca9ab199c5dcda89e78d1200c2b4cb95903677c859e6",
+        "bytes": 4515,
+        "expression": "minimum over last axis",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.min",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "ArgMax",
+        "path": "third_party/ascend/unittest/pytest_ut/test_argmax.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_argmax.py",
+        "sha256": "f777be69c5a1bbb1f60a9555f25b44ea75e564559456e97fad724eb45f9bee7c",
+        "bytes": 2252,
+        "expression": "first index of maximum, including ties",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.argmax",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "ArgMin",
+        "path": "third_party/ascend/unittest/pytest_ut/test_argmin.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_argmin.py",
+        "sha256": "da65aff28258f0296f5243b8436b62ec62d1cbafae92326556b9ab3d38404b18",
+        "bytes": 2251,
+        "expression": "first index of minimum, including ties",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.argmin",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "XorSum",
+        "path": "third_party/ascend/unittest/pytest_ut/test_xor_sum.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_xor_sum.py",
+        "sha256": "3e9c12ce0c5f7ae9f949cdb82435eea378e2313cea9bc6467aa271fee5d2a763",
+        "bytes": 2731,
+        "expression": "bitwise XOR reduction",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.full",
+          "tl.load",
+          "tl.program_id",
+          "tl.store",
+          "tl.xor_sum"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "CumSum",
+        "path": "third_party/ascend/unittest/pytest_ut/test_cumsum.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_cumsum.py",
+        "sha256": "b349c9eca83b98d1ddac09318c96b9d97cbe67571904cd1119b8787be5e44ba8",
+        "bytes": 3108,
+        "expression": "inclusive sum over last axis",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.cumsum",
+          "tl.load",
+          "tl.static_assert",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "CumProd",
+        "path": "third_party/ascend/unittest/pytest_ut/test_cumprod.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_cumprod.py",
+        "sha256": "f32ed594bd908a284a0c69faac2d9bf7650c9f22a933ae9a7c39c8e05012b8c4",
+        "bytes": 7345,
+        "expression": "inclusive product over last axis",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.cumprod",
+          "tl.load",
+          "tl.static_assert",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Transpose",
+        "path": "third_party/ascend/unittest/pytest_ut/test_permute.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_permute.py",
+        "sha256": "6070dcaa58994c36edf2503076f8cee22352396582f2484c98325bebb9029749",
+        "bytes": 4329,
+        "expression": "2D axes permutation [1, 0]",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.program_id",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Concat",
+        "path": "third_party/ascend/unittest/pytest_ut/test_cat_dim.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_cat_dim.py",
+        "sha256": "ebe750622a07de67bc5b640d837dfc5a17c8066ed5fb09c0e2b686b39f23a31a",
+        "bytes": 4635,
+        "expression": "concatenate along last axis",
+        "notes": "Use ordered concat in test_cat_dim.py; test_cat.py permits reordering.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Flip",
+        "path": "third_party/ascend/unittest/pytest_ut/test_flip.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_flip.py",
+        "sha256": "98f98a355af1ff2207e0d9bbf3f7aa92d6cfc2c7060841d0456ecf14c29c9ef5",
+        "bytes": 1953,
+        "expression": "reverse last axis",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "al.flip",
+          "tl.arange",
+          "tl.load",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Gather",
+        "path": "docs/zh/python-api/_examples/triton.language.gather.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/docs/zh/python-api/_examples/triton.language.gather.py",
+        "sha256": "a5230f128129822ac974c62fceb5bf4887f8349f21bf615a97a21983f66b58f5",
+        "bytes": 2211,
+        "expression": "2D gather along last axis; repeated indices allowed",
+        "notes": "Use the official tl.gather API example, not test_18_gather.py (row embeddings).",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.gather",
+          "tl.load",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "SortValues",
+        "path": "third_party/ascend/unittest/pytest_ut/test_sort.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_sort.py",
+        "sha256": "efd105383e12085baab1ab37a7d00a306232a718fe7e7df1559678956036c01e",
+        "bytes": 4540,
+        "expression": "sort values along last axis, ascending or descending",
+        "notes": "Values only, matching the official extension.sort test. No index-output claim.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "al.sort",
+          "tl.arange",
+          "tl.load",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "TopKValues",
+        "path": "third_party/ascend/unittest/pytest_ut/test_topk.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_topk.py",
+        "sha256": "e4a1aefcbdba3d8555ef0363d54faf27784e79f33e09c69c1542883ebaae0c5d",
+        "bytes": 2681,
+        "expression": "largest k values, descending; value output only",
+        "notes": "Values only, matching official tl.topk. Distinct from CANN Bench TopK with indices.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.store",
+          "tl.topk"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Softmax",
+        "path": "third_party/ascend/unittest/pytest_ut/test_02_fused_softmax.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_02_fused_softmax.py",
+        "sha256": "16627d52d250ed487ea33904e3fb170d11841372f93ec4242904e8c31bd3f4d2",
+        "bytes": 4426,
+        "expression": "exp(x - max(x)) / sum(exp(x - max(x)))",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.exp",
+          "tl.load",
+          "tl.max",
+          "tl.num_programs",
+          "tl.program_id",
+          "tl.range",
+          "tl.store",
+          "tl.sum"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "RmsNorm",
+        "path": "third_party/ascend/unittest/pytest_ut/test_rms_norm.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_rms_norm.py",
+        "sha256": "6ebfc6215170efeec7b6911c4aee2c64e00374eeb68c37b2c5d37550c0bb8a50",
+        "bytes": 5409,
+        "expression": "x * rsqrt(mean(x*x) + epsilon) * gamma",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.load(W + cols, mask=mask).to",
+          "tl.load(X + cols, mask=cols < N, other=0.0).to",
+          "tl.load(X + cols, mask=mask, other=0.0).to",
+          "tl.program_id",
+          "tl.sqrt",
+          "tl.store",
+          "tl.sum",
+          "tl.zeros"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "LayerNorm",
+        "path": "third_party/ascend/unittest/pytest_ut/test_layernorm.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_layernorm.py",
+        "sha256": "b606724411c33739eefc8d60e8ba6db5b695e86874cfabf2d353ee9233028620",
+        "bytes": 4853,
+        "expression": "(x - mean(x)) * rsqrt(var(x) + epsilon) * weight + bias",
+        "notes": "Forward output y, matching the official wrapper; scratch mean/rstd are internal.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.load(X + cols, mask=cols < N, other=0.0).to",
+          "tl.load(X + cols, mask=mask, other=0.0).to",
+          "tl.program_id",
+          "tl.sqrt",
+          "tl.store",
+          "tl.sum",
+          "tl.where",
+          "tl.zeros"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "Matmul",
+        "path": "third_party/ascend/unittest/pytest_ut/test_03_matrix_multiplication.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_03_matrix_multiplication.py",
+        "sha256": "8441a3560ac3dcc93d9a82100ebda1071ec33e282a7c37f40fdb7f67eaaf5dde",
+        "bytes": 8275,
+        "expression": "x[M,K] @ weight[K,N]",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "extension.extract_slice",
+          "tl.arange",
+          "tl.cdiv",
+          "tl.dot",
+          "tl.load",
+          "tl.program_id",
+          "tl.store",
+          "tl.where",
+          "tl.zeros"
+        ],
+        "skip_annotations": [
+          "marks=pytest.mark.skip(reason=\"temporarily skip leaky_relu_custom ub overflow case\")),"
+        ]
+      },
+      {
+        "name": "Mish",
+        "path": "reference/cann-bench/tasks/level1/mish/proto.yaml",
+        "repository": "vendored CANN Bench",
+        "commit": null,
+        "url": null,
+        "sha256": "07e5f14e30606e48241e381bbb644a4fe57d08e272b52b3ac78dd688ae62757c",
+        "bytes": 1268,
+        "expression": "x * tanh(softplus(x))",
+        "notes": "Secondary source: vendored CANN Bench proto, golden and real Triton example.",
+        "upstream_presence_is_npu_qualification": false,
+        "cann_bench_assets": {
+          "reference/cann-bench/tasks/level1/mish/proto.yaml": "07e5f14e30606e48241e381bbb644a4fe57d08e272b52b3ac78dd688ae62757c",
+          "reference/cann-bench/tasks/level1/mish/golden.py": "db5e9991e70b8edbffc7674d13a33247a4e56115c71986bbefe8d7a27f99d94d"
+        }
+      },
+      {
+        "name": "Gelu",
+        "path": "third_party/ascend/unittest/pytest_ut/test_gelu.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_gelu.py",
+        "sha256": "1b52d3abcc612cdeaf26a63578cc1b0e6b38ce5c6bca9f688b3e093103d49576",
+        "bytes": 3116,
+        "expression": "0.5*x*(1+erf(x/sqrt(2))) or explicitly requested tanh approximation",
+        "notes": "Direct mathematical operation; 2D contiguous qualification domain.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.erf",
+          "tl.load",
+          "tl.sqrt",
+          "tl.store"
+        ],
+        "skip_annotations": []
+      },
+      {
+        "name": "SwiGlu",
+        "path": "third_party/ascend/unittest/pytest_ut/test_swiglu.py",
+        "repository": "https://github.com/triton-lang/triton-ascend",
+        "commit": "5f1d99a87432c09815b6ded57624c04c00bbe0aa",
+        "url": "https://github.com/triton-lang/triton-ascend/blob/5f1d99a87432c09815b6ded57624c04c00bbe0aa/third_party/ascend/unittest/pytest_ut/test_swiglu.py",
+        "sha256": "878bd6f87a07ba32770e6a29d426e420e99ae3c72537ce91b4f13662f12eeeb9",
+        "bytes": 3020,
+        "expression": "silu(first half) * second half",
+        "notes": "Official test has separate gate/multiplier inputs; CANN Bench specifies packed halves. The adapter splits one packed input without changing arithmetic.",
+        "upstream_presence_is_npu_qualification": false,
+        "triton_calls": [
+          "tl.arange",
+          "tl.load",
+          "tl.load(e + offsets, mask=mask, other=0).to",
+          "tl.program_id",
+          "tl.sigmoid",
+          "tl.store"
+        ],
+        "skip_annotations": [],
+        "cann_bench_assets": {
+          "reference/cann-bench/tasks/level1/swi_glu/proto.yaml": "36be240b07746e5222165afdcd8a072bc89173e7d3e8f8e7253259eca98763c4",
+          "reference/cann-bench/tasks/level1/swi_glu/golden.py": "3417cc27927f4e64f07b800ea06e857e03eedd08e442f3840598296658a8d8a3"
+        }
+      }
+    ]
+  },
+  "operators": [
+    {
+      "name": "Abs",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "abs(x)",
+      "qualification_spec": {
+        "name": "Abs",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "abs(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Abs",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_abs.py",
+        "entry": "abs",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "7ec2ba2d6828141f9d904034f9dffa9459c72b6ccb32c14b7446461e9915a2a2"
+    },
+    {
+      "name": "Neg",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "-x",
+      "qualification_spec": {
+        "name": "Neg",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "neg(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Neg",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_neg.py",
+        "entry": "neg",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "c2735503fba3815cc4817ee95586c64da9503fe7880847f1c0c65ed165a2dc3d"
+    },
+    {
+      "name": "Exp",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "exp(x * scale + shift) if base == -1 else base ** (x * scale + shift)",
+      "qualification_spec": {
+        "name": "Exp",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "exp(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [
+          {
+            "name": "base",
+            "type": "float",
+            "default": -1.0,
+            "required": false
+          },
+          {
+            "name": "scale",
+            "type": "float",
+            "default": 1.0,
+            "required": false
+          },
+          {
+            "name": "shift",
+            "type": "float",
+            "default": 0.0,
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Exp",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_exp.py",
+        "entry": "exp",
+        "params": [
+          "x",
+          "base",
+          "scale",
+          "shift"
+        ]
+      },
+      "source_sha256": "ce30f0888f6e79dde2167e5bea4b14471bc142fce5df055d24ff5c4feedfc81c"
+    },
+    {
+      "name": "Exp2",
+      "family": "unary",
+      "counts_toward_operator_target": false,
+      "canonical_semantics": "2 ** x",
+      "qualification_spec": {
+        "name": "Exp2",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "exp2(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Exp2",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_exp2.py",
+        "entry": "exp2",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "481842b595ed98b9b2d2f1c7b5d6943209e8eb6b9007b050ff2309c9f7e10324"
+    },
+    {
+      "name": "Expm1",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "exp(x) - 1",
+      "qualification_spec": {
+        "name": "Expm1",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "expm1(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Expm1",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_expm1.py",
+        "entry": "expm1",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "cb8eabdd3c38a7f4e9feb2af4dc4d9c371f689dc7fd9ba855f56cd7fd7323387"
+    },
+    {
+      "name": "Log",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "ln(x), x > 0",
+      "qualification_spec": {
+        "name": "Log",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "log(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Log",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_log.py",
+        "entry": "log",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "19d0781e8fef5ffad59cf6a75a2a2da46756bbb7a2d9477d8081d7392e700c31"
+    },
+    {
+      "name": "Log2",
+      "family": "unary",
+      "counts_toward_operator_target": false,
+      "canonical_semantics": "log2(x), x > 0",
+      "qualification_spec": {
+        "name": "Log2",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "log2(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Log2",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_log2.py",
+        "entry": "log2",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "f951cd83856fbe1480b7f0bf7fba8ae804c15d0c473966e54b52a20ad2472131"
+    },
+    {
+      "name": "Log10",
+      "family": "unary",
+      "counts_toward_operator_target": false,
+      "canonical_semantics": "log10(x), x > 0",
+      "qualification_spec": {
+        "name": "Log10",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "log10(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Log10",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_log10.py",
+        "entry": "log10",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "e64e957b5009c739ff73a4ab9c1d7221abfa8639b4637551a009bae832073729"
+    },
+    {
+      "name": "Log1p",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "ln(1 + x), x > -1",
+      "qualification_spec": {
+        "name": "Log1p",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "log1p(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Log1p",
+        "source_dir": "docs/zh/python-api/_examples/triton.language.extra.cann.libdevice.log1p.py",
+        "entry": "log1p",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "5d06dc1b996fb2f7c58d22b84997a0262d7c357f8895bf51d81013e157ab6334"
+    },
+    {
+      "name": "Sqrt",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "sqrt(x), x >= 0",
+      "qualification_spec": {
+        "name": "Sqrt",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "sqrt(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Sqrt",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_sqrt.py",
+        "entry": "sqrt",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "f604e26b6e0ba4912b816aec9ca70093955a542718ffa399860581929c5a18f5"
+    },
+    {
+      "name": "Rsqrt",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "1 / sqrt(x), x > 0",
+      "qualification_spec": {
+        "name": "Rsqrt",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "rsqrt(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Rsqrt",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_rsqrt.py",
+        "entry": "rsqrt",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "8ae661ed2b0303083edc9171d8489a7d97e5ecfc2bd12aa176d035ba4f1586a9"
+    },
+    {
+      "name": "Sin",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "sin(x)",
+      "qualification_spec": {
+        "name": "Sin",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "sin(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Sin",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_sin.py",
+        "entry": "sin",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "e1985c390c2e22e6381670eab39807a444a9c62c115548b4807c66aaf02d4a8c"
+    },
+    {
+      "name": "Cos",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "cos(x)",
+      "qualification_spec": {
+        "name": "Cos",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "cos(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Cos",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_cos.py",
+        "entry": "cos",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "356ce6beff369fa3384ca5cf1164dd411b99b15bf3b50b0c0134da9011e8880f"
+    },
+    {
+      "name": "Tan",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "tan(x), excluding poles",
+      "qualification_spec": {
+        "name": "Tan",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "tan(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Tan",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_tan.py",
+        "entry": "tan",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "9587610574f3014e2bb8059c0ad44b388b06eaab3df9ad2d46093ef5ad166213"
+    },
+    {
+      "name": "Tanh",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "tanh(x)",
+      "qualification_spec": {
+        "name": "Tanh",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "tanh(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Tanh",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_tanh.py",
+        "entry": "tanh",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "1e3ad48a8a877f85e51dbc04805227fd74219c1106240a1a4de9d4636afd2ca5"
+    },
+    {
+      "name": "Sinh",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "sinh(x)",
+      "qualification_spec": {
+        "name": "Sinh",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "sinh(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Sinh",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_sinh.py",
+        "entry": "sinh",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "5f90031c88f6bc1beac26c8791aa93361e32a79d6e2af15f0f8401220c691f7a"
+    },
+    {
+      "name": "Cosh",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "cosh(x)",
+      "qualification_spec": {
+        "name": "Cosh",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "cosh(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Cosh",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_cosh.py",
+        "entry": "cosh",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "9029d9485fa25fab0b40d1ac4e22ac2bd8f857a619d9639bd30545c84edeed21"
+    },
+    {
+      "name": "Floor",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "floor(x)",
+      "qualification_spec": {
+        "name": "Floor",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "floor(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Floor",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_floor.py",
+        "entry": "floor",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "e3222344ca41958c2d0e0a1a1f42df6dfdff074a0cb0cd9163a8d36e24e689dc"
+    },
+    {
+      "name": "Ceil",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "ceil(x)",
+      "qualification_spec": {
+        "name": "Ceil",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "ceil(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Ceil",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_ceil.py",
+        "entry": "ceil",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "37d9fa7b85772212952ae2c56bc293fb353a37c90d5555ff6ee0c6eb84d25087"
+    },
+    {
+      "name": "Trunc",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "truncate toward zero",
+      "qualification_spec": {
+        "name": "Trunc",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "trunc(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Trunc",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_trunc.py",
+        "entry": "trunc",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "776006c3a4945e92be05861aa4d84bfa9886ab19187c138a0d176a6129ba3bbb"
+    },
+    {
+      "name": "Relu",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "max(x, 0)",
+      "qualification_spec": {
+        "name": "Relu",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "relu(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Relu",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_relu.py",
+        "entry": "relu",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "3877cf3b935bed0eb0023eb67d60ab5b352afe5e084c78cf7b18aeedc9199e8d"
+    },
+    {
+      "name": "Sigmoid",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "1 / (1 + exp(-x))",
+      "qualification_spec": {
+        "name": "Sigmoid",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "sigmoid(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Sigmoid",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_sigmoid.py",
+        "entry": "sigmoid",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "84b777fcc7ffede48895356ac3caafe98ad84d46c84b3c00b09c52d12f4345e9"
+    },
+    {
+      "name": "Signbit",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "IEEE sign bit, including negative zero",
+      "qualification_spec": {
+        "name": "Signbit",
+        "category": "MaskPredicate",
+        "level": "L1",
+        "signature": "signbit(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "bool"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Signbit",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_signbit.py",
+        "entry": "signbit",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "c2238bb770332903e5219d3c512d1555c48b54bf27fc33c26d4eda76d91912a3"
+    },
+    {
+      "name": "Add",
+      "family": "binary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "x + y",
+      "qualification_spec": {
+        "name": "Add",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "add(x, y) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Add",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_add.py",
+        "entry": "add",
+        "params": [
+          "x",
+          "y"
+        ]
+      },
+      "source_sha256": "2307481227063f0d1bf8b1240b1fec405bb7563b871d773bef727bf9d76aa54a"
+    },
+    {
+      "name": "Sub",
+      "family": "binary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "x - y",
+      "qualification_spec": {
+        "name": "Sub",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "sub(x, y) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Sub",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_sub.py",
+        "entry": "sub",
+        "params": [
+          "x",
+          "y"
+        ]
+      },
+      "source_sha256": "95ef86901c4a23e6b59726512bc6480ee25d2f8d0f1e91544f0b33911d16cbf1"
+    },
+    {
+      "name": "Mul",
+      "family": "binary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "x * y",
+      "qualification_spec": {
+        "name": "Mul",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "mul(x, y) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Mul",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_mul.py",
+        "entry": "mul",
+        "params": [
+          "x",
+          "y"
+        ]
+      },
+      "source_sha256": "b65bcab697857655db455e964679f6aa529b7fa55525dfbe6c6ab43e7861c4f8"
+    },
+    {
+      "name": "Div",
+      "family": "binary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "x / y, y != 0",
+      "qualification_spec": {
+        "name": "Div",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "div(x, y) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Div",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_div.py",
+        "entry": "div",
+        "params": [
+          "x",
+          "y"
+        ]
+      },
+      "source_sha256": "f45a7012d4033c91d0abd063a5f8f36d688c45ffa21cdc93e6058dc9d2b8c634"
+    },
+    {
+      "name": "FloorDiv",
+      "family": "binary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "floor(x / y), signed operands",
+      "qualification_spec": {
+        "name": "FloorDiv",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "floor_div(x, y) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "int32"
+            ],
+            "optional": false
+          },
+          {
+            "name": "y",
+            "dtype": [
+              "int32"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "int32"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "int32"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "FloorDiv",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_floordiv.py",
+        "entry": "floor_div",
+        "params": [
+          "x",
+          "y"
+        ]
+      },
+      "source_sha256": "5cb7d29a9559055b6d8e2161044338de7a24dbf237a5290aa7d3fc144382d1f0"
+    },
+    {
+      "name": "Mod",
+      "family": "binary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "x - trunc(x / y) * y",
+      "qualification_spec": {
+        "name": "Mod",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "mod(x, y) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Mod",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_mod.py",
+        "entry": "mod",
+        "params": [
+          "x",
+          "y"
+        ]
+      },
+      "source_sha256": "1184ccec1635817ec385d1570d4bfa595971d04440b243e8e3ead8f00d019e87"
+    },
+    {
+      "name": "Pow",
+      "family": "binary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "x ** y, x > 0",
+      "qualification_spec": {
+        "name": "Pow",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "pow(x, y) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Pow",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_pow.py",
+        "entry": "pow",
+        "params": [
+          "x",
+          "y"
+        ]
+      },
+      "source_sha256": "fac0e98596c1b26fe63d2276dd17b17a175217cc070e1507d31742ecd4027c32"
+    },
+    {
+      "name": "Maximum",
+      "family": "binary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "elementwise maximum",
+      "qualification_spec": {
+        "name": "Maximum",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "maximum(x1, x2) -> y",
+        "inputs": [
+          {
+            "name": "x1",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "x2",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Maximum",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_maximum.py",
+        "entry": "maximum",
+        "params": [
+          "x1",
+          "x2"
+        ]
+      },
+      "source_sha256": "429deebc64ccc0b775350e72ed91764ba3ad5e04fbd9171fb98cf115f83538ca"
+    },
+    {
+      "name": "Minimum",
+      "family": "binary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "elementwise minimum",
+      "qualification_spec": {
+        "name": "Minimum",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "minimum(x, y) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Minimum",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_minimum.py",
+        "entry": "minimum",
+        "params": [
+          "x",
+          "y"
+        ]
+      },
+      "source_sha256": "dc9b87efd63345aa16c4726aced3b5630ceb42e603bd5c3694170dcfa41fca52"
+    },
+    {
+      "name": "Equal",
+      "family": "comparison",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "x == y",
+      "qualification_spec": {
+        "name": "Equal",
+        "category": "MaskPredicate",
+        "level": "L1",
+        "signature": "equal(x, y) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "bool"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Equal",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_eq.py",
+        "entry": "equal",
+        "params": [
+          "x",
+          "y"
+        ]
+      },
+      "source_sha256": "c0d777f7d293448bfa596b48828c4e440f52c5607b5c08fde3207f0a7af5b05e"
+    },
+    {
+      "name": "NotEqual",
+      "family": "comparison",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "x != y",
+      "qualification_spec": {
+        "name": "NotEqual",
+        "category": "MaskPredicate",
+        "level": "L1",
+        "signature": "not_equal(x, y) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "bool"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "NotEqual",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_ne.py",
+        "entry": "not_equal",
+        "params": [
+          "x",
+          "y"
+        ]
+      },
+      "source_sha256": "01f9b859403849f57bd9f47aa4a4ce336d154c14ce903ffbb09d54f37b3be418"
+    },
+    {
+      "name": "Greater",
+      "family": "comparison",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "x > y",
+      "qualification_spec": {
+        "name": "Greater",
+        "category": "MaskPredicate",
+        "level": "L1",
+        "signature": "greater(x, y) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "bool"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Greater",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_gt.py",
+        "entry": "greater",
+        "params": [
+          "x",
+          "y"
+        ]
+      },
+      "source_sha256": "4e50e53918421b93f1636645c490686bc5880cbc8b154b6ea321bb7a06a5f520"
+    },
+    {
+      "name": "GreaterEqual",
+      "family": "comparison",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "x >= y",
+      "qualification_spec": {
+        "name": "GreaterEqual",
+        "category": "MaskPredicate",
+        "level": "L1",
+        "signature": "greater_equal(x, y) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "bool"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "GreaterEqual",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_ge.py",
+        "entry": "greater_equal",
+        "params": [
+          "x",
+          "y"
+        ]
+      },
+      "source_sha256": "b34e064b2f71d0b8b7e69a5c7b6b3cedf1410579cd22908fdb801ee865670291"
+    },
+    {
+      "name": "Less",
+      "family": "comparison",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "x < y",
+      "qualification_spec": {
+        "name": "Less",
+        "category": "MaskPredicate",
+        "level": "L1",
+        "signature": "less(x, y) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "bool"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Less",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_lt.py",
+        "entry": "less",
+        "params": [
+          "x",
+          "y"
+        ]
+      },
+      "source_sha256": "56b743aa1a5e4c4019ae33c66ec58b8d4cf082ff3add4a8c0aa59ef8aa62410f"
+    },
+    {
+      "name": "LessEqual",
+      "family": "comparison",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "x <= y",
+      "qualification_spec": {
+        "name": "LessEqual",
+        "category": "MaskPredicate",
+        "level": "L1",
+        "signature": "less_equal(x, y) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "bool"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "LessEqual",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_le.py",
+        "entry": "less_equal",
+        "params": [
+          "x",
+          "y"
+        ]
+      },
+      "source_sha256": "01597156122037be57bf285c2b1eccbab6b703b1c9e3a2e2ddc8ac0be8164f47"
+    },
+    {
+      "name": "BitwiseAnd",
+      "family": "bitwise",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "x & y",
+      "qualification_spec": {
+        "name": "BitwiseAnd",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "bitwise_and(x, y) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "int32"
+            ],
+            "optional": false
+          },
+          {
+            "name": "y",
+            "dtype": [
+              "int32"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "int32"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "int32"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "BitwiseAnd",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_and.py",
+        "entry": "bitwise_and",
+        "params": [
+          "x",
+          "y"
+        ]
+      },
+      "source_sha256": "a65ac4ab142a1e896beb91c1495030b680dfa9e38fa3225168f24fa2d69ad519"
+    },
+    {
+      "name": "BitwiseOr",
+      "family": "bitwise",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "x | y",
+      "qualification_spec": {
+        "name": "BitwiseOr",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "bitwise_or(x, y) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "int32"
+            ],
+            "optional": false
+          },
+          {
+            "name": "y",
+            "dtype": [
+              "int32"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "int32"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "int32"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "BitwiseOr",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_or.py",
+        "entry": "bitwise_or",
+        "params": [
+          "x",
+          "y"
+        ]
+      },
+      "source_sha256": "ee112d9389715d23be60db3f2596a127580a44ea3e71424568cdf2a75e9e0407"
+    },
+    {
+      "name": "BitwiseXor",
+      "family": "bitwise",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "x ^ y",
+      "qualification_spec": {
+        "name": "BitwiseXor",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "bitwise_xor(x, y) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "int32"
+            ],
+            "optional": false
+          },
+          {
+            "name": "y",
+            "dtype": [
+              "int32"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "int32"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "int32"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "BitwiseXor",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_xor.py",
+        "entry": "bitwise_xor",
+        "params": [
+          "x",
+          "y"
+        ]
+      },
+      "source_sha256": "e4940c0e5c24e749652e2573e3c2a0ba95b5ee223d3f17612b3d96f078fbbfe2"
+    },
+    {
+      "name": "BitwiseNot",
+      "family": "bitwise_unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "~x",
+      "qualification_spec": {
+        "name": "BitwiseNot",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "bitwise_not(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "int32"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "int32"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "int32"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "BitwiseNot",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_invert.py",
+        "entry": "bitwise_not",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "507e57c1348f3ecd85ce6d78623aa736d9d3ee3f537cd6d74d68d560ad8e0026"
+    },
+    {
+      "name": "LogicalAnd",
+      "family": "logical",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "bool(x) and bool(y)",
+      "qualification_spec": {
+        "name": "LogicalAnd",
+        "category": "MaskPredicate",
+        "level": "L1",
+        "signature": "logical_and(x, y) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "bool"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "LogicalAnd",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_logical_and.py",
+        "entry": "logical_and",
+        "params": [
+          "x",
+          "y"
+        ]
+      },
+      "source_sha256": "1a119d10772a6300662f24cf90d92e63d3ff7b11e5a3b2b0fd20d786a13c7f28"
+    },
+    {
+      "name": "LogicalOr",
+      "family": "logical",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "bool(x) or bool(y)",
+      "qualification_spec": {
+        "name": "LogicalOr",
+        "category": "MaskPredicate",
+        "level": "L1",
+        "signature": "logical_or(x, y) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "bool"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "LogicalOr",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_logical_or.py",
+        "entry": "logical_or",
+        "params": [
+          "x",
+          "y"
+        ]
+      },
+      "source_sha256": "e43f831da24ef7e16fa128da728ad30baa8e36cb87b6dfe028c156c38679aeec"
+    },
+    {
+      "name": "Clamp",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "min(max(x, lower), upper)",
+      "qualification_spec": {
+        "name": "Clamp",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "clamp(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [
+          {
+            "name": "lower",
+            "type": "float",
+            "default": -0.5,
+            "required": false
+          },
+          {
+            "name": "upper",
+            "type": "float",
+            "default": 0.5,
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Clamp",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_clamp.py",
+        "entry": "clamp",
+        "params": [
+          "x",
+          "lower",
+          "upper"
+        ]
+      },
+      "source_sha256": "25133d188466fe735ce2e748fef6b5f3694b8dbe5517e6d41a90a891dc43200c"
+    },
+    {
+      "name": "Where",
+      "family": "where",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "condition ? x : y",
+      "qualification_spec": {
+        "name": "Where",
+        "category": "MaskPredicate",
+        "level": "L1",
+        "signature": "where(condition, x, y) -> y",
+        "inputs": [
+          {
+            "name": "condition",
+            "dtype": [
+              "bool"
+            ],
+            "optional": false
+          },
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Where",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_where_mask.py",
+        "entry": "where",
+        "params": [
+          "condition",
+          "x",
+          "y"
+        ]
+      },
+      "source_sha256": "a277824dc0cde368434ef82b8d6a1f92ebe1fe4e17d82604d7b385f6ac2571f0"
+    },
+    {
+      "name": "ReduceSum",
+      "family": "reduce",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "sum over last axis",
+      "qualification_spec": {
+        "name": "ReduceSum",
+        "category": "Reduction",
+        "level": "L2",
+        "signature": "reduce_sum(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [
+          {
+            "name": "dim",
+            "type": "int64",
+            "default": -1,
+            "required": false
+          },
+          {
+            "name": "keepdim",
+            "type": "bool",
+            "default": false,
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "ReduceSum",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_sum_dim1.py",
+        "entry": "reduce_sum",
+        "params": [
+          "x",
+          "dim",
+          "keepdim"
+        ]
+      },
+      "source_sha256": "f35aca153c2b81f36651a9367dd1f8776a0760c0bb652303bcf84f04160504ef"
+    },
+    {
+      "name": "ReduceMean",
+      "family": "reduce",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "mean over last axis",
+      "qualification_spec": {
+        "name": "ReduceMean",
+        "category": "Reduction",
+        "level": "L2",
+        "signature": "reduce_mean(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [
+          {
+            "name": "dim",
+            "type": "int64",
+            "default": -1,
+            "required": false
+          },
+          {
+            "name": "keepdim",
+            "type": "bool",
+            "default": false,
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "ReduceMean",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_mean_dim1.py",
+        "entry": "reduce_mean",
+        "params": [
+          "x",
+          "dim",
+          "keepdim"
+        ]
+      },
+      "source_sha256": "e4ed43fb3d11bf716694e1aab97402be47c8874febe54445b5b03df0d991ffc1"
+    },
+    {
+      "name": "ReduceMax",
+      "family": "reduce",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "maximum over last axis",
+      "qualification_spec": {
+        "name": "ReduceMax",
+        "category": "Reduction",
+        "level": "L2",
+        "signature": "reduce_max(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [
+          {
+            "name": "dim",
+            "type": "int64",
+            "default": -1,
+            "required": false
+          },
+          {
+            "name": "keepdim",
+            "type": "bool",
+            "default": false,
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "ReduceMax",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_max_dim1.py",
+        "entry": "reduce_max",
+        "params": [
+          "x",
+          "dim",
+          "keepdim"
+        ]
+      },
+      "source_sha256": "352fe986602a44eff677087852beefc454b146b7dd3aa223f09c6d3fc5916a9a"
+    },
+    {
+      "name": "ReduceMin",
+      "family": "reduce",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "minimum over last axis",
+      "qualification_spec": {
+        "name": "ReduceMin",
+        "category": "Reduction",
+        "level": "L2",
+        "signature": "reduce_min(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [
+          {
+            "name": "dim",
+            "type": "int64",
+            "default": -1,
+            "required": false
+          },
+          {
+            "name": "keepdim",
+            "type": "bool",
+            "default": false,
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "ReduceMin",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_min_dim1.py",
+        "entry": "reduce_min",
+        "params": [
+          "x",
+          "dim",
+          "keepdim"
+        ]
+      },
+      "source_sha256": "0cbbf3e8ce9206822d79ca9ab199c5dcda89e78d1200c2b4cb95903677c859e6"
+    },
+    {
+      "name": "ArgMax",
+      "family": "arg",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "first index of maximum, including ties",
+      "qualification_spec": {
+        "name": "ArgMax",
+        "category": "SortSelect",
+        "level": "L2",
+        "signature": "arg_max(input) -> y",
+        "inputs": [
+          {
+            "name": "input",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "int64"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [
+          {
+            "name": "dim",
+            "type": "int64",
+            "default": -1,
+            "required": false
+          },
+          {
+            "name": "keepdim",
+            "type": "bool",
+            "default": false,
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "ArgMax",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_argmax.py",
+        "entry": "arg_max",
+        "params": [
+          "input",
+          "dim",
+          "keepdim"
+        ]
+      },
+      "source_sha256": "f777be69c5a1bbb1f60a9555f25b44ea75e564559456e97fad724eb45f9bee7c"
+    },
+    {
+      "name": "ArgMin",
+      "family": "arg",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "first index of minimum, including ties",
+      "qualification_spec": {
+        "name": "ArgMin",
+        "category": "SortSelect",
+        "level": "L2",
+        "signature": "arg_min(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "int64"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [
+          {
+            "name": "dim",
+            "type": "int64",
+            "default": -1,
+            "required": false
+          },
+          {
+            "name": "keepdim",
+            "type": "bool",
+            "default": false,
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "ArgMin",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_argmin.py",
+        "entry": "arg_min",
+        "params": [
+          "x",
+          "dim",
+          "keepdim"
+        ]
+      },
+      "source_sha256": "da65aff28258f0296f5243b8436b62ec62d1cbafae92326556b9ab3d38404b18"
+    },
+    {
+      "name": "XorSum",
+      "family": "reduce",
+      "counts_toward_operator_target": false,
+      "canonical_semantics": "bitwise XOR reduction",
+      "qualification_spec": {
+        "name": "XorSum",
+        "category": "Reduction",
+        "level": "L2",
+        "signature": "xor_sum(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "int32"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "int32"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "int32"
+        ],
+        "attrs": [
+          {
+            "name": "dim",
+            "type": "int64",
+            "default": -1,
+            "required": false
+          },
+          {
+            "name": "keepdim",
+            "type": "bool",
+            "default": false,
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "XorSum",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_xor_sum.py",
+        "entry": "xor_sum",
+        "params": [
+          "x",
+          "dim",
+          "keepdim"
+        ]
+      },
+      "source_sha256": "3e9c12ce0c5f7ae9f949cdb82435eea378e2313cea9bc6467aa271fee5d2a763"
+    },
+    {
+      "name": "CumSum",
+      "family": "scan",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "inclusive sum over last axis",
+      "qualification_spec": {
+        "name": "CumSum",
+        "category": "Reduction",
+        "level": "L2",
+        "signature": "cum_sum(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [
+          {
+            "name": "dim",
+            "type": "int64",
+            "default": -1,
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "CumSum",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_cumsum.py",
+        "entry": "cum_sum",
+        "params": [
+          "x",
+          "dim"
+        ]
+      },
+      "source_sha256": "b349c9eca83b98d1ddac09318c96b9d97cbe67571904cd1119b8787be5e44ba8"
+    },
+    {
+      "name": "CumProd",
+      "family": "scan",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "inclusive product over last axis",
+      "qualification_spec": {
+        "name": "CumProd",
+        "category": "Reduction",
+        "level": "L2",
+        "signature": "cum_prod(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [
+          {
+            "name": "dim",
+            "type": "int64",
+            "default": -1,
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "CumProd",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_cumprod.py",
+        "entry": "cum_prod",
+        "params": [
+          "x",
+          "dim"
+        ]
+      },
+      "source_sha256": "f32ed594bd908a284a0c69faac2d9bf7650c9f22a933ae9a7c39c8e05012b8c4"
+    },
+    {
+      "name": "Transpose",
+      "family": "transpose",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "2D axes permutation [1, 0]",
+      "qualification_spec": {
+        "name": "Transpose",
+        "category": "LayoutTransform",
+        "level": "L2",
+        "signature": "transpose(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [
+          {
+            "name": "perm",
+            "type": "int[]",
+            "default": [
+              1,
+              0
+            ],
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Transpose",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_permute.py",
+        "entry": "transpose",
+        "params": [
+          "x",
+          "perm"
+        ]
+      },
+      "source_sha256": "6070dcaa58994c36edf2503076f8cee22352396582f2484c98325bebb9029749"
+    },
+    {
+      "name": "Concat",
+      "family": "concat",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "concatenate along last axis",
+      "qualification_spec": {
+        "name": "Concat",
+        "category": "LayoutTransform",
+        "level": "L2",
+        "signature": "concat(x, y) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [
+          {
+            "name": "dim",
+            "type": "int64",
+            "default": -1,
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Concat",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_cat_dim.py",
+        "entry": "concat",
+        "params": [
+          "x",
+          "y",
+          "dim"
+        ]
+      },
+      "source_sha256": "ebe750622a07de67bc5b640d837dfc5a17c8066ed5fb09c0e2b686b39f23a31a"
+    },
+    {
+      "name": "Flip",
+      "family": "flip",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "reverse last axis",
+      "qualification_spec": {
+        "name": "Flip",
+        "category": "LayoutTransform",
+        "level": "L2",
+        "signature": "flip(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [
+          {
+            "name": "dim",
+            "type": "int64",
+            "default": -1,
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Flip",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_flip.py",
+        "entry": "flip",
+        "params": [
+          "x",
+          "dim"
+        ]
+      },
+      "source_sha256": "98f98a355af1ff2207e0d9bbf3f7aa92d6cfc2c7060841d0456ecf14c29c9ef5"
+    },
+    {
+      "name": "Gather",
+      "family": "gather",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "2D gather along last axis; repeated indices allowed",
+      "qualification_spec": {
+        "name": "Gather",
+        "category": "IndexGather",
+        "level": "L2",
+        "signature": "gather(x, index) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "index",
+            "dtype": [
+              "int64"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [
+          {
+            "name": "dim",
+            "type": "int64",
+            "default": -1,
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Gather",
+        "source_dir": "docs/zh/python-api/_examples/triton.language.gather.py",
+        "entry": "gather",
+        "params": [
+          "x",
+          "index",
+          "dim"
+        ]
+      },
+      "source_sha256": "a5230f128129822ac974c62fceb5bf4887f8349f21bf615a97a21983f66b58f5"
+    },
+    {
+      "name": "SortValues",
+      "family": "sort",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "sort values along last axis, ascending or descending",
+      "qualification_spec": {
+        "name": "SortValues",
+        "category": "SortSelect",
+        "level": "L2",
+        "signature": "sort_values(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [
+          {
+            "name": "dim",
+            "type": "int64",
+            "default": -1,
+            "required": false
+          },
+          {
+            "name": "descending",
+            "type": "bool",
+            "default": false,
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "SortValues",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_sort.py",
+        "entry": "sort_values",
+        "params": [
+          "x",
+          "dim",
+          "descending"
+        ]
+      },
+      "source_sha256": "efd105383e12085baab1ab37a7d00a306232a718fe7e7df1559678956036c01e"
+    },
+    {
+      "name": "TopKValues",
+      "family": "topk",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "largest k values, descending; value output only",
+      "qualification_spec": {
+        "name": "TopKValues",
+        "category": "SortSelect",
+        "level": "L2",
+        "signature": "top_k_values(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [
+          {
+            "name": "dim",
+            "type": "int64",
+            "default": -1,
+            "required": false
+          },
+          {
+            "name": "k",
+            "type": "int64",
+            "default": 1,
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "TopKValues",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_topk.py",
+        "entry": "top_k_values",
+        "params": [
+          "x",
+          "dim",
+          "k"
+        ]
+      },
+      "source_sha256": "e4a1aefcbdba3d8555ef0363d54faf27784e79f33e09c69c1542883ebaae0c5d"
+    },
+    {
+      "name": "Softmax",
+      "family": "softmax",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "exp(x - max(x)) / sum(exp(x - max(x)))",
+      "qualification_spec": {
+        "name": "Softmax",
+        "category": "Normalization",
+        "level": "L2",
+        "signature": "softmax(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [
+          {
+            "name": "dim",
+            "type": "int64",
+            "default": -1,
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Softmax",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_02_fused_softmax.py",
+        "entry": "softmax",
+        "params": [
+          "x",
+          "dim"
+        ]
+      },
+      "source_sha256": "16627d52d250ed487ea33904e3fb170d11841372f93ec4242904e8c31bd3f4d2"
+    },
+    {
+      "name": "RmsNorm",
+      "family": "rms",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "x * rsqrt(mean(x*x) + epsilon) * gamma",
+      "qualification_spec": {
+        "name": "RmsNorm",
+        "category": "Normalization",
+        "level": "L2",
+        "signature": "rms_norm(x, gamma) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "gamma",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [
+          {
+            "name": "epsilon",
+            "type": "float",
+            "default": 1e-06,
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "RmsNorm",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_rms_norm.py",
+        "entry": "rms_norm",
+        "params": [
+          "x",
+          "gamma",
+          "epsilon"
+        ]
+      },
+      "source_sha256": "6ebfc6215170efeec7b6911c4aee2c64e00374eeb68c37b2c5d37550c0bb8a50"
+    },
+    {
+      "name": "LayerNorm",
+      "family": "layer",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "(x - mean(x)) * rsqrt(var(x) + epsilon) * weight + bias",
+      "qualification_spec": {
+        "name": "LayerNorm",
+        "category": "Normalization",
+        "level": "L2",
+        "signature": "layer_norm(x, weight, bias) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "weight",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "bias",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [
+          {
+            "name": "epsilon",
+            "type": "float",
+            "default": 1e-06,
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "LayerNorm",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_layernorm.py",
+        "entry": "layer_norm",
+        "params": [
+          "x",
+          "weight",
+          "bias",
+          "epsilon"
+        ]
+      },
+      "source_sha256": "b606724411c33739eefc8d60e8ba6db5b695e86874cfabf2d353ee9233028620"
+    },
+    {
+      "name": "Matmul",
+      "family": "matmul",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "x[M,K] @ weight[K,N]",
+      "qualification_spec": {
+        "name": "Matmul",
+        "category": "Contraction",
+        "level": "L3",
+        "signature": "matmul(x, weight) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float16"
+            ],
+            "optional": false
+          },
+          {
+            "name": "weight",
+            "dtype": [
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Matmul",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_03_matrix_multiplication.py",
+        "entry": "matmul",
+        "params": [
+          "x",
+          "weight"
+        ]
+      },
+      "source_sha256": "8441a3560ac3dcc93d9a82100ebda1071ec33e282a7c37f40fdb7f67eaaf5dde"
+    },
+    {
+      "name": "Mish",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "x * tanh(softplus(x))",
+      "qualification_spec": {
+        "name": "Mish",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "mish(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Mish",
+        "source_dir": "reference/cann-bench/tasks/level1/mish/proto.yaml",
+        "entry": "mish",
+        "params": [
+          "x"
+        ]
+      },
+      "source_sha256": "07e5f14e30606e48241e381bbb644a4fe57d08e272b52b3ac78dd688ae62757c"
+    },
+    {
+      "name": "Gelu",
+      "family": "unary",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "0.5*x*(1+erf(x/sqrt(2))) or explicitly requested tanh approximation",
+      "qualification_spec": {
+        "name": "Gelu",
+        "category": "Elementwise",
+        "level": "L1",
+        "signature": "gelu(x) -> y",
+        "inputs": [
+          {
+            "name": "x",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [
+          {
+            "name": "approximate",
+            "type": "string",
+            "default": "none",
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "Gelu",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_gelu.py",
+        "entry": "gelu",
+        "params": [
+          "x",
+          "approximate"
+        ]
+      },
+      "source_sha256": "1b52d3abcc612cdeaf26a63578cc1b0e6b38ce5c6bca9f688b3e093103d49576"
+    },
+    {
+      "name": "SwiGlu",
+      "family": "swiglu",
+      "counts_toward_operator_target": true,
+      "canonical_semantics": "silu(first half) * second half",
+      "qualification_spec": {
+        "name": "SwiGlu",
+        "category": "FusedComposite",
+        "level": "L2",
+        "signature": "swi_glu(input) -> y",
+        "inputs": [
+          {
+            "name": "input",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "outputs": [
+          {
+            "name": "y",
+            "dtype": [
+              "float32",
+              "float16"
+            ],
+            "optional": false
+          }
+        ],
+        "case_dtypes": [
+          "float32",
+          "float16"
+        ],
+        "attrs": [
+          {
+            "name": "dim",
+            "type": "int64",
+            "default": -1,
+            "required": false
+          }
+        ],
+        "shape_support": {
+          "min_rank": 2,
+          "max_rank": 2,
+          "notes": "v0.8 qualification domain: contiguous 2D; last-axis operations"
+        },
+        "source_name": "SwiGlu",
+        "source_dir": "third_party/ascend/unittest/pytest_ut/test_swiglu.py",
+        "entry": "swi_glu",
+        "params": [
+          "input",
+          "dim"
+        ]
+      },
+      "source_sha256": "878bd6f87a07ba32770e6a29d426e420e99ae3c72537ce91b4f13662f12eeeb9"
+    }
+  ]
+}

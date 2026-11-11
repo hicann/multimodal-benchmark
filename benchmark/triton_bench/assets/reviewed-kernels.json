@@ -1,0 +1,277 @@
+{
+  "format": 1,
+  "kind": "historical_reviewed_sources_not_new_hardware_evidence",
+  "kernels": {
+    "_pattern_max_partial": {
+      "template": "target_pattern_kernels.py",
+      "parameters": [
+        "X",
+        "Partial",
+        "COLUMNS",
+        "CHUNKS",
+        "BLOCK"
+      ],
+      "source": "@triton.jit\ndef _pattern_max_partial(X, Partial, COLUMNS: tl.constexpr, CHUNKS: tl.constexpr, BLOCK: tl.constexpr):\n    chunk = tl.program_id(0)\n    row = tl.program_id(1)\n    offsets = chunk * BLOCK + tl.arange(0, BLOCK)\n    values = tl.load(X + row * COLUMNS + offsets, offsets < COLUMNS, other=-float('inf')).to(tl.float32)\n    maximum = tl.max(values, 0)\n    tl.store(Partial + row * CHUNKS + chunk, maximum)"
+    },
+    "_pattern_max_finish": {
+      "template": "target_pattern_kernels.py",
+      "parameters": [
+        "Partial",
+        "Out",
+        "CHUNKS",
+        "BLOCK"
+      ],
+      "source": "@triton.jit\ndef _pattern_max_finish(Partial, Out, CHUNKS: tl.constexpr, BLOCK: tl.constexpr):\n    row = tl.program_id(0)\n    offsets = tl.arange(0, BLOCK)\n    values = tl.load(Partial + row * CHUNKS + offsets, offsets < CHUNKS, other=-float('inf'))\n    tl.store(Out + row, tl.max(values, 0))"
+    },
+    "_pattern_split_partial": {
+      "template": "target_pattern_kernels.py",
+      "parameters": [
+        "X",
+        "Weight",
+        "Partial",
+        "ROWS",
+        "COLUMNS",
+        "INNER",
+        "SEGMENT",
+        "TILE",
+        "INNER_TILE"
+      ],
+      "source": "@triton.jit\ndef _pattern_split_partial(X, Weight, Partial, ROWS: tl.constexpr, COLUMNS: tl.constexpr, INNER: tl.constexpr, SEGMENT: tl.constexpr, TILE: tl.constexpr, INNER_TILE: tl.constexpr):\n    rows = tl.program_id(0) * TILE + tl.arange(0, TILE)\n    columns = tl.program_id(1) * TILE + tl.arange(0, TILE)\n    part = tl.program_id(2)\n    offsets = tl.arange(0, INNER_TILE)\n    accumulator = tl.zeros((TILE, TILE), tl.float32)\n    for step in range(tl.cdiv(SEGMENT, INNER_TILE)):\n        inner = part * SEGMENT + step * INNER_TILE + offsets\n        first = tl.load(X + rows[:, None] * INNER + inner[None, :], (rows[:, None] < ROWS) & (inner[None, :] < INNER), other=0)\n        second = tl.load(Weight + inner[:, None] * COLUMNS + columns[None, :], (inner[:, None] < INNER) & (columns[None, :] < COLUMNS), other=0)\n        accumulator = tl.dot(first, second, accumulator)\n    tl.store(Partial + (part * ROWS + rows[:, None]) * COLUMNS + columns[None, :], accumulator, (rows[:, None] < ROWS) & (columns[None, :] < COLUMNS))"
+    },
+    "_pattern_split_finish": {
+      "template": "target_pattern_kernels.py",
+      "parameters": [
+        "Partial",
+        "Out",
+        "ELEMENTS",
+        "PARTS",
+        "BLOCK"
+      ],
+      "source": "@triton.jit\ndef _pattern_split_finish(Partial, Out, ELEMENTS: tl.constexpr, PARTS: tl.constexpr, BLOCK: tl.constexpr):\n    offsets = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)\n    parts = tl.arange(0, PARTS)\n    values = tl.load(Partial + parts[:, None] * ELEMENTS + offsets[None, :], offsets[None, :] < ELEMENTS, other=0)\n    tl.store(Out + offsets, tl.sum(values, 0), offsets < ELEMENTS)"
+    },
+    "_pattern_min_pair": {
+      "template": "target_pattern_kernels.py",
+      "parameters": [
+        "left",
+        "left_index",
+        "right",
+        "right_index"
+      ],
+      "source": "@triton.jit\ndef _pattern_min_pair(left, left_index, right, right_index):\n    take_right = (right < left) | (right == left) & (right_index > left_index)\n    return (tl.where(take_right, right, left), tl.where(take_right, right_index, left_index))"
+    },
+    "_pattern_scan_local": {
+      "template": "target_pattern_kernels.py",
+      "parameters": [
+        "X",
+        "LocalValues",
+        "LocalIndices",
+        "Totals",
+        "TotalIndices",
+        "AXIS",
+        "INNER",
+        "CHUNKS",
+        "BLOCK"
+      ],
+      "source": "@triton.jit\ndef _pattern_scan_local(X, LocalValues, LocalIndices, Totals, TotalIndices, AXIS: tl.constexpr, INNER: tl.constexpr, CHUNKS: tl.constexpr, BLOCK: tl.constexpr):\n    chunk = tl.program_id(0)\n    line = tl.program_id(1)\n    positions = chunk * BLOCK + tl.arange(0, BLOCK)\n    base = line // INNER * AXIS * INNER + line % INNER\n    values = tl.load(X + base + positions * INNER, positions < AXIS, other=float('inf')).to(tl.float32)\n    indices = tl.where(positions < AXIS, positions, -1)\n    scanned, scanned_indices = tl.associative_scan((values, indices), 0, _pattern_min_pair)\n    tl.store(LocalValues + base + positions * INNER, scanned, positions < AXIS)\n    tl.store(LocalIndices + base + positions * INNER, scanned_indices, positions < AXIS)\n    last_lane = tl.minimum(BLOCK - 1, AXIS - chunk * BLOCK - 1)\n    is_last = tl.arange(0, BLOCK) == last_lane\n    minimum = tl.sum(tl.where(is_last, scanned, 0), 0)\n    last_index = tl.max(tl.where(is_last, scanned_indices, -1), 0)\n    tl.store(Totals + line * CHUNKS + chunk, minimum)\n    tl.store(TotalIndices + line * CHUNKS + chunk, last_index)"
+    },
+    "_pattern_scan_carry": {
+      "template": "target_pattern_kernels.py",
+      "parameters": [
+        "Totals",
+        "TotalIndices",
+        "Carry",
+        "CarryIndices",
+        "CHUNKS",
+        "BLOCK"
+      ],
+      "source": "@triton.jit\ndef _pattern_scan_carry(Totals, TotalIndices, Carry, CarryIndices, CHUNKS: tl.constexpr, BLOCK: tl.constexpr):\n    line = tl.program_id(0)\n    offsets = tl.arange(0, BLOCK)\n    values = tl.load(Totals + line * CHUNKS + offsets, offsets < CHUNKS, other=float('inf'))\n    indices = tl.load(TotalIndices + line * CHUNKS + offsets, offsets < CHUNKS, other=-1).to(tl.int32)\n    scanned, scanned_indices = tl.associative_scan((values, indices), 0, _pattern_min_pair)\n    tl.store(Carry + line * CHUNKS + offsets + 1, scanned, offsets + 1 < CHUNKS)\n    tl.store(CarryIndices + line * CHUNKS + offsets + 1, scanned_indices, offsets + 1 < CHUNKS)\n    tl.store(Carry + line * CHUNKS, float('inf'))\n    tl.store(CarryIndices + line * CHUNKS, -1)"
+    },
+    "_pattern_scan_finish": {
+      "template": "target_pattern_kernels.py",
+      "parameters": [
+        "LocalValues",
+        "LocalIndices",
+        "Carry",
+        "CarryIndices",
+        "Values",
+        "Indices",
+        "AXIS",
+        "INNER",
+        "CHUNKS",
+        "BLOCK"
+      ],
+      "source": "@triton.jit\ndef _pattern_scan_finish(LocalValues, LocalIndices, Carry, CarryIndices, Values, Indices, AXIS: tl.constexpr, INNER: tl.constexpr, CHUNKS: tl.constexpr, BLOCK: tl.constexpr):\n    chunk = tl.program_id(0)\n    line = tl.program_id(1)\n    positions = chunk * BLOCK + tl.arange(0, BLOCK)\n    base = line // INNER * AXIS * INNER + line % INNER\n    local = tl.load(LocalValues + base + positions * INNER, positions < AXIS, other=float('inf'))\n    local_index = tl.load(LocalIndices + base + positions * INNER, positions < AXIS, other=-1)\n    carry = tl.load(Carry + line * CHUNKS + chunk)\n    carry_index = tl.load(CarryIndices + line * CHUNKS + chunk)\n    take_carry = (carry < local) | (carry == local) & (carry_index > local_index)\n    tl.store(Values + base + positions * INNER, tl.where(take_carry, carry, local), positions < AXIS)\n    tl.store(Indices + base + positions * INNER, tl.where(take_carry, carry_index, local_index), positions < AXIS)"
+    },
+    "_pattern_bias_tile": {
+      "template": "target_pattern_kernels.py",
+      "parameters": [
+        "X",
+        "Weight",
+        "Bias",
+        "Out",
+        "ROWS",
+        "START",
+        "GROUP",
+        "INNER",
+        "COLUMNS",
+        "TILE",
+        "INNER_TILE"
+      ],
+      "source": "@triton.jit\ndef _pattern_bias_tile(X, Weight, Bias, Out, ROWS: tl.constexpr, START: tl.constexpr, GROUP: tl.constexpr, INNER: tl.constexpr, COLUMNS: tl.constexpr, TILE: tl.constexpr, INNER_TILE: tl.constexpr):\n    rows = tl.program_id(0) * TILE + tl.arange(0, TILE)\n    columns = tl.program_id(1) * TILE + tl.arange(0, TILE)\n    offsets = tl.arange(0, INNER_TILE)\n    accumulator = tl.zeros((TILE, TILE), tl.float32)\n    for step in range(tl.cdiv(INNER, INNER_TILE)):\n        inner = step * INNER_TILE + offsets\n        first = tl.load(X + (START + rows[:, None]) * INNER + inner[None, :], (rows[:, None] < ROWS) & (inner[None, :] < INNER), other=0)\n        second = tl.load(Weight + GROUP * INNER * COLUMNS + inner[:, None] * COLUMNS + columns[None, :], (inner[:, None] < INNER) & (columns[None, :] < COLUMNS), other=0)\n        accumulator = tl.dot(first, second, accumulator)\n    bias = tl.load(Bias + GROUP * COLUMNS + columns, columns < COLUMNS, other=0).to(tl.float32)\n    tl.store(Out + (START + rows[:, None]) * COLUMNS + columns[None, :], accumulator + bias[None, :], (rows[:, None] < ROWS) & (columns[None, :] < COLUMNS))"
+    },
+    "_floor_divide_int32": {
+      "template": "official_kernels.py",
+      "parameters": [
+        "first",
+        "second"
+      ],
+      "source": "@triton.jit\ndef _floor_divide_int32(first, second):\n    numerator = first.to(tl.uint32)\n    denominator = second.to(tl.uint32)\n    numerator = tl.where(first < 0, 0 - numerator, numerator)\n    denominator = tl.where(second < 0, 0 - denominator, denominator)\n    quotient = tl.full(first.shape, 0, tl.uint32)\n    remainder = tl.full(first.shape, 0, tl.uint32)\n    for bit in tl.static_range(31, -1, -1):\n        remainder = remainder << 1 | numerator >> bit & 1\n        subtract = remainder >= denominator\n        remainder = tl.where(subtract, remainder - denominator, remainder)\n        quotient = quotient << 1 | subtract.to(tl.uint32)\n    negative = (first < 0) != (second < 0)\n    signed = tl.where(negative, 0 - quotient, quotient).to(tl.int32)\n    return signed - (negative & (remainder != 0)).to(tl.int32)"
+    },
+    "_elementwise": {
+      "template": "official_kernels.py",
+      "parameters": [
+        "X",
+        "Y",
+        "Condition",
+        "Out",
+        "COUNT",
+        "OP",
+        "BASE",
+        "SCALE",
+        "SHIFT",
+        "LOWER",
+        "UPPER",
+        "APPROXIMATE",
+        "BLOCK",
+        "X_STRIDE"
+      ],
+      "source": "@triton.jit\ndef _elementwise(X, Y, Condition, Out, COUNT: tl.constexpr, OP: tl.constexpr, BASE: tl.constexpr, SCALE: tl.constexpr, SHIFT: tl.constexpr, LOWER: tl.constexpr, UPPER: tl.constexpr, APPROXIMATE: tl.constexpr, BLOCK: tl.constexpr, X_STRIDE: tl.constexpr):\n    offsets = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)\n    valid = offsets < COUNT\n    original = tl.load(X + offsets * X_STRIDE, valid, other=0)\n    value = original.to(tl.float32)\n    if OP == 'Abs':\n        result = tl.abs(value)\n    elif OP == 'Neg':\n        result = -value\n    elif OP == 'Exp':\n        exponent = value * SCALE + SHIFT\n        if BASE == -1.0:\n            result = tl.exp(exponent)\n        else:\n            result = tl.exp(exponent * tl.log(BASE))\n    elif OP == 'Exp2':\n        result = tl.exp2(value)\n    elif OP == 'Expm1':\n        result = libdevice.expm1(value)\n    elif OP == 'Log':\n        result = tl.log(value)\n    elif OP == 'Log2':\n        result = tl.log2(value)\n    elif OP == 'Log10':\n        result = libdevice.log10(value)\n    elif OP == 'Log1p':\n        result = libdevice.log1p(value)\n    elif OP == 'Sqrt':\n        result = tl.sqrt(value)\n    elif OP == 'Rsqrt':\n        result = tl.rsqrt(value)\n    elif OP == 'Sin':\n        result = tl.sin(value)\n    elif OP == 'Cos':\n        result = tl.cos(value)\n    elif OP == 'Tan':\n        result = libdevice.tan(value)\n    elif OP == 'Tanh':\n        result = libdevice.tanh(value)\n    elif OP == 'Sinh':\n        result = libdevice.sinh(value)\n    elif OP == 'Cosh':\n        result = libdevice.cosh(value)\n    elif OP == 'Floor':\n        result = tl.floor(value)\n    elif OP == 'Ceil':\n        result = tl.ceil(value)\n    elif OP == 'Trunc':\n        result = libdevice.trunc(value)\n    elif OP == 'Relu':\n        result = tl.maximum(value, 0)\n    elif OP == 'Sigmoid':\n        result = tl.sigmoid(value)\n    elif OP == 'Signbit':\n        result = value.to(tl.int32, bitcast=True) < 0\n    elif OP == 'BitwiseNot':\n        result = ~original\n    elif OP == 'Clamp':\n        result = tl.minimum(tl.maximum(value, LOWER), UPPER)\n    elif OP == 'Mish':\n        result = value * libdevice.tanh(libdevice.log1p(tl.exp(value)))\n    elif OP == 'Gelu':\n        if APPROXIMATE == 'none':\n            result = value * 0.5 * (1 + tl.erf(value * 0.7071067811865476))\n        else:\n            result = value * 0.5 * (1 + libdevice.tanh(0.7978845608028654 * (value + 0.044715 * value * value * value)))\n    else:\n        other_original = tl.load(Y + offsets, valid, other=1)\n        other = other_original.to(tl.float32)\n        if OP == 'Add':\n            result = value + other\n        elif OP == 'Sub':\n            result = value - other\n        elif OP == 'Mul':\n            result = value * other\n        elif OP == 'Div':\n            result = value / other\n        elif OP == 'FloorDiv':\n            result = _floor_divide_int32(original, other_original)\n        elif OP == 'Mod':\n            result = original % other_original\n        elif OP == 'Pow':\n            result = tl.exp(other * tl.log(value))\n        elif OP == 'Maximum':\n            result = tl.maximum(value, other)\n        elif OP == 'Minimum':\n            result = tl.minimum(value, other)\n        elif OP == 'Equal':\n            result = value == other\n        elif OP == 'NotEqual':\n            result = value != other\n        elif OP == 'Greater':\n            result = value > other\n        elif OP == 'GreaterEqual':\n            result = value >= other\n        elif OP == 'Less':\n            result = value < other\n        elif OP == 'LessEqual':\n            result = value <= other\n        elif OP == 'BitwiseAnd':\n            result = original & other_original\n        elif OP == 'BitwiseOr':\n            result = original | other_original\n        elif OP == 'BitwiseXor':\n            result = original ^ other_original\n        elif OP == 'LogicalAnd':\n            result = (value != 0) & (other != 0)\n        elif OP == 'LogicalOr':\n            result = (value != 0) | (other != 0)\n        else:\n            condition = tl.load(Condition + offsets, valid, other=0)\n            result = tl.where(condition, original, other_original)\n    tl.store(Out + offsets, result, valid)"
+    },
+    "_rows": {
+      "template": "official_kernels.py",
+      "parameters": [
+        "X",
+        "Weight",
+        "Bias",
+        "Out",
+        "COLS",
+        "OP",
+        "EPSILON",
+        "BLOCK"
+      ],
+      "source": "@triton.jit\ndef _rows(X, Weight, Bias, Out, COLS: tl.constexpr, OP: tl.constexpr, EPSILON: tl.constexpr, BLOCK: tl.constexpr):\n    row = tl.program_id(0)\n    columns = tl.arange(0, BLOCK)\n    valid = columns < COLS\n    original = tl.load(X + row * COLS + columns, valid, other=0)\n    value = original.to(tl.float32)\n    if OP == 'ReduceSum' or OP == 'ReduceMean':\n        result = tl.sum(value, 0)\n        if OP == 'ReduceMean':\n            result = result / COLS\n        tl.store(Out + row, result)\n    elif OP == 'ReduceMax':\n        result = tl.max(tl.where(valid, value, -float('inf')), 0)\n        tl.store(Out + row, result)\n    elif OP == 'ReduceMin':\n        result = tl.min(tl.where(valid, value, float('inf')), 0)\n        tl.store(Out + row, result)\n    elif OP == 'ArgMax':\n        result = tl.argmax(tl.where(valid, value, -float('inf')), 0, tie_break_left=True)\n        tl.store(Out + row, result.to(tl.int64))\n    elif OP == 'ArgMin':\n        result = tl.argmin(tl.where(valid, value, float('inf')), 0, tie_break_left=True)\n        tl.store(Out + row, result.to(tl.int64))\n    elif OP == 'XorSum':\n        result = tl.xor_sum(original, 0)\n        tl.store(Out + row, result)\n    elif OP == 'CumSum':\n        result = tl.cumsum(value, 0)\n        tl.store(Out + row * COLS + columns, result, valid)\n    elif OP == 'CumProd':\n        result = tl.cumprod(tl.where(valid, value, 1.0), 0)\n        tl.store(Out + row * COLS + columns, result, valid)\n    elif OP == 'Softmax':\n        maximum = tl.max(tl.where(valid, value, -float('inf')), 0)\n        exponent = tl.where(valid, tl.exp(value - maximum), 0)\n        result = exponent / tl.sum(exponent, 0)\n        tl.store(Out + row * COLS + columns, result, valid)\n    else:\n        centered = value\n        if OP == 'LayerNorm':\n            mean = tl.sum(value, 0) / COLS\n            centered = tl.where(valid, value - mean, 0)\n        variance = tl.sum(centered * centered, 0) / COLS\n        weight = tl.load(Weight + columns, valid, other=0).to(tl.float32)\n        result = centered * tl.rsqrt(variance + EPSILON) * weight\n        if OP == 'LayerNorm':\n            bias = tl.load(Bias + columns, valid, other=0).to(tl.float32)\n            result = result + bias\n        tl.store(Out + row * COLS + columns, result, valid)"
+    },
+    "_layout": {
+      "template": "official_kernels.py",
+      "parameters": [
+        "X",
+        "Y",
+        "Out",
+        "ROWS",
+        "COLS",
+        "OTHER_COLS",
+        "OUT_COLS",
+        "OP",
+        "BLOCK"
+      ],
+      "source": "@triton.jit\ndef _layout(X, Y, Out, ROWS: tl.constexpr, COLS: tl.constexpr, OTHER_COLS: tl.constexpr, OUT_COLS: tl.constexpr, OP: tl.constexpr, BLOCK: tl.constexpr):\n    offsets = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)\n    valid = offsets < ROWS * OUT_COLS\n    row = offsets // OUT_COLS\n    column = offsets % OUT_COLS\n    if OP == 'Transpose':\n        result = tl.load(X + offsets % ROWS * COLS + offsets // ROWS, valid, other=0)\n    elif OP == 'Flip':\n        result = tl.load(X + row * COLS + COLS - 1 - column, valid, other=0)\n    elif OP == 'Concat':\n        first = tl.load(X + row * COLS + column, valid & (column < COLS), other=0)\n        second = tl.load(Y + row * OTHER_COLS + column - COLS, valid & (column >= COLS), other=0)\n        result = tl.where(column < COLS, first, second)\n    else:\n        gate = tl.load(X + row * COLS + column, valid, other=0).to(tl.float32)\n        multiplier = tl.load(X + row * COLS + OUT_COLS + column, valid, other=0).to(tl.float32)\n        result = gate * tl.sigmoid(gate) * multiplier\n    tl.store(Out + offsets, result, valid)"
+    },
+    "_gather": {
+      "template": "official_kernels.py",
+      "parameters": [
+        "X",
+        "Index",
+        "Out",
+        "COLS",
+        "OUT_COLS",
+        "SOURCE_BLOCK",
+        "INDEX_BLOCK"
+      ],
+      "source": "@triton.jit\ndef _gather(X, Index, Out, COLS: tl.constexpr, OUT_COLS: tl.constexpr, SOURCE_BLOCK: tl.constexpr, INDEX_BLOCK: tl.constexpr):\n    row = tl.program_id(0)\n    source_columns = tl.arange(0, SOURCE_BLOCK)\n    output_columns = tl.arange(0, INDEX_BLOCK)\n    value = tl.load(X + row * COLS + source_columns, source_columns < COLS, other=0)\n    index = tl.load(Index + row * OUT_COLS + output_columns, output_columns < OUT_COLS, other=0).to(tl.int32)\n    result = tl.gather(value, index, 0)\n    tl.store(Out + row * OUT_COLS + output_columns, result, output_columns < OUT_COLS)"
+    },
+    "_sort": {
+      "template": "official_kernels.py",
+      "parameters": [
+        "X",
+        "Out",
+        "COLS",
+        "OUT_COLS",
+        "DESCENDING",
+        "BLOCK"
+      ],
+      "source": "@triton.jit\ndef _sort(X, Out, COLS: tl.constexpr, OUT_COLS: tl.constexpr, DESCENDING: tl.constexpr, BLOCK: tl.constexpr):\n    row = tl.program_id(0)\n    columns = tl.arange(0, BLOCK)\n    if DESCENDING:\n        padding = -float('inf')\n    else:\n        padding = float('inf')\n    value = tl.load(X + row * COLS + columns, columns < COLS, other=padding).to(tl.float32)\n    result = extension.sort(value, descending=DESCENDING, dim=0)\n    tl.store(Out + row * OUT_COLS + columns, result, columns < OUT_COLS)"
+    },
+    "_matmul": {
+      "template": "official_kernels.py",
+      "parameters": [
+        "X",
+        "Weight",
+        "Out",
+        "ROWS",
+        "COLS",
+        "INNER",
+        "TILE",
+        "INNER_TILE"
+      ],
+      "source": "@triton.jit\ndef _matmul(X, Weight, Out, ROWS: tl.constexpr, COLS: tl.constexpr, INNER: tl.constexpr, TILE: tl.constexpr, INNER_TILE: tl.constexpr):\n    rows = tl.program_id(0) * TILE + tl.arange(0, TILE)\n    columns = tl.program_id(1) * TILE + tl.arange(0, TILE)\n    inner = tl.arange(0, INNER_TILE)\n    accumulator = tl.zeros((TILE, TILE), tl.float32)\n    for step in range(tl.cdiv(INNER, INNER_TILE)):\n        positions = step * INNER_TILE + inner\n        first = tl.load(X + rows[:, None] * INNER + positions[None, :], (rows[:, None] < ROWS) & (positions[None, :] < INNER), other=0)\n        second = tl.load(Weight + positions[:, None] * COLS + columns[None, :], (positions[:, None] < INNER) & (columns[None, :] < COLS), other=0)\n        accumulator = tl.dot(first, second, accumulator)\n    tl.store(Out + rows[:, None] * COLS + columns[None, :], accumulator, (rows[:, None] < ROWS) & (columns[None, :] < COLS))"
+    },
+    "_witness_neg": {
+      "template": "implementation_witness_kernels.py",
+      "parameters": [
+        "X",
+        "Out",
+        "N",
+        "STRIDE",
+        "B"
+      ],
+      "source": "@triton.jit\ndef _witness_neg(X, Out, N: tl.constexpr, STRIDE: tl.constexpr, B: tl.constexpr):\n    i = tl.program_id(0) * B + tl.arange(0, B)\n    x = tl.load(X + i * STRIDE, i < N, other=0)\n    tl.store(Out + i, -x, i < N)"
+    },
+    "_witness_neg4": {
+      "template": "implementation_witness_kernels.py",
+      "parameters": [
+        "X",
+        "Out",
+        "D0",
+        "D1",
+        "D2",
+        "D3",
+        "B"
+      ],
+      "source": "@triton.jit\ndef _witness_neg4(X, Out, D0: tl.constexpr, D1: tl.constexpr, D2: tl.constexpr, D3: tl.constexpr, B: tl.constexpr):\n    packed = tl.program_id(2)\n    i0 = packed // D1\n    i1 = packed % D1\n    i2 = tl.program_id(1)\n    i3 = tl.program_id(0) * B + tl.arange(0, B)\n    offset = ((i0 * D1 + i1) * D2 + i2) * D3 + i3\n    x = tl.load(X + offset, (i0 < D0) & (i3 < D3), other=0)\n    tl.store(Out + offset, -x, (i0 < D0) & (i3 < D3))"
+    },
+    "_witness_neg3": {
+      "template": "implementation_witness_kernels.py",
+      "parameters": [
+        "Input",
+        "Out",
+        "D0",
+        "D1",
+        "D2",
+        "STRIDE",
+        "BLOCK"
+      ],
+      "source": "@triton.jit\ndef _witness_neg3(Input, Out, D0: tl.constexpr, D1: tl.constexpr, D2: tl.constexpr, STRIDE: tl.constexpr, BLOCK: tl.constexpr):\n    first = tl.program_id(2)\n    second = tl.program_id(1)\n    last = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)\n    offset = (first * D1 + second) * D2 + last\n    valid = (first < D0) & (last < D2)\n    value = tl.load(Input + offset * STRIDE, valid, other=0)\n    tl.store(Out + offset, -value, valid)"
+    },
+    "_witness_masked_softmax": {
+      "template": "implementation_witness_kernels.py",
+      "parameters": [
+        "X",
+        "Mask",
+        "Out",
+        "R",
+        "L2",
+        "XS1",
+        "XS2",
+        "XSR",
+        "MS1",
+        "MS2",
+        "MSR",
+        "OS1",
+        "OS2",
+        "OSR",
+        "B"
+      ],
+      "source": "@triton.jit\ndef _witness_masked_softmax(X, Mask, Out, R: tl.constexpr, L2: tl.constexpr, XS1: tl.constexpr, XS2: tl.constexpr, XSR: tl.constexpr, MS1: tl.constexpr, MS2: tl.constexpr, MSR: tl.constexpr, OS1: tl.constexpr, OS2: tl.constexpr, OSR: tl.constexpr, B: tl.constexpr):\n    line = tl.program_id(0)\n    a = line // L2\n    b = line % L2\n    r = tl.arange(0, B)\n    value = tl.load(X + a * XS1 + b * XS2 + r * XSR, r < R, other=0).to(tl.float32)\n    keep = tl.load(Mask + a * MS1 + b * MS2 + r * MSR, r < R, other=0)\n    masked = tl.where((r < R) & (keep != 0), value, -float('inf'))\n    e = tl.exp(masked - tl.max(masked, 0))\n    result = e / tl.sum(e, 0)\n    tl.store(Out + a * OS1 + b * OS2 + r * OSR, result, r < R)"
+    }
+  }
+}

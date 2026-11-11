@@ -1,0 +1,5 @@
+submit_id: adv-f7-dim-blind
+operators:
+  - name: Softmax
+    entry: softmax
+    path: operators/softmax/kernel.py

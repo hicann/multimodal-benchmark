@@ -1,0 +1,9 @@
+# 被测编译器依赖（L1 层）——仅装在昇腾执行机的独立 venv 中。
+#
+# 安装方式见 env/setup-venv.sh，不要装进评测工具链所在的环境。
+# 版本说明：锁定 3.2.1 + torch_npu 2.7.1.post4 + CANN 9.0.0 这一已实测配套组合。
+# 不追新——升级到 3.2.2 / CANN 9.1.0 属 P1 事项。
+
+--extra-index-url https://mirrors.huaweicloud.com/ascend/repos/pypi
+
+triton-ascend==3.2.1

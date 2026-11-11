@@ -1,0 +1,38 @@
+# 提交包清单（triton-ascend-ops 官方教程算子 → 本评测接口映射）
+# 来源与适配差异见 docs/ascend-ops-npu-validation.md。
+# 真机运行只跑这 11 个（不进 v0.5 的 25 个）。
+submit_id: triton-ascend-ops-adapted-v1
+operators:
+  - name: VectorAdd
+    entry: vector_add
+    path: operators/vector_add/kernel.py
+  - name: VectorCmp
+    entry: vector_cmp
+    path: operators/vector_cmp/kernel.py
+  - name: DiscreteMemoryAccess
+    entry: discrete_pick
+    path: operators/discrete_memory_access/kernel.py
+  - name: InsertSlice
+    entry: token_rearrange
+    path: operators/insert_slice/kernel.py
+  - name: ExtractSlice
+    entry: token_reverse
+    path: operators/extract_slice/kernel.py
+  - name: AssignReqToTokenPool
+    entry: assign_req_to_token_pool
+    path: operators/assign_req_to_token_pool/kernel.py
+  - name: DecodeGroupedAttention
+    entry: decode_grouped_attention
+    path: operators/decode_grouped_attention/kernel.py
+  - name: CausalConv1d
+    entry: causal_conv1d_update
+    path: operators/causal_conv1d/kernel.py
+  - name: GatherScatter
+    entry: gather_scatter
+    path: operators/gather_scatter/kernel.py
+  - name: BinnedGatherScatter
+    entry: binned_gather_scatter
+    path: operators/binned_gather_scatter/kernel.py
+  - name: PaddedGatherScatter
+    entry: padded_gather_scatter
+    path: operators/padded_gather_scatter/kernel.py

@@ -1,0 +1,125 @@
+# 容差表 —— 按目标 dtype 分级。
+#
+# 规则：
+#   1. 整型必须精确相等（rel=0, abs=0），任何偏差都判 WRONG_RESULT
+#   2. 浮点按有效位分级；低精度（fp16 / bf16）放宽容差
+#   3. 参考实现统一以 reference_dtype 精度计算，再 cast 回目标 dtype 比对
+#   4. 禁止单个 case 覆盖本表（见 models.CaseSpec 的 extra="forbid"）
+#   5. 算子级覆盖见下方 operator_overrides——仅当参考实现**自身**的偏差
+#      超过默认档时登记，每条必须附归因证据
+#
+# 说明：原技术报告 §6.1.1 只给出 rel=2.0e-2 / abs=1.0e-4 一组数，
+# 对 fp32 过松（会放过静默错误）、对整型完全不适用，故改为分级表。
+#
+# 版本记录：
+#   1.1（2026-10-11）：bf16 rel 5e-3 → 7.8e-3（容纳 1 ULP，见下）；
+#        新增 operator_overrides（gelu / grouped_matmul 的 f32 abs 放宽，
+#        昇腾上参考自身的偏差超过 f32 默认档——归因证据见 C2）。
+#   1.2（2026-10-13）：新增四条 f32 覆盖（transpose_linear /
+#        rms_norm_linear / grouped_matmul_swiglu / unsorted_segment_sum）。
+#        与 1.1 的 gelu/grouped_matmul 条目同属「实测归因后登记」，但
+#        归因类不同：不再是参考自身偏差，而是**跨实现求和顺序噪声**——
+#        dot 归因探针（记录 6844…-manual-1013-234810）实测 f32 分块
+#        tl.dot 与 torch matmul 在 K≤1024 逐位一致、K=2048 分歧
+#        3.1e-4 / K=65536 分歧 2.1e-3，且与分块大小无关（BK=32/128
+#        逐位相同）——实现侧无抓手，任何合法写法都跨不过默认档。
+#        证据与判据讨论见 spec-conflicts C2 与 robustness-findings。
+
+version: "1.2"
+
+# 参考实现的计算精度。
+#
+# 实测更正：昇腾**不支持** float64。执行
+#     torch.zeros(4, dtype=torch.float64, device="npu:0")
+# 会返回成功，但运行时会打印
+#     Warning: Device do not support double dtype now, dtype cast replace with float
+# 即被静默降级为 float32。因此参考精度只能取 float32，
+# 不能拿 float64 当高精度锚点（那会得到一个假的锚点）。
+reference_dtype: float32
+
+default:
+  # ---- 浮点 ----
+  # float32 取 rel=1e-4 而非 1e-5：实测 layer_norm 的主 oracle 与 kernel
+  # 在 float32 下相差 2.4e-5（含 sqrt 与除法的浮点重排，属正常），
+  # 用 1e-5 会把它误判为静默错误。真正的静默错误（算法错、索引错）
+  # 误差量级在 1e-1 以上，1e-4 阈值仍能捕获。
+  float64:   { rel: 1.0e-12, abs: 1.0e-14 }
+  float32:   { rel: 1.0e-4,  abs: 1.0e-5  }
+  # fp16 / bf16 的 abs 必须与**目标 dtype 自身的表示分辨率**同量级。
+  # 曾经照抄 fp32 的 abs=1e-5，等于要求低精度实现与参考**逐位相同**
+  # （fp16 在 1.0 处的 ulp 为 9.8e-4，比 1e-5 大两个数量级），
+  # 于是任何 1 ulp 的舍入差异都会被判成静默错误——那不是实现错，是判据错。
+  # 取值：fp16 abs=2.0e-3（≈2 ulp @1.0），bf16 abs=1.0e-2（≈2.5 ulp @1.0）。
+  # 真正能区分对错的是 rel（错误实现的量级在 e-1 以上），abs 只作零点附近的兜底。
+  #
+  # bf16 rel=7.8e-3（=2^-7，2026-10-11 由 5e-3 放宽）：bf16 的 1-ULP 相对
+  # 误差理论区间是 (2^-8, 2^-7]，5e-3 落在区间内会冤枉 binade 下半段的
+  # 合法舍入（实测：swi_glu-bf16-M40 参考量级 ~336 处 1 ULP=2.0，
+  # rel 5.95e-3，被 5e-3 错杀）。fp16 的 1e-3 已容纳 1 ULP，无需放宽。
+  float16:   { rel: 1.0e-3,  abs: 2.0e-3  }
+  bfloat16:  { rel: 7.8e-3,  abs: 1.0e-2  }
+
+  # ---- 整型与布尔：必须精确相等 ----
+  int8:      { rel: 0.0, abs: 0.0 }
+  int16:     { rel: 0.0, abs: 0.0 }
+  int32:     { rel: 0.0, abs: 0.0 }
+  int64:     { rel: 0.0, abs: 0.0 }
+  uint8:     { rel: 0.0, abs: 0.0 }
+  bool:      { rel: 0.0, abs: 0.0 }
+
+# 算子级覆盖：仅当**实测归因**证实默认档紧于该平台上可达到的一致性时
+# 登记。两类归因（每条必须附证据，记录于 docs/spec-conflicts.md C2
+# 与 docs/robustness-findings.md）：
+#   A. 参考实现自身偏差（torch 在昇腾上的输出 vs 更高精度真值）；
+#   B. 跨实现求和顺序噪声（任何合法实现与参考的求和序不同，长 K / 大
+#      规模归约下超过默认档；实测证明实现侧无抓手方可登记）。
+# 没有证据的算子不许登记——这张表放的是「平台可达到的一致性边界」，
+# 不是给实现开后门。case 级覆盖依然禁止。
+operator_overrides:
+  gelu:
+    # 证据（2026-10-11 归因）：昇腾 NPU 上 torch 的 f32 gelu 以默认模式
+    # （approximate='none'，语义要求 erf 精确式）调用时，实际返回
+    # tanh 近似精度的结果——与 erf 精确式的差至 4.73e-4，且与
+    # |tanh_gelu − erf_gelu| 在各用例输入上的最大差逐位吻合
+    # （gelu-f32-S120: 4.589e-4；M48: 4.732e-4 ≈ 实测 4.735e-4）。
+    # 更精确的 erf 实现反被判错（ADV-C1 冤案）。abs 放宽到 1e-3：
+    # 精确式与近似式两种合法写法都过；真错的实现误差在 1e-1 以上，
+    # 不会被放过。approximate='tanh' 的用例双方同为 tanh，不受影响。
+    float32:  { rel: 1.0e-4, abs: 1.0e-3 }
+  grouped_matmul:
+    # 证据（2026-10-11 归因，A 类）：extreme 输入（|x| 至 ~84）× K=128 的 f32
+    # 累加，参考自身与 f64 真值的偏差即达 max_abs 6.0e-4 / max_rel
+    # 1.6e-3（本地复现实测，grouped_matmul-f32-M18 冤案）——默认档
+    # abs=1e-5 比参考自身的累加噪声还紧两个数量级。abs 放宽到 1e-3
+    # 只覆盖参考自身噪声，真错（如组错行、漏 bias）误差在 1e-1 以上。
+    float32:  { rel: 1.0e-4, abs: 1.0e-3 }
+  # ---- 以下四条为 B 类（跨实现求和顺序噪声），2026-10-13 登记 ----
+  # 归因探针：corpus/v0.5-cov20-frozen/probes/dot_precision.py，数据见
+  # 验证记录 6844…-manual-1013-234810（K≤1024 与 torch 逐位一致；
+  # K=2048 abs 1.8e-4；K=65536 abs 4.7e-3；BK 无关 → 无实现侧抓手）。
+  transpose_linear:
+    # 证据：transpose_linear-f32-X48 [2048,2048]（K=2048）实测
+    # max_abs 2.6e-4（近零输出被抵消放大，rel 至 0.21）——探针同形状
+    # 单段 GEMM 噪声 1.8e-4 同量级。abs 1e-3 与 grouped_matmul 同档
+    # （同一噪声类、同一 K 量级）；真错（转置错位）误差在 1e-1 以上。
+    float32:  { rel: 1.0e-4, abs: 1.0e-3 }
+  rms_norm_linear:
+    # 证据：rms_norm_linear-f32-X56 [64,65536]（K=65536）实测
+    # max_abs 5.9e-3 / max_rel 2.1e-3——与探针 K=65536 的 4.7e-3
+    # 同量级。abs 1e-2 覆盖实测值（1.7× 余量，同 C2 既有条目的
+    # 边际标准）；半精度用例不受此条影响（已按段语义舍回、默认档通过）。
+    float32:  { rel: 1.0e-4, abs: 1.0e-2 }
+  grouped_matmul_swiglu:
+    # 证据：grouped_matmul_swiglu-f32-X48 [2048,2048] 实测 max_abs
+    # 2.4e-2 / max_rel 2.0e-2——两段 GEMM 经 silu(a)·b 级联放大单段
+    # 顺序噪声（单段 ~1.8e-4 量级 × 第二段 |b|~45 的乘性放大，机制
+    # 可算）。abs 5e-2 覆盖实测（2× 余量）。已知代价：该覆盖同时适用
+    # 于本算子全部 f32 用例（覆盖按算子+dtype 粒度）——小 K 用例的判别
+    # 力随之放宽，属登记时已知的取舍，披露见覆盖度报告。
+    float32:  { rel: 1.0e-4, abs: 5.0e-2 }
+  unsorted_segment_sum:
+    # 证据：unsorted_segment_sum-f32-X92 [262144,16]（每段 ~4096 元素
+    # 的 f32 归约）实测 max_abs 2.7e-4——本地按内核求和序复刻模拟得
+    # 2.4e-4 同量级（顺序噪声，近零段和被抵消放大）。abs 1e-3
+    # 覆盖实测（3.6× 余量）；整数用例不受影响（精确相等不受覆盖放宽）。
+    float32:  { rel: 1.0e-4, abs: 1.0e-3 }

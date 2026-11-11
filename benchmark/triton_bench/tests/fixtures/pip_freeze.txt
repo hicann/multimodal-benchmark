@@ -1,0 +1,153 @@
+absl-py==2.4.0
+altgraph==0.17.5
+annotated-types==0.7.0
+asc_op_compile_base @ file:///home/developer/selfgz901012112/lib/asc_op_compile_base-0.1.0-py3-none-any.whl#sha256=517ccd0b9f3520d779c0e9cc26f1fabe7e1b8dde94462276d12f96cb99da10df
+asc_opc_tool @ file:///home/developer/selfgz901012112/lib/asc_opc_tool-0.1.0-py3-none-any.whl#sha256=57b77b7d08ab58a1e30aee894385e023979cce7ad6fd5d978f7d3b9f5c10042b
+asttokens==3.0.1
+attrs==24.2.0
+auto_tune @ file:///home/developer/selfgz2499316538/share/info/tbe-tik/python/auto_tune-0.1.0-py3-none-any.whl#sha256=4e59a38533079cb5146253d449fa047256ff1a9630d134636214b235395ee8a0
+build==1.5.0
+cannsim @ file:///home/developer/Ascend/cann-9.0.0/tools/simulator/bin/cannsim-0.1.0-py3-none-any.whl#sha256=7a2ef816d95f8d51445815f627ee4e952d05c565331930efde4c314359b00614
+certifi==2026.5.20
+cffi==2.0.0
+cfgv==3.5.0
+chardet==7.4.3
+charset-normalizer==3.4.7
+cloudpickle==3.1.2
+comm==0.2.3
+contourpy==1.3.3
+coverage==7.14.1
+cycler==0.12.1
+dataflow @ file:///home/developer/selfgz383217318/ge-compiler/lib64/dataflow-0.0.1-py3-none-any.whl#sha256=6000cf1c2502c9795f89fc3583f02d28c4d06bd8ef1e26f9cc8af19836ae3ffc
+debugpy==1.8.20
+decorator==5.1.1
+Deprecated==1.3.1
+diff_cover==10.2.1
+distlib==0.4.0
+es_cv @ file:///home/developer/selfgz8184931329/ops_cv/es_packages/whl/es_cv-1.0.0-py3-none-any.whl#sha256=c26fb25ed5b561a29625d8658ae4c4c2a687051e0014bd2bb6a6d23d76f9a50f
+es_math @ file:///home/developer/selfgz6893730839/ops_math/es_packages/whl/es_math-1.0.0-py3-none-any.whl#sha256=2a8e0c27c99efe231d1b1287f400e43fbc4dfb3db8e96c85ecbc7e3ad35135cb
+es_nn @ file:///home/developer/selfgz7185427632/ops_nn/es_packages/whl/es_nn-1.0.0-py3-none-any.whl#sha256=7b83060de1a3d4d978794af0bc439113b4c197fa235d54c12c0f7b82118547de
+et_xmlfile==2.0.0
+execnet==2.1.2
+executing==2.2.1
+expecttest==0.3.0
+filelock==3.29.0
+fonttools==4.63.0
+fsspec==2026.4.0
+ge-py @ file:///home/developer/selfgz383217318/ge-compiler/lib64/ge_py-0.0.1-py3-none-any.whl#sha256=fadda78914911deb0809becc9b2835a3d1aa7f65d59f9a6630a67484c6bd3d97
+gnureadline==8.3.3
+googleapis-common-protos==1.75.0
+grpcio==1.80.0
+hccl @ file:///home/developer/selfgz4229020203/hcomm/lib64/hccl-0.1.0-py3-none-any.whl#sha256=1fa754ede512b7fb41ba9fcf39680a23b546126b17d28c1bd2e029a5ebe1133d
+identify==2.6.19
+idna==3.16
+importlib_metadata==8.6.1
+iniconfig==2.3.0
+ipykernel==7.2.0
+ipython==9.13.0
+ipython_pygments_lexers==1.1.1
+jedi==0.20.0
+Jinja2==3.1.6
+jupyter_client==8.8.0
+jupyter_core==5.9.1
+kiwisolver==1.5.0
+llm_datadist @ file:///home/developer/selfgz6157127998/hixl/lib/llm_datadist-0.0.1-py3-none-any.whl#sha256=6d71ee559abb83e7267eda5310f37c6a0a7808fa24c0dd4fa2576013691a9a32
+llm_datadist_v1 @ file:///home/developer/selfgz383217318/ge-compiler/lib64/llm_datadist_v1-0.0.1-py3-none-any.whl#sha256=a789bc360f04d2b8a0e1cd97bf76b4eabda21d80bf4228ae82c3f60fcfbf1c32
+loguru==0.7.3
+lxml==6.1.1
+MarkupSafe==3.0.3
+matplotlib==3.10.9
+matplotlib-inline==0.2.2
+mindstudio-kl @ file:///home/developer/Ascend/cann-9.0.0/mindstudio-operator-tools/mindstudio_kl-26.0.0-py3-none-any.whl#sha256=d5ade61457c143c898d2e25fb294dd77f5195c7a4a77db1c506a6391027c4e11
+mindstudio-kpp @ file:///home/developer/Ascend/cann-9.0.0/mindstudio-operator-tools/mindstudio_kpp-0.0.0.dev0-py3-none-manylinux_2_17_aarch64.whl#sha256=064178fe047290939d5be7a40801024ea01fa03929a4c6810d81a466e8283800
+mindstudio-opgen @ file:///home/developer/Ascend/cann-9.0.0/mindstudio-operator-tools/mindstudio_opgen-26.0.0-py3-none-any.whl#sha256=bdfb62e63cea6e0835773b37d050d343deb043310e024c2451bee4c7fb1141c3
+mindstudio-opst @ file:///home/developer/Ascend/cann-9.0.0/mindstudio-operator-tools/mindstudio_opst-26.0.0-py3-none-any.whl#sha256=339849f80e9e287750351463bb9df0cb5f2bc6865990144da29cd71f9c56dc1a
+ml_dtypes==0.5.4
+mpmath==1.3.0
+ms_service_profiler @ file:///home/developer/selfgz371489938/ms_service_profiler-26.0.0-py3-none-linux_aarch64.whl#sha256=59d4ab2803725621720e8b15a714b632c765221dd2b96bcc163a60f490618ef7
+msguard==0.0.8
+msobjdump @ file:///home/developer/Ascend/cann/tools/msobjdump-0.1.0-py3-none-any.whl#sha256=3df377b40c91de98c56778ecdd0f6ed64434ed7c7c0c8c1b9a8e72fca523a91a
+mspti @ file:///home/developer/Ascend/cann-9.0.0/tools/mspti/python/mspti-26.0.0-py3-none-any.whl#sha256=04a20c4431043f641a5c4677f5712a3e98f4c7e30dbc98033bb7ef750de622a4
+narwhals==2.21.2
+nest-asyncio==1.6.0
+networkx==3.6.1
+nodeenv==1.10.0
+npu_ops_transformer @ file:///home/developer/selfgz8555930744/python/site-packages/npu_ops_transformer-1.0.0-py3-none-any.whl#sha256=f893a3c60ae2dcb8063a1e419e8d6ebc32cb4b1797e2b0dc2f6a4d5062b72fbf
+numpy==1.26.4
+op_compile_tool @ file:///home/developer/selfgz2499316538/share/info/tbe-tik/python/op_compile_tool-0.1.0-py3-none-any.whl#sha256=1e04ba863fb8504d44209d61894a6014d154ea5538bf2223b63d1ef5a3155179
+opc_tool @ file:///home/developer/selfgz2499316538/share/info/tbe-tik/python/opc_tool-0.1.0-py3-none-any.whl#sha256=25d188580a3b8b7465c218cf6c36643e258f8f8e517c100791e5eefaf37ed071
+openpyxl==3.1.5
+opentelemetry-api==1.33.1
+opentelemetry-exporter-otlp-proto-common==1.33.1
+opentelemetry-exporter-otlp-proto-grpc==1.33.1
+opentelemetry-exporter-otlp-proto-http==1.33.1
+opentelemetry-proto==1.33.1
+opentelemetry-sdk==1.33.1
+opentelemetry-semantic-conventions==0.54b1
+packaging==26.2
+pandas==2.2.3
+parso==0.8.7
+patchelf==0.18.0.0
+pathlib2==2.3.7.post1
+pathspec==1.1.1
+pexpect==4.9.0
+pillow==12.2.0
+platformdirs==4.9.6
+plotly==6.7.0
+pluggy==1.6.0
+pre_commit==4.6.0
+prompt_toolkit==3.0.52
+protobuf==5.29.6
+psutil==6.0.0
+ptyprocess==0.7.0
+pure_eval==0.2.3
+py==1.11.0
+pyasc==0.2.0
+pybind11==3.0.4
+pycparser==3.0
+pydantic==2.13.4
+pydantic_core==2.46.4
+Pygments==2.20.0
+pyinstaller==6.20.0
+pyinstaller-hooks-contrib==2026.5
+pyparsing==3.3.2
+pyproject_hooks==1.2.0
+pytest==8.3.2
+pytest-forked==1.6.0
+pytest-xdist==3.6.1
+python-dateutil==2.9.0.post0
+python-discovery==1.3.1
+pytz==2026.2
+PyYAML==6.0.3
+pyzmq==27.1.0
+redis==7.4.0
+requests==2.34.2
+ruff==0.15.14
+schedule_search @ file:///home/developer/selfgz2499316538/share/info/tbe-tik/python/schedule_search-0.1.0-py3-none-any.whl#sha256=f2308a9d2a74728d607d4b70580084f89415878753769847a2b961c4c779792b
+scikit_build_core==0.12.2
+scipy==1.13.1
+setproctitle==1.3.7
+show_kernel_debug_data @ file:///home/developer/Ascend/cann/tools/show_kernel_debug_data-0.1.0-py3-none-any.whl#sha256=d02e52819cf54362289ce7d5b85ba1928d4d9ab09ee0ecef52cff102cc4a89e9
+six==1.17.0
+stack-data==0.6.3
+superkernel @ file:///home/developer/selfgz2252726211/graph_autofusion/lib/superkernel-0.1.0-py3-none-any.whl#sha256=83b58414aa5e2f602da29df313e2013c3b540a29b7b4bbd548a357f777bd4422
+sympy==1.14.0
+te @ file:///home/developer/selfgz2499316538/share/info/tbe-tik/python/te-0.4.0-py3-none-any.whl#sha256=590881a775336f8b0d101856ac7ac467ab5e00ea1c672234860f942076dce188
+torch==2.7.1+cpu
+torch_npu @ file:///tmp/torch_npu-2.7.1.post4-cp311-cp311-manylinux_2_28_aarch64.whl#sha256=8520a8214966e1af1205a1d5717a8ae53e6bde28731228c8562396d4947bd2d6
+torchaudio==2.11.0+cpu
+torchvision==0.22.1
+tornado==6.5.5
+traitlets==5.15.0
+triton==3.5.0
+-e git+https://gitcode.com/hkhkhkzxk/triton-eval.git@14af1d359eaf352b18aa7b82660471b966086faa#egg=triton_eval
+triton_ascend==3.2.1
+typing-inspection==0.4.2
+typing_extensions==4.15.0
+tzdata==2026.2
+urllib3==2.7.0
+virtualenv==21.3.3
+wcwidth==0.7.0
+wrapt==2.2.1
+yapf==0.43.0
+zipp==4.1.0

@@ -1,0 +1,6 @@
+# 反例 SUB-STR-007：自行搜索启动配置（autotune）。
+submit_id: invalid-demo
+operators:
+  - name: Exp
+    entry: exp
+    path: operators/exp/kernel.py

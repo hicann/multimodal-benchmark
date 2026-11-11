@@ -1,0 +1,5 @@
+submit_id: cheating-001
+operators:
+  - name: Softmax
+    entry: softmax
+    path: operators/softmax/kernel.py

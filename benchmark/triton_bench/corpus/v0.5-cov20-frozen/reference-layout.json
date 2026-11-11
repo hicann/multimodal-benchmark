@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "files": {
+    "operators/arg_max/ref.py": {
+      "source": "legacy/arg_max/ref_449aeaadec64.py",
+      "sha256": "449aeaadec64d7ba85eabedbc5fd4b2ec047a3abf15b523b9e847d69e835f24f"
+    },
+    "operators/cross_entropy_loss/ref.py": {
+      "source": "legacy/cross_entropy_loss/ref_221ee9fa9d3c.py",
+      "sha256": "221ee9fa9d3c259975d960081c5ed8f95c86968334050b572de36fbb6b827cf5"
+    },
+    "operators/cummin/ref.py": {
+      "source": "legacy/cummin/ref_9494b61a0583.py",
+      "sha256": "1951b0b7612c81fe1da8c1a3f4e76247cb3c85963e70f4b869ec139e1dbdec75"
+    },
+    "operators/exp/ref.py": {
+      "source": "legacy/exp/ref_b212c25f21ba.py",
+      "sha256": "b212c25f21bad0e3f162ef25c9a75ceaac23db36ce09de042313fe3a2b61483e"
+    },
+    "operators/gather/ref.py": {
+      "source": "legacy/gather/ref_62f7210986e7.py",
+      "sha256": "62f7210986e7cc3ddd80d57a5b447b5d58886adaafbc9a8ae25ccf3723f3b8b3"
+    },
+    "operators/gelu/ref.py": {
+      "source": "legacy/gelu/ref_86f032c48905.py",
+      "sha256": "86f032c489053a01582b5525f17d65c69c40d167551742f9cea5a5994be43c43"
+    },
+    "operators/grouped_matmul/ref.py": {
+      "source": "legacy/grouped_matmul/ref_60bbbf2cf38a.py",
+      "sha256": "60bbbf2cf38a1971bcccd88eb6e8aae630c65cc2d0a40f82ea99ac2baf0871d1"
+    },
+    "operators/masked_scale/ref.py": {
+      "source": "legacy/masked_scale/ref_0f9162d4635e.py",
+      "sha256": "0f9162d4635e8d6978d155a83c4a33fe1605956045763ed026fa54114505d533"
+    },
+    "operators/maximum/ref.py": {
+      "source": "legacy/maximum/ref_b429ea05466a.py",
+      "sha256": "eff7653499f93236b7878c1fdb5a578fad2701a810e5bf94f118d23fd2ba8a3b"
+    },
+    "operators/rms_norm/ref.py": {
+      "source": "legacy/rms_norm/ref_e6d3b14b8920.py",
+      "sha256": "e6d3b14b8920590df926209f1da2c1ead4663a3c9e19ca98746c209ad1133b2b"
+    },
+    "operators/scatter/ref.py": {
+      "source": "legacy/scatter/ref_653d6c4e58ec.py",
+      "sha256": "653d6c4e58ec3050457473a6c75d63ee7831093cb6ccd22bb1a382a4bf96b6d1"
+    },
+    "operators/softmax/ref.py": {
+      "source": "legacy/softmax/ref_596badafe243.py",
+      "sha256": "596badafe2432a9355b1d3e25e358e2ae4dd0f0378ddb87f90150ee8abb9565e"
+    },
+    "operators/swi_glu/ref.py": {
+      "source": "legacy/swi_glu/ref_7a59cb9bf5f2.py",
+      "sha256": "7a59cb9bf5f2d1584c6ceb33b9a256a5cbe64a4f3553a8d98d8261558840f12b"
+    },
+    "operators/transpose/ref.py": {
+      "source": "legacy/transpose/ref_244cb81a0366.py",
+      "sha256": "244cb81a03666ce23c3961425cfc91c10e5a66da4c9c77ff66e19fcc268e277c"
+    }
+  }
+}

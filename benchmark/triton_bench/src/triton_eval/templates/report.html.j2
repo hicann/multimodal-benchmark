@@ -1,0 +1,143 @@
+<!-- Copyright (c) 2025-2026 Huawei Technologies Co., Ltd. CANN Open Software License Agreement Version 2.0 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Triton 编译器评测报告 — run {{ run.id }}</title>
+<style>
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+         max-width: 960px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+  h1 { border-bottom: 2px solid #333; padding-bottom: .4rem; }
+  h2 { margin-top: 2rem; border-bottom: 1px solid #ddd; padding-bottom: .3rem; }
+  table { border-collapse: collapse; width: 100%; margin: .8rem 0; }
+  th, td { border: 1px solid #ddd; padding: .45rem .6rem; text-align: left; }
+  th { background: #f5f5f5; }
+  code { background: #f3f3f3; padding: .1rem .3rem; border-radius: 3px; }
+  .warn { background: #fff4e5; border-left: 4px solid #e8a33d; padding: .6rem .9rem; margin: .8rem 0; }
+  .danger { background: #fdecea; border-left: 4px solid #d93025; padding: .6rem .9rem; margin: .8rem 0; }
+  .invalid { background: #d93025; color: #fff; padding: .6rem .9rem; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<h1>Triton 编译器评测报告</h1>
+
+{% if run.status == 'INVALID' %}
+<div class="invalid">
+  <strong>本运行被判定为无效（INVALID）</strong> — 原因：{{ run.invalid_reason or '未记录' }}。该运行不产出可用分数。
+</div>
+{% endif %}
+
+<h2>1. 元信息</h2>
+<table>
+  <tr><th>运行编号</th><td>{{ run.id }}</td></tr>
+  <tr><th>档位</th><td>{{ run.profile }}</td></tr>
+  <tr><th>开始 / 结束</th><td>{{ run.started_at }} / {{ run.finished_at or '（未完成）' }}</td></tr>
+  <tr><th>状态</th><td>{{ run.status }}</td></tr>
+  <tr><th>规范 / 测试集 / 评分器版本</th><td>{{ spec_version }} / {{ corpus_version }} / {{ scorer_version }}</td></tr>
+</table>
+
+<h2>2. 环境声明</h2>
+<table>
+  <tr><th>环境指纹 env_fp</th><td><code>{{ env_fp }}</code></td></tr>
+  <tr><th>架构</th><td>{{ env.arch }}</td></tr>
+  <tr><th>操作系统 / 内核</th><td>{{ env.os }} / {{ env.kernel }}</td></tr>
+  <tr><th>NPU 型号</th><td>{{ env.npu_model }}（可见 {{ env.npu_count }} 张）</td></tr>
+  <tr><th>锁定设备</th><td>{{ env.ascend_visible_devices }}</td></tr>
+  <tr><th>驱动 / npu-smi</th><td>{{ env.driver_version }}</td></tr>
+  <tr><th>CANN</th><td>{{ env.cann_version }}</td></tr>
+  <tr><th>Python</th><td>{{ env.python_version }}</td></tr>
+  <tr><th>torch / torch_npu</th><td>{{ env.torch_version }} / {{ env.torch_npu_version }}</td></tr>
+  <tr><th>环境健康</th><td>{{ env.env_health }}{% if env.env_health_notes %} — {{ env.env_health_notes }}{% endif %}</td></tr>
+  <tr><th>时钟锁定</th><td>{{ '是' if env.clock_locked else '否' }}</td></tr>
+</table>
+{% if not env.clock_locked %}
+<div class="warn">本轮运行环境未锁定时钟频率，以下全部性能数据标注为 <strong>UNVERIFIED</strong>，不得用于排名。</div>
+{% endif %}
+
+<h2>3. 被测对象</h2>
+<table>
+  <tr><th>编译器</th><td>{{ submission.name }} {{ submission.version }}{% if submission.git_commit %} ({{ submission.git_commit }}){% endif %}</td></tr>
+  <tr><th>安装方式</th><td>{{ submission.install_mode }}</td></tr>
+  <tr><th>triton 实测导入版本</th><td>{{ env.triton_import_version }}（实测值，非 pip 元数据）</td></tr>
+</table>
+
+<h2>3b. 被测提交</h2>
+<table>
+  <tr><th>提交标识</th><td>{{ submission_record.submit_id if submission_record else '（未记录）' }}</td></tr>
+  <tr><th>提交目录</th><td>{{ submission_record.root_path if submission_record else '（未记录）' }}</td></tr>
+  <tr><th>内容指纹</th><td>{{ submission_record.snapshot_fp if submission_record else '（未记录）' }}</td></tr>
+  <tr><th>实际被评测的算子</th><td>{{ coverage.covered_count }} / {{ coverage.total_operators }}</td></tr>
+  <tr><th>合规校验</th><td>{{ ('通过' if submission_record.validation_ok else '未通过') if submission_record else '（未记录）' }}</td></tr>
+</table>
+{% if coverage.covered_count < coverage.total_operators %}
+<p><strong>本轮未覆盖全部算子。</strong> OpScore 的分母只含「提交了实现」的算子，
+得分高不代表覆盖了全部 {{ coverage.total_operators }} 个算子。</p>
+{% endif %}
+
+<h2>4. 功能完备性结果</h2>
+<table>
+  <tr><th>主得分 OpScore</th><td>{{ '%.2f'|format(score.coverage_ops_core) if score else '（无分数）' }}</td></tr>
+  <tr><th>严格通过率 OpStrictPass</th><td>{{ '%.2f'|format(score.coverage_strict) if score else '（无分数）' }}</td></tr>
+  <tr><th>静默错误数</th><td>{{ score.severe_count if score else '—' }}</td></tr>
+  <tr><th>用例总数</th><td>{{ counts.total }}</td></tr>
+</table>
+
+<h2>5. 综合性能结果</h2>
+{% if unverified_perf %}<div class="warn">本节数据标注为 <strong>UNVERIFIED</strong>。</div>{% endif %}
+<table>
+  <tr><th>P_geo</th><td>{{ ('%.4f'|format(score.perf_geo)) if score and score.perf_geo else '—' }}（仅统计判对用例）</td></tr>
+  <tr><th>性能得分（按算子加权）</th><td>{{ ('%.2f'|format(score.perf_score)) if score and score.perf_score is not none else '—' }}</td></tr>
+  <tr><th>fast_1.0 / 1.2 / 2.0</th><td>{{ ('%.2f'|format(score.fast_1)) if score and score.fast_1 is not none else '—' }} / {{ ('%.2f'|format(score.fast_1_2)) if score and score.fast_1_2 is not none else '—' }} / {{ ('%.2f'|format(score.fast_2)) if score and score.fast_2 is not none else '—' }}</td></tr>
+</table>
+
+{% if score and op_perf %}
+<p><strong>按算子性能分</strong>（某算子本轮全部用例判对才出分；轮级得分 = 有分算子的加权平均，
+未出分的算子不进分母——高得分不代表全部算子都有性能分）：</p>
+<table>
+  <tr><th>算子</th><th>性能分</th><th>备注</th></tr>
+  {% for op, v in op_perf.items() %}
+  <tr><td>{{ op }}</td><td>{{ '%.2f'|format(v.score) if v.score is not none else '—' }}</td><td>{{ v.reason }}</td></tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+{% if score %}
+<div class="warn">性能得分相对本评测体系<strong>各算子首次全对轮次</strong>（按算子锚点）计算，
+<strong>不是跨编译器对照</strong>——昇腾平台上不存在可安装的上游 Triton，无法构造跨编译器基线。
+锚点跨题库版本不通用。</div>
+{% endif %}
+
+<h2>6. 稳定性结果</h2>
+<p>不稳定用例比例：{{ ('%.2f'|format(score.unstable_rate)) if score else '—' }}（参与性能统计 {{ counts.perf }} 个用例）</p>
+
+<h2>7. 静默错误清单（最高优先级风险）</h2>
+{% if severe_cases %}
+<div class="danger">共 {{ severe_cases|length }} 个用例编译运行均通过但结果错误。</div>
+<table>
+  <tr><th>用例</th><th>算子</th><th>最大相对误差</th><th>最大绝对误差</th></tr>
+  {% for c in severe_cases %}
+  <tr><td><code>{{ c.case_code }}</code></td><td>{{ c.operator }}</td><td>{{ c.max_rel_err }}</td><td>{{ c.max_abs_err }}</td></tr>
+  {% endfor %}
+</table>
+{% else %}
+<p>本轮未发现静默错误。</p>
+{% endif %}
+
+<h2>8. 可追溯附录</h2>
+<table>
+  <tr><th>结果真相源</th><td><code>{{ artifacts.results_jsonl }}</code></td></tr>
+  <tr><th>运行目录</th><td><code>{{ artifacts.run_dir }}</code></td></tr>
+</table>
+
+<h2>9. 结果解释边界</h2>
+<ol>
+  <li>评测结果为特定软硬件组合、特定编译器版本、特定测试集版本下的测量值，不构成对编译器整体优劣的终局判断。</li>
+  <li>不跨硬件厂商做单一总分排名。</li>
+  <li>功能分数高不代表性能好，反之亦然；两赛道分数不做隐式换算，本报告不给出合成总分。</li>
+  <li>不评测 Triton 之外的编译器；不评测 LLM 生成能力。</li>
+  <li>性能数字必须附带置信区间与波动指标；未达稳定性门禁的结果标注为「测量不稳定」，不进入榜单。</li>
+</ol>
+
+</body>
+</html>

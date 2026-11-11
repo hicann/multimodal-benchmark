@@ -1,0 +1,194 @@
+# Triton 编译器评测报告
+
+{% if run.status == 'INVALID' %}
+> **本报告对应的运行被判定为无效（INVALID）**
+> 原因：{{ run.invalid_reason or '未记录' }}
+> 该运行不产出可用分数。
+{% endif %}
+
+## 1. 元信息
+
+| 项 | 值 |
+|---|---|
+| 运行编号 | {{ run.id }} |
+| 档位 | {{ run.profile }} |
+| 开始时间 | {{ run.started_at }} |
+| 结束时间 | {{ run.finished_at or '（未完成）' }} |
+| 状态 | {{ run.status }} |
+| 规范版本 | {{ spec_version }} |
+| 测试集版本 | {{ corpus_version }} |
+| 评分器版本 | {{ scorer_version }} |
+
+## 2. 环境声明
+
+| 项 | 值 |
+|---|---|
+| 环境指纹 `env_fp` | `{{ env_fp }}` |
+| 架构 | {{ env.arch }} |
+| 操作系统 / 内核 | {{ env.os }} / {{ env.kernel }} |
+| NPU 型号 | {{ env.npu_model }}（可见 {{ env.npu_count }} 张） |
+| 锁定设备 | {{ env.ascend_visible_devices }} |
+| 驱动 / npu-smi | {{ env.driver_version }} |
+| CANN | {{ env.cann_version }}（`{{ env.cann_path }}`） |
+| Python | {{ env.python_version }} |
+| torch / torch_npu | {{ env.torch_version }} / {{ env.torch_npu_version }} |
+| 环境健康 | {{ env.env_health }}{% if env.env_health_notes %} — {{ env.env_health_notes }}{% endif %} |
+| **时钟锁定** | {{ '是' if env.clock_locked else '否' }} |
+
+{% if not env.clock_locked %}
+> **本轮运行环境未锁定时钟频率，以下全部性能数据标注为 `UNVERIFIED`，不得用于排名。**
+{% endif %}
+
+## 3. 被测对象
+
+| 项 | 值 |
+|---|---|
+| 编译器 | {{ submission.name }} |
+| 版本 | {{ submission.version }}{% if submission.git_commit %} ({{ submission.git_commit }}){% endif %} |
+| 安装方式 | {{ submission.install_mode }} |
+| triton 实测导入版本 | {{ env.triton_import_version }}（实测值，非 pip 元数据） |
+| 被测编译器环境 | `{{ env.venv_path }}`（锁定哈希 `{{ env.venv_lock_hash }}`） |
+
+## 3b. 被测提交
+
+| 项 | 值 |
+|---|---|
+| 提交标识 | {{ submission_record.submit_id if submission_record else '（未记录）' }} |
+| 提交目录 | `{{ submission_record.root_path if submission_record else '（未记录）' }}` |
+| 安装方式 | {{ submission_record.install_mode if submission_record else '（未记录）' }} |
+| 内容指纹 | `{{ submission_record.snapshot_fp if submission_record else '（未记录）' }}` |
+| 声明算子数 | {{ coverage.declared_count if submission_record else '（未记录）' }} |
+| **实际被评测的算子** | {{ coverage.covered_count }} / {{ coverage.total_operators }} |
+
+{% if coverage.covered_count < coverage.total_operators %}
+> **本轮未覆盖全部算子。** OpScore 的分母只含「提交了实现」的算子，
+> 因此得分高**不代表**覆盖了 {{ coverage.total_operators }} 个算子中的全部。
+> 未覆盖：{% if coverage.missing %}{{ coverage.missing | join(', ') }}{% else %}（声明外全部）{% endif %}
+{% endif %}
+
+{% if submission_record and not submission_record.validation_ok %}
+> **本提交未通过合规校验**，校验结论见下节。
+{% endif %}
+
+{% if submission_record %}
+**合规校验结论**：{{ '通过' if submission_record.validation_ok else '未通过' }}
+{% endif %}
+
+## 4. 功能完备性结果
+
+| 指标 | 值 |
+|---|---|
+| **主得分 OpScore（加权变体通过率）** | {{ '%.2f'|format(score.coverage_ops_core) if score else '（无分数）' }} |
+| 严格通过率 OpStrictPass | {{ '%.2f'|format(score.coverage_strict) if score else '（无分数）' }} |
+| 静默错误数 | {{ score.severe_count if score else '—' }} |
+| 用例总数 | {{ counts.total }} |
+{% for status, n in counts.by_status.items() %}
+| {{ status }} | {{ n }} |
+{% endfor %}
+
+{% if score and (score.coverage_ops_core - score.coverage_strict) > 15 %}
+> **提示**：主得分与严格通过率相差超过 15 个百分点，
+> 说明被测编译器存在边界敏感问题（部分变体能过、部分不能过）。
+{% endif %}
+
+## 5. 综合性能结果
+
+{% if unverified_perf %}
+> 本节数据标注为 **UNVERIFIED**（环境未锁频）。
+{% endif %}
+
+| 指标 | 值 |
+|---|---|
+| 几何平均加速比 P_geo | {{ ('%.4f'|format(score.perf_geo)) if score and score.perf_geo else '—' }}（仅统计判对用例） |
+| 性能得分（按算子加权） | {{ ('%.2f'|format(score.perf_score)) if score and score.perf_score is not none else '—' }} |
+| fast_1.0 | {{ ('%.2f'|format(score.fast_1)) if score and score.fast_1 is not none else '—' }} |
+| fast_1.2 | {{ ('%.2f'|format(score.fast_1_2)) if score and score.fast_1_2 is not none else '—' }} |
+| fast_2.0 | {{ ('%.2f'|format(score.fast_2)) if score and score.fast_2 is not none else '—' }} |
+
+{% if score and op_perf %}
+**按算子性能分**（某算子本轮全部用例判对才出分，判错用例的加速比不进统计）：
+
+| 算子 | 性能分 | 备注 |
+|---|---|---|
+{% for op, v in op_perf.items() %}
+| {{ op }} | {{ '%.2f'|format(v.score) if v.score is not none else '—' }} | {{ v.reason }} |
+{% endfor %}
+
+轮级性能得分 = 上表**有分算子**的加权平均，未出分的算子不进分母——
+高得分不代表全部算子都有性能分，未出分原因见备注列。
+{% endif %}
+
+{% if score %}
+> 性能得分相对本评测体系**各算子首次全对轮次**（按算子锚点）计算，
+> **不是跨编译器对照**——昇腾平台上不存在可安装的上游 Triton，
+> 无法构造跨编译器基线。锚点跨题库版本不通用。
+{% endif %}
+
+## 6. 稳定性结果
+
+| 指标 | 值 |
+|---|---|
+| 不稳定用例比例 | {{ ('%.2f'|format(score.unstable_rate)) if score else '—' }} |
+| 参与性能统计的用例数 | {{ counts.perf }} |
+
+## 6b. 分类分级结果
+
+{% if score and score.by_category %}
+**按算子语义族（category）**
+
+| 类别 | 通过率 |
+|---|---|
+{% for key in score.by_category.keys()|sort %}
+| {{ key }} | {{ '%.2f'|format(score.by_category[key]) if score.by_category[key] is not none else '无数据' }} |
+{% endfor %}
+
+「无数据」表示该类别没有计入分母的用例（如无人提交实现），
+与「0.00（全部失败）」含义不同，不可等同。
+{% else %}
+本轮没有可统计的类别分组。
+{% endif %}
+
+{% if score and score.by_level %}
+**按难度等级（level）**
+
+| 等级 | 通过率 |
+|---|---|
+{% for key in score.by_level.keys()|sort %}
+| {{ key }} | {{ '%.2f'|format(score.by_level[key]) if score.by_level[key] is not none else '无数据' }} |
+{% endfor %}
+{% endif %}
+
+各组之间**不做加权合成或排名**——不同类别的通过率不可直接比较。
+
+## 7. 静默错误清单（最高优先级风险）
+
+{% if severe_cases %}
+以下用例**编译通过、运行通过，但结果与参考实现不符**。这是最高优先级的风险信号：
+
+| 用例 | 算子 | 最大相对误差 | 最大绝对误差 |
+|---|---|---|---|
+{% for c in severe_cases %}
+| `{{ c.case_code }}` | {{ c.operator }} | {{ c.max_rel_err }} | {{ c.max_abs_err }} |
+{% endfor %}
+{% else %}
+本轮未发现静默错误。
+{% endif %}
+
+## 8. 可追溯附录
+
+| 产物 | 路径 |
+|---|---|
+| 结果真相源 | `{{ artifacts.results_jsonl }}` |
+| 运行目录 | `{{ artifacts.run_dir }}` |
+| 环境快照 | `{{ artifacts.env_json }}` |
+
+复现路径：数据库可从 `results.jsonl` 完整重建，
+支持在无需 NPU 的机器上重算分数与重新生成报告。
+
+## 9. 结果解释边界
+
+1. 评测结果为**特定软硬件组合、特定编译器版本、特定测试集版本下的测量值**，不构成对编译器整体优劣的终局判断。
+2. **不跨硬件厂商做单一总分排名**；榜单按 (硬件型号, 驱动/运行时版本) 分组展示。
+3. 功能分数高不代表性能好，反之亦然；两赛道分数不做隐式换算，**本报告不给出合成总分**。
+4. 不评测 Triton 之外的编译器；不评测 LLM 生成能力。
+5. 性能数字必须附带置信区间与波动指标；未达稳定性门禁的结果标注为「测量不稳定」，不进入榜单。

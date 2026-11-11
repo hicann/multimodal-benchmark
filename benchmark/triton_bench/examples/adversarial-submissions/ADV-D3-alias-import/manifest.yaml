@@ -1,0 +1,5 @@
+submit_id: adv-d3-alias-import
+operators:
+  - name: Maximum
+    entry: maximum
+    path: operators/maximum/kernel.py

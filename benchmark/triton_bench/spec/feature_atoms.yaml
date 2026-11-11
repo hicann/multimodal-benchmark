@@ -1,0 +1,370 @@
+# 语言特性原子（FA）清单 —— v1.1-fusion（覆盖引导生成 + 组合/手法扩展版）。
+#
+# 原子 = 一条可从**用例定义**（算子规格 + shape/dtype/attrs/数值范围/布局）
+# 确定性推导的语言能力要求。这条硬边界保证了三件事：
+#   1. 标签与实现无关——同一份标签适用于任何提交方、任何编译器版本；
+#   2. 标签可在冻结时计算并随指纹锁定——覆盖率的分母分子都不许漂移；
+#   3. 覆盖引导生成有明确的靶子——「缺哪个原子」能反推「补哪类参数」。
+#
+# active 与 reserved 的划分（诚实性原则）：
+#   atoms     —— 当前 25 算子（14 原语 + 11 融合）的参数空间**够得着**的原子，
+#                计入覆盖率分母；
+#   reserved  —— 实现侧能力（原子操作、控制流形态等），用例层无法定向
+#                触达，或需输入构造扩展。它们不进分母——把够不着的条目
+#                放进分母，覆盖率就成了自欺。扩算子/扩构造时逐条迁移进 atoms。
+#
+# v1.1-fusion（2026-10-13）变更：
+#   + A16 算子组合 5 条（融合原子，从组合表推导）、A17 优化手法 8 条
+#     （性能负载型原子：结构谓词推导 + 真机收益实证，不达标如实降级）；
+#   + A07 补 FA-MATH-SINCOS（RoPE 池直收）；
+#   + 预留转正 2 条：FA-ATOMIC-ADD → FA-CONCUR-ACCUM（A10）、
+#     FA-CTRL-STATIC-FOR → FA-CTRL-STATIC-UNROLL（A12）；
+#   共 active 71 / reserved 5。
+#
+# 完整清单（技术报告附录 A 的 A01–A15，约 120–160 个）随算子扩容补齐。
+
+version: "1.1-fusion"
+
+atoms:
+  # ---- A01 编程模型：grid 维度由输入 rank 决定 ----
+  - id: FA-PROG-GRID1D
+    category: A01
+    layer: L1
+    desc: 一维 grid 映射（rank-1 输入）
+  - id: FA-PROG-GRID2D
+    category: A01
+    layer: L1
+    desc: 二维 grid 映射（rank-2 输入）
+  - id: FA-PROG-GRID3D
+    category: A01
+    layer: L2
+    desc: 三维 grid 映射（rank-3 输入）
+  - id: FA-PROG-GRID4D
+    category: A01
+    layer: L2
+    desc: 四维及以上 grid 映射（rank≥4 输入）
+
+  # ---- A04 线性代数 ----
+  - id: FA-LINALG-DOT
+    category: A04
+    layer: L1
+    desc: tl.dot 矩阵乘（GroupedMatmul）
+  - id: FA-LINALG-BIAS
+    category: A04
+    layer: L1
+    desc: 带偏置的线性组合（GroupedMatmul 的 bias 输入）
+
+  # ---- A05 内存 / 指针 ----
+  - id: FA-LOAD-CONTIG
+    category: A05
+    layer: L1
+    desc: 连续访存 tl.load
+  - id: FA-LOAD-STRIDED
+    category: A05
+    layer: L2
+    desc: 非连续（跨步）输入访存——实现必须处理 stride 或显式聚合
+  - id: FA-LOAD-MASKED-EDGE
+    category: A05
+    layer: L1
+    desc: 元素总数非块对齐（非 1024 倍数），块尾必须带 mask
+  - id: FA-LOAD-ALIGNED
+    category: A05
+    layer: L1
+    desc: 元素总数块对齐（1024 倍数），可走无掩码快路径
+
+  # ---- A06 索引 ----
+  - id: FA-IDX-WHERE
+    category: A06
+    layer: L1
+    desc: tl.where 条件选择（MaskedScale 的掩码语义）
+  - id: FA-IDX-GATHER
+    category: A06
+    layer: L1
+    desc: 按索引聚集读取（Gather）
+  - id: FA-IDX-SCATTER
+    category: A06
+    layer: L2
+    desc: 按索引散射写入（Scatter）
+  - id: FA-IDX-PERMUTE
+    category: A06
+    layer: L2
+    desc: 维度置换访存（Transpose 的 perm）
+
+  # ---- A07 数学 ----
+  - id: FA-MATH-ADD
+    category: A07
+    layer: L1
+    desc: 逐元素加法
+  - id: FA-MATH-MUL
+    category: A07
+    layer: L1
+    desc: 逐元素乘法（缩放类算子）
+  - id: FA-MATH-EXP
+    category: A07
+    layer: L1
+    desc: tl.exp 指数（Exp / Softmax / CEL 的 logsumexp）
+  - id: FA-MATH-SQRT
+    category: A07
+    layer: L1
+    desc: tl.sqrt / rsqrt（RmsNorm）
+  - id: FA-MATH-GELU
+    category: A07
+    layer: L1
+    desc: GELU 非线性（含 tanh 近似变体）
+  - id: FA-MATH-SIGMOID
+    category: A07
+    layer: L1
+    desc: Sigmoid 非线性（SwiGlu 的 swish 分支）
+  - id: FA-MATH-MAXMIN
+    category: A07
+    layer: L1
+    desc: 逐元素取大/取小（Maximum）
+
+  # ---- A08 归约 ----
+  - id: FA-REDUCE-SUM
+    category: A08
+    layer: L1
+    desc: tl.sum 沿轴归约（Softmax 分母 / RmsNorm / CEL）
+  - id: FA-REDUCE-MAX
+    category: A08
+    layer: L1
+    desc: tl.max 沿轴归约（Softmax 最大值减 / ArgMax）
+  - id: FA-REDUCE-MIN
+    category: A08
+    layer: L1
+    desc: tl.min 前缀扫描（Cummin）
+  - id: FA-REDUCE-ARG
+    category: A08
+    layer: L2
+    desc: 归约并输出取值位置（ArgMax / Cummin 的 indices）
+
+  # ---- A09 归一化 ----
+  - id: FA-NORM-SOFTMAX
+    category: A09
+    layer: L1
+    desc: Softmax 归一化
+  - id: FA-NORM-RMS
+    category: A09
+    layer: L2
+    desc: RMSNorm 归一化
+
+  # ---- A13 数值稳定性 ----
+  - id: FA-STABLE-LOGSUMEXP
+    category: A13
+    layer: L2
+    desc: log-sumexp 稳定实现（CrossEntropyLoss）
+  - id: FA-STABLE-MAXSUB
+    category: A13
+    layer: L1
+    desc: 先减最大值再 exp 的稳定 softmax
+  - id: FA-NUM-ZEROS
+    category: A13
+    layer: L1
+    desc: 全零输入（退化分布下的边界行为）
+  - id: FA-NUM-MIXED
+    category: A13
+    layer: L1
+    desc: 常规与零混合输入（稀疏化边界）
+  - id: FA-NUM-EXTREME
+    category: A13
+    layer: L2
+    desc: 大幅值输入（±20σ，考验溢出与稳定减）
+
+  # ---- A14 精度 ----
+  - id: FA-DT-FP32
+    category: A14
+    layer: L1
+    desc: float32 路径
+  - id: FA-DT-FP16
+    category: A14
+    layer: L1
+    desc: float16 路径（窄尾数）
+  - id: FA-DT-BF16
+    category: A14
+    layer: L1
+    desc: bfloat16 路径（窄尾数宽指数）
+  - id: FA-DT-INT8
+    category: A14
+    layer: L1
+    desc: int8 路径
+  - id: FA-DT-UINT8
+    category: A14
+    layer: L1
+    desc: uint8 路径（无符号语义）
+  - id: FA-DT-INT16
+    category: A14
+    layer: L1
+    desc: int16 路径
+  - id: FA-DT-INT32
+    category: A14
+    layer: L1
+    desc: int32 路径
+  - id: FA-DT-INT64
+    category: A14
+    layer: L1
+    desc: int64 路径（宽索引）
+
+  # ---- A15 形态与规模 ----
+  - id: FA-SHAPE-FLAT
+    category: A15
+    layer: L1
+    desc: 一维扁平形态
+  - id: FA-SHAPE-SQUARE
+    category: A15
+    layer: L1
+    desc: 二维方阵形态
+  - id: FA-SHAPE-SKINNY
+    category: A15
+    layer: L2
+    desc: 长宽比 ≥8 的细长形态（行/列分块策略差异）
+  - id: FA-SHAPE-CUBE
+    category: A15
+    layer: L2
+    desc: 三维立体形态
+  - id: FA-LOAD-SMALL
+    category: A15
+    layer: L1
+    desc: 小负载（≤4K 元素）——启动开销主导区
+  - id: FA-LOAD-MEDIUM
+    category: A15
+    layer: L1
+    desc: 中负载（16K–256K 元素）
+  - id: FA-LOAD-LARGE
+    category: A15
+    layer: L2
+    desc: 大负载（256K–2M 元素）
+  - id: FA-LOAD-XLARGE
+    category: A15
+    layer: L3
+    desc: 超大负载（≥2M 元素）——性能赛道主战场
+
+  # ---- 属性与元数 ----
+  - id: FA-AXIS-LAST
+    category: A06
+    layer: L1
+    desc: 沿最后一维操作（最常见快路径）
+  - id: FA-AXIS-FIRST
+    category: A06
+    layer: L1
+    desc: 沿第 0 维操作（跨行扫描）
+  - id: FA-AXIS-INNER
+    category: A06
+    layer: L2
+    desc: 沿中间维操作（rank≥3 且 0<dim<rank-1）——只认末维的实现必错
+  - id: FA-ATTR-NONDEFAULT
+    category: A06
+    layer: L1
+    desc: 非默认属性组合（tanh 近似 / keepdim 等）
+  - id: FA-ATTR-LIST
+    category: A06
+    layer: L2
+    desc: 列表型属性（perm 置换 / group_list 分组）
+  - id: FA-MULTI-INPUT
+    category: A06
+    layer: L1
+    desc: 多输入算子（≥2 张量）
+  - id: FA-MULTI-OUTPUT
+    category: A06
+    layer: L2
+    desc: 多输出算子（值 + 索引）
+
+  # ---- A07 数学（2026-10-13 补：RoPE 池直收带来 sin/cos 的定向考察） ----
+  - id: FA-MATH-SINCOS
+    category: A07
+    layer: L1
+    desc: sin/cos 三角函数（旋转位置编码的角度对）
+
+  # ---- A10 原子（FA-CONCUR-ACCUM：原预留 FA-ATOMIC-ADD 转正，2026-10-13；
+  #      载体已定向——Scatter 的 reduce=add 重复索引变体 + UnsortedSegmentSum） ----
+  - id: FA-CONCUR-ACCUM
+    category: A10
+    layer: L2
+    desc: 原子加法 / 顺序无关累加（重复索引下「和」与写入顺序无关是语义要求）
+
+  # ---- A12 迭代器（FA-CTRL-STATIC-UNROLL：原预留 FA-CTRL-STATIC-FOR 转正；
+  #      语义改为「用例使静态展开可行且有收益」——group_list 长度是用例定义的一部分） ----
+  - id: FA-CTRL-STATIC-UNROLL
+    category: A12
+    layer: L1
+    desc: 小循环次数的静态展开（group_list ≤ 8 的分组矩阵乘）
+
+  # ---- A16 算子组合（扩展维度，2026-10-13）----
+  # 非技术报告附录 A01–A15 的原生类目：组合维度的考察单位是「跨段融合」，
+  # 由组合表（operator_registry.COMPOSITIONS）声明、标签纯函数推导。
+  - id: FA-FUSE-2STAGE
+    category: A16
+    layer: L2
+    desc: 两段融合（组合表声明两个语义段一次执行）
+  - id: FA-FUSE-INTERM-ELIDE
+    category: A16
+    layer: L2
+    desc: 融合省去中间结果读写（段 1 输出直接喂段 2，不落显存）
+  - id: FA-FUSE-CROSS-CATEGORY
+    category: A16
+    layer: L3
+    desc: 跨语义族融合（如收缩 × 逐元素、掩码 × 归一化）
+  - id: FA-FUSE-ELEM-INTRA
+    category: A16
+    layer: L2
+    desc: 逐元素族内融合（两段均为逐元素语义，如三角函数 × 旋转）
+  - id: FA-FUSE-RED-INTRA
+    category: A16
+    layer: L3
+    desc: 含归约/归一化段的融合（掩码/归一化喂收缩类前缀）
+
+  # ---- A17 优化手法（扩展维度，2026-10-13）----
+  # 性能负载型原子：用例谁都能算对，手法水平体现在计时上。标签由结构
+  # 谓词纯函数推导；每条原子的「收益显著」须经真机探针实证（达标或如实
+  # 降级为声明性考察，见 docs/composition-and-pattern-dimensions.md §3.3）。
+  - id: FA-PAT-TILE-GEMM
+    category: A17
+    layer: L2
+    desc: 共享内存分块（收缩类且参与元素量 ≥ 2^18——朴素全局访存慢一个量级）
+  - id: FA-PAT-SPLIT-K
+    category: A17
+    layer: L3
+    desc: 沿归约维切分并行（M ≤ 64 且 K ≥ 2^16 的高瘦矩阵——M/N 并行度不足）
+  - id: FA-PAT-VEC-BROADCAST
+    category: A17
+    layer: L2
+    desc: 偏置向量跨行广播驻留（带 bias 的收缩且 M ≥ 2048）
+  - id: FA-PAT-VEC-LOAD
+    category: A17
+    layer: L2
+    desc: 向量化访存（逐元素/掩码类、连续布局、最内维 ≥ 4096 且 64 整除对齐）
+  - id: FA-PAT-MASK-TAIL
+    category: A17
+    layer: L2
+    desc: 边界掩码访存（最内维 ≥ 2048 且不整除向量宽度——尾部不满块）
+  - id: FA-PAT-MULTIPASS-REDUCE
+    category: A17
+    layer: L3
+    desc: 多趟归约（归约维 ≥ 2^20——单趟寄存器放不下）
+  - id: FA-PAT-COALESCE-GATHER
+    category: A17
+    layer: L2
+    desc: 聚集访存/内存局部性（索引类且主输入 ≥ 2^16 的大表查访）
+  - id: FA-PAT-SCAN-BLOCKED
+    category: A17
+    layer: L3
+    desc: 分块两趟扫描（扫描类且规模 ≥ 2^20——块内扫描 + 块间携带）
+
+reserved:
+  # 实现侧能力或需扩算子后才可定向触达，不计入覆盖率分母。
+  # 2026-10-13 两条迁出（已转正进 atoms）：FA-ATOMIC-ADD → FA-CONCUR-ACCUM
+  # （A10，Scatter reduce=add / UnsortedSegmentSum 已定向触达）；
+  # FA-CTRL-STATIC-FOR → FA-CTRL-STATIC-UNROLL（A12，group_list 长度可由
+  # 用例定义推导）。FA-SHAPE-BROADCAST 仍预留：maximum 的广播输入需要
+  # 在输入构造层承载「布局信号」（value_range 或属性，均未扩展），本批未做。
+  - id: FA-CREATE-ARANGE
+    desc: tl.arange（所有用例隐含，无法差异化定向）
+  - id: FA-CREATE-FULL
+    desc: tl.full / tl.zeros（同上）
+  - id: FA-CTRL-DYNAMIC-FOR
+    desc: range 动态循环（同上）
+  - id: FA-STORE-CONTIG
+    desc: 连续写回 tl.store（输出连续性是执行期契约 SUB-EXE-002 强制的，
+          所有用例平凡满足，无法用参数差异化定向）
+  - id: FA-SHAPE-BROADCAST
+    desc: 二元广播（maximum 的参考输入当前同形；需输入构造层支持
+          广播形状信号，随下批输入构造扩展转正）

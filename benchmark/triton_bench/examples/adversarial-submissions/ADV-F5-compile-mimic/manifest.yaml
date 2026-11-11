@@ -1,0 +1,5 @@
+submit_id: adv-f5-compile-mimic
+operators:
+  - name: Exp
+    entry: exp
+    path: operators/exp/kernel.py

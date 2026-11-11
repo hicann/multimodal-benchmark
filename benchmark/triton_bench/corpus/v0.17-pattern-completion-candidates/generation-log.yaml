@@ -1,0 +1,550 @@
+# Copyright (c) 2025-2026 Huawei Technologies Co., Ltd.
+# This program is free software, you can redistribute it and/or modify it under the terms and conditions of
+# CANN Open Software License Agreement Version 2.0 (the "License").
+# Please refer to the License for details. You may not use this file except in compliance with the License.
+# THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+# INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE.
+# See LICENSE in the root of the software repository for the full text of the License.
+
+- ts: '2026-10-27T08:29:19.616119+00:00'
+  step: log_header
+  log_format: 1
+  note: 追加式生成日志；每行一个事件，ts 为 UTC ISO8601
+- ts: '2026-10-27T08:29:19.616742+00:00'
+  step: build_start
+  version: v0.17-pattern-completion-candidates
+  selection:
+    policy: explicit-pattern-obligation-v1
+    parent_version: v0.16-backend-pattern-certification-candidates
+    retained_parent_cases: 1377
+    added_cases: 8
+    required_targets:
+    - FA-PAT-MULTIPASS-REDUCE
+    - FA-PAT-SCAN-BLOCKED
+    - FA-PAT-SPLIT-K
+    - FA-PAT-VEC-BROADCAST
+    witness_requirement: 2
+    target_witnesses:
+      FA-PAT-MULTIPASS-REDUCE: 2
+      FA-PAT-SCAN-BLOCKED: 2
+      FA-PAT-SPLIT-K: 2
+      FA-PAT-VEC-BROADCAST: 2
+    max_additions: 16
+    per_operator_budget: 4
+    max_device_bytes: 67108864
+    selection_trace:
+    - case: pattern-grouped_matmul-006
+      operator: GroupedMatmul
+      target_obligations:
+      - FA-PAT-VEC-BROADCAST
+      estimated_device_bytes: 197664
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    - case: pattern-reduce_max-000
+      operator: ReduceMax
+      target_obligations:
+      - FA-PAT-MULTIPASS-REDUCE
+      estimated_device_bytes: 4198404
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    - case: pattern-matmul-004
+      operator: Matmul
+      target_obligations:
+      - FA-PAT-SPLIT-K
+      estimated_device_bytes: 4597856
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    - case: pattern-cummin-002
+      operator: Cummin
+      target_obligations:
+      - FA-PAT-SCAN-BLOCKED
+      estimated_device_bytes: 29409280
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    - case: pattern-grouped_matmul-007
+      operator: GroupedMatmul
+      target_obligations:
+      - FA-PAT-VEC-BROADCAST
+      estimated_device_bytes: 334400
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    - case: pattern-reduce_max-001
+      operator: ReduceMax
+      target_obligations:
+      - FA-PAT-MULTIPASS-REDUCE
+      estimated_device_bytes: 8398872
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    - case: pattern-matmul-005
+      operator: Matmul
+      target_obligations:
+      - FA-PAT-SPLIT-K
+      estimated_device_bytes: 8828480
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    - case: pattern-cummin-003
+      operator: Cummin
+      target_obligations:
+      - FA-PAT-SCAN-BLOCKED
+      estimated_device_bytes: 29416500
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    covered:
+    - FA-ATTR-LIST
+    - FA-ATTR-NONDEFAULT
+    - FA-AXIS-FIRST
+    - FA-AXIS-INNER
+    - FA-AXIS-LAST
+    - FA-CONCUR-ACCUM
+    - FA-CTRL-STATIC-UNROLL
+    - FA-DT-BF16
+    - FA-DT-FP16
+    - FA-DT-FP32
+    - FA-DT-INT16
+    - FA-DT-INT32
+    - FA-DT-INT64
+    - FA-DT-INT8
+    - FA-DT-UINT8
+    - FA-FUSE-2STAGE
+    - FA-FUSE-CROSS-CATEGORY
+    - FA-FUSE-ELEM-INTRA
+    - FA-FUSE-INTERM-ELIDE
+    - FA-FUSE-RED-INTRA
+    - FA-IDX-GATHER
+    - FA-IDX-PERMUTE
+    - FA-IDX-SCATTER
+    - FA-IDX-WHERE
+    - FA-LINALG-BIAS
+    - FA-LINALG-DOT
+    - FA-LOAD-ALIGNED
+    - FA-LOAD-CONTIG
+    - FA-LOAD-LARGE
+    - FA-LOAD-MASKED-EDGE
+    - FA-LOAD-MEDIUM
+    - FA-LOAD-SMALL
+    - FA-LOAD-STRIDED
+    - FA-LOAD-XLARGE
+    - FA-MATH-ADD
+    - FA-MATH-EXP
+    - FA-MATH-GELU
+    - FA-MATH-MAXMIN
+    - FA-MATH-MUL
+    - FA-MATH-SIGMOID
+    - FA-MATH-SINCOS
+    - FA-MATH-SQRT
+    - FA-MULTI-INPUT
+    - FA-MULTI-OUTPUT
+    - FA-NORM-RMS
+    - FA-NORM-SOFTMAX
+    - FA-NUM-EXTREME
+    - FA-NUM-MIXED
+    - FA-NUM-ZEROS
+    - FA-PAT-COALESCE-GATHER
+    - FA-PAT-MASK-TAIL
+    - FA-PAT-MULTIPASS-REDUCE
+    - FA-PAT-SCAN-BLOCKED
+    - FA-PAT-SPLIT-K
+    - FA-PAT-TILE-GEMM
+    - FA-PAT-VEC-BROADCAST
+    - FA-PAT-VEC-LOAD
+    - FA-PROG-GRID1D
+    - FA-PROG-GRID2D
+    - FA-PROG-GRID3D
+    - FA-PROG-GRID4D
+    - FA-REDUCE-ARG
+    - FA-REDUCE-MAX
+    - FA-REDUCE-MIN
+    - FA-REDUCE-SUM
+    - FA-SHAPE-CUBE
+    - FA-SHAPE-FLAT
+    - FA-SHAPE-SKINNY
+    - FA-SHAPE-SQUARE
+    - FA-STABLE-LOGSUMEXP
+    - FA-STABLE-MAXSUB
+    missing: []
+    rate: 1.0
+    compilation_state: NOT_RUN
+    execution_state: NOT_RUN
+    agreement_state: AWAITING_JOINT_CONFIRMATION
+- ts: '2026-10-27T08:29:22.075248+00:00'
+  step: submission_source_contract_gate
+  ok: true
+  source_checked: 74
+  declared_operators: 74
+  load_state: NOT_RUN
+  errors: []
+- ts: '2026-10-27T08:29:48.812609+00:00'
+  step: independent_cpu_reference_gate
+  cases: 1385
+  failures:
+    pattern-cummin-002: '构造输入失败：ValueError: bounded cummin requires rank3 and axes <=32'
+    pattern-grouped_matmul-007: '构造输入失败：ValueError: invalid group partition/K'
+    pattern-cummin-003: '构造输入失败：ValueError: bounded cummin requires rank3 and axes <=32'
+- ts: '2026-10-27T08:32:07.077769+00:00'
+  step: build_start
+  version: v0.17-pattern-completion-candidates
+  selection:
+    policy: explicit-pattern-obligation-v1
+    parent_version: v0.16-backend-pattern-certification-candidates
+    retained_parent_cases: 1377
+    added_cases: 8
+    required_targets:
+    - FA-PAT-MULTIPASS-REDUCE
+    - FA-PAT-SCAN-BLOCKED
+    - FA-PAT-SPLIT-K
+    - FA-PAT-VEC-BROADCAST
+    witness_requirement: 2
+    target_witnesses:
+      FA-PAT-MULTIPASS-REDUCE: 2
+      FA-PAT-SCAN-BLOCKED: 2
+      FA-PAT-SPLIT-K: 2
+      FA-PAT-VEC-BROADCAST: 2
+    max_additions: 16
+    per_operator_budget: 4
+    max_device_bytes: 67108864
+    selection_trace:
+    - case: pattern-grouped_matmul-006
+      operator: GroupedMatmul
+      target_obligations:
+      - FA-PAT-VEC-BROADCAST
+      estimated_device_bytes: 197664
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    - case: pattern-reduce_max-000
+      operator: ReduceMax
+      target_obligations:
+      - FA-PAT-MULTIPASS-REDUCE
+      estimated_device_bytes: 4198404
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    - case: pattern-matmul-004
+      operator: Matmul
+      target_obligations:
+      - FA-PAT-SPLIT-K
+      estimated_device_bytes: 4597856
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    - case: pattern-cummin-002
+      operator: Cummin
+      target_obligations:
+      - FA-PAT-SCAN-BLOCKED
+      estimated_device_bytes: 29409280
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    - case: pattern-grouped_matmul-007
+      operator: GroupedMatmul
+      target_obligations:
+      - FA-PAT-VEC-BROADCAST
+      estimated_device_bytes: 334400
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    - case: pattern-reduce_max-001
+      operator: ReduceMax
+      target_obligations:
+      - FA-PAT-MULTIPASS-REDUCE
+      estimated_device_bytes: 8398872
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    - case: pattern-matmul-005
+      operator: Matmul
+      target_obligations:
+      - FA-PAT-SPLIT-K
+      estimated_device_bytes: 8828480
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    - case: pattern-cummin-003
+      operator: Cummin
+      target_obligations:
+      - FA-PAT-SCAN-BLOCKED
+      estimated_device_bytes: 29416500
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    covered:
+    - FA-ATTR-LIST
+    - FA-ATTR-NONDEFAULT
+    - FA-AXIS-FIRST
+    - FA-AXIS-INNER
+    - FA-AXIS-LAST
+    - FA-CONCUR-ACCUM
+    - FA-CTRL-STATIC-UNROLL
+    - FA-DT-BF16
+    - FA-DT-FP16
+    - FA-DT-FP32
+    - FA-DT-INT16
+    - FA-DT-INT32
+    - FA-DT-INT64
+    - FA-DT-INT8
+    - FA-DT-UINT8
+    - FA-FUSE-2STAGE
+    - FA-FUSE-CROSS-CATEGORY
+    - FA-FUSE-ELEM-INTRA
+    - FA-FUSE-INTERM-ELIDE
+    - FA-FUSE-RED-INTRA
+    - FA-IDX-GATHER
+    - FA-IDX-PERMUTE
+    - FA-IDX-SCATTER
+    - FA-IDX-WHERE
+    - FA-LINALG-BIAS
+    - FA-LINALG-DOT
+    - FA-LOAD-ALIGNED
+    - FA-LOAD-CONTIG
+    - FA-LOAD-LARGE
+    - FA-LOAD-MASKED-EDGE
+    - FA-LOAD-MEDIUM
+    - FA-LOAD-SMALL
+    - FA-LOAD-STRIDED
+    - FA-LOAD-XLARGE
+    - FA-MATH-ADD
+    - FA-MATH-EXP
+    - FA-MATH-GELU
+    - FA-MATH-MAXMIN
+    - FA-MATH-MUL
+    - FA-MATH-SIGMOID
+    - FA-MATH-SINCOS
+    - FA-MATH-SQRT
+    - FA-MULTI-INPUT
+    - FA-MULTI-OUTPUT
+    - FA-NORM-RMS
+    - FA-NORM-SOFTMAX
+    - FA-NUM-EXTREME
+    - FA-NUM-MIXED
+    - FA-NUM-ZEROS
+    - FA-PAT-COALESCE-GATHER
+    - FA-PAT-MASK-TAIL
+    - FA-PAT-MULTIPASS-REDUCE
+    - FA-PAT-SCAN-BLOCKED
+    - FA-PAT-SPLIT-K
+    - FA-PAT-TILE-GEMM
+    - FA-PAT-VEC-BROADCAST
+    - FA-PAT-VEC-LOAD
+    - FA-PROG-GRID1D
+    - FA-PROG-GRID2D
+    - FA-PROG-GRID3D
+    - FA-PROG-GRID4D
+    - FA-REDUCE-ARG
+    - FA-REDUCE-MAX
+    - FA-REDUCE-MIN
+    - FA-REDUCE-SUM
+    - FA-SHAPE-CUBE
+    - FA-SHAPE-FLAT
+    - FA-SHAPE-SKINNY
+    - FA-SHAPE-SQUARE
+    - FA-STABLE-LOGSUMEXP
+    - FA-STABLE-MAXSUB
+    missing: []
+    rate: 1.0
+    compilation_state: NOT_RUN
+    execution_state: NOT_RUN
+    agreement_state: AWAITING_JOINT_CONFIRMATION
+- ts: '2026-10-27T08:32:09.459630+00:00'
+  step: submission_source_contract_gate
+  ok: true
+  source_checked: 74
+  declared_operators: 74
+  load_state: NOT_RUN
+  errors: []
+- ts: '2026-10-27T08:32:42.400691+00:00'
+  step: independent_cpu_reference_gate
+  cases: 1385
+  failures: {}
+- ts: '2026-10-27T08:32:42.475652+00:00'
+  step: build_end
+  manifest_hash: 95ba03ce7a13bb2e79223e9f710e95c00921499521e0987d036a1c82bc4c3ed1
+  cases: 1385
+  manifest_written: true
+- ts: '2026-10-27T08:39:32.957598+00:00'
+  step: build_start
+  version: v0.17-pattern-completion-candidates
+  selection:
+    policy: explicit-pattern-obligation-v1
+    parent_version: v0.16-backend-pattern-certification-candidates
+    retained_parent_cases: 1377
+    added_cases: 8
+    required_targets:
+    - FA-PAT-MULTIPASS-REDUCE
+    - FA-PAT-SCAN-BLOCKED
+    - FA-PAT-SPLIT-K
+    - FA-PAT-VEC-BROADCAST
+    witness_requirement: 2
+    target_witnesses:
+      FA-PAT-MULTIPASS-REDUCE: 2
+      FA-PAT-SCAN-BLOCKED: 2
+      FA-PAT-SPLIT-K: 2
+      FA-PAT-VEC-BROADCAST: 2
+    max_additions: 16
+    per_operator_budget: 4
+    max_device_bytes: 67108864
+    selection_trace:
+    - case: pattern-grouped_matmul-006
+      operator: GroupedMatmul
+      target_obligations:
+      - FA-PAT-VEC-BROADCAST
+      estimated_device_bytes: 197664
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    - case: pattern-reduce_max-000
+      operator: ReduceMax
+      target_obligations:
+      - FA-PAT-MULTIPASS-REDUCE
+      estimated_device_bytes: 4198404
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    - case: pattern-matmul-004
+      operator: Matmul
+      target_obligations:
+      - FA-PAT-SPLIT-K
+      estimated_device_bytes: 4597856
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    - case: pattern-cummin-002
+      operator: Cummin
+      target_obligations:
+      - FA-PAT-SCAN-BLOCKED
+      estimated_device_bytes: 29409280
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    - case: pattern-grouped_matmul-007
+      operator: GroupedMatmul
+      target_obligations:
+      - FA-PAT-VEC-BROADCAST
+      estimated_device_bytes: 334400
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    - case: pattern-reduce_max-001
+      operator: ReduceMax
+      target_obligations:
+      - FA-PAT-MULTIPASS-REDUCE
+      estimated_device_bytes: 8398872
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    - case: pattern-matmul-005
+      operator: Matmul
+      target_obligations:
+      - FA-PAT-SPLIT-K
+      estimated_device_bytes: 8828480
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    - case: pattern-cummin-003
+      operator: Cummin
+      target_obligations:
+      - FA-PAT-SCAN-BLOCKED
+      estimated_device_bytes: 29416500
+      reason: required_pattern_distinct_structure
+      compilation_state: NOT_RUN
+      execution_state: NOT_RUN
+    covered:
+    - FA-ATTR-LIST
+    - FA-ATTR-NONDEFAULT
+    - FA-AXIS-FIRST
+    - FA-AXIS-INNER
+    - FA-AXIS-LAST
+    - FA-CONCUR-ACCUM
+    - FA-CTRL-STATIC-UNROLL
+    - FA-DT-BF16
+    - FA-DT-FP16
+    - FA-DT-FP32
+    - FA-DT-INT16
+    - FA-DT-INT32
+    - FA-DT-INT64
+    - FA-DT-INT8
+    - FA-DT-UINT8
+    - FA-FUSE-2STAGE
+    - FA-FUSE-CROSS-CATEGORY
+    - FA-FUSE-ELEM-INTRA
+    - FA-FUSE-INTERM-ELIDE
+    - FA-FUSE-RED-INTRA
+    - FA-IDX-GATHER
+    - FA-IDX-PERMUTE
+    - FA-IDX-SCATTER
+    - FA-IDX-WHERE
+    - FA-LINALG-BIAS
+    - FA-LINALG-DOT
+    - FA-LOAD-ALIGNED
+    - FA-LOAD-CONTIG
+    - FA-LOAD-LARGE
+    - FA-LOAD-MASKED-EDGE
+    - FA-LOAD-MEDIUM
+    - FA-LOAD-SMALL
+    - FA-LOAD-STRIDED
+    - FA-LOAD-XLARGE
+    - FA-MATH-ADD
+    - FA-MATH-EXP
+    - FA-MATH-GELU
+    - FA-MATH-MAXMIN
+    - FA-MATH-MUL
+    - FA-MATH-SIGMOID
+    - FA-MATH-SINCOS
+    - FA-MATH-SQRT
+    - FA-MULTI-INPUT
+    - FA-MULTI-OUTPUT
+    - FA-NORM-RMS
+    - FA-NORM-SOFTMAX
+    - FA-NUM-EXTREME
+    - FA-NUM-MIXED
+    - FA-NUM-ZEROS
+    - FA-PAT-COALESCE-GATHER
+    - FA-PAT-MASK-TAIL
+    - FA-PAT-MULTIPASS-REDUCE
+    - FA-PAT-SCAN-BLOCKED
+    - FA-PAT-SPLIT-K
+    - FA-PAT-TILE-GEMM
+    - FA-PAT-VEC-BROADCAST
+    - FA-PAT-VEC-LOAD
+    - FA-PROG-GRID1D
+    - FA-PROG-GRID2D
+    - FA-PROG-GRID3D
+    - FA-PROG-GRID4D
+    - FA-REDUCE-ARG
+    - FA-REDUCE-MAX
+    - FA-REDUCE-MIN
+    - FA-REDUCE-SUM
+    - FA-SHAPE-CUBE
+    - FA-SHAPE-FLAT
+    - FA-SHAPE-SKINNY
+    - FA-SHAPE-SQUARE
+    - FA-STABLE-LOGSUMEXP
+    - FA-STABLE-MAXSUB
+    missing: []
+    rate: 1.0
+    compilation_state: NOT_RUN
+    execution_state: NOT_RUN
+    agreement_state: AWAITING_JOINT_CONFIRMATION
+- ts: '2026-10-27T08:39:35.362385+00:00'
+  step: submission_source_contract_gate
+  ok: true
+  source_checked: 74
+  declared_operators: 74
+  load_state: NOT_RUN
+  errors: []
+- ts: '2026-10-27T08:40:08.333279+00:00'
+  step: independent_cpu_reference_gate
+  cases: 1385
+  failures: {}
+- ts: '2026-10-27T08:40:08.413230+00:00'
+  step: build_end
+  manifest_hash: 95ba03ce7a13bb2e79223e9f710e95c00921499521e0987d036a1c82bc4c3ed1
+  cases: 1385
+  manifest_written: true

@@ -1,0 +1,5 @@
+submit_id: adv-f1-garbage-indices
+operators:
+  - name: Cummin
+    entry: cummin
+    path: operators/cummin/kernel.py

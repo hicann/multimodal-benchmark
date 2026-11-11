@@ -1,0 +1,5 @@
+submit_id: adv-d4-host-roundtrip
+operators:
+  - name: Exp
+    entry: exp
+    path: operators/exp/kernel.py

@@ -33,10 +33,20 @@
             <filefilter name="readmeOpenSourcefileNamePolicyFilter" desc="Filters for README.OpenSource file policies">
             </filefilter>
             <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binary file policies">
+                <filteritem type="filepath" name="benchmark/triton_bench/spec/feature_atoms.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
+                <filteritem type="filepath" name="benchmark/triton_bench/spec/spec.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
+                <filteritem type="filepath" name="benchmark/triton_bench/spec/tolerance.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
+                <filteritem type="filepath" name="benchmark/triton_bench/examples/adversarial-submissions/ADV-E1-path-escape/manifest.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
+                <filteritem type="filepath" name="benchmark/triton_bench/examples/adversarial-submissions/ADV-E2-empty-operators/manifest.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
+                <filteritem type="filepath" name="benchmark/triton_bench/examples/ascend-ops-submission/manifest.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
+                <filteritem type="filepath" name="benchmark/triton_bench/examples/invalid-submissions/SUB-LOD-002/manifest.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
+                <filteritem type="filepath" name="benchmark/triton_bench/examples/adversarial-submissions/ADV-C1-fullhouse/manifest.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
+                <filteritem type="filepath" name="benchmark/triton_bench/src/triton_eval/templates/report.html.j2" desc="Verified UTF-8 Jinja report template; required by report rendering; not an executable binary"/>
+                <filteritem type="filepath" name="benchmark/triton_bench/src/triton_eval/templates/report.md.j2" desc="Verified UTF-8 Jinja report template; required by report rendering; not an executable binary"/>
             </filefilter>
         </filefilterlist>
         <licensematcherlist>
-            <licensematcher name="cann License" desc="If the scanning result is InvalidLicense, you can define matching rules here. Note that quotation marks must be escaped.">
+            <licensematcher name="CANN-2.0" desc="If the scanning result is InvalidLicense, you can define matching rules here. Note that quotation marks must be escaped.">
                 <licensetext name="
                     This program is free software, you can redistribute it and/or modify it under the terms and conditions of
                     CANN Open Software License Agreement Version 2.0 (the &quot;License&quot;).
@@ -45,8 +55,14 @@
                     INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE.
                     See LICENSE in the root of the software repository for the full text of the License.
 				 " desc=""/>
-            </licensematcher>
-            <licensematcher name="CANN-2.0" desc="Complete CANN Open Software License Agreement Version 2.0">
+                <licensetext name="
+                    This program is free software, you can redistribute it and/or modify it under the terms and conditions of
+                    CANN Open Software License Agreement Version 2.0 (the &quot;License&quot;).
+                    Please refer to the License for details. You may not use this file except in compliance with the License.
+                    THIS SOFTWARE IS PROVIDED ON AN &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+                    INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE.
+                    See LICENSE in the root of the software repository for the full text of the License.
+				 " desc=""/>
                 <licensetext name="
 CANN Open Software License Agreement Version 2.0
 

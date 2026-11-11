@@ -1,0 +1,46 @@
+# Copyright (c) 2025-2026 Huawei Technologies Co., Ltd.
+# This program is free software, you can redistribute it and/or modify it under the terms and conditions of
+# CANN Open Software License Agreement Version 2.0 (the "License").
+# Please refer to the License for details. You may not use this file except in compliance with the License.
+# THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+# INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE.
+# See LICENSE in the root of the software repository for the full text of the License.
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "triton-eval"
+version = "0.1.0"
+description = "面向 Triton 编译器的功能完备性与综合性能评测体系（MVP）"
+requires-python = ">=3.11"
+
+# L0 层依赖。禁止出现 triton —— 它会覆盖 triton-ascend 的同名目录。
+dependencies = [
+    "pydantic>=2.7",
+    "PyYAML>=6.0",
+    "Jinja2>=3.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+triton-eval = "triton_eval.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "npu: 需要真实昇腾 NPU 才能执行",
+    "torch: 需要 torch，但不需要 NPU（参考实现自检等）",
+    "triton: 需要被测编译器 triton 在位，但不需要 NPU（实现文件导入）",
+]
+
+[tool.setuptools.package-data]
+triton_eval = ["_coverage/*.py", "_references/*.py", "_submissions/*.py"]

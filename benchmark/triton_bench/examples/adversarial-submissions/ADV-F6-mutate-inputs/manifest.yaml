@@ -1,0 +1,5 @@
+submit_id: adv-f6-mutate-inputs
+operators:
+  - name: MaskedScale
+    entry: masked_scale
+    path: operators/masked_scale/kernel.py

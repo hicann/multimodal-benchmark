@@ -1,0 +1,5 @@
+submit_id: adv-f2-single-output
+operators:
+  - name: Cummin
+    entry: cummin
+    path: operators/cummin/kernel.py

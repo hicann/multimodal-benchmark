@@ -1,0 +1,13 @@
+{
+  "format": 1,
+  "files": {
+    "operators/discrete_memory_access/ref_cpu.py": {
+      "source": "legacy/row_gather/ref_cpu.py",
+      "sha256": "79e6a5cf0f4ddae55efac6999499c97df481884d27a4ffd7ac0fef5432889058"
+    },
+    "operators/insert_slice/ref_cpu.py": {
+      "source": "legacy/row_gather/ref_cpu.py",
+      "sha256": "79e6a5cf0f4ddae55efac6999499c97df481884d27a4ffd7ac0fef5432889058"
+    }
+  }
+}

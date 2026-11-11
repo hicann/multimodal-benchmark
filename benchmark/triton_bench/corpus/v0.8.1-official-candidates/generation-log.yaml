@@ -1,0 +1,2636 @@
+# Copyright (c) 2025-2026 Huawei Technologies Co., Ltd.
+# This program is free software, you can redistribute it and/or modify it under the terms and conditions of
+# CANN Open Software License Agreement Version 2.0 (the "License").
+# Please refer to the License for details. You may not use this file except in compliance with the License.
+# THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+# INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE.
+# See LICENSE in the root of the software repository for the full text of the License.
+
+- ts: '2026-10-23T15:10:40.062962+00:00'
+  step: log_header
+  log_format: 1
+  note: 追加式生成日志；每行一个事件，ts 为 UTC ISO8601
+- ts: '2026-10-23T15:10:40.063818+00:00'
+  step: official_source_selection
+  candidates: 68
+  case_count: 1360
+  reports:
+    Abs:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Abs: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-abs-float32-00
+      - official-abs-float32-02
+      - official-abs-float32-03
+      - official-abs-float32-21
+    Neg:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Neg: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-neg-float32-00
+      - official-neg-float32-02
+      - official-neg-float32-03
+      - official-neg-float32-21
+    Exp:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Exp: 16
+      coverage:
+        counts:
+          FA-MATH-EXP: 16
+          FA-MATH-MUL: 16
+          FA-MATH-ADD: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-ATTR-NONDEFAULT: 7
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-ATTR-NONDEFAULT
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MATH-ADD
+        - FA-MATH-EXP
+        - FA-MATH-MUL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-exp-float32-00
+      - official-exp-float32-02
+      - official-exp-float32-03
+      - official-exp-float32-21
+    Exp2:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Exp2: 16
+      coverage:
+        counts:
+          FA-MATH-EXP: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MATH-EXP
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-exp2-float32-00
+      - official-exp2-float32-02
+      - official-exp2-float32-03
+      - official-exp2-float32-21
+    Expm1:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Expm1: 16
+      coverage:
+        counts:
+          FA-MATH-EXP: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MATH-EXP
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-expm1-float32-00
+      - official-expm1-float32-02
+      - official-expm1-float32-03
+      - official-expm1-float32-21
+    Log:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Log: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-log-float32-00
+      - official-log-float32-02
+      - official-log-float32-03
+      - official-log-float32-21
+    Log2:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Log2: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-log2-float32-00
+      - official-log2-float32-02
+      - official-log2-float32-03
+      - official-log2-float32-21
+    Log10:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Log10: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-log10-float32-00
+      - official-log10-float32-02
+      - official-log10-float32-03
+      - official-log10-float32-21
+    Log1p:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Log1p: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-log1p-float32-00
+      - official-log1p-float32-02
+      - official-log1p-float32-03
+      - official-log1p-float32-21
+    Sqrt:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Sqrt: 16
+      coverage:
+        counts:
+          FA-MATH-SQRT: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MATH-SQRT
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-sqrt-float32-00
+      - official-sqrt-float32-02
+      - official-sqrt-float32-03
+      - official-sqrt-float32-21
+    Rsqrt:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Rsqrt: 16
+      coverage:
+        counts:
+          FA-MATH-SQRT: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MATH-SQRT
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-rsqrt-float32-00
+      - official-rsqrt-float32-02
+      - official-rsqrt-float32-03
+      - official-rsqrt-float32-21
+    Sin:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Sin: 16
+      coverage:
+        counts:
+          FA-MATH-SINCOS: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MATH-SINCOS
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-sin-float32-00
+      - official-sin-float32-02
+      - official-sin-float32-03
+      - official-sin-float32-21
+    Cos:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Cos: 16
+      coverage:
+        counts:
+          FA-MATH-SINCOS: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MATH-SINCOS
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-cos-float32-00
+      - official-cos-float32-02
+      - official-cos-float32-03
+      - official-cos-float32-21
+    Tan:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Tan: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-tan-float32-00
+      - official-tan-float32-02
+      - official-tan-float32-03
+      - official-tan-float32-21
+    Tanh:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Tanh: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-tanh-float32-00
+      - official-tanh-float32-02
+      - official-tanh-float32-03
+      - official-tanh-float32-21
+    Sinh:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Sinh: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-sinh-float32-00
+      - official-sinh-float32-02
+      - official-sinh-float32-03
+      - official-sinh-float32-21
+    Cosh:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Cosh: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-cosh-float32-00
+      - official-cosh-float32-02
+      - official-cosh-float32-03
+      - official-cosh-float32-21
+    Floor:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Floor: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-floor-float32-00
+      - official-floor-float32-02
+      - official-floor-float32-03
+      - official-floor-float32-21
+    Ceil:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Ceil: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-ceil-float32-00
+      - official-ceil-float32-02
+      - official-ceil-float32-03
+      - official-ceil-float32-21
+    Trunc:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Trunc: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-trunc-float32-00
+      - official-trunc-float32-02
+      - official-trunc-float32-03
+      - official-trunc-float32-21
+    Relu:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Relu: 16
+      coverage:
+        counts:
+          FA-MATH-MAXMIN: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MATH-MAXMIN
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-relu-float32-00
+      - official-relu-float32-02
+      - official-relu-float32-03
+      - official-relu-float32-21
+    Sigmoid:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Sigmoid: 16
+      coverage:
+        counts:
+          FA-MATH-SIGMOID: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MATH-SIGMOID
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-sigmoid-float32-00
+      - official-sigmoid-float32-02
+      - official-sigmoid-float32-03
+      - official-sigmoid-float32-21
+    Signbit:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Signbit: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-signbit-float32-00
+      - official-signbit-float32-02
+      - official-signbit-float32-03
+      - official-signbit-float32-21
+    Add:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Add: 16
+      coverage:
+        counts:
+          FA-MATH-ADD: 16
+          FA-MULTI-INPUT: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MATH-ADD
+        - FA-MULTI-INPUT
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-add-float32-00
+      - official-add-float32-02
+      - official-add-float32-03
+      - official-add-float32-21
+    Sub:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Sub: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-sub-float32-00
+      - official-sub-float32-02
+      - official-sub-float32-03
+      - official-sub-float32-21
+    Mul:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Mul: 16
+      coverage:
+        counts:
+          FA-MATH-MUL: 16
+          FA-MULTI-INPUT: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MATH-MUL
+        - FA-MULTI-INPUT
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-mul-float32-00
+      - official-mul-float32-02
+      - official-mul-float32-03
+      - official-mul-float32-21
+    Div:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Div: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-div-float32-00
+      - official-div-float32-02
+      - official-div-float32-03
+      - official-div-float32-21
+    FloorDiv:
+      pool_size: 18
+      selected: 16
+      per_category:
+        FloorDiv: 16
+      coverage:
+        counts:
+          FA-DT-INT32: 16
+          FA-SHAPE-SQUARE: 1
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 12
+          FA-LOAD-MASKED-EDGE: 14
+          FA-LOAD-CONTIG: 16
+          FA-LOAD-ALIGNED: 2
+          FA-LOAD-MEDIUM: 4
+          FA-SHAPE-SKINNY: 2
+        covered:
+        - FA-DT-INT32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-floor_div-int32-00
+      - official-floor_div-int32-02
+      - official-floor_div-int32-03
+      - official-floor_div-int32-21
+    Mod:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Mod: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-mod-float32-00
+      - official-mod-float32-02
+      - official-mod-float32-03
+      - official-mod-float32-21
+    Pow:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Pow: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-pow-float32-00
+      - official-pow-float32-02
+      - official-pow-float32-03
+      - official-pow-float32-21
+    Maximum:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Maximum: 16
+      coverage:
+        counts:
+          FA-MATH-MAXMIN: 16
+          FA-MULTI-INPUT: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MATH-MAXMIN
+        - FA-MULTI-INPUT
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-maximum-float32-00
+      - official-maximum-float32-02
+      - official-maximum-float32-03
+      - official-maximum-float32-21
+    Minimum:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Minimum: 16
+      coverage:
+        counts:
+          FA-MATH-MAXMIN: 16
+          FA-MULTI-INPUT: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MATH-MAXMIN
+        - FA-MULTI-INPUT
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-minimum-float32-00
+      - official-minimum-float32-02
+      - official-minimum-float32-03
+      - official-minimum-float32-21
+    Equal:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Equal: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-equal-float32-00
+      - official-equal-float32-02
+      - official-equal-float32-03
+      - official-equal-float32-21
+    NotEqual:
+      pool_size: 40
+      selected: 16
+      per_category:
+        NotEqual: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-not_equal-float32-00
+      - official-not_equal-float32-02
+      - official-not_equal-float32-03
+      - official-not_equal-float32-21
+    Greater:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Greater: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-greater-float32-00
+      - official-greater-float32-02
+      - official-greater-float32-03
+      - official-greater-float32-21
+    GreaterEqual:
+      pool_size: 40
+      selected: 16
+      per_category:
+        GreaterEqual: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-greater_equal-float32-00
+      - official-greater_equal-float32-02
+      - official-greater_equal-float32-03
+      - official-greater_equal-float32-21
+    Less:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Less: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-less-float32-00
+      - official-less-float32-02
+      - official-less-float32-03
+      - official-less-float32-21
+    LessEqual:
+      pool_size: 40
+      selected: 16
+      per_category:
+        LessEqual: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-less_equal-float32-00
+      - official-less_equal-float32-02
+      - official-less_equal-float32-03
+      - official-less_equal-float32-21
+    BitwiseAnd:
+      pool_size: 18
+      selected: 16
+      per_category:
+        BitwiseAnd: 16
+      coverage:
+        counts:
+          FA-DT-INT32: 16
+          FA-SHAPE-SQUARE: 1
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 12
+          FA-LOAD-MASKED-EDGE: 14
+          FA-LOAD-CONTIG: 16
+          FA-LOAD-ALIGNED: 2
+          FA-LOAD-MEDIUM: 4
+          FA-SHAPE-SKINNY: 2
+        covered:
+        - FA-DT-INT32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-bitwise_and-int32-00
+      - official-bitwise_and-int32-02
+      - official-bitwise_and-int32-03
+      - official-bitwise_and-int32-21
+    BitwiseOr:
+      pool_size: 18
+      selected: 16
+      per_category:
+        BitwiseOr: 16
+      coverage:
+        counts:
+          FA-DT-INT32: 16
+          FA-SHAPE-SQUARE: 1
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 12
+          FA-LOAD-MASKED-EDGE: 14
+          FA-LOAD-CONTIG: 16
+          FA-LOAD-ALIGNED: 2
+          FA-LOAD-MEDIUM: 4
+          FA-SHAPE-SKINNY: 2
+        covered:
+        - FA-DT-INT32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-bitwise_or-int32-00
+      - official-bitwise_or-int32-02
+      - official-bitwise_or-int32-03
+      - official-bitwise_or-int32-21
+    BitwiseXor:
+      pool_size: 18
+      selected: 16
+      per_category:
+        BitwiseXor: 16
+      coverage:
+        counts:
+          FA-DT-INT32: 16
+          FA-SHAPE-SQUARE: 1
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 12
+          FA-LOAD-MASKED-EDGE: 14
+          FA-LOAD-CONTIG: 16
+          FA-LOAD-ALIGNED: 2
+          FA-LOAD-MEDIUM: 4
+          FA-SHAPE-SKINNY: 2
+        covered:
+        - FA-DT-INT32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-bitwise_xor-int32-00
+      - official-bitwise_xor-int32-02
+      - official-bitwise_xor-int32-03
+      - official-bitwise_xor-int32-21
+    BitwiseNot:
+      pool_size: 18
+      selected: 16
+      per_category:
+        BitwiseNot: 16
+      coverage:
+        counts:
+          FA-DT-INT32: 16
+          FA-SHAPE-SQUARE: 1
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 12
+          FA-LOAD-MASKED-EDGE: 14
+          FA-LOAD-CONTIG: 16
+          FA-LOAD-ALIGNED: 2
+          FA-LOAD-MEDIUM: 4
+          FA-SHAPE-SKINNY: 2
+        covered:
+        - FA-DT-INT32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-bitwise_not-int32-00
+      - official-bitwise_not-int32-02
+      - official-bitwise_not-int32-03
+      - official-bitwise_not-int32-21
+    LogicalAnd:
+      pool_size: 40
+      selected: 16
+      per_category:
+        LogicalAnd: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-logical_and-float32-00
+      - official-logical_and-float32-02
+      - official-logical_and-float32-03
+      - official-logical_and-float32-21
+    LogicalOr:
+      pool_size: 40
+      selected: 16
+      per_category:
+        LogicalOr: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-logical_or-float32-00
+      - official-logical_or-float32-02
+      - official-logical_or-float32-03
+      - official-logical_or-float32-21
+    Clamp:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Clamp: 16
+      coverage:
+        counts:
+          FA-MATH-MAXMIN: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-ATTR-NONDEFAULT: 6
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-ATTR-NONDEFAULT
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MATH-MAXMIN
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-clamp-float32-00
+      - official-clamp-float32-02
+      - official-clamp-float32-03
+      - official-clamp-float32-21
+    Where:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Where: 16
+      coverage:
+        counts:
+          FA-IDX-WHERE: 16
+          FA-MULTI-INPUT: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-IDX-WHERE
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MULTI-INPUT
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-where-float32-00
+      - official-where-float32-02
+      - official-where-float32-03
+      - official-where-float32-21
+    ReduceSum:
+      pool_size: 40
+      selected: 16
+      per_category:
+        ReduceSum: 16
+      coverage:
+        counts:
+          FA-REDUCE-SUM: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-AXIS-LAST: 16
+          FA-ATTR-NONDEFAULT: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-ATTR-NONDEFAULT
+        - FA-AXIS-LAST
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-REDUCE-SUM
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-reduce_sum-float32-00
+      - official-reduce_sum-float32-02
+      - official-reduce_sum-float32-03
+      - official-reduce_sum-float32-21
+    ReduceMean:
+      pool_size: 40
+      selected: 16
+      per_category:
+        ReduceMean: 16
+      coverage:
+        counts:
+          FA-REDUCE-SUM: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-AXIS-LAST: 16
+          FA-ATTR-NONDEFAULT: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-ATTR-NONDEFAULT
+        - FA-AXIS-LAST
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-REDUCE-SUM
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-reduce_mean-float32-00
+      - official-reduce_mean-float32-02
+      - official-reduce_mean-float32-03
+      - official-reduce_mean-float32-21
+    ReduceMax:
+      pool_size: 40
+      selected: 16
+      per_category:
+        ReduceMax: 16
+      coverage:
+        counts:
+          FA-REDUCE-MAX: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-AXIS-LAST: 16
+          FA-ATTR-NONDEFAULT: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-ATTR-NONDEFAULT
+        - FA-AXIS-LAST
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-REDUCE-MAX
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-reduce_max-float32-00
+      - official-reduce_max-float32-02
+      - official-reduce_max-float32-03
+      - official-reduce_max-float32-21
+    ReduceMin:
+      pool_size: 40
+      selected: 16
+      per_category:
+        ReduceMin: 16
+      coverage:
+        counts:
+          FA-REDUCE-MIN: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-AXIS-LAST: 16
+          FA-ATTR-NONDEFAULT: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-ATTR-NONDEFAULT
+        - FA-AXIS-LAST
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-REDUCE-MIN
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-reduce_min-float32-00
+      - official-reduce_min-float32-02
+      - official-reduce_min-float32-03
+      - official-reduce_min-float32-21
+    ArgMax:
+      pool_size: 40
+      selected: 16
+      per_category:
+        ArgMax: 16
+      coverage:
+        counts:
+          FA-REDUCE-MAX: 16
+          FA-REDUCE-ARG: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-AXIS-LAST: 16
+          FA-ATTR-NONDEFAULT: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-ATTR-NONDEFAULT
+        - FA-AXIS-LAST
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-REDUCE-ARG
+        - FA-REDUCE-MAX
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-arg_max-float32-00
+      - official-arg_max-float32-02
+      - official-arg_max-float32-03
+      - official-arg_max-float32-21
+    ArgMin:
+      pool_size: 40
+      selected: 16
+      per_category:
+        ArgMin: 16
+      coverage:
+        counts:
+          FA-REDUCE-MIN: 16
+          FA-REDUCE-ARG: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-AXIS-LAST: 16
+          FA-ATTR-NONDEFAULT: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-ATTR-NONDEFAULT
+        - FA-AXIS-LAST
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-REDUCE-ARG
+        - FA-REDUCE-MIN
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-arg_min-float32-00
+      - official-arg_min-float32-02
+      - official-arg_min-float32-03
+      - official-arg_min-float32-21
+    XorSum:
+      pool_size: 18
+      selected: 16
+      per_category:
+        XorSum: 16
+      coverage:
+        counts:
+          FA-DT-INT32: 16
+          FA-SHAPE-SQUARE: 1
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 12
+          FA-LOAD-MASKED-EDGE: 14
+          FA-LOAD-CONTIG: 16
+          FA-AXIS-LAST: 16
+          FA-ATTR-NONDEFAULT: 16
+          FA-LOAD-ALIGNED: 2
+          FA-LOAD-MEDIUM: 4
+          FA-SHAPE-SKINNY: 2
+        covered:
+        - FA-ATTR-NONDEFAULT
+        - FA-AXIS-LAST
+        - FA-DT-INT32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-xor_sum-int32-00
+      - official-xor_sum-int32-02
+      - official-xor_sum-int32-03
+      - official-xor_sum-int32-21
+    CumSum:
+      pool_size: 40
+      selected: 16
+      per_category:
+        CumSum: 16
+      coverage:
+        counts:
+          FA-REDUCE-SUM: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-AXIS-LAST: 16
+          FA-ATTR-NONDEFAULT: 6
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-ATTR-NONDEFAULT
+        - FA-AXIS-LAST
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-REDUCE-SUM
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-cum_sum-float32-00
+      - official-cum_sum-float32-02
+      - official-cum_sum-float32-03
+      - official-cum_sum-float32-21
+    CumProd:
+      pool_size: 40
+      selected: 16
+      per_category:
+        CumProd: 16
+      coverage:
+        counts:
+          FA-MATH-MUL: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-AXIS-LAST: 16
+          FA-ATTR-NONDEFAULT: 6
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-ATTR-NONDEFAULT
+        - FA-AXIS-LAST
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MATH-MUL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-cum_prod-float32-00
+      - official-cum_prod-float32-02
+      - official-cum_prod-float32-03
+      - official-cum_prod-float32-21
+    Transpose:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Transpose: 16
+      coverage:
+        counts:
+          FA-IDX-PERMUTE: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-ATTR-LIST: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-ATTR-LIST
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-IDX-PERMUTE
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-transpose-float32-00
+      - official-transpose-float32-02
+      - official-transpose-float32-03
+      - official-transpose-float32-21
+    Concat:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Concat: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-AXIS-LAST: 16
+          FA-ATTR-NONDEFAULT: 6
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-ATTR-NONDEFAULT
+        - FA-AXIS-LAST
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-concat-float32-00
+      - official-concat-float32-02
+      - official-concat-float32-03
+      - official-concat-float32-21
+    Flip:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Flip: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-AXIS-LAST: 16
+          FA-ATTR-NONDEFAULT: 6
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-ATTR-NONDEFAULT
+        - FA-AXIS-LAST
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-flip-float32-00
+      - official-flip-float32-02
+      - official-flip-float32-03
+      - official-flip-float32-21
+    Gather:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Gather: 16
+      coverage:
+        counts:
+          FA-IDX-GATHER: 16
+          FA-MULTI-INPUT: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-AXIS-LAST: 16
+          FA-ATTR-NONDEFAULT: 6
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-ATTR-NONDEFAULT
+        - FA-AXIS-LAST
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-IDX-GATHER
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MULTI-INPUT
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-gather-float32-00
+      - official-gather-float32-02
+      - official-gather-float32-03
+      - official-gather-float32-21
+    SortValues:
+      pool_size: 40
+      selected: 16
+      per_category:
+        SortValues: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-AXIS-LAST: 16
+          FA-ATTR-NONDEFAULT: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-ATTR-NONDEFAULT
+        - FA-AXIS-LAST
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-sort_values-float32-00
+      - official-sort_values-float32-02
+      - official-sort_values-float32-03
+      - official-sort_values-float32-21
+    TopKValues:
+      pool_size: 40
+      selected: 16
+      per_category:
+        TopKValues: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-AXIS-LAST: 16
+          FA-ATTR-NONDEFAULT: 14
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-ATTR-NONDEFAULT
+        - FA-AXIS-LAST
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-top_k_values-float32-00
+      - official-top_k_values-float32-02
+      - official-top_k_values-float32-03
+      - official-top_k_values-float32-21
+    Softmax:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Softmax: 16
+      coverage:
+        counts:
+          FA-NORM-SOFTMAX: 16
+          FA-REDUCE-SUM: 16
+          FA-REDUCE-MAX: 16
+          FA-MATH-EXP: 16
+          FA-STABLE-MAXSUB: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-AXIS-LAST: 16
+          FA-ATTR-NONDEFAULT: 6
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-ATTR-NONDEFAULT
+        - FA-AXIS-LAST
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MATH-EXP
+        - FA-NORM-SOFTMAX
+        - FA-PROG-GRID2D
+        - FA-REDUCE-MAX
+        - FA-REDUCE-SUM
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        - FA-STABLE-MAXSUB
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-softmax-float32-00
+      - official-softmax-float32-02
+      - official-softmax-float32-03
+      - official-softmax-float32-21
+    RmsNorm:
+      pool_size: 40
+      selected: 16
+      per_category:
+        RmsNorm: 16
+      coverage:
+        counts:
+          FA-NORM-RMS: 16
+          FA-REDUCE-SUM: 16
+          FA-MATH-SQRT: 16
+          FA-MULTI-INPUT: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-ATTR-NONDEFAULT: 6
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-ATTR-NONDEFAULT
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MATH-SQRT
+        - FA-MULTI-INPUT
+        - FA-NORM-RMS
+        - FA-PROG-GRID2D
+        - FA-REDUCE-SUM
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-rms_norm-float32-00
+      - official-rms_norm-float32-02
+      - official-rms_norm-float32-03
+      - official-rms_norm-float32-21
+    LayerNorm:
+      pool_size: 40
+      selected: 16
+      per_category:
+        LayerNorm: 16
+      coverage:
+        counts:
+          FA-REDUCE-SUM: 16
+          FA-MATH-SQRT: 16
+          FA-MATH-ADD: 16
+          FA-MATH-MUL: 16
+          FA-MULTI-INPUT: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-ATTR-NONDEFAULT: 6
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-ATTR-NONDEFAULT
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MATH-ADD
+        - FA-MATH-MUL
+        - FA-MATH-SQRT
+        - FA-MULTI-INPUT
+        - FA-PROG-GRID2D
+        - FA-REDUCE-SUM
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-layer_norm-float32-00
+      - official-layer_norm-float32-02
+      - official-layer_norm-float32-03
+      - official-layer_norm-float32-21
+    Matmul:
+      pool_size: 18
+      selected: 16
+      per_category:
+        Matmul: 16
+      coverage:
+        counts:
+          FA-LINALG-DOT: 16
+          FA-MULTI-INPUT: 16
+          FA-DT-FP16: 16
+          FA-SHAPE-SQUARE: 1
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 12
+          FA-LOAD-MASKED-EDGE: 14
+          FA-LOAD-CONTIG: 16
+          FA-LOAD-ALIGNED: 2
+          FA-LOAD-MEDIUM: 4
+          FA-SHAPE-SKINNY: 2
+        covered:
+        - FA-DT-FP16
+        - FA-LINALG-DOT
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MULTI-INPUT
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-matmul-float16-00
+      - official-matmul-float16-02
+      - official-matmul-float16-03
+      - official-matmul-float16-21
+    Mish:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Mish: 16
+      coverage:
+        counts:
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-mish-float32-00
+      - official-mish-float32-02
+      - official-mish-float32-03
+      - official-mish-float32-21
+    Gelu:
+      pool_size: 40
+      selected: 16
+      per_category:
+        Gelu: 16
+      coverage:
+        counts:
+          FA-MATH-GELU: 16
+          FA-DT-FP16: 8
+          FA-SHAPE-SQUARE: 4
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-ATTR-NONDEFAULT: 6
+          FA-DT-FP32: 8
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+          FA-SHAPE-SKINNY: 1
+        covered:
+        - FA-ATTR-NONDEFAULT
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MATH-GELU
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        - FA-SHAPE-SQUARE
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-gelu-float32-00
+      - official-gelu-float32-02
+      - official-gelu-float32-03
+      - official-gelu-float32-21
+    SwiGlu:
+      pool_size: 40
+      selected: 16
+      per_category:
+        SwiGlu: 16
+      coverage:
+        counts:
+          FA-MATH-SIGMOID: 16
+          FA-MATH-MUL: 16
+          FA-DT-FP16: 8
+          FA-PROG-GRID2D: 16
+          FA-LOAD-SMALL: 15
+          FA-LOAD-MASKED-EDGE: 15
+          FA-LOAD-CONTIG: 16
+          FA-AXIS-LAST: 16
+          FA-ATTR-NONDEFAULT: 8
+          FA-DT-FP32: 8
+          FA-SHAPE-SKINNY: 1
+          FA-LOAD-ALIGNED: 1
+          FA-LOAD-MEDIUM: 1
+        covered:
+        - FA-ATTR-NONDEFAULT
+        - FA-AXIS-LAST
+        - FA-DT-FP16
+        - FA-DT-FP32
+        - FA-LOAD-ALIGNED
+        - FA-LOAD-CONTIG
+        - FA-LOAD-MASKED-EDGE
+        - FA-LOAD-MEDIUM
+        - FA-LOAD-SMALL
+        - FA-MATH-MUL
+        - FA-MATH-SIGMOID
+        - FA-PROG-GRID2D
+        - FA-SHAPE-SKINNY
+        missing: []
+        unknown_atoms: []
+        rate: 1.0
+      mandatory_cases:
+      - official-swi_glu-float32-00
+      - official-swi_glu-float32-02
+      - official-swi_glu-float32-03
+      - official-swi_glu-float32-21
+- ts: '2026-10-23T15:10:58.834577+00:00'
+  step: independent_cpu_reference_gate
+  failures: {}

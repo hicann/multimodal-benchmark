@@ -1,0 +1,80 @@
+# 评测规范元数据（机器可读）。
+#
+# 这份文件是规范层的机器可读入口；人读部分在 docs/ 下的技术报告中。
+# 每次评测运行都会引用 spec_version，评分会引用 scorer_version。
+
+spec_version: "0.1-mvp"
+
+# 评分器版本。变更评分逻辑时必须递增，用于支持历史运行重算并留痕。
+# 0.2.0：性能得分改为按算子锚点（废除轮级"首轮基线"锚点）；
+#        P_geo 只统计判对用例（此前"错得快"的用例也进几何平均，真缺陷）。
+# 0.2.1：容差标定修正（tolerance.yaml 1.1）——bf16 rel 放宽到 7.8e-3
+#        （容纳 1 ULP）；gelu / grouped_matmul 的 f32 增设算子级覆盖
+#        abs=1e-3（昇腾上参考自身的偏差超过默认档，归因证据见
+#        spec-conflicts C2 与 robustness-findings——修 4 宗静默错误冤案）。
+# 0.2.3：容差覆盖登记（tolerance.yaml 1.2）——四个融合算子
+#        （transpose_linear / rms_norm_linear / grouped_matmul_swiglu /
+#        unsorted_segment_sum）的 f32 abs 覆盖：跨实现求和顺序噪声
+#        （dot 归因探针实测 K≥2048 超默认档、与分块无关），登记
+#        前三个 f32 大 K 用例如实判错、登记后按证据口径通过。
+scorer_version: "0.2.4"
+
+# 运行档位。档位决定重复次数与是否采集性能。
+profiles:
+  smoke:
+    repeats: 1
+    warmup_ms: 25
+    rep_ms: 100
+    measure_perf: false
+    cv_gate: 0.05
+    note: 冒烟档位，只验证功能链路，性能不计分
+  standard:
+    repeats: 3
+    warmup_ms: 25
+    rep_ms: 100
+    measure_perf: true
+    cv_gate: 0.05
+    note: 标准档位，功能与性能均采集
+  official:
+    repeats: 5
+    warmup_ms: 25
+    rep_ms: 100
+    measure_perf: true
+    cv_gate: 0.03
+    note: 正式档位，门禁最严（共享环境无法达标，仅作定义保留）
+
+# 性能口径。
+performance:
+  # 计时取中位数而非均值 —— do_bench 默认返回 mean，必须显式指定
+  return_mode: median
+  # 基线来源：同机会话内 torch eager 交错测量（B1）
+  baseline: torch_eager_same_session
+  # B0（同硬件上游 Triton 对照）在昇腾上不存在，归一化锚点改按算子冻结。
+  # 旧口径（轮级 first_run_baseline）有死锁缺陷：把"性能尺子是否存在"
+  # 耦合到"有一轮全部计入用例都判对"——题库混进一道坏题（无论谁交都
+  # 过不了）则任何一轮都不干净，性能赛道整体死锁。
+  anchor:
+    kind: per_operator_baseline
+    first_all_pass_score: 100.0
+    note: >-
+      尺子按算子持有：某算子题库内全部用例都判对的最早一轮，冻结为该
+      算子的锚点（该轮该算子全部用例加速比的几何平均 = 100 分）。每轮
+      逐算子出分：某算子本轮未全对则该算子本轮无性能分，不影响其他
+      算子（坏题只废它所在的算子，且会被大声暴露）；判错用例的加速比
+      不进性能统计（"错得快"不给性能分充值）。锚点跨题库版本不通用。
+      这不是跨编译器对照，报告必须写明。
+  fast_thresholds: [1.0, 1.2, 2.0]
+
+# 两轮对比口径：加速比变化超过该比例才算显著变化（回归/提升）。
+# 只用于 compare 命令的对比清单，不参与评分。
+compare:
+  speedup_change_gate: 0.10
+
+# 赛道口径。不合成跨赛道总分（技术报告 §3.3 禁止两赛道隐式换算）。
+tracks:
+  - coverage
+  - performance
+compose_total: false
+
+# 单个 case 的硬超时（秒）
+case_timeout_s: 60

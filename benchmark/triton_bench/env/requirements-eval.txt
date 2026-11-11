@@ -1,0 +1,12 @@
+# 评测工具链依赖（L0 层）——跨平台，macOS 与 Linux 通用，不含任何 NPU 依赖。
+#
+# 硬性约束：本文件禁止出现 `triton`。
+# triton 与 triton-ascend 安装目录同名，安装社区 triton 会覆盖被测编译器的
+# 目录并静默破坏被测对象（实测：triton._C.libtriton 符号错配）。
+# 被测编译器只在 requirements-compiler.txt 中声明，且只装进独立 venv。
+
+pydantic>=2.7
+PyYAML>=6.0
+Jinja2>=3.1
+pytest>=8.0
+numpy>=1.26

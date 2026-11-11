@@ -1,0 +1,28 @@
+# Copyright (c) 2025-2026 Huawei Technologies Co., Ltd.
+# This program is free software, you can redistribute it and/or modify it under the terms and conditions of
+# CANN Open Software License Agreement Version 2.0 (the "License").
+# Please refer to the License for details. You may not use this file except in compliance with the License.
+# THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+# INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE.
+# See LICENSE in the root of the software repository for the full text of the License.
+
+"""ADV-E3：import 时 raise SystemExit（BaseException 不设防）。
+
+校验器所有兜底都是 `except Exception`；SystemExit / KeyboardInterrupt
+是 BaseException 的直接子类，不属于 Exception——
+模块加载时抛出会**穿透全部兜底**，把 CLI 进程直接带走。
+
+更糟的是 SystemExit(0) 的退出码是 0：
+    python -m triton_eval validate ADV-E3-systemexit
+预期表现：无输出、无错误记录、退出码 0——看起来像「校验通过」。
+run 同理：评测进程静默消失，包装脚本会当作成功。
+"""
+
+from __future__ import annotations
+
+
+def exp(x, base=-1.0, scale=1.0, shift=0.0):
+    raise AssertionError("unreachable")
+
+
+raise SystemExit(0)

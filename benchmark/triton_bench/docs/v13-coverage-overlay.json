@@ -1,0 +1,1688 @@
+{
+  "format": 1,
+  "validation_scope": "historical_operator_overlay",
+  "analysis_only": true,
+  "replacement_operators": [
+    "FloorDiv",
+    "GroupedMatmul"
+  ],
+  "compilation": {
+    "covered": [
+      "FA-ATTR-LIST",
+      "FA-ATTR-NONDEFAULT",
+      "FA-AXIS-FIRST",
+      "FA-AXIS-INNER",
+      "FA-AXIS-LAST",
+      "FA-CONCUR-ACCUM",
+      "FA-CTRL-STATIC-UNROLL",
+      "FA-DT-BF16",
+      "FA-DT-FP16",
+      "FA-DT-FP32",
+      "FA-DT-INT16",
+      "FA-DT-INT32",
+      "FA-DT-INT64",
+      "FA-DT-INT8",
+      "FA-DT-UINT8",
+      "FA-FUSE-2STAGE",
+      "FA-FUSE-CROSS-CATEGORY",
+      "FA-FUSE-ELEM-INTRA",
+      "FA-FUSE-RED-INTRA",
+      "FA-IDX-GATHER",
+      "FA-IDX-PERMUTE",
+      "FA-IDX-SCATTER",
+      "FA-IDX-WHERE",
+      "FA-LINALG-BIAS",
+      "FA-LINALG-DOT",
+      "FA-LOAD-ALIGNED",
+      "FA-LOAD-CONTIG",
+      "FA-LOAD-LARGE",
+      "FA-LOAD-MASKED-EDGE",
+      "FA-LOAD-MEDIUM",
+      "FA-LOAD-SMALL",
+      "FA-LOAD-STRIDED",
+      "FA-LOAD-XLARGE",
+      "FA-MATH-ADD",
+      "FA-MATH-EXP",
+      "FA-MATH-GELU",
+      "FA-MATH-MAXMIN",
+      "FA-MATH-MUL",
+      "FA-MATH-SIGMOID",
+      "FA-MATH-SINCOS",
+      "FA-MATH-SQRT",
+      "FA-MULTI-INPUT",
+      "FA-MULTI-OUTPUT",
+      "FA-NORM-RMS",
+      "FA-NORM-SOFTMAX",
+      "FA-NUM-EXTREME",
+      "FA-NUM-MIXED",
+      "FA-NUM-ZEROS",
+      "FA-PAT-COALESCE-GATHER",
+      "FA-PAT-MASK-TAIL",
+      "FA-PROG-GRID1D",
+      "FA-PROG-GRID2D",
+      "FA-PROG-GRID4D",
+      "FA-REDUCE-ARG",
+      "FA-REDUCE-MAX",
+      "FA-REDUCE-MIN",
+      "FA-REDUCE-SUM",
+      "FA-SHAPE-CUBE",
+      "FA-SHAPE-FLAT",
+      "FA-SHAPE-SKINNY",
+      "FA-SHAPE-SQUARE",
+      "FA-STABLE-MAXSUB"
+    ],
+    "missing": [
+      "FA-FUSE-INTERM-ELIDE",
+      "FA-PAT-MULTIPASS-REDUCE",
+      "FA-PAT-SCAN-BLOCKED",
+      "FA-PAT-SPLIT-K",
+      "FA-PAT-TILE-GEMM",
+      "FA-PAT-VEC-BROADCAST",
+      "FA-PAT-VEC-LOAD",
+      "FA-PROG-GRID3D",
+      "FA-STABLE-LOGSUMEXP"
+    ],
+    "covered_count": 62,
+    "total": 71,
+    "rate": 0.8732394366197183,
+    "required_covered": 64,
+    "target_met": false
+  },
+  "execution_validation": {
+    "covered": [
+      "FA-ATTR-LIST",
+      "FA-ATTR-NONDEFAULT",
+      "FA-AXIS-FIRST",
+      "FA-AXIS-INNER",
+      "FA-AXIS-LAST",
+      "FA-CONCUR-ACCUM",
+      "FA-CTRL-STATIC-UNROLL",
+      "FA-DT-BF16",
+      "FA-DT-FP16",
+      "FA-DT-FP32",
+      "FA-DT-INT16",
+      "FA-DT-INT32",
+      "FA-DT-INT64",
+      "FA-DT-INT8",
+      "FA-DT-UINT8",
+      "FA-FUSE-2STAGE",
+      "FA-FUSE-CROSS-CATEGORY",
+      "FA-FUSE-ELEM-INTRA",
+      "FA-FUSE-RED-INTRA",
+      "FA-IDX-GATHER",
+      "FA-IDX-PERMUTE",
+      "FA-IDX-SCATTER",
+      "FA-IDX-WHERE",
+      "FA-LINALG-BIAS",
+      "FA-LINALG-DOT",
+      "FA-LOAD-ALIGNED",
+      "FA-LOAD-CONTIG",
+      "FA-LOAD-LARGE",
+      "FA-LOAD-MASKED-EDGE",
+      "FA-LOAD-MEDIUM",
+      "FA-LOAD-SMALL",
+      "FA-LOAD-STRIDED",
+      "FA-LOAD-XLARGE",
+      "FA-MATH-ADD",
+      "FA-MATH-EXP",
+      "FA-MATH-GELU",
+      "FA-MATH-MAXMIN",
+      "FA-MATH-MUL",
+      "FA-MATH-SIGMOID",
+      "FA-MATH-SINCOS",
+      "FA-MATH-SQRT",
+      "FA-MULTI-INPUT",
+      "FA-MULTI-OUTPUT",
+      "FA-NORM-RMS",
+      "FA-NORM-SOFTMAX",
+      "FA-NUM-EXTREME",
+      "FA-NUM-MIXED",
+      "FA-NUM-ZEROS",
+      "FA-PAT-COALESCE-GATHER",
+      "FA-PAT-MASK-TAIL",
+      "FA-PROG-GRID1D",
+      "FA-PROG-GRID2D",
+      "FA-PROG-GRID4D",
+      "FA-REDUCE-ARG",
+      "FA-REDUCE-MAX",
+      "FA-REDUCE-MIN",
+      "FA-REDUCE-SUM",
+      "FA-SHAPE-CUBE",
+      "FA-SHAPE-FLAT",
+      "FA-SHAPE-SKINNY",
+      "FA-SHAPE-SQUARE",
+      "FA-STABLE-MAXSUB"
+    ],
+    "missing": [
+      "FA-FUSE-INTERM-ELIDE",
+      "FA-PAT-MULTIPASS-REDUCE",
+      "FA-PAT-SCAN-BLOCKED",
+      "FA-PAT-SPLIT-K",
+      "FA-PAT-TILE-GEMM",
+      "FA-PAT-VEC-BROADCAST",
+      "FA-PAT-VEC-LOAD",
+      "FA-PROG-GRID3D",
+      "FA-STABLE-LOGSUMEXP"
+    ],
+    "covered_count": 62,
+    "total": 71,
+    "rate": 0.8732394366197183,
+    "required_covered": 64,
+    "target_met": false
+  },
+  "feature_origins": {
+    "compilation": {
+      "FA-SHAPE-SQUARE": [
+        {
+          "case_code": "official-abs-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 374,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-00-normal-c",
+          "source": "repair",
+          "witness_count": 3,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-LOAD-MASKED-EDGE": [
+        {
+          "case_code": "official-abs-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 1195,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-00-normal-c",
+          "source": "repair",
+          "witness_count": 20,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-DT-FP16": [
+        {
+          "case_code": "official-abs-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 851,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-LOAD-SMALL": [
+        {
+          "case_code": "official-abs-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 1103,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-00-normal-c",
+          "source": "repair",
+          "witness_count": 18,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-LOAD-CONTIG": [
+        {
+          "case_code": "official-abs-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 1199,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-00-normal-c",
+          "source": "repair",
+          "witness_count": 17,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-LOAD-STRIDED": [
+        {
+          "case_code": "official-abs-float16-03-boundary-s2",
+          "source": "baseline",
+          "witness_count": 154,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-03-boundary-s2",
+          "source": "repair",
+          "witness_count": 5,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-NUM-MIXED": [
+        {
+          "case_code": "official-abs-float16-03-mixed-c",
+          "source": "baseline",
+          "witness_count": 139,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-03-mixed-c",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-NUM-ZEROS": [
+        {
+          "case_code": "official-abs-float16-03-zeros-c",
+          "source": "baseline",
+          "witness_count": 84,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-03-zeros-c",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-PROG-GRID1D": [
+        {
+          "case_code": "official-abs-float16-22-normal-c",
+          "source": "baseline",
+          "witness_count": 47,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-22-normal-c",
+          "source": "repair",
+          "witness_count": 1,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-SHAPE-FLAT": [
+        {
+          "case_code": "official-abs-float16-22-normal-c",
+          "source": "baseline",
+          "witness_count": 47,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-22-normal-c",
+          "source": "repair",
+          "witness_count": 1,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-SHAPE-CUBE": [
+        {
+          "case_code": "official-abs-float16-23-normal-s2",
+          "source": "baseline",
+          "witness_count": 58,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-23-normal-s2",
+          "source": "repair",
+          "witness_count": 1,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-LOAD-MEDIUM": [
+        {
+          "case_code": "official-abs-float16-26-normal-c",
+          "source": "baseline",
+          "witness_count": 117,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-21-normal-c",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-SHAPE-SKINNY": [
+        {
+          "case_code": "official-abs-float16-26-normal-c",
+          "source": "baseline",
+          "witness_count": 117,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-26-normal-c",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-LOAD-ALIGNED": [
+        {
+          "case_code": "official-abs-float16-27-normal-c",
+          "source": "baseline",
+          "witness_count": 158,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-27-normal-c",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-LOAD-LARGE": [
+        {
+          "case_code": "official-abs-float16-27-normal-c",
+          "source": "baseline",
+          "witness_count": 67,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-27-normal-c",
+          "source": "repair",
+          "witness_count": 1,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-LOAD-XLARGE": [
+        {
+          "case_code": "official-abs-float16-28-normal-c",
+          "source": "baseline",
+          "witness_count": 66,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-28-normal-c",
+          "source": "repair",
+          "witness_count": 1,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-DT-FP32": [
+        {
+          "case_code": "official-abs-float32-00-normal-c",
+          "source": "baseline",
+          "witness_count": 393,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "coverage-grouped_matmul-030",
+          "source": "repair",
+          "witness_count": 1,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-NUM-EXTREME": [
+        {
+          "case_code": "official-abs-float32-03-extreme-c",
+          "source": "baseline",
+          "witness_count": 22,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-MATH-ADD": [
+        {
+          "case_code": "official-add-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 62,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-MULTI-INPUT": [
+        {
+          "case_code": "official-add-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 189,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "coverage-grouped_matmul-048",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-MATH-SINCOS": [
+        {
+          "case_code": "coverage-apply_rotary_pos_emb-037",
+          "source": "baseline",
+          "witness_count": 42,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-MATH-MUL": [
+        {
+          "case_code": "coverage-apply_rotary_pos_emb-037",
+          "source": "baseline",
+          "witness_count": 102,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-FUSE-2STAGE": [
+        {
+          "case_code": "coverage-apply_rotary_pos_emb-037",
+          "source": "baseline",
+          "witness_count": 7,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-FUSE-ELEM-INTRA": [
+        {
+          "case_code": "coverage-apply_rotary_pos_emb-037",
+          "source": "baseline",
+          "witness_count": 2,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-ATTR-NONDEFAULT": [
+        {
+          "case_code": "coverage-apply_rotary_pos_emb-038",
+          "source": "baseline",
+          "witness_count": 278,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "coverage-grouped_matmul-048",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-REDUCE-MAX": [
+        {
+          "case_code": "official-arg_max-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 65,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-REDUCE-ARG": [
+        {
+          "case_code": "official-arg_max-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 42,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-AXIS-LAST": [
+        {
+          "case_code": "official-arg_max-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 320,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-REDUCE-MIN": [
+        {
+          "case_code": "official-arg_min-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 42,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-DT-INT32": [
+        {
+          "case_code": "official-bitwise_and-int32-00-normal-c",
+          "source": "baseline",
+          "witness_count": 100,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-00-normal-c",
+          "source": "repair",
+          "witness_count": 20,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-MATH-MAXMIN": [
+        {
+          "case_code": "official-clamp-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 80,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-REDUCE-SUM": [
+        {
+          "case_code": "official-cum_sum-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 125,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-MULTI-OUTPUT": [
+        {
+          "case_code": "coverage-cummin-022",
+          "source": "baseline",
+          "witness_count": 2,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-AXIS-INNER": [
+        {
+          "case_code": "coverage-cummin-022",
+          "source": "baseline",
+          "witness_count": 4,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-AXIS-FIRST": [
+        {
+          "case_code": "coverage-cummin-021",
+          "source": "baseline",
+          "witness_count": 5,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-MATH-EXP": [
+        {
+          "case_code": "official-exp-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 85,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-IDX-GATHER": [
+        {
+          "case_code": "official-gather-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 20,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-PAT-COALESCE-GATHER": [
+        {
+          "case_code": "official-gather-float16-23-normal-c",
+          "source": "baseline",
+          "witness_count": 2,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-MATH-GELU": [
+        {
+          "case_code": "official-gelu-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 20,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-MATH-SQRT": [
+        {
+          "case_code": "official-layer_norm-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 80,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-IDX-WHERE": [
+        {
+          "case_code": "coverage-masked_softmax-052",
+          "source": "baseline",
+          "witness_count": 25,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-DT-BF16": [
+        {
+          "case_code": "coverage-masked_softmax-052",
+          "source": "baseline",
+          "witness_count": 1,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "coverage-grouped_matmul-048",
+          "source": "repair",
+          "witness_count": 1,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-FUSE-CROSS-CATEGORY": [
+        {
+          "case_code": "coverage-masked_softmax-052",
+          "source": "baseline",
+          "witness_count": 5,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-FUSE-RED-INTRA": [
+        {
+          "case_code": "coverage-masked_softmax-052",
+          "source": "baseline",
+          "witness_count": 5,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-NORM-SOFTMAX": [
+        {
+          "case_code": "coverage-masked_softmax-052",
+          "source": "baseline",
+          "witness_count": 25,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-STABLE-MAXSUB": [
+        {
+          "case_code": "coverage-masked_softmax-052",
+          "source": "baseline",
+          "witness_count": 25,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-DT-INT8": [
+        {
+          "case_code": "coverage-masked_softmax-057",
+          "source": "baseline",
+          "witness_count": 2,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-DT-UINT8": [
+        {
+          "case_code": "coverage-masked_softmax-060",
+          "source": "baseline",
+          "witness_count": 2,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-PROG-GRID2D": [
+        {
+          "case_code": "official-matmul-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 20,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "coverage-grouped_matmul-048",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-LINALG-DOT": [
+        {
+          "case_code": "official-matmul-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 20,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "coverage-grouped_matmul-048",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-PROG-GRID4D": [
+        {
+          "case_code": "official-neg-float16-24-normal-c",
+          "source": "baseline",
+          "witness_count": 1,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-PAT-MASK-TAIL": [
+        {
+          "case_code": "official-neg-float16-26-normal-c",
+          "source": "baseline",
+          "witness_count": 1,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-NORM-RMS": [
+        {
+          "case_code": "official-rms_norm-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 20,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-CONCUR-ACCUM": [
+        {
+          "case_code": "coverage-scatter-019",
+          "source": "baseline",
+          "witness_count": 2,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-DT-INT64": [
+        {
+          "case_code": "coverage-scatter-019",
+          "source": "baseline",
+          "witness_count": 2,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-IDX-SCATTER": [
+        {
+          "case_code": "coverage-scatter-019",
+          "source": "baseline",
+          "witness_count": 2,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-MATH-SIGMOID": [
+        {
+          "case_code": "official-sigmoid-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 40,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-ATTR-LIST": [
+        {
+          "case_code": "official-transpose-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 22,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "coverage-grouped_matmul-048",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-IDX-PERMUTE": [
+        {
+          "case_code": "official-transpose-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 22,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-DT-INT16": [
+        {
+          "case_code": "coverage-transpose-063",
+          "source": "baseline",
+          "witness_count": 2,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-CTRL-STATIC-UNROLL": [
+        {
+          "case_code": "coverage-grouped_matmul-048",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-LINALG-BIAS": [
+        {
+          "case_code": "coverage-grouped_matmul-048",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ]
+    },
+    "execution_validation": {
+      "FA-SHAPE-SQUARE": [
+        {
+          "case_code": "official-abs-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 374,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-00-normal-c",
+          "source": "repair",
+          "witness_count": 3,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-LOAD-MASKED-EDGE": [
+        {
+          "case_code": "official-abs-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 1195,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-00-normal-c",
+          "source": "repair",
+          "witness_count": 20,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-DT-FP16": [
+        {
+          "case_code": "official-abs-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 851,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-LOAD-SMALL": [
+        {
+          "case_code": "official-abs-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 1103,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-00-normal-c",
+          "source": "repair",
+          "witness_count": 18,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-LOAD-CONTIG": [
+        {
+          "case_code": "official-abs-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 1199,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-00-normal-c",
+          "source": "repair",
+          "witness_count": 17,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-LOAD-STRIDED": [
+        {
+          "case_code": "official-abs-float16-03-boundary-s2",
+          "source": "baseline",
+          "witness_count": 154,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-03-boundary-s2",
+          "source": "repair",
+          "witness_count": 5,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-NUM-MIXED": [
+        {
+          "case_code": "official-abs-float16-03-mixed-c",
+          "source": "baseline",
+          "witness_count": 139,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-03-mixed-c",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-NUM-ZEROS": [
+        {
+          "case_code": "official-abs-float16-03-zeros-c",
+          "source": "baseline",
+          "witness_count": 84,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-03-zeros-c",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-PROG-GRID1D": [
+        {
+          "case_code": "official-abs-float16-22-normal-c",
+          "source": "baseline",
+          "witness_count": 47,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-22-normal-c",
+          "source": "repair",
+          "witness_count": 1,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-SHAPE-FLAT": [
+        {
+          "case_code": "official-abs-float16-22-normal-c",
+          "source": "baseline",
+          "witness_count": 47,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-22-normal-c",
+          "source": "repair",
+          "witness_count": 1,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-SHAPE-CUBE": [
+        {
+          "case_code": "official-abs-float16-23-normal-s2",
+          "source": "baseline",
+          "witness_count": 58,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-23-normal-s2",
+          "source": "repair",
+          "witness_count": 1,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-LOAD-MEDIUM": [
+        {
+          "case_code": "official-abs-float16-26-normal-c",
+          "source": "baseline",
+          "witness_count": 117,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-21-normal-c",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-SHAPE-SKINNY": [
+        {
+          "case_code": "official-abs-float16-26-normal-c",
+          "source": "baseline",
+          "witness_count": 117,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-26-normal-c",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-LOAD-ALIGNED": [
+        {
+          "case_code": "official-abs-float16-27-normal-c",
+          "source": "baseline",
+          "witness_count": 158,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-27-normal-c",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-LOAD-LARGE": [
+        {
+          "case_code": "official-abs-float16-27-normal-c",
+          "source": "baseline",
+          "witness_count": 67,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-27-normal-c",
+          "source": "repair",
+          "witness_count": 1,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-LOAD-XLARGE": [
+        {
+          "case_code": "official-abs-float16-28-normal-c",
+          "source": "baseline",
+          "witness_count": 66,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-28-normal-c",
+          "source": "repair",
+          "witness_count": 1,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-DT-FP32": [
+        {
+          "case_code": "official-abs-float32-00-normal-c",
+          "source": "baseline",
+          "witness_count": 393,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "coverage-grouped_matmul-030",
+          "source": "repair",
+          "witness_count": 1,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-NUM-EXTREME": [
+        {
+          "case_code": "official-abs-float32-03-extreme-c",
+          "source": "baseline",
+          "witness_count": 22,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-MATH-ADD": [
+        {
+          "case_code": "official-add-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 62,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-MULTI-INPUT": [
+        {
+          "case_code": "official-add-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 189,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "coverage-grouped_matmul-048",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-MATH-SINCOS": [
+        {
+          "case_code": "coverage-apply_rotary_pos_emb-037",
+          "source": "baseline",
+          "witness_count": 42,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-MATH-MUL": [
+        {
+          "case_code": "coverage-apply_rotary_pos_emb-037",
+          "source": "baseline",
+          "witness_count": 102,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-FUSE-2STAGE": [
+        {
+          "case_code": "coverage-apply_rotary_pos_emb-037",
+          "source": "baseline",
+          "witness_count": 7,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-FUSE-ELEM-INTRA": [
+        {
+          "case_code": "coverage-apply_rotary_pos_emb-037",
+          "source": "baseline",
+          "witness_count": 2,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-ATTR-NONDEFAULT": [
+        {
+          "case_code": "coverage-apply_rotary_pos_emb-038",
+          "source": "baseline",
+          "witness_count": 278,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "coverage-grouped_matmul-048",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-REDUCE-MAX": [
+        {
+          "case_code": "official-arg_max-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 65,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-REDUCE-ARG": [
+        {
+          "case_code": "official-arg_max-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 42,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-AXIS-LAST": [
+        {
+          "case_code": "official-arg_max-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 320,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-REDUCE-MIN": [
+        {
+          "case_code": "official-arg_min-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 42,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-DT-INT32": [
+        {
+          "case_code": "official-bitwise_and-int32-00-normal-c",
+          "source": "baseline",
+          "witness_count": 100,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "official-floor_div-int32-00-normal-c",
+          "source": "repair",
+          "witness_count": 20,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-MATH-MAXMIN": [
+        {
+          "case_code": "official-clamp-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 80,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-REDUCE-SUM": [
+        {
+          "case_code": "official-cum_sum-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 125,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-MULTI-OUTPUT": [
+        {
+          "case_code": "coverage-cummin-022",
+          "source": "baseline",
+          "witness_count": 2,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-AXIS-INNER": [
+        {
+          "case_code": "coverage-cummin-022",
+          "source": "baseline",
+          "witness_count": 4,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-AXIS-FIRST": [
+        {
+          "case_code": "coverage-cummin-021",
+          "source": "baseline",
+          "witness_count": 5,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-MATH-EXP": [
+        {
+          "case_code": "official-exp-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 85,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-IDX-GATHER": [
+        {
+          "case_code": "official-gather-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 20,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-PAT-COALESCE-GATHER": [
+        {
+          "case_code": "official-gather-float16-23-normal-c",
+          "source": "baseline",
+          "witness_count": 2,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-MATH-GELU": [
+        {
+          "case_code": "official-gelu-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 20,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-MATH-SQRT": [
+        {
+          "case_code": "official-layer_norm-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 80,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-IDX-WHERE": [
+        {
+          "case_code": "coverage-masked_softmax-052",
+          "source": "baseline",
+          "witness_count": 25,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-DT-BF16": [
+        {
+          "case_code": "coverage-masked_softmax-052",
+          "source": "baseline",
+          "witness_count": 1,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "coverage-grouped_matmul-048",
+          "source": "repair",
+          "witness_count": 1,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-FUSE-CROSS-CATEGORY": [
+        {
+          "case_code": "coverage-masked_softmax-052",
+          "source": "baseline",
+          "witness_count": 5,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-FUSE-RED-INTRA": [
+        {
+          "case_code": "coverage-masked_softmax-052",
+          "source": "baseline",
+          "witness_count": 5,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-NORM-SOFTMAX": [
+        {
+          "case_code": "coverage-masked_softmax-052",
+          "source": "baseline",
+          "witness_count": 25,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-STABLE-MAXSUB": [
+        {
+          "case_code": "coverage-masked_softmax-052",
+          "source": "baseline",
+          "witness_count": 25,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-DT-INT8": [
+        {
+          "case_code": "coverage-masked_softmax-057",
+          "source": "baseline",
+          "witness_count": 2,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-DT-UINT8": [
+        {
+          "case_code": "coverage-masked_softmax-060",
+          "source": "baseline",
+          "witness_count": 2,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-PROG-GRID2D": [
+        {
+          "case_code": "official-matmul-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 20,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "coverage-grouped_matmul-048",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-LINALG-DOT": [
+        {
+          "case_code": "official-matmul-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 20,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "coverage-grouped_matmul-048",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-PROG-GRID4D": [
+        {
+          "case_code": "official-neg-float16-24-normal-c",
+          "source": "baseline",
+          "witness_count": 1,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-PAT-MASK-TAIL": [
+        {
+          "case_code": "official-neg-float16-26-normal-c",
+          "source": "baseline",
+          "witness_count": 1,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-NORM-RMS": [
+        {
+          "case_code": "official-rms_norm-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 20,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-CONCUR-ACCUM": [
+        {
+          "case_code": "coverage-scatter-019",
+          "source": "baseline",
+          "witness_count": 2,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-DT-INT64": [
+        {
+          "case_code": "coverage-scatter-019",
+          "source": "baseline",
+          "witness_count": 2,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-IDX-SCATTER": [
+        {
+          "case_code": "coverage-scatter-019",
+          "source": "baseline",
+          "witness_count": 2,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-MATH-SIGMOID": [
+        {
+          "case_code": "official-sigmoid-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 40,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-ATTR-LIST": [
+        {
+          "case_code": "official-transpose-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 22,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        },
+        {
+          "case_code": "coverage-grouped_matmul-048",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-IDX-PERMUTE": [
+        {
+          "case_code": "official-transpose-float16-00-normal-c",
+          "source": "baseline",
+          "witness_count": 22,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-DT-INT16": [
+        {
+          "case_code": "coverage-transpose-063",
+          "source": "baseline",
+          "witness_count": 2,
+          "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c"
+        }
+      ],
+      "FA-CTRL-STATIC-UNROLL": [
+        {
+          "case_code": "coverage-grouped_matmul-048",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ],
+      "FA-LINALG-BIAS": [
+        {
+          "case_code": "coverage-grouped_matmul-048",
+          "source": "repair",
+          "witness_count": 2,
+          "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6"
+        }
+      ]
+    }
+  },
+  "expected_cases": 1377,
+  "passed_cases": 1375,
+  "missing_cases": [
+    "coverage-cross_entropy_loss-032",
+    "coverage-cross_entropy_loss-033"
+  ],
+  "nonpass_cases": {},
+  "newly_confirmed_features": [
+    "FA-CTRL-STATIC-UNROLL",
+    "FA-LINALG-BIAS"
+  ],
+  "static_without_compilation": [
+    "FA-FUSE-INTERM-ELIDE",
+    "FA-PAT-TILE-GEMM",
+    "FA-PAT-VEC-LOAD",
+    "FA-PROG-GRID3D",
+    "FA-STABLE-LOGSUMEXP"
+  ],
+  "environment_differences": {
+    "venv_lock_hash": [
+      "655acad1cfcd9f66",
+      "de4ed45453adafd8"
+    ]
+  },
+  "single_locked_environment": false,
+  "verified_npu_coverage_target_met": false,
+  "taskbook_accepted": false,
+  "source_reports": {
+    "baseline": {
+      "path": "/private/tmp/triton-v12-npu-results-1sWwnM/records/20261025-042132-445431/evidence",
+      "manifest_hash": "cc44177bd737ba52b23b7c660d4f3188f0f778e47709ca3b538d5595240f5a0c",
+      "report_sha256": "b7411abcc23f4ccdc5bf8949a873002073b507749e53d16c26cd01b546f55985"
+    },
+    "repair": {
+      "path": "/private/tmp/triton-v12-npu-results-1sWwnM/records/20261026-053611-263422/evidence",
+      "manifest_hash": "20a4d6c5d76ec48edb5df88457bc01e13717c01388e947a84fa273ca10fe39d6",
+      "report_sha256": "8cf2a487cb058d4ce1e36ab437ab9dad6729bc1652aaa1437cab42e9521edc57"
+    }
+  },
+  "recognizer_reanalysis": {
+    "new_features": {
+      "FA-FUSE-INTERM-ELIDE": [
+        {
+          "source": "baseline",
+          "case_code": "coverage-masked_softmax-052",
+          "reason": "masked intermediate feeds normalization in SSA; all global stores target returned output; no scratch pointer or second launch",
+          "observation_sha256": "0a6a5fe446d230254f703a50b59aab4b4829fdd6790ee71105b44f263dfef5c4"
+        },
+        {
+          "source": "baseline",
+          "case_code": "coverage-masked_softmax-057",
+          "reason": "masked intermediate feeds normalization in SSA; all global stores target returned output; no scratch pointer or second launch",
+          "observation_sha256": "16b39f84a8ee8f2e016ecb28654b824948858ecc2d97963d79b14138fa248979"
+        },
+        {
+          "source": "baseline",
+          "case_code": "coverage-masked_softmax-060",
+          "reason": "masked intermediate feeds normalization in SSA; all global stores target returned output; no scratch pointer or second launch",
+          "observation_sha256": "2e393ea46864a0ee7c032ab314ba9deb4392e58240f8c2646444fea06739a248"
+        },
+        {
+          "source": "baseline",
+          "case_code": "coverage-masked_softmax-058",
+          "reason": "masked intermediate feeds normalization in SSA; all global stores target returned output; no scratch pointer or second launch",
+          "observation_sha256": "e6924aa0b698ee60daffc6336b96bbea89779e353d56cb40bdabe3ae8cd83a34"
+        },
+        {
+          "source": "baseline",
+          "case_code": "coverage-masked_softmax-061",
+          "reason": "masked intermediate feeds normalization in SSA; all global stores target returned output; no scratch pointer or second launch",
+          "observation_sha256": "f6ae1e8ba9555dc23a743693ae34d59552aef8ec75a683a194ef5f2affb9f658"
+        }
+      ]
+    },
+    "compilation": {
+      "covered": [
+        "FA-ATTR-LIST",
+        "FA-ATTR-NONDEFAULT",
+        "FA-AXIS-FIRST",
+        "FA-AXIS-INNER",
+        "FA-AXIS-LAST",
+        "FA-CONCUR-ACCUM",
+        "FA-CTRL-STATIC-UNROLL",
+        "FA-DT-BF16",
+        "FA-DT-FP16",
+        "FA-DT-FP32",
+        "FA-DT-INT16",
+        "FA-DT-INT32",
+        "FA-DT-INT64",
+        "FA-DT-INT8",
+        "FA-DT-UINT8",
+        "FA-FUSE-2STAGE",
+        "FA-FUSE-CROSS-CATEGORY",
+        "FA-FUSE-ELEM-INTRA",
+        "FA-FUSE-INTERM-ELIDE",
+        "FA-FUSE-RED-INTRA",
+        "FA-IDX-GATHER",
+        "FA-IDX-PERMUTE",
+        "FA-IDX-SCATTER",
+        "FA-IDX-WHERE",
+        "FA-LINALG-BIAS",
+        "FA-LINALG-DOT",
+        "FA-LOAD-ALIGNED",
+        "FA-LOAD-CONTIG",
+        "FA-LOAD-LARGE",
+        "FA-LOAD-MASKED-EDGE",
+        "FA-LOAD-MEDIUM",
+        "FA-LOAD-SMALL",
+        "FA-LOAD-STRIDED",
+        "FA-LOAD-XLARGE",
+        "FA-MATH-ADD",
+        "FA-MATH-EXP",
+        "FA-MATH-GELU",
+        "FA-MATH-MAXMIN",
+        "FA-MATH-MUL",
+        "FA-MATH-SIGMOID",
+        "FA-MATH-SINCOS",
+        "FA-MATH-SQRT",
+        "FA-MULTI-INPUT",
+        "FA-MULTI-OUTPUT",
+        "FA-NORM-RMS",
+        "FA-NORM-SOFTMAX",
+        "FA-NUM-EXTREME",
+        "FA-NUM-MIXED",
+        "FA-NUM-ZEROS",
+        "FA-PAT-COALESCE-GATHER",
+        "FA-PAT-MASK-TAIL",
+        "FA-PROG-GRID1D",
+        "FA-PROG-GRID2D",
+        "FA-PROG-GRID4D",
+        "FA-REDUCE-ARG",
+        "FA-REDUCE-MAX",
+        "FA-REDUCE-MIN",
+        "FA-REDUCE-SUM",
+        "FA-SHAPE-CUBE",
+        "FA-SHAPE-FLAT",
+        "FA-SHAPE-SKINNY",
+        "FA-SHAPE-SQUARE",
+        "FA-STABLE-MAXSUB"
+      ],
+      "missing": [
+        "FA-PAT-MULTIPASS-REDUCE",
+        "FA-PAT-SCAN-BLOCKED",
+        "FA-PAT-SPLIT-K",
+        "FA-PAT-TILE-GEMM",
+        "FA-PAT-VEC-BROADCAST",
+        "FA-PAT-VEC-LOAD",
+        "FA-PROG-GRID3D",
+        "FA-STABLE-LOGSUMEXP"
+      ],
+      "covered_count": 63,
+      "total": 71,
+      "rate": 0.8873239436619719,
+      "required_covered": 64,
+      "target_met": false
+    },
+    "execution_validation": {
+      "covered": [
+        "FA-ATTR-LIST",
+        "FA-ATTR-NONDEFAULT",
+        "FA-AXIS-FIRST",
+        "FA-AXIS-INNER",
+        "FA-AXIS-LAST",
+        "FA-CONCUR-ACCUM",
+        "FA-CTRL-STATIC-UNROLL",
+        "FA-DT-BF16",
+        "FA-DT-FP16",
+        "FA-DT-FP32",
+        "FA-DT-INT16",
+        "FA-DT-INT32",
+        "FA-DT-INT64",
+        "FA-DT-INT8",
+        "FA-DT-UINT8",
+        "FA-FUSE-2STAGE",
+        "FA-FUSE-CROSS-CATEGORY",
+        "FA-FUSE-ELEM-INTRA",
+        "FA-FUSE-INTERM-ELIDE",
+        "FA-FUSE-RED-INTRA",
+        "FA-IDX-GATHER",
+        "FA-IDX-PERMUTE",
+        "FA-IDX-SCATTER",
+        "FA-IDX-WHERE",
+        "FA-LINALG-BIAS",
+        "FA-LINALG-DOT",
+        "FA-LOAD-ALIGNED",
+        "FA-LOAD-CONTIG",
+        "FA-LOAD-LARGE",
+        "FA-LOAD-MASKED-EDGE",
+        "FA-LOAD-MEDIUM",
+        "FA-LOAD-SMALL",
+        "FA-LOAD-STRIDED",
+        "FA-LOAD-XLARGE",
+        "FA-MATH-ADD",
+        "FA-MATH-EXP",
+        "FA-MATH-GELU",
+        "FA-MATH-MAXMIN",
+        "FA-MATH-MUL",
+        "FA-MATH-SIGMOID",
+        "FA-MATH-SINCOS",
+        "FA-MATH-SQRT",
+        "FA-MULTI-INPUT",
+        "FA-MULTI-OUTPUT",
+        "FA-NORM-RMS",
+        "FA-NORM-SOFTMAX",
+        "FA-NUM-EXTREME",
+        "FA-NUM-MIXED",
+        "FA-NUM-ZEROS",
+        "FA-PAT-COALESCE-GATHER",
+        "FA-PAT-MASK-TAIL",
+        "FA-PROG-GRID1D",
+        "FA-PROG-GRID2D",
+        "FA-PROG-GRID4D",
+        "FA-REDUCE-ARG",
+        "FA-REDUCE-MAX",
+        "FA-REDUCE-MIN",
+        "FA-REDUCE-SUM",
+        "FA-SHAPE-CUBE",
+        "FA-SHAPE-FLAT",
+        "FA-SHAPE-SKINNY",
+        "FA-SHAPE-SQUARE",
+        "FA-STABLE-MAXSUB"
+      ],
+      "missing": [
+        "FA-PAT-MULTIPASS-REDUCE",
+        "FA-PAT-SCAN-BLOCKED",
+        "FA-PAT-SPLIT-K",
+        "FA-PAT-TILE-GEMM",
+        "FA-PAT-VEC-BROADCAST",
+        "FA-PAT-VEC-LOAD",
+        "FA-PROG-GRID3D",
+        "FA-STABLE-LOGSUMEXP"
+      ],
+      "covered_count": 63,
+      "total": 71,
+      "rate": 0.8873239436619719,
+      "required_covered": 64,
+      "target_met": false
+    },
+    "scope": "offline reanalysis of indexed real NPU artifacts; no new device execution",
+    "frozen_suite_acceptance": false
+  }
+}
