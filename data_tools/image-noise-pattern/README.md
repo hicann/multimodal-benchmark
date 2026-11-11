@@ -15,10 +15,21 @@
 
 ## 使用方式
 
-各模块独立运行，直接调用对应 Python 脚本即可。例如：
+该模块提供 Python 函数，没有实现 `--input` / `--output` 命令行参数。以白平衡模块为例，在本目录准备 `input.png` 后执行：
 
 ```bash
-python AWB-D.py --input <input_image> --output <output_image>
+python - <<'PY'
+import runpy
+import cv2
+
+white_balance_error = runpy.run_path("AWB-D.py")["white_balance_error"]
+image = cv2.imread("input.png")
+if image is None:
+    raise FileNotFoundError("input.png")
+result = white_balance_error(image, precent=0.1)
+if not cv2.imwrite("output.png", result):
+    raise OSError("Cannot write output.png")
+PY
 ```
 
 具体参数见各模块内注释。
