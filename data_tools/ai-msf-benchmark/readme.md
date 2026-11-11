@@ -26,7 +26,7 @@ We implement all the MSF systems with PyTorch 1.8.0 and Python 3.7.11. All exper
 ### Corruption Patterns Dependency
 Run the following command to install the dependencies
 ```
-cd Corruption
+cd corruption
 pip install -r requirements.txt
 ```
 If you need to synthesize rain and fog, you need to install the following dependencies
