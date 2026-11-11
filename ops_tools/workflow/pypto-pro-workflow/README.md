@@ -141,7 +141,7 @@ pypto-pro-workflow/
 │   ├── anti_cheat_reference.md  ← 反作弊触发条件表（A1-A10）+ 自检清单
 │   └── profiling_guide.md       ← Profiling 数据解读指南
 ├── docs/                    ← 文档
-│   └── pypto_build_guide.md     ← PyPTO 源码编译安装教程
+│   └── pypto源码编译教程/pypto源码安装编译教程.md ← PyPTO 源码编译安装教程
 ├── examples/                ← 算子实现示例（含代码 + 迭代报告）
 │   ├── fused_conv_tanh/         ← 融合卷积+Tanh 算子
 │   │   ├── impl/                    ← 算子代码（setup.py + cann_bench/）

@@ -52,7 +52,7 @@ python3 -c "import pypto; print('PyPTO 可用')"
 
 ### 1.3 PyPTO Pro（可选，实验性）
 
-PyPTO Pro（SPMD 模式）尚未在已发布的 CANN 中提供，需从源码编译。详见 [docs/pypto_build_guide.md](pypto_build_guide.md)。
+PyPTO Pro（SPMD 模式）尚未在已发布的 CANN 中提供，需从源码编译。详见 [PyPTO 源码安装编译教程](pypto源码编译教程/pypto源码安装编译教程.md)。
 
 **当前无 PyPTO Pro 时**：框架会自动退回 `pypto.frontend` 栈，功能正常但小 shape case 性能受限（~35μs AICPU 调度开销）。
 
