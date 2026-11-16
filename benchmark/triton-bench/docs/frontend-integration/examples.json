@@ -1,0 +1,1307 @@
+{
+  "source": "EvaluationService without Worker; IDs and times normalized",
+  "npu_execution": false,
+  "successful_evaluation_fixture": false,
+  "scenarios": [
+    {
+      "name": "catalog-worker-disabled",
+      "method": "GET",
+      "path": "/api/v1/catalog",
+      "http_status": 200,
+      "response": {
+        "corpus_version": "v0.18-scan-certification-candidates",
+        "manifest_hash": "0890185080c5ad36eb0bb8722f975b4b2bd820e99feb702d328f1d40b19258a0",
+        "case_count": 1385,
+        "operator_count": 74,
+        "operators": [
+          {
+            "name": "Abs",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "abs",
+            "params": [
+              "x"
+            ],
+            "signature": "abs(x) -> y"
+          },
+          {
+            "name": "Neg",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "neg",
+            "params": [
+              "x"
+            ],
+            "signature": "neg(x) -> y"
+          },
+          {
+            "name": "Exp",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "exp",
+            "params": [
+              "x",
+              "base",
+              "scale",
+              "shift"
+            ],
+            "signature": "exp(Tensor x, float base=-1.0, float scale=1.0, float shift=0.0) -> Tensor y"
+          },
+          {
+            "name": "Exp2",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "exp2",
+            "params": [
+              "x"
+            ],
+            "signature": "exp2(x) -> y"
+          },
+          {
+            "name": "Expm1",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "expm1",
+            "params": [
+              "x"
+            ],
+            "signature": "expm1(x) -> y"
+          },
+          {
+            "name": "Log",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "log",
+            "params": [
+              "x"
+            ],
+            "signature": "log(x) -> y"
+          },
+          {
+            "name": "Log2",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "log2",
+            "params": [
+              "x"
+            ],
+            "signature": "log2(x) -> y"
+          },
+          {
+            "name": "Log10",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "log10",
+            "params": [
+              "x"
+            ],
+            "signature": "log10(x) -> y"
+          },
+          {
+            "name": "Log1p",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "log1p",
+            "params": [
+              "x"
+            ],
+            "signature": "log1p(x) -> y"
+          },
+          {
+            "name": "Sqrt",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "sqrt",
+            "params": [
+              "x"
+            ],
+            "signature": "sqrt(x) -> y"
+          },
+          {
+            "name": "Rsqrt",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "rsqrt",
+            "params": [
+              "x"
+            ],
+            "signature": "rsqrt(x) -> y"
+          },
+          {
+            "name": "Sin",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "sin",
+            "params": [
+              "x"
+            ],
+            "signature": "sin(x) -> y"
+          },
+          {
+            "name": "Cos",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "cos",
+            "params": [
+              "x"
+            ],
+            "signature": "cos(x) -> y"
+          },
+          {
+            "name": "Tan",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "tan",
+            "params": [
+              "x"
+            ],
+            "signature": "tan(x) -> y"
+          },
+          {
+            "name": "Tanh",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "tanh",
+            "params": [
+              "x"
+            ],
+            "signature": "tanh(x) -> y"
+          },
+          {
+            "name": "Sinh",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "sinh",
+            "params": [
+              "x"
+            ],
+            "signature": "sinh(x) -> y"
+          },
+          {
+            "name": "Cosh",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "cosh",
+            "params": [
+              "x"
+            ],
+            "signature": "cosh(x) -> y"
+          },
+          {
+            "name": "Floor",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "floor",
+            "params": [
+              "x"
+            ],
+            "signature": "floor(x) -> y"
+          },
+          {
+            "name": "Ceil",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "ceil",
+            "params": [
+              "x"
+            ],
+            "signature": "ceil(x) -> y"
+          },
+          {
+            "name": "Trunc",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "trunc",
+            "params": [
+              "x"
+            ],
+            "signature": "trunc(x) -> y"
+          },
+          {
+            "name": "Relu",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "relu",
+            "params": [
+              "x"
+            ],
+            "signature": "relu(x) -> y"
+          },
+          {
+            "name": "Sigmoid",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "sigmoid",
+            "params": [
+              "x"
+            ],
+            "signature": "sigmoid(x) -> y"
+          },
+          {
+            "name": "Signbit",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "signbit",
+            "params": [
+              "x"
+            ],
+            "signature": "signbit(x) -> y"
+          },
+          {
+            "name": "Add",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "add",
+            "params": [
+              "x",
+              "y"
+            ],
+            "signature": "add(x, y) -> y"
+          },
+          {
+            "name": "Sub",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "sub",
+            "params": [
+              "x",
+              "y"
+            ],
+            "signature": "sub(x, y) -> y"
+          },
+          {
+            "name": "Mul",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "mul",
+            "params": [
+              "x",
+              "y"
+            ],
+            "signature": "mul(x, y) -> y"
+          },
+          {
+            "name": "Div",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "div",
+            "params": [
+              "x",
+              "y"
+            ],
+            "signature": "div(x, y) -> y"
+          },
+          {
+            "name": "FloorDiv",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "floor_div",
+            "params": [
+              "x",
+              "y"
+            ],
+            "signature": "floor_div(x, y) -> y"
+          },
+          {
+            "name": "Mod",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "mod",
+            "params": [
+              "x",
+              "y"
+            ],
+            "signature": "mod(x, y) -> y"
+          },
+          {
+            "name": "Pow",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "pow",
+            "params": [
+              "x",
+              "y"
+            ],
+            "signature": "pow(x, y) -> y"
+          },
+          {
+            "name": "Maximum",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "maximum",
+            "params": [
+              "x1",
+              "x2"
+            ],
+            "signature": "maximum(Tensor x1, Tensor x2) -> Tensor y"
+          },
+          {
+            "name": "Minimum",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "minimum",
+            "params": [
+              "x",
+              "y"
+            ],
+            "signature": "minimum(x, y) -> y"
+          },
+          {
+            "name": "Equal",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "equal",
+            "params": [
+              "x",
+              "y"
+            ],
+            "signature": "equal(x, y) -> y"
+          },
+          {
+            "name": "NotEqual",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "not_equal",
+            "params": [
+              "x",
+              "y"
+            ],
+            "signature": "not_equal(x, y) -> y"
+          },
+          {
+            "name": "Greater",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "greater",
+            "params": [
+              "x",
+              "y"
+            ],
+            "signature": "greater(x, y) -> y"
+          },
+          {
+            "name": "GreaterEqual",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "greater_equal",
+            "params": [
+              "x",
+              "y"
+            ],
+            "signature": "greater_equal(x, y) -> y"
+          },
+          {
+            "name": "Less",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "less",
+            "params": [
+              "x",
+              "y"
+            ],
+            "signature": "less(x, y) -> y"
+          },
+          {
+            "name": "LessEqual",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "less_equal",
+            "params": [
+              "x",
+              "y"
+            ],
+            "signature": "less_equal(x, y) -> y"
+          },
+          {
+            "name": "BitwiseAnd",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "bitwise_and",
+            "params": [
+              "x",
+              "y"
+            ],
+            "signature": "bitwise_and(x, y) -> y"
+          },
+          {
+            "name": "BitwiseOr",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "bitwise_or",
+            "params": [
+              "x",
+              "y"
+            ],
+            "signature": "bitwise_or(x, y) -> y"
+          },
+          {
+            "name": "BitwiseXor",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "bitwise_xor",
+            "params": [
+              "x",
+              "y"
+            ],
+            "signature": "bitwise_xor(x, y) -> y"
+          },
+          {
+            "name": "BitwiseNot",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "bitwise_not",
+            "params": [
+              "x"
+            ],
+            "signature": "bitwise_not(x) -> y"
+          },
+          {
+            "name": "LogicalAnd",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "logical_and",
+            "params": [
+              "x",
+              "y"
+            ],
+            "signature": "logical_and(x, y) -> y"
+          },
+          {
+            "name": "LogicalOr",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "logical_or",
+            "params": [
+              "x",
+              "y"
+            ],
+            "signature": "logical_or(x, y) -> y"
+          },
+          {
+            "name": "Clamp",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "clamp",
+            "params": [
+              "x",
+              "lower",
+              "upper"
+            ],
+            "signature": "clamp(x) -> y"
+          },
+          {
+            "name": "Where",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "where",
+            "params": [
+              "condition",
+              "x",
+              "y"
+            ],
+            "signature": "where(condition, x, y) -> y"
+          },
+          {
+            "name": "ReduceSum",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "reduce_sum",
+            "params": [
+              "x",
+              "dim",
+              "keepdim"
+            ],
+            "signature": "reduce_sum(x) -> y"
+          },
+          {
+            "name": "ReduceMean",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "reduce_mean",
+            "params": [
+              "x",
+              "dim",
+              "keepdim"
+            ],
+            "signature": "reduce_mean(x) -> y"
+          },
+          {
+            "name": "ReduceMax",
+            "weight": 1.0,
+            "case_count": 22,
+            "entry": "reduce_max",
+            "params": [
+              "x",
+              "dim",
+              "keepdim"
+            ],
+            "signature": "reduce_max(x) -> y"
+          },
+          {
+            "name": "ReduceMin",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "reduce_min",
+            "params": [
+              "x",
+              "dim",
+              "keepdim"
+            ],
+            "signature": "reduce_min(x) -> y"
+          },
+          {
+            "name": "ArgMax",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "arg_max",
+            "params": [
+              "input_value",
+              "dim",
+              "keepdim"
+            ],
+            "signature": "arg_max(Tensor input_value, int dim, bool keepdim=false) -> Tensor indices"
+          },
+          {
+            "name": "ArgMin",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "arg_min",
+            "params": [
+              "x",
+              "dim",
+              "keepdim"
+            ],
+            "signature": "arg_min(x) -> y"
+          },
+          {
+            "name": "XorSum",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "xor_sum",
+            "params": [
+              "x",
+              "dim",
+              "keepdim"
+            ],
+            "signature": "xor_sum(x) -> y"
+          },
+          {
+            "name": "CumSum",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "cum_sum",
+            "params": [
+              "x",
+              "dim"
+            ],
+            "signature": "cum_sum(x) -> y"
+          },
+          {
+            "name": "CumProd",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "cum_prod",
+            "params": [
+              "x",
+              "dim"
+            ],
+            "signature": "cum_prod(x) -> y"
+          },
+          {
+            "name": "Transpose",
+            "weight": 1.0,
+            "case_count": 22,
+            "entry": "transpose",
+            "params": [
+              "x",
+              "perm"
+            ],
+            "signature": "transpose(Tensor x, int[] perm) -> Tensor y"
+          },
+          {
+            "name": "Concat",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "concat",
+            "params": [
+              "x",
+              "y",
+              "dim"
+            ],
+            "signature": "concat(x, y) -> y"
+          },
+          {
+            "name": "Flip",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "flip",
+            "params": [
+              "x",
+              "dim"
+            ],
+            "signature": "flip(x) -> y"
+          },
+          {
+            "name": "Gather",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "gather",
+            "params": [
+              "x",
+              "index",
+              "dim"
+            ],
+            "signature": "gather(Tensor x, Tensor index, int dim=0) -> Tensor y"
+          },
+          {
+            "name": "SortValues",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "sort_values",
+            "params": [
+              "x",
+              "dim",
+              "descending"
+            ],
+            "signature": "sort_values(x) -> y"
+          },
+          {
+            "name": "TopKValues",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "top_k_values",
+            "params": [
+              "x",
+              "dim",
+              "k"
+            ],
+            "signature": "top_k_values(x) -> y"
+          },
+          {
+            "name": "Softmax",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "softmax",
+            "params": [
+              "x",
+              "dim"
+            ],
+            "signature": "softmax(Tensor x, int dim=-1) -> Tensor y"
+          },
+          {
+            "name": "RmsNorm",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "rms_norm",
+            "params": [
+              "x",
+              "gamma",
+              "epsilon"
+            ],
+            "signature": "rms_norm(Tensor x, Tensor gamma, float epsilon=1e-6) -> Tensor y"
+          },
+          {
+            "name": "LayerNorm",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "layer_norm",
+            "params": [
+              "x",
+              "weight",
+              "bias",
+              "epsilon"
+            ],
+            "signature": "layer_norm(x, weight, bias) -> y"
+          },
+          {
+            "name": "Matmul",
+            "weight": 1.0,
+            "case_count": 22,
+            "entry": "matmul",
+            "params": [
+              "x",
+              "weight"
+            ],
+            "signature": "matmul(x, weight) -> y"
+          },
+          {
+            "name": "Mish",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "mish",
+            "params": [
+              "x"
+            ],
+            "signature": "mish(x) -> y"
+          },
+          {
+            "name": "Gelu",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "gelu",
+            "params": [
+              "x",
+              "approximate"
+            ],
+            "signature": "gelu(Tensor x, str approximate=\"none\") -> Tensor y"
+          },
+          {
+            "name": "SwiGlu",
+            "weight": 1.0,
+            "case_count": 20,
+            "entry": "swi_glu",
+            "params": [
+              "input_value",
+              "dim"
+            ],
+            "signature": "swi_glu(Tensor input_value, int dim=-1) -> Tensor output"
+          },
+          {
+            "name": "Scatter",
+            "weight": 1.0,
+            "case_count": 2,
+            "entry": "scatter",
+            "params": [
+              "data",
+              "indices",
+              "updates",
+              "dim",
+              "reduce"
+            ],
+            "signature": "scatter(Tensor data, Tensor indices, Tensor updates, int dim, str? reduce=None) -> Tensor y"
+          },
+          {
+            "name": "Cummin",
+            "weight": 1.0,
+            "case_count": 4,
+            "entry": "cummin",
+            "params": [
+              "input_value",
+              "dim"
+            ],
+            "signature": "cummin(Tensor input_value, int dim) -> (Tensor values, Tensor indices)"
+          },
+          {
+            "name": "GroupedMatmul",
+            "weight": 1.0,
+            "case_count": 4,
+            "entry": "grouped_matmul",
+            "params": [
+              "x",
+              "weight",
+              "bias",
+              "group_list"
+            ],
+            "signature": "grouped_matmul(Tensor x, Tensor weight, Tensor? bias, int[] group_list) -> Tensor y"
+          },
+          {
+            "name": "CrossEntropyLoss",
+            "weight": 1.0,
+            "case_count": 2,
+            "entry": "cross_entropy_loss",
+            "params": [
+              "input_value",
+              "target",
+              "reduction",
+              "ignore_index"
+            ],
+            "signature": "cross_entropy_loss(Tensor input_value, Tensor target, str reduction=\"mean\", int ignore_index=-100) -> Tensor loss"
+          },
+          {
+            "name": "MaskedSoftmax",
+            "weight": 1.0,
+            "case_count": 5,
+            "entry": "masked_softmax",
+            "params": [
+              "x",
+              "mask",
+              "dim"
+            ],
+            "signature": "masked_softmax(Tensor x, Tensor mask, int dim) -> Tensor y"
+          },
+          {
+            "name": "ApplyRotaryPosEmb",
+            "weight": 1.0,
+            "case_count": 2,
+            "entry": "apply_rotary_pos_emb",
+            "params": [
+              "x",
+              "cos",
+              "sin",
+              "rotary_mode"
+            ],
+            "signature": "apply_rotary_pos_emb(Tensor x, Tensor cos, Tensor sin, str rotary_mode=\"half\") -> Tensor y"
+          }
+        ],
+        "profiles": [
+          "smoke",
+          "standard"
+        ],
+        "scopes": [
+          "operators",
+          "full"
+        ],
+        "worker_enabled": false,
+        "execution_backend": "disabled",
+        "worker_paused": false,
+        "device_health": "NOT_PROBED",
+        "full_suite_accepted": false,
+        "submission_policy": {
+          "content_type": "application/zip",
+          "max_request_bytes": 67108864,
+          "max_entries": 2000,
+          "max_total_bytes": 67108864,
+          "max_file_bytes": 8388608,
+          "max_compression_ratio": 100.0,
+          "allowed_suffixes": [
+            ".json",
+            ".md",
+            ".py",
+            ".txt",
+            ".yaml",
+            ".yml"
+          ],
+          "required_manifest": "manifest.yaml",
+          "rules": [
+            {
+              "rule_id": "SUB-PKG-001",
+              "detail": "包级：不是有效的 zip 文件（损坏 / 加密 / 头部与内容不一致）"
+            },
+            {
+              "rule_id": "SUB-PKG-002",
+              "detail": "包级：条目数超过上限（2000）"
+            },
+            {
+              "rule_id": "SUB-PKG-003",
+              "detail": "包级：解压后总大小超过上限（64 MiB）"
+            },
+            {
+              "rule_id": "SUB-PKG-004",
+              "detail": "包级：单个文件解压后超过上限（8 MiB）"
+            },
+            {
+              "rule_id": "SUB-PKG-005",
+              "detail": "包级：压缩比异常（>100 倍），疑似压缩炸弹"
+            },
+            {
+              "rule_id": "SUB-PKG-006",
+              "detail": "包级：条目路径不安全（绝对路径 / 上跳 / 反斜杠 / 盘符）"
+            },
+            {
+              "rule_id": "SUB-PKG-007",
+              "detail": "包级：包含符号链接或其它非常规文件条目"
+            },
+            {
+              "rule_id": "SUB-PKG-008",
+              "detail": "包级：扩展名不在白名单（仅允许纯源码与文档）"
+            },
+            {
+              "rule_id": "SUB-PKG-009",
+              "detail": "包级：解压后找不到 manifest.yaml（提交清单缺失）"
+            }
+          ]
+        },
+        "profile_capabilities": [
+          {
+            "id": "smoke",
+            "label": "功能快测",
+            "default": true,
+            "experimental": false,
+            "performance_scoring": false,
+            "performance_accepted": false,
+            "full_suite_accepted": false
+          },
+          {
+            "id": "standard",
+            "label": "标准评测（试运行）",
+            "default": false,
+            "experimental": true,
+            "performance_scoring": true,
+            "performance_accepted": false,
+            "full_suite_accepted": false
+          }
+        ],
+        "default_profile": "smoke",
+        "default_scope": "operators"
+      }
+    },
+    {
+      "name": "submission-ready",
+      "method": "POST",
+      "path": "/api/v1/submissions",
+      "http_status": 201,
+      "response": {
+        "id": "00000000000000000000000000000001",
+        "package_sha256": "05ed6184f364b68d007f98d8bcfe01b7a7187bd7e41f9868f54237ddd1075a45",
+        "created_at": "2026-11-13T00:00:00+00:00",
+        "declared_submit_id": "frontend-contract",
+        "operators": [
+          "Exp"
+        ],
+        "status": "READY",
+        "stage": "content",
+        "errors": []
+      },
+      "request": {
+        "content_type": "application/zip",
+        "body_fixture": "submission-valid.zip",
+        "headers": {
+          "Idempotency-Key": "frontend-upload"
+        }
+      }
+    },
+    {
+      "name": "submission-rejected-is-still-201",
+      "method": "POST",
+      "path": "/api/v1/submissions",
+      "http_status": 201,
+      "response": {
+        "id": "00000000000000000000000000000002",
+        "package_sha256": "f300f6a921e42e9c177aa31cb9085db9067972ed4901536757e8e339158c6814",
+        "created_at": "2026-11-13T00:00:00+00:00",
+        "declared_submit_id": null,
+        "operators": [],
+        "status": "REJECTED",
+        "stage": "package",
+        "errors": [
+          {
+            "rule_id": "SUB-PKG-001",
+            "stage": "package",
+            "operator": "-",
+            "detail": "无法打开：File is not a zip file"
+          }
+        ]
+      },
+      "request": {
+        "content_type": "application/zip",
+        "body_text": "not-a-zip"
+      }
+    },
+    {
+      "name": "task-queued-worker-disabled",
+      "method": "POST",
+      "path": "/api/v1/evaluations",
+      "http_status": 202,
+      "response": {
+        "id": "00000000000000000000000000000003",
+        "submission_id": "00000000000000000000000000000001",
+        "scope": "operators",
+        "operators": [
+          "Exp"
+        ],
+        "profile": "smoke",
+        "manifest_hash": "0890185080c5ad36eb0bb8722f975b4b2bd820e99feb702d328f1d40b19258a0",
+        "status": "QUEUED",
+        "corpus_version": "v0.18-scan-certification-candidates",
+        "package_sha256": "05ed6184f364b68d007f98d8bcfe01b7a7187bd7e41f9868f54237ddd1075a45",
+        "created_at": "2026-11-13T00:00:00+00:00",
+        "updated_at": "2026-11-13T00:00:00+00:00",
+        "planned_cases": 20,
+        "case_codes": [
+          "official-exp-float16-00-normal-c",
+          "official-exp-float16-01-normal-c",
+          "official-exp-float16-02-normal-c",
+          "official-exp-float16-03-boundary-c",
+          "official-exp-float16-03-boundary-s2",
+          "official-exp-float16-03-mixed-c",
+          "official-exp-float16-03-mixed-s2",
+          "official-exp-float16-03-normal-c",
+          "official-exp-float16-03-zeros-c",
+          "official-exp-float16-22-normal-c",
+          "official-exp-float16-23-normal-s2",
+          "official-exp-float16-24-normal-c",
+          "official-exp-float16-26-normal-c",
+          "official-exp-float16-27-normal-c",
+          "official-exp-float16-28-normal-c",
+          "official-exp-float32-00-normal-c",
+          "official-exp-float32-01-normal-c",
+          "official-exp-float32-02-normal-c",
+          "official-exp-float32-03-normal-c",
+          "official-exp-float32-21-normal-c"
+        ],
+        "cancel_requested": false,
+        "error": null,
+        "completed_cases": 0,
+        "available_actions": {
+          "cancel": {
+            "enabled": true,
+            "reason": null
+          },
+          "recover": {
+            "enabled": false,
+            "reason": "REMOTE_JOB_REQUIRED",
+            "requires_acknowledgement": true,
+            "starts_instance": true
+          }
+        },
+        "progress": 0.0,
+        "remote": null,
+        "worker_enabled": false,
+        "worker_paused": false
+      },
+      "request": {
+        "content_type": "application/json",
+        "body": {
+          "submission_id": "00000000000000000000000000000001",
+          "scope": "operators",
+          "profile": "smoke",
+          "operators": [
+            "Exp"
+          ]
+        },
+        "headers": {
+          "Idempotency-Key": "frontend-task"
+        }
+      }
+    },
+    {
+      "name": "task-list",
+      "method": "GET",
+      "path": "/api/v1/evaluations?limit=30",
+      "http_status": 200,
+      "response": {
+        "items": [
+          {
+            "id": "00000000000000000000000000000003",
+            "submission_id": "00000000000000000000000000000001",
+            "scope": "operators",
+            "operators": [
+              "Exp"
+            ],
+            "profile": "smoke",
+            "manifest_hash": "0890185080c5ad36eb0bb8722f975b4b2bd820e99feb702d328f1d40b19258a0",
+            "status": "QUEUED",
+            "corpus_version": "v0.18-scan-certification-candidates",
+            "package_sha256": "05ed6184f364b68d007f98d8bcfe01b7a7187bd7e41f9868f54237ddd1075a45",
+            "created_at": "2026-11-13T00:00:00+00:00",
+            "updated_at": "2026-11-13T00:00:00+00:00",
+            "planned_cases": 20,
+            "case_codes": [
+              "official-exp-float16-00-normal-c",
+              "official-exp-float16-01-normal-c",
+              "official-exp-float16-02-normal-c",
+              "official-exp-float16-03-boundary-c",
+              "official-exp-float16-03-boundary-s2",
+              "official-exp-float16-03-mixed-c",
+              "official-exp-float16-03-mixed-s2",
+              "official-exp-float16-03-normal-c",
+              "official-exp-float16-03-zeros-c",
+              "official-exp-float16-22-normal-c",
+              "official-exp-float16-23-normal-s2",
+              "official-exp-float16-24-normal-c",
+              "official-exp-float16-26-normal-c",
+              "official-exp-float16-27-normal-c",
+              "official-exp-float16-28-normal-c",
+              "official-exp-float32-00-normal-c",
+              "official-exp-float32-01-normal-c",
+              "official-exp-float32-02-normal-c",
+              "official-exp-float32-03-normal-c",
+              "official-exp-float32-21-normal-c"
+            ],
+            "cancel_requested": false,
+            "error": null,
+            "completed_cases": 0,
+            "available_actions": {
+              "cancel": {
+                "enabled": true,
+                "reason": null
+              },
+              "recover": {
+                "enabled": false,
+                "reason": "REMOTE_JOB_REQUIRED",
+                "requires_acknowledgement": true,
+                "starts_instance": true
+              }
+            },
+            "progress": 0.0,
+            "remote": null,
+            "worker_enabled": false,
+            "worker_paused": false
+          }
+        ],
+        "next_cursor": 3
+      }
+    },
+    {
+      "name": "results-score-pending",
+      "method": "GET",
+      "path": "/api/v1/evaluations/00000000000000000000000000000003/results",
+      "http_status": 200,
+      "response": {
+        "performance": {
+          "measured_cases": 0,
+          "passed_cases": 0,
+          "missing_cases": 0,
+          "unstable_cases": [],
+          "cv_gate": 0.05,
+          "geometric_speedup": null,
+          "score_basis": "TASK_LOCAL_FIRST_ALL_PASS",
+          "cross_task_comparable": false
+        },
+        "task_id": "00000000000000000000000000000003",
+        "status": "QUEUED",
+        "scope": "operators",
+        "error": null,
+        "engine_error": null,
+        "corpus_version": "v0.18-scan-certification-candidates",
+        "manifest_hash": "0890185080c5ad36eb0bb8722f975b4b2bd820e99feb702d328f1d40b19258a0",
+        "package_sha256": "05ed6184f364b68d007f98d8bcfe01b7a7187bd7e41f9868f54237ddd1075a45",
+        "declared_operators": [
+          "Exp"
+        ],
+        "counted_operators": [],
+        "scope_operators": [
+          "Exp"
+        ],
+        "planned_cases": 20,
+        "completed_cases": 0,
+        "counted_cases": 0,
+        "status_counts": {},
+        "score": null,
+        "score_reason": "TASK_NOT_COMPLETED",
+        "performance_available": false,
+        "certification": {
+          "static": "NOT_COMPUTED",
+          "compilation": "NOT_COMPUTED",
+          "execution": "NOT_COMPUTED",
+          "full_suite_accepted": false
+        },
+        "validation": [],
+        "cases": []
+      }
+    },
+    {
+      "name": "artifacts-not-yet-available",
+      "method": "GET",
+      "path": "/api/v1/evaluations/00000000000000000000000000000003/artifacts",
+      "http_status": 200,
+      "response": {
+        "items": []
+      }
+    },
+    {
+      "name": "task-cancelled-before-execution",
+      "method": "POST",
+      "path": "/api/v1/evaluations/00000000000000000000000000000003/cancel",
+      "http_status": 200,
+      "response": {
+        "id": "00000000000000000000000000000003",
+        "submission_id": "00000000000000000000000000000001",
+        "scope": "operators",
+        "operators": [
+          "Exp"
+        ],
+        "profile": "smoke",
+        "manifest_hash": "0890185080c5ad36eb0bb8722f975b4b2bd820e99feb702d328f1d40b19258a0",
+        "status": "CANCELLED",
+        "corpus_version": "v0.18-scan-certification-candidates",
+        "package_sha256": "05ed6184f364b68d007f98d8bcfe01b7a7187bd7e41f9868f54237ddd1075a45",
+        "created_at": "2026-11-13T00:00:00+00:00",
+        "updated_at": "2026-11-13T00:00:00+00:00",
+        "planned_cases": 20,
+        "case_codes": [
+          "official-exp-float16-00-normal-c",
+          "official-exp-float16-01-normal-c",
+          "official-exp-float16-02-normal-c",
+          "official-exp-float16-03-boundary-c",
+          "official-exp-float16-03-boundary-s2",
+          "official-exp-float16-03-mixed-c",
+          "official-exp-float16-03-mixed-s2",
+          "official-exp-float16-03-normal-c",
+          "official-exp-float16-03-zeros-c",
+          "official-exp-float16-22-normal-c",
+          "official-exp-float16-23-normal-s2",
+          "official-exp-float16-24-normal-c",
+          "official-exp-float16-26-normal-c",
+          "official-exp-float16-27-normal-c",
+          "official-exp-float16-28-normal-c",
+          "official-exp-float32-00-normal-c",
+          "official-exp-float32-01-normal-c",
+          "official-exp-float32-02-normal-c",
+          "official-exp-float32-03-normal-c",
+          "official-exp-float32-21-normal-c"
+        ],
+        "cancel_requested": false,
+        "error": null,
+        "completed_cases": 0,
+        "available_actions": {
+          "cancel": {
+            "enabled": false,
+            "reason": "TASK_TERMINAL"
+          },
+          "recover": {
+            "enabled": false,
+            "reason": "REMOTE_JOB_REQUIRED",
+            "requires_acknowledgement": true,
+            "starts_instance": true
+          }
+        },
+        "progress": 0.0,
+        "remote": null,
+        "worker_enabled": false,
+        "worker_paused": false
+      }
+    },
+    {
+      "name": "events-queued-and-cancelled",
+      "method": "GET",
+      "path": "/api/v1/evaluations/00000000000000000000000000000003/events?after=0",
+      "http_status": 200,
+      "response": {
+        "items": [
+          {
+            "sequence": 1,
+            "time": "2026-11-13T00:00:00+00:00",
+            "status": "QUEUED",
+            "error": null,
+            "cancel_requested": false
+          },
+          {
+            "sequence": 2,
+            "time": "2026-11-13T00:00:00+00:00",
+            "status": "CANCELLED",
+            "error": null,
+            "cancel_requested": false
+          }
+        ],
+        "next_cursor": 2
+      }
+    },
+    {
+      "name": "idempotency-conflict",
+      "method": "POST",
+      "path": "/api/v1/submissions",
+      "http_status": 409,
+      "response": {
+        "error": {
+          "code": "IDEMPOTENCY-CONFLICT",
+          "detail": "相同幂等键对应不同内容"
+        }
+      }
+    },
+    {
+      "name": "rejected-submission-cannot-run",
+      "method": "POST",
+      "path": "/api/v1/evaluations",
+      "http_status": 409,
+      "response": {
+        "error": {
+          "code": "SUBMISSION-REJECTED",
+          "detail": "提交未通过内容检查"
+        }
+      }
+    },
+    {
+      "name": "recovery-not-applicable",
+      "method": "POST",
+      "path": "/api/v1/evaluations/00000000000000000000000000000003/recover",
+      "http_status": 409,
+      "response": {
+        "error": {
+          "code": "RECOVERY-NOT-APPLICABLE",
+          "detail": "仅支持原实例已释放、尚未安装结果包的远端中断任务"
+        }
+      }
+    }
+  ]
+}

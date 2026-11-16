@@ -1,0 +1,898 @@
+{
+  "policy": "baseline-preserving-workload-completion-v1",
+  "target_per_operator": 20,
+  "additions_by_operator": {
+    "Scatter": 18,
+    "Cummin": 16,
+    "GroupedMatmul": 16,
+    "CrossEntropyLoss": 18,
+    "MaskedSoftmax": 15,
+    "ApplyRotaryPosEmb": 18
+  },
+  "selection_trace": [
+    {
+      "case": "workload-scatter-0071",
+      "operator": "Scatter",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 0,
+      "new_feature_dtype_tier_pairs": 11
+    },
+    {
+      "case": "workload-scatter-0081",
+      "operator": "Scatter",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 0,
+      "new_feature_dtype_tier_pairs": 11
+    },
+    {
+      "case": "workload-scatter-0087",
+      "operator": "Scatter",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 0,
+      "new_feature_dtype_tier_pairs": 11
+    },
+    {
+      "case": "workload-scatter-0105",
+      "operator": "Scatter",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 1,
+      "new_feature_dtype_tier_pairs": 11
+    },
+    {
+      "case": "workload-scatter-0117",
+      "operator": "Scatter",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 1,
+      "new_feature_dtype_tier_pairs": 11
+    },
+    {
+      "case": "workload-scatter-0123",
+      "operator": "Scatter",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 1,
+      "new_feature_dtype_tier_pairs": 11
+    },
+    {
+      "case": "workload-scatter-0057",
+      "operator": "Scatter",
+      "tier": "SMALL",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 11
+    },
+    {
+      "case": "workload-scatter-0006",
+      "operator": "Scatter",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-scatter-0013",
+      "operator": "Scatter",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-scatter-0017",
+      "operator": "Scatter",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-scatter-0000",
+      "operator": "Scatter",
+      "tier": "SMALL",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 3,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-scatter-0024",
+      "operator": "Scatter",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 3,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-scatter-0030",
+      "operator": "Scatter",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 3,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-scatter-0033",
+      "operator": "Scatter",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 3,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-scatter-0018",
+      "operator": "Scatter",
+      "tier": "SMALL",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 4,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-scatter-0042",
+      "operator": "Scatter",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 4,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-scatter-0048",
+      "operator": "Scatter",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 4,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-scatter-0051",
+      "operator": "Scatter",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 4,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-cummin-0137",
+      "operator": "Cummin",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 0,
+      "new_feature_dtype_tier_pairs": 12
+    },
+    {
+      "case": "workload-cummin-0132",
+      "operator": "Cummin",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 0,
+      "new_feature_dtype_tier_pairs": 11
+    },
+    {
+      "case": "workload-cummin-0149",
+      "operator": "Cummin",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 1,
+      "new_feature_dtype_tier_pairs": 12
+    },
+    {
+      "case": "workload-cummin-0144",
+      "operator": "Cummin",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 1,
+      "new_feature_dtype_tier_pairs": 11
+    },
+    {
+      "case": "workload-cummin-0161",
+      "operator": "Cummin",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 12
+    },
+    {
+      "case": "workload-cummin-0138",
+      "operator": "Cummin",
+      "tier": "SMALL",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 11
+    },
+    {
+      "case": "workload-cummin-0156",
+      "operator": "Cummin",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 11
+    },
+    {
+      "case": "workload-cummin-0148",
+      "operator": "Cummin",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 11
+    },
+    {
+      "case": "workload-cummin-0150",
+      "operator": "Cummin",
+      "tier": "SMALL",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 3,
+      "new_feature_dtype_tier_pairs": 11
+    },
+    {
+      "case": "workload-cummin-0160",
+      "operator": "Cummin",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 3,
+      "new_feature_dtype_tier_pairs": 11
+    },
+    {
+      "case": "workload-cummin-0133",
+      "operator": "Cummin",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 3,
+      "new_feature_dtype_tier_pairs": 1
+    },
+    {
+      "case": "workload-cummin-0136",
+      "operator": "Cummin",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 4,
+      "new_feature_dtype_tier_pairs": 2
+    },
+    {
+      "case": "workload-cummin-0128",
+      "operator": "Cummin",
+      "tier": "SMALL",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 4,
+      "new_feature_dtype_tier_pairs": 1
+    },
+    {
+      "case": "workload-cummin-0134",
+      "operator": "Cummin",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 4,
+      "new_feature_dtype_tier_pairs": 1
+    },
+    {
+      "case": "workload-cummin-0139",
+      "operator": "Cummin",
+      "tier": "SMALL",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 5,
+      "new_feature_dtype_tier_pairs": 1
+    },
+    {
+      "case": "workload-cummin-0145",
+      "operator": "Cummin",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 5,
+      "new_feature_dtype_tier_pairs": 1
+    },
+    {
+      "case": "workload-grouped_matmul-0170",
+      "operator": "GroupedMatmul",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 0,
+      "new_feature_dtype_tier_pairs": 14
+    },
+    {
+      "case": "workload-grouped_matmul-0172",
+      "operator": "GroupedMatmul",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 0,
+      "new_feature_dtype_tier_pairs": 14
+    },
+    {
+      "case": "workload-grouped_matmul-0183",
+      "operator": "GroupedMatmul",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 1,
+      "new_feature_dtype_tier_pairs": 14
+    },
+    {
+      "case": "workload-grouped_matmul-0185",
+      "operator": "GroupedMatmul",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 1,
+      "new_feature_dtype_tier_pairs": 14
+    },
+    {
+      "case": "workload-grouped_matmul-0194",
+      "operator": "GroupedMatmul",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 14
+    },
+    {
+      "case": "workload-grouped_matmul-0196",
+      "operator": "GroupedMatmul",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 14
+    },
+    {
+      "case": "workload-grouped_matmul-0166",
+      "operator": "GroupedMatmul",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 12
+    },
+    {
+      "case": "workload-grouped_matmul-0174",
+      "operator": "GroupedMatmul",
+      "tier": "SMALL",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 11
+    },
+    {
+      "case": "workload-grouped_matmul-0191",
+      "operator": "GroupedMatmul",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 3,
+      "new_feature_dtype_tier_pairs": 12
+    },
+    {
+      "case": "workload-grouped_matmul-0163",
+      "operator": "GroupedMatmul",
+      "tier": "SMALL",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 3,
+      "new_feature_dtype_tier_pairs": 0
+    },
+    {
+      "case": "workload-grouped_matmul-0171",
+      "operator": "GroupedMatmul",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 3,
+      "new_feature_dtype_tier_pairs": 0
+    },
+    {
+      "case": "workload-grouped_matmul-0173",
+      "operator": "GroupedMatmul",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 3,
+      "new_feature_dtype_tier_pairs": 0
+    },
+    {
+      "case": "workload-grouped_matmul-0164",
+      "operator": "GroupedMatmul",
+      "tier": "SMALL",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 4,
+      "new_feature_dtype_tier_pairs": 0
+    },
+    {
+      "case": "workload-grouped_matmul-0168",
+      "operator": "GroupedMatmul",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 4,
+      "new_feature_dtype_tier_pairs": 0
+    },
+    {
+      "case": "workload-grouped_matmul-0182",
+      "operator": "GroupedMatmul",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 4,
+      "new_feature_dtype_tier_pairs": 0
+    },
+    {
+      "case": "workload-grouped_matmul-0184",
+      "operator": "GroupedMatmul",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 4,
+      "new_feature_dtype_tier_pairs": 0
+    },
+    {
+      "case": "workload-cross_entropy_loss-0203",
+      "operator": "CrossEntropyLoss",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 0,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-cross_entropy_loss-0207",
+      "operator": "CrossEntropyLoss",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 0,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-cross_entropy_loss-0209",
+      "operator": "CrossEntropyLoss",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 0,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-cross_entropy_loss-0215",
+      "operator": "CrossEntropyLoss",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 1,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-cross_entropy_loss-0219",
+      "operator": "CrossEntropyLoss",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 1,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-cross_entropy_loss-0221",
+      "operator": "CrossEntropyLoss",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 1,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-cross_entropy_loss-0211",
+      "operator": "CrossEntropyLoss",
+      "tier": "SMALL",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-cross_entropy_loss-0227",
+      "operator": "CrossEntropyLoss",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-cross_entropy_loss-0231",
+      "operator": "CrossEntropyLoss",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-cross_entropy_loss-0233",
+      "operator": "CrossEntropyLoss",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-cross_entropy_loss-0223",
+      "operator": "CrossEntropyLoss",
+      "tier": "SMALL",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 3,
+      "new_feature_dtype_tier_pairs": 10
+    },
+    {
+      "case": "workload-cross_entropy_loss-0202",
+      "operator": "CrossEntropyLoss",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 3,
+      "new_feature_dtype_tier_pairs": 0
+    },
+    {
+      "case": "workload-cross_entropy_loss-0206",
+      "operator": "CrossEntropyLoss",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 3,
+      "new_feature_dtype_tier_pairs": 0
+    },
+    {
+      "case": "workload-cross_entropy_loss-0208",
+      "operator": "CrossEntropyLoss",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 3,
+      "new_feature_dtype_tier_pairs": 0
+    },
+    {
+      "case": "workload-cross_entropy_loss-0210",
+      "operator": "CrossEntropyLoss",
+      "tier": "SMALL",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 4,
+      "new_feature_dtype_tier_pairs": 0
+    },
+    {
+      "case": "workload-cross_entropy_loss-0214",
+      "operator": "CrossEntropyLoss",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 4,
+      "new_feature_dtype_tier_pairs": 0
+    },
+    {
+      "case": "workload-cross_entropy_loss-0218",
+      "operator": "CrossEntropyLoss",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 4,
+      "new_feature_dtype_tier_pairs": 0
+    },
+    {
+      "case": "workload-cross_entropy_loss-0220",
+      "operator": "CrossEntropyLoss",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 4,
+      "new_feature_dtype_tier_pairs": 0
+    },
+    {
+      "case": "workload-masked_softmax-0242",
+      "operator": "MaskedSoftmax",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 0,
+      "new_feature_dtype_tier_pairs": 19
+    },
+    {
+      "case": "workload-masked_softmax-0246",
+      "operator": "MaskedSoftmax",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 0,
+      "new_feature_dtype_tier_pairs": 19
+    },
+    {
+      "case": "workload-masked_softmax-0249",
+      "operator": "MaskedSoftmax",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 0,
+      "new_feature_dtype_tier_pairs": 19
+    },
+    {
+      "case": "workload-masked_softmax-0256",
+      "operator": "MaskedSoftmax",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 1,
+      "new_feature_dtype_tier_pairs": 19
+    },
+    {
+      "case": "workload-masked_softmax-0262",
+      "operator": "MaskedSoftmax",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 1,
+      "new_feature_dtype_tier_pairs": 19
+    },
+    {
+      "case": "workload-masked_softmax-0265",
+      "operator": "MaskedSoftmax",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 1,
+      "new_feature_dtype_tier_pairs": 19
+    },
+    {
+      "case": "workload-masked_softmax-0272",
+      "operator": "MaskedSoftmax",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 19
+    },
+    {
+      "case": "workload-masked_softmax-0278",
+      "operator": "MaskedSoftmax",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 19
+    },
+    {
+      "case": "workload-masked_softmax-0281",
+      "operator": "MaskedSoftmax",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 19
+    },
+    {
+      "case": "workload-masked_softmax-0240",
+      "operator": "MaskedSoftmax",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 3,
+      "new_feature_dtype_tier_pairs": 1
+    },
+    {
+      "case": "workload-masked_softmax-0247",
+      "operator": "MaskedSoftmax",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 3,
+      "new_feature_dtype_tier_pairs": 1
+    },
+    {
+      "case": "workload-masked_softmax-0241",
+      "operator": "MaskedSoftmax",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 4,
+      "new_feature_dtype_tier_pairs": 1
+    },
+    {
+      "case": "workload-masked_softmax-0248",
+      "operator": "MaskedSoftmax",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 4,
+      "new_feature_dtype_tier_pairs": 1
+    },
+    {
+      "case": "workload-masked_softmax-0234",
+      "operator": "MaskedSoftmax",
+      "tier": "SMALL",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 5,
+      "new_feature_dtype_tier_pairs": 19
+    },
+    {
+      "case": "workload-masked_softmax-0257",
+      "operator": "MaskedSoftmax",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 5,
+      "new_feature_dtype_tier_pairs": 1
+    },
+    {
+      "case": "workload-apply_rotary_pos_emb-0287",
+      "operator": "ApplyRotaryPosEmb",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 0,
+      "new_feature_dtype_tier_pairs": 14
+    },
+    {
+      "case": "workload-apply_rotary_pos_emb-0291",
+      "operator": "ApplyRotaryPosEmb",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 0,
+      "new_feature_dtype_tier_pairs": 14
+    },
+    {
+      "case": "workload-apply_rotary_pos_emb-0293",
+      "operator": "ApplyRotaryPosEmb",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 0,
+      "new_feature_dtype_tier_pairs": 14
+    },
+    {
+      "case": "workload-apply_rotary_pos_emb-0299",
+      "operator": "ApplyRotaryPosEmb",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 1,
+      "new_feature_dtype_tier_pairs": 14
+    },
+    {
+      "case": "workload-apply_rotary_pos_emb-0303",
+      "operator": "ApplyRotaryPosEmb",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 1,
+      "new_feature_dtype_tier_pairs": 14
+    },
+    {
+      "case": "workload-apply_rotary_pos_emb-0305",
+      "operator": "ApplyRotaryPosEmb",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 1,
+      "new_feature_dtype_tier_pairs": 14
+    },
+    {
+      "case": "workload-apply_rotary_pos_emb-0295",
+      "operator": "ApplyRotaryPosEmb",
+      "tier": "SMALL",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 14
+    },
+    {
+      "case": "workload-apply_rotary_pos_emb-0311",
+      "operator": "ApplyRotaryPosEmb",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 14
+    },
+    {
+      "case": "workload-apply_rotary_pos_emb-0315",
+      "operator": "ApplyRotaryPosEmb",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 14
+    },
+    {
+      "case": "workload-apply_rotary_pos_emb-0317",
+      "operator": "ApplyRotaryPosEmb",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 2,
+      "new_feature_dtype_tier_pairs": 14
+    },
+    {
+      "case": "workload-apply_rotary_pos_emb-0307",
+      "operator": "ApplyRotaryPosEmb",
+      "tier": "SMALL",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 3,
+      "new_feature_dtype_tier_pairs": 14
+    },
+    {
+      "case": "workload-apply_rotary_pos_emb-0286",
+      "operator": "ApplyRotaryPosEmb",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 3,
+      "new_feature_dtype_tier_pairs": 0
+    },
+    {
+      "case": "workload-apply_rotary_pos_emb-0290",
+      "operator": "ApplyRotaryPosEmb",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 3,
+      "new_feature_dtype_tier_pairs": 0
+    },
+    {
+      "case": "workload-apply_rotary_pos_emb-0292",
+      "operator": "ApplyRotaryPosEmb",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 3,
+      "new_feature_dtype_tier_pairs": 0
+    },
+    {
+      "case": "workload-apply_rotary_pos_emb-0294",
+      "operator": "ApplyRotaryPosEmb",
+      "tier": "SMALL",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 4,
+      "new_feature_dtype_tier_pairs": 0
+    },
+    {
+      "case": "workload-apply_rotary_pos_emb-0298",
+      "operator": "ApplyRotaryPosEmb",
+      "tier": "MEDIUM",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 4,
+      "new_feature_dtype_tier_pairs": 0
+    },
+    {
+      "case": "workload-apply_rotary_pos_emb-0302",
+      "operator": "ApplyRotaryPosEmb",
+      "tier": "LARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 4,
+      "new_feature_dtype_tier_pairs": 0
+    },
+    {
+      "case": "workload-apply_rotary_pos_emb-0304",
+      "operator": "ApplyRotaryPosEmb",
+      "tier": "XLARGE",
+      "reason": "size_dtype_attribute_feature_gain",
+      "previous_tier_count": 4,
+      "new_feature_dtype_tier_pairs": 0
+    }
+  ],
+  "version": "v0.19-workload-completion-candidates",
+  "parent_version": "v0.18-scan-certification-candidates",
+  "parent_manifest_hash": "0890185080c5ad36eb0bb8722f975b4b2bd820e99feb702d328f1d40b19258a0",
+  "active_atoms": [
+    "FA-ATTR-LIST",
+    "FA-ATTR-NONDEFAULT",
+    "FA-AXIS-FIRST",
+    "FA-AXIS-INNER",
+    "FA-AXIS-LAST",
+    "FA-CONCUR-ACCUM",
+    "FA-CTRL-STATIC-UNROLL",
+    "FA-DT-BF16",
+    "FA-DT-FP16",
+    "FA-DT-FP32",
+    "FA-DT-INT16",
+    "FA-DT-INT32",
+    "FA-DT-INT64",
+    "FA-DT-INT8",
+    "FA-DT-UINT8",
+    "FA-FUSE-2STAGE",
+    "FA-FUSE-CROSS-CATEGORY",
+    "FA-FUSE-ELEM-INTRA",
+    "FA-FUSE-INTERM-ELIDE",
+    "FA-FUSE-RED-INTRA",
+    "FA-IDX-GATHER",
+    "FA-IDX-PERMUTE",
+    "FA-IDX-SCATTER",
+    "FA-IDX-WHERE",
+    "FA-LINALG-BIAS",
+    "FA-LINALG-DOT",
+    "FA-LOAD-ALIGNED",
+    "FA-LOAD-CONTIG",
+    "FA-LOAD-LARGE",
+    "FA-LOAD-MASKED-EDGE",
+    "FA-LOAD-MEDIUM",
+    "FA-LOAD-SMALL",
+    "FA-LOAD-STRIDED",
+    "FA-LOAD-XLARGE",
+    "FA-MATH-ADD",
+    "FA-MATH-EXP",
+    "FA-MATH-GELU",
+    "FA-MATH-MAXMIN",
+    "FA-MATH-MUL",
+    "FA-MATH-SIGMOID",
+    "FA-MATH-SINCOS",
+    "FA-MATH-SQRT",
+    "FA-MULTI-INPUT",
+    "FA-MULTI-OUTPUT",
+    "FA-NORM-RMS",
+    "FA-NORM-SOFTMAX",
+    "FA-NUM-EXTREME",
+    "FA-NUM-MIXED",
+    "FA-NUM-ZEROS",
+    "FA-PAT-COALESCE-GATHER",
+    "FA-PAT-MASK-TAIL",
+    "FA-PAT-MULTIPASS-REDUCE",
+    "FA-PAT-SCAN-BLOCKED",
+    "FA-PAT-SPLIT-K",
+    "FA-PAT-TILE-GEMM",
+    "FA-PAT-VEC-BROADCAST",
+    "FA-PAT-VEC-LOAD",
+    "FA-PROG-GRID1D",
+    "FA-PROG-GRID2D",
+    "FA-PROG-GRID3D",
+    "FA-PROG-GRID4D",
+    "FA-REDUCE-ARG",
+    "FA-REDUCE-MAX",
+    "FA-REDUCE-MIN",
+    "FA-REDUCE-SUM",
+    "FA-SHAPE-CUBE",
+    "FA-SHAPE-FLAT",
+    "FA-SHAPE-SKINNY",
+    "FA-SHAPE-SQUARE",
+    "FA-STABLE-LOGSUMEXP",
+    "FA-STABLE-MAXSUB"
+  ]
+}

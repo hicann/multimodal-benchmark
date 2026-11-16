@@ -1,0 +1,23 @@
+# Copyright (c) 2025-2026 Huawei Technologies Co., Ltd.
+# This program is free software, you can redistribute it and/or modify it under the terms and conditions of
+# CANN Open Software License Agreement Version 2.0 (the "License").
+# Please refer to the License for details. You may not use this file except in compliance with the License.
+# THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+# INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE.
+# See LICENSE in the root of the software repository for the full text of the License.
+
+repos:
+  - repo: local
+    hooks:
+      - id: source-secret-scan
+        name: Scan staged contents for credentials
+        entry: python3 benchmark/triton-bench/scripts/scan_secrets.py --staged
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: reviewed-baseline
+        name: Preserve reviewed baseline files and licenses
+        entry: python3 benchmark/triton-bench/scripts/check_reviewed_baseline.py --platform benchmark/triton-bench --baseline benchmark/triton-bench/docs/quality/reviewed-baseline.json --approved benchmark/triton-bench/docs/quality/reviewed-changes.json
+        language: system
+        pass_filenames: false
+        always_run: true

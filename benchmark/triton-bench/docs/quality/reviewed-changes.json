@@ -1,0 +1,269 @@
+{
+  "pyproject.toml": {
+    "before": "6a5a0d5f8b2b2d067a32d9a7e87a55713f86df4bad2489666a28e16f3d1de10b",
+    "after": "23444af531735818aaf1a797d55df48cfa74b5c419a2b64bcda49e7a8a80cbde",
+    "reason": "Package the additive _platform module group for installed and remote execution."
+  },
+  ".gitignore": {
+    "before": "2f724092f9080dcfce2b94021ce8301db2cc32975d407ce51074d82f7232e236",
+    "after": "ebed2ef313b706fecd8a5ed6912bbb0195eece6db206236fd5e1dbf0a24412dd",
+    "reason": "Exclude external credentials, local runtime state, and reproducibly built ZIP downloads."
+  },
+  "corpus/v0.12-compat-candidates/evaluation-assets.json": {
+    "before": "3697d6f7c19ce2d4ff3b0061a559fc848df7fa53a73e3bc44117022ce14158de",
+    "after": "6737e2d16d6294258968feedc8e07ce074fbd5319c898f2b337aca7649d37f52",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.12-compat-candidates/evaluation-assets-migration.json": {
+    "before": "06b0292b76573b008d590e758904667f8c3fd1773a1caa5f6055dafd644aeadb",
+    "after": "27f50e1a1e6a1530289fb599f3b6ffab3b2daf7f8bd07e471b88fab46f6ddbd1",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.17-pattern-completion-candidates/evaluation-assets.json": {
+    "before": "f82e205c9be52d5e32903b06a361ce76dd1cb6b3ff974ade211dd2d680fc8c05",
+    "after": "42eff30867305172c0b3cd20f03ba74bfaec33d4a2b463c5c7fa6a54d5a5d233",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.17-pattern-completion-candidates/evaluation-assets-migration.json": {
+    "before": "89fc6eb36e68ae68f102cdfceb2c5c38a2442792bf0bc990f873a59e7d6ee731",
+    "after": "1051f9390b1da249590e80b74639e4084dea69dcbb73c41ea115488b8cac59b0",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.8.1-official-candidates/evaluation-assets.json": {
+    "before": "2f6afce668098e51e0a2254b63bf2e5fbde66870518cdd98a35970c334c19c67",
+    "after": "cb1c0ca86bab3afc05c1b9bb257653960e0b253675f3eaefbe377608ecd8aa84",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.8.1-official-candidates/evaluation-assets-migration.json": {
+    "before": "58c9e58b277a38ed1a95be834434db35b7ce9f6aa9deb53668de98d4e812690b",
+    "after": "e266590478978e9f53258ef5257be09478c505336c2939ad43d4608cd21790c2",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.11.1-contract-candidates/evaluation-assets.json": {
+    "before": "ced24fc04019f717a24f5e749a0667891221acdc74fba8ea16d914c7066adecd",
+    "after": "3b268f7f502b8627be653d6310f9a48824f537f0e75006e757a5ee691f27edb8",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.11.1-contract-candidates/evaluation-assets-migration.json": {
+    "before": "c26915c86c2b3ddfa3db3ccf108827b2ea91a76807fc6626ca1acce7f451a96e",
+    "after": "16eb89c3d1c2c1e3c84b638c169e5f564e8abc4004c84ab5aa6ff88b9dde157d",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.13-evidence-candidates/evaluation-assets.json": {
+    "before": "640cfb48ea3d24a08de4205464a8a9352d1b40eba0444eb9fba06219000720e5",
+    "after": "10fc66b61c97b04716d05c91c140e44bfeac8011991d8ae00ec01f1cfe2d4654",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.13-evidence-candidates/evaluation-assets-migration.json": {
+    "before": "82283af5bf8d5501237489f27771acfc76e92590e37facb60e978512714c7d6a",
+    "after": "239217d59123d5c152a71cfded15f8af62e129e9a1f01172d6b5cef5446da881",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.14-backend-evidence-candidates/evaluation-assets.json": {
+    "before": "6b26aeb129d7c0ddc1e2fd8c204cfc851eb3a183955fffa0335e06288f6774a9",
+    "after": "5f6dc47017eaa684268424b01e1f5ab2606a3c79a6408cee8ef15c31a8c526a2",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.14-backend-evidence-candidates/evaluation-assets-migration.json": {
+    "before": "dd6fabcdc959bfe4dd44f8094fbbf8c5701068393866bf4444ccd75cb2928d42",
+    "after": "44a2f6fc5fcc0e990e0a57a2228a6bd613aa03c2d81136cca8bee6d3708b5b38",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.7-ascend-contract/evaluation-assets.json": {
+    "before": "463bb355c508a6714690f7b20ab585e8da531dc4bd74772f2c90d43db531c31a",
+    "after": "c5d5f2ed365de7f64e361b57a649f744c81405065fcc47d9d6106b455af1c8a0",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.7-ascend-contract/evaluation-assets-migration.json": {
+    "before": "08f7c8718181becf43aa037f4327d377279a0b1ebce398522e206a300dfc44d6",
+    "after": "438a95b22ba9b01ec787ed3b9f78f50b15546e7931f69431c10ee3c875e255cb",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.10-coverage-candidates/evaluation-assets.json": {
+    "before": "cf0b7139c07479e6782a6f235dae5e02e4130531ef9013ea8afb48b3c245aeee",
+    "after": "93b16736b6fa1297c8aae35ef5b7d82c29ecec9d5ed5cf26e66e4c4e369b71eb",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.10-coverage-candidates/evaluation-assets-migration.json": {
+    "before": "5e22b4bbb02fa248159e2162f754aa98d8610f628de7dde36997923a12fb7ad1",
+    "after": "1d25bc844cdcaa18a8f06560fe7ab3edb790528b9e7bbefcd5c78d42b5a2b973",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.11-implementation-candidates/evaluation-assets.json": {
+    "before": "4fcedfa70fc81277b2f2a71a7e8116463c2b63bc1f7a6b895f265ce3e1205294",
+    "after": "d8219cd5642b319929a58b6ea1f0d913d9dd1ccd5f5afb6143b29a66e577466a",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.11-implementation-candidates/evaluation-assets-migration.json": {
+    "before": "6da6cf2f071d04fd7f075d90303a0a0a5ec2c22a45d84732f29fe9a0ebe7202e",
+    "after": "177fa2e36d05e034729568eb2b2018e554db380320a584445da40ace6f60488e",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.9-official-candidates/evaluation-assets.json": {
+    "before": "e524dfe7350c86099cfdf77bf8d933a00a635ea23474cdf9651facbea85f997f",
+    "after": "bca96dedd2ac208d75b4d654758c7234f3df11cedcf8c581b8e338c40471bfb8",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.9-official-candidates/evaluation-assets-migration.json": {
+    "before": "581428f3135997d8592e58db3b91b00c1856963a9797c98c4e44bc83bbc5eb70",
+    "after": "dd9ec5ade2a78bd1026d3f3f238f9ed7bcac1110adfcc08e9b29c951695a712d",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.8-official-candidates/evaluation-assets.json": {
+    "before": "faecc6b593d165d0de3ce5d922f639f7822b4a05852906a9b3480bd43e5fbc38",
+    "after": "f017cb8f163adc8e9169de5400ec58d90cc721ec6c805589e3399edbacf75a3e",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.8-official-candidates/evaluation-assets-migration.json": {
+    "before": "f775659df3b02a2cd95156a9b730ec55551aa05d412b123e923e583f98802298",
+    "after": "35c52c8347432744120d2dde6851d82f85d43cd6ce25d7a61e3d6e22e9a8c80e",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.18-scan-certification-candidates/evaluation-assets.json": {
+    "before": "50bd5893c730eb17a3a6b390afdf82c72ec8e49c93b8c2936ce33af14e4a7ebb",
+    "after": "89792ff51a4b47c2fdae4e4afef80b07329a494b1874a42d3f2e02e88283e890",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.18-scan-certification-candidates/evaluation-assets-migration.json": {
+    "before": "2fd0b50fcfc9a1af551878aac5913450cb652c2ee7b43714a4b49945954ea9cd",
+    "after": "5706e3ab094b93111846195addcde8d0886a1fb754b89035d3e01de56d65a32c",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.15-backend-capture-fix-candidates/evaluation-assets.json": {
+    "before": "0c323154d1df7d35e81944ac22e9ac0cdfba4e4864ff7a07d53ecdc025bc5689",
+    "after": "d91df72f871e7ddfbcb239aea5d96c7508fdd9d755a8dd0a64111b1739f7a0cd",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.15-backend-capture-fix-candidates/evaluation-assets-migration.json": {
+    "before": "ee621663e6a3eb8418119d0bac2207e9893c5a5bb9de245c233ecb31f235cd0e",
+    "after": "63db17ff88ea2d6d25a4b05ab616458a571a5ca1de74dc75980028ab30bb0256",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.16-backend-pattern-certification-candidates/evaluation-assets.json": {
+    "before": "983c6e264ae38b27e8eee7ac10cd5a1b979056a47629f13e184bf6d660329d73",
+    "after": "620e72ef7cc817889399413bd2f2644b3fa8f39115556a72c5c813f6652bd824",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "corpus/v0.16-backend-pattern-certification-candidates/evaluation-assets-migration.json": {
+    "before": "0ae885b80436682754939a26058327cea2b32ccf7824eb83ae1cdd8b4b1ed34d",
+    "after": "5698e8f62acfecf08dda1e96f168259a7e5d8bc6fa59a420a6ad5c040457d4be",
+    "reason": "Authenticated r5 quality repair revision; frozen manifests and predecessor indexes retained byte for byte."
+  },
+  "tests/core/test_codecheck_compat.py": {
+    "before": "a74bc55767a238c5a0564a4889858e801d2fac77a09da3d7c8da91d0a4718ebb",
+    "after": "af8713a4c7c2b19ec54e61a94295be3f02eab3d1913b2c3c9c0a52507ec14cfe",
+    "reason": "Authenticate the r5 CodeCheck repair revision and retain every predecessor through r4."
+  },
+  "tests/core/test_submission_system.py": {
+    "before": "234262b7697310400386f8772f6a4ef49f24d85b8c3bb1516593c450bb0a8adf",
+    "after": "6db8d97e96afb75a46db0d2aca38c707bc68c3fdc6584bb0715ca02135dd0cce",
+    "reason": "Count the added v19 generated submission while preserving baseline shared-layout checks."
+  },
+  "tests/core/test_ascend_results_upload.py": {
+    "before": "ffe5473c011bded9e851da843a0a430dbcd0c8e993acd2923b3f50adc4ab845e",
+    "after": "96737579f71d6abe7a68da58b116273973fc770272a504c9424c3a6449011d7c",
+    "reason": "Require rejection of credential-bearing fallback URLs."
+  },
+  "tests/submissions/test_submission_http.py": {
+    "before": "31e734164208d55affd637d405ce5a0285e296d64a5e8863e92cd6de1954173e",
+    "after": "4eccdfe1fdaced4db55c8ffeb965c84cb4edeab313e6a80fe18f26959ecafd90",
+    "reason": "Require all 14 current API paths, including recovery and leaderboard."
+  },
+  "docs/requirements-coverage-report.md": {
+    "before": "ac2b5e633d95ab1b243cb3e2714d02283c89ad1f91621cfbaf79bfdc469a6cf0",
+    "after": "d8f3fce1aebb1a7c7deaec3d6f8058ed5cfd6f070a5e3a64c2d329a555753b33",
+    "reason": "Retain latest user-requested platform coverage status and append reviewed migration evidence boundaries."
+  },
+  "docs/corpus-evolution.md": {
+    "before": "fa63ce19eec77b7ad20e8eea7fbb76e688f88af389f5011a48ef0f815fd82df9",
+    "after": "2c0a1c57f1c1e27aa34788fe7cf061925a6a5dedb63ce4d9c524ffa19e2df932",
+    "reason": "Regenerate the evolution table including v19 without changing historical manifests."
+  },
+  "scripts/publish_ascend_results.py": {
+    "before": "e6d6890f759b8302fb037717a3ea889fd6afaccf33c947c76df44637e74aee05",
+    "after": "a12bfe8abc408ebc0953e25d168a9652c2c31f03795b8d035f3befae1da8686c",
+    "reason": "Remove credential-bearing URL fallback while preserving reviewed Git and console handling."
+  },
+  "scripts/upload-verify-results.sh": {
+    "before": "97fb051cf4e1dd1f466cd185e3ac3ea9d1b8f17f2db5f199cb694900bd7347d3",
+    "after": "c1f591a155ce3fc072a5d38a0fa15b91f0ee0bc62fcde32eaf425121c2f92092",
+    "reason": "Remove obsolete reset/upload adaptation and credential fallback; preserve reviewed license and safety checks."
+  },
+  "scripts/upload-heartbeat.sh": {
+    "before": "6c460f05a86147be91b07c69d021a0acbda383deb0cd3455747bab0acc8e5948",
+    "after": null,
+    "reason": "User explicitly retired the obsolete two-hour reset and periodic upload adaptation.",
+    "removed": true
+  },
+  "scripts/remote-verify.sh": {
+    "before": "75dc56afdca14a742cf5b695a4697d265dcbe32a6cca095584193608b263d16f",
+    "after": "b6c5556c628e7c197507eb17af3c7e0a1e1cd4a735286d4a1a999302a711b770",
+    "reason": "Remove obsolete reset/upload adaptation and credential fallback; preserve reviewed license and safety checks."
+  },
+  "scripts/upload-verify-record.sh": {
+    "before": "a59ceb0484265460beb7b7c6b111540f52fd9308c75bb11ef73070fd84f21697",
+    "after": "709db7f5e679b608264fdd99826c29d73a92ee8f071101642421dfcaea81de2a",
+    "reason": "Remove obsolete reset/upload adaptation and credential fallback; preserve reviewed license and safety checks."
+  },
+  "scripts/env-bootstrap.sh": {
+    "before": "dd1b5cc322d874c1b7f113aa53230a324b7f46db89106d5e7477b22b56798284",
+    "after": "b454b37d471b151d2e6071968407d7f22ffdadedcb301295c896b331253555d9",
+    "reason": "Remove obsolete reset/upload adaptation and credential fallback; preserve reviewed license and safety checks."
+  },
+  "scripts/standard-window.sh": {
+    "before": "59d1d800474a28a2919b494d6894b0d3e3de2eb13de2da2458c3252e3b024dcb",
+    "after": "2bc720c47bfd017b52565477ec5c64e9b8f8c988f57f2654301ca6b673949413",
+    "reason": "Remove obsolete reset/upload adaptation and credential fallback; preserve reviewed license and safety checks."
+  },
+  "scripts/save-compiler-wheel.sh": {
+    "before": "916f4d498eefbd92b318c61ad24367f5afe9e172ae434322b58bb160a1ee3528",
+    "after": null,
+    "reason": "User explicitly retired the obsolete two-hour reset and periodic upload adaptation.",
+    "removed": true
+  },
+  "scripts/ascend-ops-verify.sh": {
+    "before": "5490ffad6b87956d67bdf9fe2ae6512de54fac4e0eec6f07ba6b580c07c3671e",
+    "after": "5c2efc6b207e6ba078678b2ac0921dfb035d47b3da3bde1cfa9a21bbe8ed1027",
+    "reason": "Remove obsolete reset/upload adaptation and credential fallback; preserve reviewed license and safety checks."
+  },
+  "scripts/example_sources/layout.json": {
+    "before": "8abd55afc4aaceeba82d5ab37ceb70fc53519ea26d2c7f40a419b84cab6d00ec",
+    "after": "89726685133c1c06e05d66edf4467ea2910cd47898b80b2b2935172fb8ac24e1",
+    "reason": "Add v19 aliases to reviewed v18 source records; retain every existing source digest and mapping."
+  },
+  "src/triton_eval/anchors.py": {
+    "before": "f8aef3c18085820c64b38806dfd75a626aea0b14174bc61aa6b4d49d14caf020",
+    "after": "f7b1751a3f1783c7e89f4dbd462cc7923c9f515bb1d2a12dc80a6044075fb9e0",
+    "reason": "Reject incomplete timing samples; retain reviewed decomposition and numerical guards."
+  },
+  "src/triton_eval/corpus_assets.py": {
+    "before": "01615eb7eb510f9594dda1750ee80bc37753ff6e0fff259ee3140ff0d3d134fa",
+    "after": "c3fbabb028a3c2f659ec8ed730f0f28c5d573f29a34bbb9eb492b7a1bf51a130",
+    "reason": "Split snapshot framework policy and history enumeration without changing asset identity calculation."
+  },
+  "src/triton_eval/_references/ascend_contracts.py": {
+    "before": "0e83e175e88349e0ab2ca2e94e54029f9962a74d22f505551002a35c4c845893",
+    "after": "e441962017f4b7fda95c1d63f6c0b16511becd039711c508bc630802272510b3",
+    "reason": "Dispatch v19 workload admission to additive contracts while preserving baseline validation helpers."
+  },
+  "src/triton_eval/envprobe/collect.py": {
+    "before": "7ec61541ce2e50375429a93b6ba6c6025bf3c82906485acf3776b09c9e9d9a95",
+    "after": "ed998fece04ba2f6d9ff25adc058627925524ae6e10b5e28a71670c57078bbd7",
+    "reason": "Keep device imports in L1 and expose the remote device-health admission probe."
+  },
+  "src/triton_eval/_submissions/submission_service.py": {
+    "before": "f571ac170209a5612a302dc83fcd376ee29e2828192c356ac17621c4bbf67a5d",
+    "after": "4c8127deb9a3e7aeb04ca85bdb133c28f6d963f3fd2ce258d454b55ff8781a89",
+    "reason": "Split request validation, score serialization and live event retrieval while preserving queue and recovery behavior."
+  },
+  "src/triton_eval/_submissions/submission_http.py": {
+    "before": "dec0f10fa1d130196628d1ff92ce465b904c03347717269c52e0196beae16611",
+    "after": "9f977492502b62999b804cceaa4fff43689da7c8d645944bbf38f25e84fbb674",
+    "reason": "Reuse reviewed schema definitions and split SSE event encoding to resolve duplicate code and nesting findings. Expose the shared route builder as a documented public API for the platform extension (13:36 quality report)."
+  },
+  "src/triton_eval/__init__.py": {
+    "before": "596fb23af0efb0c4257111120dd158ec1014cfdeaf43a231ef9fc67f448f94a6",
+    "after": "dbbe4ad91932ff37064997dc87e894623f07d41e57456836c6e56652468c71d0",
+    "reason": "Group additive platform modules under _platform while retaining public module imports and framework asset aliases."
+  }
+}

@@ -1,0 +1,1400 @@
+{
+  "input_workbook": "CANN_multimodal-benchmark_全量导出（未解决）_20261116111706.xlsx",
+  "input_sha256": "9718d01e88fbedbb6b91e81d4a550e6153cf57a5b448877f83dc530bd1e9707b",
+  "input_rows": 135,
+  "pipeline_run": "b7fa9cc7d9b9401cb73d8dfaf7b3d1bd",
+  "summary": {
+    "rows": 135,
+    "verified": 135,
+    "unresolved": 0,
+    "official_rescan_verified": false
+  },
+  "findings": [
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 2,
+      "rule": "G.CMT.06 文件头注释应该包含版权许可信息",
+      "original_file": "benchmark/triton-bench/scripts/build_workload_corpus.py",
+      "current_file": "scripts/build_workload_corpus.py",
+      "local_verified": true,
+      "evidence": "retained CANN license; shebang first when present",
+      "source_line": "1"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 3,
+      "rule": "G.CMT.06 文件头注释应该包含版权许可信息",
+      "original_file": "benchmark/triton-bench/scripts/check_reviewed_baseline.py",
+      "current_file": "scripts/check_reviewed_baseline.py",
+      "local_verified": true,
+      "evidence": "retained CANN license; shebang first when present",
+      "source_line": "1"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 4,
+      "rule": "G.FMT.06 每行只能导入一个模块",
+      "original_file": "benchmark/triton-bench/tests/platform/test_workload_completion.py",
+      "current_file": "tests/platform/test_workload_completion.py",
+      "local_verified": true,
+      "evidence": "one imported module per import statement",
+      "source_line": "61"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 5,
+      "rule": "OAT.3 许可证头",
+      "original_file": "benchmark/triton-bench/frontend/vite.config.mjs",
+      "current_file": "frontend/vite.config.mjs",
+      "local_verified": true,
+      "evidence": "retained CANN license; shebang first when present",
+      "source_line": "0"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 6,
+      "rule": "G.FIO.01 在多用户系统中创建文件时应根据需要指定合适的权限",
+      "original_file": "benchmark/triton-bench/src/triton_eval/remote_credentials.py",
+      "current_file": "src/triton_eval/_platform/remote_credentials.py",
+      "local_verified": true,
+      "evidence": "os.open explicit mode 0600; read flags unchanged",
+      "source_line": "62"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 7,
+      "rule": "G.ERR.07 避免抑制或忽略异常",
+      "original_file": "benchmark/triton-bench/src/triton_eval/remote_watchdog.py",
+      "current_file": "src/triton_eval/_platform/remote_watchdog.py",
+      "local_verified": true,
+      "evidence": "watchdog exceptions recorded by type and reconciled within deadline",
+      "source_line": "78"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 8,
+      "rule": "G.EDV.05 调用外部可执行程序时建议使用绝对路径",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/run_independent_regression.py",
+      "current_file": "scripts/platform_examples/run_independent_regression.py",
+      "local_verified": true,
+      "evidence": "resolved absolute caffeinate path before Popen",
+      "source_line": "76"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 9,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "192"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 10,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "165"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 11,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "210"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 12,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "214"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 13,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "218"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 14,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "224"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 15,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "236"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 16,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "254"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 17,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "268"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 18,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "280"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 19,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "324"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 20,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "341"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 21,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "363"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 22,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "369"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 23,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "391"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 24,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "412"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 25,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "432"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 26,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "454"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 27,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "478"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 28,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "485"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 29,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "515"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 30,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "526"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 31,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "544"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 32,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/remote_jobs.py",
+      "current_file": "src/triton_eval/_platform/remote_jobs.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "99"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 33,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/ssh_transport.py",
+      "current_file": "src/triton_eval/_platform/ssh_transport.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "79"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 34,
+      "rule": "G.CLS.06 类的方法建议统一按照一种规则进行排列",
+      "original_file": "benchmark/triton-bench/src/triton_eval/ssh_transport.py",
+      "current_file": "src/triton_eval/_platform/ssh_transport.py",
+      "local_verified": true,
+      "evidence": "constructor, class/static methods, public methods, private helpers",
+      "source_line": "84"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 35,
+      "rule": "G.FMT.02 行宽不超过120个字符",
+      "original_file": "benchmark/triton-bench/tests/test_reviewed_baseline.py",
+      "current_file": "tests/test_reviewed_baseline.py",
+      "local_verified": true,
+      "evidence": "all physical lines <=120",
+      "source_line": "15"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 36,
+      "rule": "G.FMT.07 导入部分(imports)应该按照标准库、第三方库、应用程序自定义模块的顺序排列导入",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/build_platform_examples.py",
+      "current_file": "scripts/platform_examples/build_platform_examples.py",
+      "local_verified": true,
+      "evidence": "standard library imports precede application imports",
+      "source_line": "19"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 37,
+      "rule": "G.FMT.07 导入部分(imports)应该按照标准库、第三方库、应用程序自定义模块的顺序排列导入",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/build_platform_examples.py",
+      "current_file": "scripts/platform_examples/build_platform_examples.py",
+      "local_verified": true,
+      "evidence": "standard library imports precede application imports",
+      "source_line": "20"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 38,
+      "rule": "G.FMT.07 导入部分(imports)应该按照标准库、第三方库、应用程序自定义模块的顺序排列导入",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/build_platform_examples.py",
+      "current_file": "scripts/platform_examples/build_platform_examples.py",
+      "local_verified": true,
+      "evidence": "standard library imports precede application imports",
+      "source_line": "21"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 39,
+      "rule": "G.FMT.07 导入部分(imports)应该按照标准库、第三方库、应用程序自定义模块的顺序排列导入",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/build_platform_examples.py",
+      "current_file": "scripts/platform_examples/build_platform_examples.py",
+      "local_verified": true,
+      "evidence": "standard library imports precede application imports",
+      "source_line": "22"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 40,
+      "rule": "G.FMT.07 导入部分(imports)应该按照标准库、第三方库、应用程序自定义模块的顺序排列导入",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/build_platform_examples.py",
+      "current_file": "scripts/platform_examples/build_platform_examples.py",
+      "local_verified": true,
+      "evidence": "standard library imports precede application imports",
+      "source_line": "23"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 41,
+      "rule": "G.FMT.07 导入部分(imports)应该按照标准库、第三方库、应用程序自定义模块的顺序排列导入",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/build_platform_examples.py",
+      "current_file": "scripts/platform_examples/build_platform_examples.py",
+      "local_verified": true,
+      "evidence": "standard library imports precede application imports",
+      "source_line": "24"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 42,
+      "rule": "G.FMT.07 导入部分(imports)应该按照标准库、第三方库、应用程序自定义模块的顺序排列导入",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/export_frontend_contract.py",
+      "current_file": "scripts/platform_examples/export_frontend_contract.py",
+      "local_verified": true,
+      "evidence": "standard library imports precede application imports",
+      "source_line": "21"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 43,
+      "rule": "G.FMT.07 导入部分(imports)应该按照标准库、第三方库、应用程序自定义模块的顺序排列导入",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/export_frontend_contract.py",
+      "current_file": "scripts/platform_examples/export_frontend_contract.py",
+      "local_verified": true,
+      "evidence": "standard library imports precede application imports",
+      "source_line": "22"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 44,
+      "rule": "G.FMT.07 导入部分(imports)应该按照标准库、第三方库、应用程序自定义模块的顺序排列导入",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/export_frontend_contract.py",
+      "current_file": "scripts/platform_examples/export_frontend_contract.py",
+      "local_verified": true,
+      "evidence": "standard library imports precede application imports",
+      "source_line": "23"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 45,
+      "rule": "G.FMT.07 导入部分(imports)应该按照标准库、第三方库、应用程序自定义模块的顺序排列导入",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/export_frontend_contract.py",
+      "current_file": "scripts/platform_examples/export_frontend_contract.py",
+      "local_verified": true,
+      "evidence": "standard library imports precede application imports",
+      "source_line": "24"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 46,
+      "rule": "G.FMT.07 导入部分(imports)应该按照标准库、第三方库、应用程序自定义模块的顺序排列导入",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/export_frontend_contract.py",
+      "current_file": "scripts/platform_examples/export_frontend_contract.py",
+      "local_verified": true,
+      "evidence": "standard library imports precede application imports",
+      "source_line": "25"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 47,
+      "rule": "G.FMT.07 导入部分(imports)应该按照标准库、第三方库、应用程序自定义模块的顺序排列导入",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/export_frontend_contract.py",
+      "current_file": "scripts/platform_examples/export_frontend_contract.py",
+      "local_verified": true,
+      "evidence": "standard library imports precede application imports",
+      "source_line": "26"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 48,
+      "rule": "G.FMT.07 导入部分(imports)应该按照标准库、第三方库、应用程序自定义模块的顺序排列导入",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/export_frontend_contract.py",
+      "current_file": "scripts/platform_examples/export_frontend_contract.py",
+      "local_verified": true,
+      "evidence": "standard library imports precede application imports",
+      "source_line": "27"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 49,
+      "rule": "G.FMT.07 导入部分(imports)应该按照标准库、第三方库、应用程序自定义模块的顺序排列导入",
+      "original_file": "benchmark/triton-bench/src/triton_eval/remote_credentials.py",
+      "current_file": "src/triton_eval/_platform/remote_credentials.py",
+      "local_verified": true,
+      "evidence": "standard library imports precede application imports",
+      "source_line": "16"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 50,
+      "rule": "G.FMT.07 导入部分(imports)应该按照标准库、第三方库、应用程序自定义模块的顺序排列导入",
+      "original_file": "benchmark/triton-bench/src/triton_eval/remote_credentials.py",
+      "current_file": "src/triton_eval/_platform/remote_credentials.py",
+      "local_verified": true,
+      "evidence": "standard library imports precede application imports",
+      "source_line": "17"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 51,
+      "rule": "G.FMT.07 导入部分(imports)应该按照标准库、第三方库、应用程序自定义模块的顺序排列导入",
+      "original_file": "benchmark/triton-bench/src/triton_eval/remote_credentials.py",
+      "current_file": "src/triton_eval/_platform/remote_credentials.py",
+      "local_verified": true,
+      "evidence": "standard library imports precede application imports",
+      "source_line": "18"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 52,
+      "rule": "G.FMT.07 导入部分(imports)应该按照标准库、第三方库、应用程序自定义模块的顺序排列导入",
+      "original_file": "benchmark/triton-bench/src/triton_eval/remote_credentials.py",
+      "current_file": "src/triton_eval/_platform/remote_credentials.py",
+      "local_verified": true,
+      "evidence": "standard library imports precede application imports",
+      "source_line": "19"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 53,
+      "rule": "G.CTL.03 避免在条件/循环控制语句中包含过多的条件",
+      "original_file": "benchmark/triton-bench/src/triton_eval/frontend_gateway.py",
+      "current_file": "src/triton_eval/_platform/frontend_gateway.py",
+      "local_verified": true,
+      "evidence": "separate path, membership, size and identity predicates",
+      "source_line": "112"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 54,
+      "rule": "G.CTL.03 避免在条件/循环控制语句中包含过多的条件",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "separate path, membership, size and identity predicates",
+      "source_line": "317"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 55,
+      "rule": "G.CTL.03 避免在条件/循环控制语句中包含过多的条件",
+      "original_file": "benchmark/triton-bench/src/triton_eval/remote_bundle.py",
+      "current_file": "src/triton_eval/_platform/remote_bundle.py",
+      "local_verified": true,
+      "evidence": "separate path, membership, size and identity predicates",
+      "source_line": "219"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 56,
+      "rule": "G.CTL.01 同一个函数所有分支的返回值类型和个数保持一致",
+      "original_file": "benchmark/triton-bench/src/triton_eval/frontend_gateway.py",
+      "current_file": "src/triton_eval/_platform/frontend_gateway.py",
+      "local_verified": true,
+      "evidence": "explicit None response paths or consistent bare validator return",
+      "source_line": "134"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 57,
+      "rule": "G.CTL.01 同一个函数所有分支的返回值类型和个数保持一致",
+      "original_file": "benchmark/triton-bench/src/triton_eval/frontend_gateway.py",
+      "current_file": "src/triton_eval/_platform/frontend_gateway.py",
+      "local_verified": true,
+      "evidence": "explicit None response paths or consistent bare validator return",
+      "source_line": "162"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 58,
+      "rule": "G.CTL.01 同一个函数所有分支的返回值类型和个数保持一致",
+      "original_file": "benchmark/triton-bench/src/triton_eval/workload_contracts.py",
+      "current_file": "src/triton_eval/_platform/workload_contracts.py",
+      "local_verified": true,
+      "evidence": "explicit None response paths or consistent bare validator return",
+      "source_line": "55"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 59,
+      "rule": "G.VAR.01 禁止在变量的生命周期内修改其类型",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "float default retained as float",
+      "source_line": "45"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 60,
+      "rule": "G.TYP.02 浮点型数据判断相等不要直接使用==",
+      "original_file": "benchmark/triton-bench/examples/independent-20-submission/operators/pointwise.py",
+      "current_file": "examples/independent-20-submission/operators/pointwise.py",
+      "local_verified": true,
+      "evidence": "exact sentinel comparison via isclose with zero tolerances",
+      "source_line": "83"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 61,
+      "rule": "G.ERR.04 对异常做类型转换时要保留原始异常的错误调用栈信息",
+      "original_file": "benchmark/triton-bench/src/triton_eval/frontend_gateway.py",
+      "current_file": "src/triton_eval/_platform/frontend_gateway.py",
+      "local_verified": true,
+      "evidence": "gateway path error retains original cause",
+      "source_line": "110"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 62,
+      "rule": "G.EXP.04 推导式和生成器表达式仅用于简单的逻辑表达",
+      "original_file": "benchmark/triton-bench/src/triton_eval/leaderboard.py",
+      "current_file": "src/triton_eval/_platform/leaderboard.py",
+      "local_verified": true,
+      "evidence": "comprehension clauses use single-line named inputs; unresolved lines=[]",
+      "source_line": "103"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 63,
+      "rule": "G.EXP.04 推导式和生成器表达式仅用于简单的逻辑表达",
+      "original_file": "benchmark/triton-bench/src/triton_eval/leaderboard.py",
+      "current_file": "src/triton_eval/_platform/leaderboard.py",
+      "local_verified": true,
+      "evidence": "comprehension clauses use single-line named inputs; unresolved lines=[]",
+      "source_line": "237"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 64,
+      "rule": "G.EXP.04 推导式和生成器表达式仅用于简单的逻辑表达",
+      "original_file": "benchmark/triton-bench/src/triton_eval/leaderboard.py",
+      "current_file": "src/triton_eval/_platform/leaderboard.py",
+      "local_verified": true,
+      "evidence": "comprehension clauses use single-line named inputs; unresolved lines=[]",
+      "source_line": "310"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 65,
+      "rule": "G.EXP.04 推导式和生成器表达式仅用于简单的逻辑表达",
+      "original_file": "benchmark/triton-bench/src/triton_eval/leaderboard_schema.py",
+      "current_file": "src/triton_eval/_platform/leaderboard_schema.py",
+      "local_verified": true,
+      "evidence": "comprehension clauses use single-line named inputs; unresolved lines=[]",
+      "source_line": "58"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 66,
+      "rule": "G.EXP.04 推导式和生成器表达式仅用于简单的逻辑表达",
+      "original_file": "benchmark/triton-bench/src/triton_eval/orchestrator.py",
+      "current_file": "src/triton_eval/_platform/orchestrator.py",
+      "local_verified": true,
+      "evidence": "comprehension clauses use single-line named inputs; unresolved lines=[]",
+      "source_line": "286"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 67,
+      "rule": "G.EXP.04 推导式和生成器表达式仅用于简单的逻辑表达",
+      "original_file": "benchmark/triton-bench/tests/platform/test_remote_platform.py",
+      "current_file": "tests/platform/test_remote_platform.py",
+      "local_verified": true,
+      "evidence": "comprehension clauses use single-line named inputs; unresolved lines=[]",
+      "source_line": "315"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 68,
+      "rule": "G.EXP.04 推导式和生成器表达式仅用于简单的逻辑表达",
+      "original_file": "benchmark/triton-bench/tests/platform/test_remote_platform.py",
+      "current_file": "tests/platform/test_remote_platform.py",
+      "local_verified": true,
+      "evidence": "comprehension clauses use single-line named inputs; unresolved lines=[]",
+      "source_line": "502"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 69,
+      "rule": "重复代码[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/platform_api_schema.py",
+      "current_file": "src/triton_eval/_platform/platform_api_schema.py",
+      "local_verified": true,
+      "evidence": "duplicate schemas removed; reviewed base schemas reused; API content compared equal",
+      "source_line": "93"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 70,
+      "rule": "重复代码[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/platform_api_schema.py",
+      "current_file": "src/triton_eval/_platform/platform_api_schema.py",
+      "local_verified": true,
+      "evidence": "duplicate schemas removed; reviewed base schemas reused; API content compared equal",
+      "source_line": "142"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 71,
+      "rule": "重复代码[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/platform_api_schema.py",
+      "current_file": "src/triton_eval/_platform/platform_api_schema.py",
+      "local_verified": true,
+      "evidence": "duplicate schemas removed; reviewed base schemas reused; API content compared equal",
+      "source_line": "219"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 72,
+      "rule": "重复代码[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/platform_api_schema.py",
+      "current_file": "src/triton_eval/_platform/platform_api_schema.py",
+      "local_verified": true,
+      "evidence": "duplicate schemas removed; reviewed base schemas reused; API content compared equal",
+      "source_line": "240"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 73,
+      "rule": "重复代码[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/platform_api_schema.py",
+      "current_file": "src/triton_eval/_platform/platform_api_schema.py",
+      "local_verified": true,
+      "evidence": "duplicate schemas removed; reviewed base schemas reused; API content compared equal",
+      "source_line": "253"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 74,
+      "rule": "重复代码[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/platform_api_schema.py",
+      "current_file": "src/triton_eval/_platform/platform_api_schema.py",
+      "local_verified": true,
+      "evidence": "duplicate schemas removed; reviewed base schemas reused; API content compared equal",
+      "source_line": "275"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 75,
+      "rule": "重复代码[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/platform_api_schema.py",
+      "current_file": "src/triton_eval/_platform/platform_api_schema.py",
+      "local_verified": true,
+      "evidence": "duplicate schemas removed; reviewed base schemas reused; API content compared equal",
+      "source_line": "289"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 76,
+      "rule": "重复代码[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/platform_api_schema.py",
+      "current_file": "src/triton_eval/_platform/platform_api_schema.py",
+      "local_verified": true,
+      "evidence": "duplicate schemas removed; reviewed base schemas reused; API content compared equal",
+      "source_line": "306"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 77,
+      "rule": "重复代码[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/platform_api_schema.py",
+      "current_file": "src/triton_eval/_platform/platform_api_schema.py",
+      "local_verified": true,
+      "evidence": "duplicate schemas removed; reviewed base schemas reused; API content compared equal",
+      "source_line": "320"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 78,
+      "rule": "重复代码[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/platform_api_schema.py",
+      "current_file": "src/triton_eval/_platform/platform_api_schema.py",
+      "local_verified": true,
+      "evidence": "duplicate schemas removed; reviewed base schemas reused; API content compared equal",
+      "source_line": "394"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 79,
+      "rule": "重复代码[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/platform_api_schema.py",
+      "current_file": "src/triton_eval/_platform/platform_api_schema.py",
+      "local_verified": true,
+      "evidence": "duplicate schemas removed; reviewed base schemas reused; API content compared equal",
+      "source_line": "424"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 80,
+      "rule": "重复代码[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/platform_api_schema.py",
+      "current_file": "src/triton_eval/_platform/platform_api_schema.py",
+      "local_verified": true,
+      "evidence": "duplicate schemas removed; reviewed base schemas reused; API content compared equal",
+      "source_line": "438"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 81,
+      "rule": "重复代码[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/platform_api_schema.py",
+      "current_file": "src/triton_eval/_platform/platform_api_schema.py",
+      "local_verified": true,
+      "evidence": "duplicate schemas removed; reviewed base schemas reused; API content compared equal",
+      "source_line": "451"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 82,
+      "rule": "超大圈复杂度[PYTHON]",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/run_independent_regression.py",
+      "current_file": "scripts/platform_examples/run_independent_regression.py",
+      "local_verified": true,
+      "evidence": "main: body lines=19, depth=3, conservative complexity=4",
+      "source_line": "38"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 83,
+      "rule": "超大深度函数[PYTHON]",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/export_frontend_contract.py",
+      "current_file": "scripts/platform_examples/export_frontend_contract.py",
+      "local_verified": true,
+      "evidence": "examples: body lines=15, depth=3, conservative complexity=1",
+      "source_line": "49"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 84,
+      "rule": "超大深度函数[PYTHON]",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/run_independent_regression.py",
+      "current_file": "scripts/platform_examples/run_independent_regression.py",
+      "local_verified": true,
+      "evidence": "main: body lines=19, depth=3, conservative complexity=4",
+      "source_line": "38"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 85,
+      "rule": "超大深度函数[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/_submissions/submission_http.py",
+      "current_file": "src/triton_eval/_submissions/submission_http.py",
+      "local_verified": true,
+      "evidence": "_stream: body lines=19, depth=2, conservative complexity=3",
+      "source_line": "234"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 86,
+      "rule": "超大深度函数[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/_submissions/submission_service.py",
+      "current_file": "src/triton_eval/_submissions/submission_service.py",
+      "local_verified": true,
+      "evidence": "_recover: body lines=8, depth=4, conservative complexity=4",
+      "source_line": "643"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 87,
+      "rule": "超大深度函数[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/_submissions/submission_service.py",
+      "current_file": "src/triton_eval/_submissions/submission_service.py",
+      "local_verified": true,
+      "evidence": "_engine: body lines=27, depth=4, conservative complexity=7",
+      "source_line": "661"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 88,
+      "rule": "超大深度函数[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/remote_runner.py",
+      "current_file": "src/triton_eval/_platform/remote_runner.py",
+      "local_verified": true,
+      "evidence": "bridge_engine: body lines=12, depth=4, conservative complexity=5",
+      "source_line": "59"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 89,
+      "rule": "超大深度函数[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/remote_watchdog.py",
+      "current_file": "src/triton_eval/_platform/remote_watchdog.py",
+      "local_verified": true,
+      "evidence": "monitor: body lines=10, depth=4, conservative complexity=6",
+      "source_line": "44"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 90,
+      "rule": "超大深度函数[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/workload_generation.py",
+      "current_file": "src/triton_eval/_platform/workload_generation.py",
+      "local_verified": true,
+      "evidence": "candidate_pool: body lines=10, depth=3, conservative complexity=4",
+      "source_line": "95"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 91,
+      "rule": "超大目录[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/",
+      "current_file": "src/triton_eval",
+      "local_verified": true,
+      "evidence": "platform modules grouped; source children=43",
+      "source_line": "0"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 92,
+      "rule": "超大函数[PYTHON]",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/build_platform_examples.py",
+      "current_file": "scripts/platform_examples/build_platform_examples.py",
+      "local_verified": true,
+      "evidence": "build: body lines=42, depth=2, conservative complexity=5",
+      "source_line": "40"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 93,
+      "rule": "超大函数[PYTHON]",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/export_frontend_contract.py",
+      "current_file": "scripts/platform_examples/export_frontend_contract.py",
+      "local_verified": true,
+      "evidence": "examples: body lines=15, depth=3, conservative complexity=1",
+      "source_line": "49"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 94,
+      "rule": "超大函数[PYTHON]",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/prepare_half_experiment.py",
+      "current_file": "scripts/platform_examples/prepare_half_experiment.py",
+      "local_verified": true,
+      "evidence": "prepare: body lines=40, depth=3, conservative complexity=11",
+      "source_line": "36"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 95,
+      "rule": "超大函数[PYTHON]",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/run_independent_regression.py",
+      "current_file": "scripts/platform_examples/run_independent_regression.py",
+      "local_verified": true,
+      "evidence": "main: body lines=19, depth=3, conservative complexity=4",
+      "source_line": "38"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 96,
+      "rule": "超大函数[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/_submissions/submission_http.py",
+      "current_file": "src/triton_eval/_submissions/submission_http.py",
+      "local_verified": true,
+      "evidence": "_baseline_openapi: body lines=42, depth=1, conservative complexity=1",
+      "source_line": "35"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 97,
+      "rule": "超大函数[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/_submissions/submission_service.py",
+      "current_file": "src/triton_eval/_submissions/submission_service.py",
+      "local_verified": true,
+      "evidence": "create_task: body lines=41, depth=3, conservative complexity=10",
+      "source_line": "220"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 98,
+      "rule": "超大函数[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/_submissions/submission_service.py",
+      "current_file": "src/triton_eval/_submissions/submission_service.py",
+      "local_verified": true,
+      "evidence": "results: body lines=45, depth=3, conservative complexity=9",
+      "source_line": "326"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 99,
+      "rule": "超大函数[PYTHON]",
+      "original_file": "benchmark/triton-bench/src/triton_eval/corpus_assets.py",
+      "current_file": "src/triton_eval/corpus_assets.py",
+      "local_verified": true,
+      "evidence": "snapshot: body lines=40, depth=2, conservative complexity=15",
+      "source_line": "261"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 100,
+      "rule": "超大函数[PYTHON]",
+      "original_file": "benchmark/triton-bench/tests/platform/test_frontend_foundation.py",
+      "current_file": "tests/platform/test_frontend_foundation.py",
+      "local_verified": true,
+      "evidence": "test_gateway_upload_idempotency_cancel_stream_and_download: body lines=38, depth=2, conservative complexity=4",
+      "source_line": "167"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 101,
+      "rule": "超大函数[PYTHON]",
+      "original_file": "benchmark/triton-bench/tests/platform/test_leaderboard.py",
+      "current_file": "tests/platform/test_leaderboard.py",
+      "local_verified": true,
+      "evidence": "complete: body lines=46, depth=3, conservative complexity=12",
+      "source_line": "33"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 102,
+      "rule": "超大函数[PYTHON]",
+      "original_file": "benchmark/triton-bench/tests/platform/test_remote_platform.py",
+      "current_file": "tests/platform/test_remote_platform.py",
+      "local_verified": true,
+      "evidence": "test_independent_watchdog_survives_real_sigkill: body lines=29, depth=3, conservative complexity=7",
+      "source_line": "479"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 103,
+      "rule": "G.FMT.04 用空格突出关键字和重要信息",
+      "original_file": "benchmark/triton-bench/src/triton_eval/workload_release.py",
+      "current_file": "src/triton_eval/_platform/workload_release.py",
+      "local_verified": true,
+      "evidence": "removed whitespace before colon",
+      "source_line": "86"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 104,
+      "rule": "G.FMT.04 用空格突出关键字和重要信息",
+      "original_file": "benchmark/triton-bench/tests/platform/test_remote_platform.py",
+      "current_file": "tests/platform/test_remote_platform.py",
+      "local_verified": true,
+      "evidence": "removed whitespace before colon",
+      "source_line": "216"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 105,
+      "rule": "G.CLS.07 类的方法不需要访问实例时，建议定义为staticmethod或classmethod",
+      "original_file": "benchmark/triton-bench/src/triton_eval/remote_jobs.py",
+      "current_file": "src/triton_eval/_platform/remote_jobs.py",
+      "local_verified": true,
+      "evidence": "staticmethod without unused self: _write",
+      "source_line": "99"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 106,
+      "rule": "G.CLS.07 类的方法不需要访问实例时，建议定义为staticmethod或classmethod",
+      "original_file": "benchmark/triton-bench/tests/platform/test_ssh_stability.py",
+      "current_file": "tests/platform/test_ssh_stability.py",
+      "local_verified": true,
+      "evidence": "staticmethod without unused self: close",
+      "source_line": "141"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 107,
+      "rule": "G.CLS.07 类的方法不需要访问实例时，建议定义为staticmethod或classmethod",
+      "original_file": "benchmark/triton-bench/tests/platform/test_ssh_stability.py",
+      "current_file": "tests/platform/test_ssh_stability.py",
+      "local_verified": true,
+      "evidence": "staticmethod without unused self: snapshot",
+      "source_line": "144"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 108,
+      "rule": "G.EXP.03 不应将lambda表达式赋值给变量，应该使用常规函数",
+      "original_file": "benchmark/triton-bench/tests/platform/test_independent_numerics.py",
+      "current_file": "tests/platform/test_independent_numerics.py",
+      "local_verified": true,
+      "evidence": "named functions replace assigned lambdas",
+      "source_line": "29"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 109,
+      "rule": "G.EXP.03 不应将lambda表达式赋值给变量，应该使用常规函数",
+      "original_file": "benchmark/triton-bench/tests/platform/test_independent_numerics.py",
+      "current_file": "tests/platform/test_independent_numerics.py",
+      "local_verified": true,
+      "evidence": "named functions replace assigned lambdas",
+      "source_line": "30"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 110,
+      "rule": "G.EXP.03 不应将lambda表达式赋值给变量，应该使用常规函数",
+      "original_file": "benchmark/triton-bench/tests/platform/test_independent_numerics.py",
+      "current_file": "tests/platform/test_independent_numerics.py",
+      "local_verified": true,
+      "evidence": "named functions replace assigned lambdas",
+      "source_line": "32"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 111,
+      "rule": "G.EXP.03 不应将lambda表达式赋值给变量，应该使用常规函数",
+      "original_file": "benchmark/triton-bench/tests/platform/test_remote_platform.py",
+      "current_file": "tests/platform/test_remote_platform.py",
+      "local_verified": true,
+      "evidence": "named functions replace assigned lambdas",
+      "source_line": "667"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 112,
+      "rule": "G.EXP.03 不应将lambda表达式赋值给变量，应该使用常规函数",
+      "original_file": "benchmark/triton-bench/tests/platform/test_ssh_stability.py",
+      "current_file": "tests/platform/test_ssh_stability.py",
+      "local_verified": true,
+      "evidence": "named functions replace assigned lambdas",
+      "source_line": "84"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 113,
+      "rule": "G.EXP.03 不应将lambda表达式赋值给变量，应该使用常规函数",
+      "original_file": "benchmark/triton-bench/tests/platform/test_ssh_stability.py",
+      "current_file": "tests/platform/test_ssh_stability.py",
+      "local_verified": true,
+      "evidence": "named functions replace assigned lambdas",
+      "source_line": "93"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 114,
+      "rule": "G.EXP.03 不应将lambda表达式赋值给变量，应该使用常规函数",
+      "original_file": "benchmark/triton-bench/tests/platform/test_ssh_stability.py",
+      "current_file": "tests/platform/test_ssh_stability.py",
+      "local_verified": true,
+      "evidence": "named functions replace assigned lambdas",
+      "source_line": "94"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 115,
+      "rule": "G.EXP.03 不应将lambda表达式赋值给变量，应该使用常规函数",
+      "original_file": "benchmark/triton-bench/tests/platform/test_ssh_stability.py",
+      "current_file": "tests/platform/test_ssh_stability.py",
+      "local_verified": true,
+      "evidence": "named functions replace assigned lambdas",
+      "source_line": "113"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 116,
+      "rule": "G.EXP.03 不应将lambda表达式赋值给变量，应该使用常规函数",
+      "original_file": "benchmark/triton-bench/tests/platform/test_ssh_stability.py",
+      "current_file": "tests/platform/test_ssh_stability.py",
+      "local_verified": true,
+      "evidence": "named functions replace assigned lambdas",
+      "source_line": "127"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 117,
+      "rule": "G.EXP.03 不应将lambda表达式赋值给变量，应该使用常规函数",
+      "original_file": "benchmark/triton-bench/tests/platform/test_ssh_stability.py",
+      "current_file": "tests/platform/test_ssh_stability.py",
+      "local_verified": true,
+      "evidence": "named functions replace assigned lambdas",
+      "source_line": "147"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 118,
+      "rule": "G.FNM.05 当函数返回值个数较多时，建议通过class/namedtuple/dataclass等具名形式进行封装",
+      "original_file": "benchmark/triton-bench/src/triton_eval/workload_generation.py",
+      "current_file": "src/triton_eval/_platform/workload_generation.py",
+      "local_verified": true,
+      "evidence": "named CandidatePriority tuple preserves lexicographic ranking",
+      "source_line": "133"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 119,
+      "rule": "G.TYP.07 使用dict[key]获取 value 时需要注意保证 key 在有效的范围内",
+      "original_file": "benchmark/triton-bench/src/triton_eval/remote_jobs.py",
+      "current_file": "src/triton_eval/_platform/remote_jobs.py",
+      "local_verified": true,
+      "evidence": "validated dictionary lookup uses get",
+      "source_line": "265"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 120,
+      "rule": "G.TYP.07 使用dict[key]获取 value 时需要注意保证 key 在有效的范围内",
+      "original_file": "benchmark/triton-bench/src/triton_eval/workload_contracts.py",
+      "current_file": "src/triton_eval/_platform/workload_contracts.py",
+      "local_verified": true,
+      "evidence": "validated dictionary lookup uses get",
+      "source_line": "69"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 121,
+      "rule": "G.VAR.03 禁止覆盖外部作用域中的标识符",
+      "original_file": "benchmark/triton-bench/scripts/platform_examples/run_independent_regression.py",
+      "current_file": "scripts/platform_examples/run_independent_regression.py",
+      "local_verified": true,
+      "evidence": "distinct fixture aliases and no local rebinding of imported emit",
+      "source_line": "84"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 122,
+      "rule": "G.VAR.03 禁止覆盖外部作用域中的标识符",
+      "original_file": "benchmark/triton-bench/tests/platform/test_independent_numerics.py",
+      "current_file": "tests/platform/test_independent_numerics.py",
+      "local_verified": true,
+      "evidence": "distinct fixture aliases and no local rebinding of imported cpu_kernels",
+      "source_line": "56"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 123,
+      "rule": "G.VAR.03 禁止覆盖外部作用域中的标识符",
+      "original_file": "benchmark/triton-bench/tests/platform/test_independent_numerics.py",
+      "current_file": "tests/platform/test_independent_numerics.py",
+      "local_verified": true,
+      "evidence": "distinct fixture aliases and no local rebinding of imported cpu_kernels",
+      "source_line": "90"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 124,
+      "rule": "G.VAR.03 禁止覆盖外部作用域中的标识符",
+      "original_file": "benchmark/triton-bench/tests/platform/test_independent_numerics.py",
+      "current_file": "tests/platform/test_independent_numerics.py",
+      "local_verified": true,
+      "evidence": "distinct fixture aliases and no local rebinding of imported cpu_kernels",
+      "source_line": "101"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 125,
+      "rule": "G.VAR.03 禁止覆盖外部作用域中的标识符",
+      "original_file": "benchmark/triton-bench/tests/platform/test_independent_regression.py",
+      "current_file": "tests/platform/test_independent_regression.py",
+      "local_verified": true,
+      "evidence": "distinct fixture aliases and no local rebinding of imported cpu_kernels",
+      "source_line": "64"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 126,
+      "rule": "G.VAR.03 禁止覆盖外部作用域中的标识符",
+      "original_file": "benchmark/triton-bench/tests/platform/test_secret_cleanup.py",
+      "current_file": "tests/platform/test_secret_cleanup.py",
+      "local_verified": true,
+      "evidence": "distinct fixture aliases and no local rebinding of imported shutil",
+      "source_line": "79"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 127,
+      "rule": "G.VAR.03 禁止覆盖外部作用域中的标识符",
+      "original_file": "benchmark/triton-bench/tests/platform/test_secret_cleanup.py",
+      "current_file": "tests/platform/test_secret_cleanup.py",
+      "local_verified": true,
+      "evidence": "distinct fixture aliases and no local rebinding of imported shutil",
+      "source_line": "106"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 128,
+      "rule": "G.VAR.03 禁止覆盖外部作用域中的标识符",
+      "original_file": "benchmark/triton-bench/tests/platform/test_ssh_stability.py",
+      "current_file": "tests/platform/test_ssh_stability.py",
+      "local_verified": true,
+      "evidence": "distinct fixture aliases and no local rebinding of imported remote",
+      "source_line": "72"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 129,
+      "rule": "G.VAR.03 禁止覆盖外部作用域中的标识符",
+      "original_file": "benchmark/triton-bench/tests/platform/test_ssh_stability.py",
+      "current_file": "tests/platform/test_ssh_stability.py",
+      "local_verified": true,
+      "evidence": "distinct fixture aliases and no local rebinding of imported device_fixture",
+      "source_line": "72"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 130,
+      "rule": "G.VAR.03 禁止覆盖外部作用域中的标识符",
+      "original_file": "benchmark/triton-bench/tests/platform/test_ssh_stability.py",
+      "current_file": "tests/platform/test_ssh_stability.py",
+      "local_verified": true,
+      "evidence": "distinct fixture aliases and no local rebinding of imported remote",
+      "source_line": "91"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 131,
+      "rule": "G.VAR.03 禁止覆盖外部作用域中的标识符",
+      "original_file": "benchmark/triton-bench/tests/platform/test_ssh_stability.py",
+      "current_file": "tests/platform/test_ssh_stability.py",
+      "local_verified": true,
+      "evidence": "distinct fixture aliases and no local rebinding of imported device_fixture",
+      "source_line": "91"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 132,
+      "rule": "G.VAR.03 禁止覆盖外部作用域中的标识符",
+      "original_file": "benchmark/triton-bench/tests/platform/test_ssh_stability.py",
+      "current_file": "tests/platform/test_ssh_stability.py",
+      "local_verified": true,
+      "evidence": "distinct fixture aliases and no local rebinding of imported remote",
+      "source_line": "100"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 133,
+      "rule": "G.VAR.03 禁止覆盖外部作用域中的标识符",
+      "original_file": "benchmark/triton-bench/tests/platform/test_ssh_stability.py",
+      "current_file": "tests/platform/test_ssh_stability.py",
+      "local_verified": true,
+      "evidence": "distinct fixture aliases and no local rebinding of imported device_fixture",
+      "source_line": "100"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 134,
+      "rule": "G.VAR.03 禁止覆盖外部作用域中的标识符",
+      "original_file": "benchmark/triton-bench/tests/platform/test_ssh_stability.py",
+      "current_file": "tests/platform/test_ssh_stability.py",
+      "local_verified": true,
+      "evidence": "distinct fixture aliases and no local rebinding of imported remote",
+      "source_line": "119"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 135,
+      "rule": "G.VAR.03 禁止覆盖外部作用域中的标识符",
+      "original_file": "benchmark/triton-bench/tests/platform/test_ssh_stability.py",
+      "current_file": "tests/platform/test_ssh_stability.py",
+      "local_verified": true,
+      "evidence": "distinct fixture aliases and no local rebinding of imported remote",
+      "source_line": "133"
+    },
+    {
+      "sheet": "代码问题详情(1)",
+      "row": 136,
+      "rule": "G.VAR.03 禁止覆盖外部作用域中的标识符",
+      "original_file": "benchmark/triton-bench/tests/platform/test_ssh_stability.py",
+      "current_file": "tests/platform/test_ssh_stability.py",
+      "local_verified": true,
+      "evidence": "distinct fixture aliases and no local rebinding of imported device_fixture",
+      "source_line": "133"
+    }
+  ],
+  "sca": {
+    "url": "https://www.openlibing.com/apps/personalScandTaskInfor/person/9e830f79-b0fd-4152-b834-50c484bebbd0?projectId=300033&codeHostingPlatformFlag=gitcode",
+    "total": 9,
+    "pending": 4,
+    "previously_processed": 5,
+    "matches": [
+      {
+        "file": "frontend/scripts/prepare-sites-build.mjs",
+        "reported_lines": "18-31",
+        "components": [
+          "imchenway/zeus",
+          "jslee124/forge",
+          "ohh-889/skyroc-admin",
+          "baiduxc/komari-jianlai-theme"
+        ]
+      },
+      {
+        "file": "frontend/tests/sites-worker.test.mjs",
+        "reported_lines": "17-22,50-69",
+        "components": [
+          "Yonge6/yixiu-meditation",
+          "yuyou-dev/opengemcutting",
+          "imchenway/zeus",
+          "diyiwuyan/onebench",
+          "gmd170629/ermao-library"
+        ]
+      }
+    ],
+    "repair": "Replace generic scaffold sequences with a project deployment manifest and route-based behavior tests; retain CANN headers; no analysis status or risk suppression changed.",
+    "official_rescan_verified": false
+  },
+  "frozen": {
+    "revision": "ba04485-platform-codecheck-20261116-r5",
+    "manifest_hash": "bdc1e68beb0158b000fc4a607b81fbf9831d895fbaf84c11a7ff91ae7d8b5cb3",
+    "npu_execution": "NOT_RUN"
+  }
+}

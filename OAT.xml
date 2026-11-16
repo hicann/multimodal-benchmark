@@ -33,16 +33,16 @@
             <filefilter name="readmeOpenSourcefileNamePolicyFilter" desc="Filters for README.OpenSource file policies">
             </filefilter>
             <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binary file policies">
-                <filteritem type="filepath" name="benchmark/triton_bench/spec/feature_atoms.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
-                <filteritem type="filepath" name="benchmark/triton_bench/spec/spec.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
-                <filteritem type="filepath" name="benchmark/triton_bench/spec/tolerance.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
-                <filteritem type="filepath" name="benchmark/triton_bench/examples/adversarial-submissions/ADV-E1-path-escape/manifest.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
-                <filteritem type="filepath" name="benchmark/triton_bench/examples/adversarial-submissions/ADV-E2-empty-operators/manifest.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
-                <filteritem type="filepath" name="benchmark/triton_bench/examples/ascend-ops-submission/manifest.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
-                <filteritem type="filepath" name="benchmark/triton_bench/examples/invalid-submissions/SUB-LOD-002/manifest.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
-                <filteritem type="filepath" name="benchmark/triton_bench/examples/adversarial-submissions/ADV-C1-fullhouse/manifest.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
-                <filteritem type="filepath" name="benchmark/triton_bench/src/triton_eval/templates/report.html.j2" desc="Verified UTF-8 Jinja report template; required by report rendering; not an executable binary"/>
-                <filteritem type="filepath" name="benchmark/triton_bench/src/triton_eval/templates/report.md.j2" desc="Verified UTF-8 Jinja report template; required by report rendering; not an executable binary"/>
+                <filteritem type="filepath" name="benchmark/triton-bench/spec/feature_atoms.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
+                <filteritem type="filepath" name="benchmark/triton-bench/spec/spec.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
+                <filteritem type="filepath" name="benchmark/triton-bench/spec/tolerance.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
+                <filteritem type="filepath" name="benchmark/triton-bench/examples/adversarial-submissions/ADV-E1-path-escape/manifest.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
+                <filteritem type="filepath" name="benchmark/triton-bench/examples/adversarial-submissions/ADV-E2-empty-operators/manifest.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
+                <filteritem type="filepath" name="benchmark/triton-bench/examples/ascend-ops-submission/manifest.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
+                <filteritem type="filepath" name="benchmark/triton-bench/examples/invalid-submissions/SUB-LOD-002/manifest.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
+                <filteritem type="filepath" name="benchmark/triton-bench/examples/adversarial-submissions/ADV-C1-fullhouse/manifest.yaml" desc="Verified UTF-8 YAML configuration; required by specification loading or submission tests; not an executable binary"/>
+                <filteritem type="filepath" name="benchmark/triton-bench/src/triton_eval/templates/report.html.j2" desc="Verified UTF-8 Jinja report template; required by report rendering; not an executable binary"/>
+                <filteritem type="filepath" name="benchmark/triton-bench/src/triton_eval/templates/report.md.j2" desc="Verified UTF-8 Jinja report template; required by report rendering; not an executable binary"/>
             </filefilter>
         </filefilterlist>
         <licensematcherlist>

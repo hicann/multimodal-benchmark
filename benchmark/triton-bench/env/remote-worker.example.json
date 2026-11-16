@@ -1,0 +1,18 @@
+{
+  "instance": "00000000000000000000000000000000",
+  "ssh_host": "replace-with-host-from-atomgit-ssh-config",
+  "helper": "~/cann-lab-http-retry/cann_retry.py",
+  "credentials": "~/cann-lab-http-retry/.credentials.json",
+  "ssh_config": "~/.atomgitdevenv/.ssh/config",
+  "remote_root": "/mnt/workspace/jobs",
+  "python": "/home/developer/venv/te-compiler/bin/python",
+  "cann_env": "/home/developer/Ascend/cann-9.0.0/set_env.sh",
+  "startup_timeout": 150,
+  "shutdown_timeout": 180,
+  "running_timeout": 1800,
+  "idle_timeout": 60,
+  "ssh_timeout": 35,
+  "poll_interval": 2,
+  "reconnect_timeout": 90,
+  "max_result_bytes": 268435456
+}

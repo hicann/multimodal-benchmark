@@ -1,0 +1,43 @@
+{
+  "format": 1,
+  "revision": "ba04485-platform-codecheck-20261116-r5",
+  "origin_assets_hash": "e10dcbcc52bdfb0c5ca1632e16c1fe1449f564aeffb664414882b4c297f25e11",
+  "manifest_hash": "bdc1e68beb0158b000fc4a607b81fbf9831d895fbaf84c11a7ff91ae7d8b5cb3",
+  "reason": "Resolve the 135 findings from the 20261116111706 official export; preserve all frozen case identities and predecessor indexes; group additive platform modules and retain public imports.",
+  "hardware_validation": "NOT_RUN",
+  "previous_revisions": [
+    {
+      "assets_hash": "8ba699366338768238ae2fe110e0d242f94e3374153f88395a95721d0892a06f",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 489,
+        "sha256": "34b851f1f8f82e69829ff5faa4e6ccf4de0ffa79e60fbfb0885b074d54970f8f"
+      }
+    },
+    {
+      "assets_hash": "d6fb1166bc0e92e9bd0e49abe200af8bfbe27c9ef8adcf96c01ff7071db2db5a",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 809,
+        "sha256": "82789427d74be8558e8b530b697520aefd7b6f55955e3ac9e9f13b8d50281d35"
+      }
+    },
+    {
+      "assets_hash": "f89357b18bf4673da660202043f93a3da002d33047dfc5c5cfec3f75cd007cd3",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 1100,
+        "sha256": "bbd5020b3ec8e011348f3c55f9720d8a48bfa417993c024689e6d12001c311e1"
+      }
+    },
+    {
+      "assets_hash": "26a520d29810a4c26c83e04c511bd8927d4d196d684b036d965c99bed52f1a05",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 1316,
+        "sha256": "6f5ea95a6d1e44388d7a43decdd4de14c67c05d96afee1aa3075485dcc9960d6"
+      }
+    }
+  ],
+  "metadata_storage": "detached-zlib-base64-v1"
+}

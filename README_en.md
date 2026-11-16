@@ -149,7 +149,7 @@ multimodal-benchmark/
 │   ├── metrics/                         #   Evaluation metrics
 │   ├── runners/                         #   Evaluation runners
 │   ├── baselines/                       #   Baseline data
-│   ├── triton_bench/                    #   Triton operator benchmark (planned for community co-development)
+│   ├── triton-bench/                    #   Triton operator benchmark (planned for community co-development)
 │   └── reports/                         #   Evaluation report output
 └── README.md
 ```

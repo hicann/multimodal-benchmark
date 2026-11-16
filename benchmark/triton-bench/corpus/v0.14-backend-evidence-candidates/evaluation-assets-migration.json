@@ -1,0 +1,219 @@
+{
+  "format": 1,
+  "revision": "ba04485-platform-codecheck-20261116-r5",
+  "origin_assets_hash": "00ab8cc2bcc646c6879538b9da0d343fcd66810d376fd2dd2375396b92c5e049",
+  "manifest_hash": "35ed2840195b70282db910740bc7ee19ef19b466d0472ec1a0dc316df1b600c4",
+  "reason": "Resolve the 135 findings from the 20261116111706 official export; preserve all frozen case identities and predecessor indexes; group additive platform modules and retain public imports.",
+  "hardware_validation": "NOT_RUN",
+  "previous_revisions": [
+    {
+      "assets_hash": "09b5d13e6d9069f45d31b3aa950264f213bb0419619f9df08e63f1cf1f4d7f9f",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 441,
+        "sha256": "6cc9b42732ccb94f590f06dd7b805532a9e1a9e38080f13f322baa1f03e1e1e5"
+      }
+    },
+    {
+      "assets_hash": "51d54648834a282c2fdcd54f38c198bc6d0d8834d38bfa87617b6e975c17bf25",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 1045,
+        "sha256": "4cec41ecfefa861f3d1b1dd1156cf2560d509179ee514e8d5487e234c6ebf579"
+      }
+    },
+    {
+      "assets_hash": "90040060b14ec5ceecc7ab5ebe22de50a070f2e909b13b9e573bb20c8c6ebc32",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 2287,
+        "sha256": "9b49265718fd4ecb626d70ee6c9f5a86226e41041535baac784c421ae90b1e9b"
+      }
+    },
+    {
+      "assets_hash": "a0b8ae99c7225b8b369106d420a3ce1da72bdff560cfa0a130d0f922ef06c807",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 5005,
+        "sha256": "60c06e6471a52b1f64859533c8f117fc6d925ec3f8b570553bdec02776d0efd1"
+      }
+    },
+    {
+      "assets_hash": "9755f3d5a60a67cf34b6f0062244c7b431b1878f883f9d30e3afdeef865aa07b",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 11006,
+        "sha256": "9f20715558a48ebadb4077751f4423ec83e562ae620ff2c17f6ed277a171493a"
+      }
+    },
+    {
+      "assets_hash": "e7b12b835ab7665fa12b88a201cb5fcf97f13b521dffa85218de0be8e8a8a74b",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 24751,
+        "sha256": "9ed61c58d73ccfd207ad0c099f38c242bf5a7e49e7dbf291294da8b5086acac4"
+      }
+    },
+    {
+      "assets_hash": "6ba1d9871f5de33f261591089db7f6611c9bc4b3b724f06f7bd61cbf6f736c88",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 57424,
+        "sha256": "82f110c79541b5fdd2406f43e9812284eeaa4d13bdc8cb093dbb8449075a3779"
+      }
+    },
+    {
+      "assets_hash": "5e72329bdfbd5e3f0ac879035078c816b68b15f13fd948443c2f3ce6f61098ed",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 138311,
+        "sha256": "74081ba4434e34a9f9ee32c8f1af6fb44651abeac3a219668eb788ac9cea4735"
+      }
+    },
+    {
+      "assets_hash": "6e95ae3e7574b54c32695425cee883c981b181cbf9d38540402e7a6682bd7857",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 346753,
+        "sha256": "696379308738e69f9b0791220fde4fa45c566784b9c87b16841ae861bd0bc84f"
+      }
+    },
+    {
+      "assets_hash": "12b5607804fb5f195756bea38478341cb09346504a883412f53f17409283296c",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 903607,
+        "sha256": "e67a61723cc61e3fe7b4fe5d592dcbf806d2eb8b1d047963e24261cd570c7f88"
+      }
+    },
+    {
+      "assets_hash": "f38a4386216a574bb1f63a9603d4234e627237c8e69b646e9303c66160a1319d",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 2437224,
+        "sha256": "3fb4d8fc62be9bd741a4d78fadb0a76bd1f0ef2cce90f8f5d8d7166eb3d975c3"
+      }
+    },
+    {
+      "assets_hash": "e86d47e419e36f82a74088cb07b06467a540b6c7b0bda19718e69e072eaf19e5",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 6764164,
+        "sha256": "4a6e813a9041cd567aef035078353083153bc9f10a0a9e9bd002feb229e67eee"
+      }
+    },
+    {
+      "assets_hash": "fc07e9663636ac7cc977051e1cdb05064bf924840bc77ba5dcf603ca4427d9ed",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 19197205,
+        "sha256": "3093ca9cc427bc66d9dfc8254682c1ecb49d318562c534482381c3c014882ae9"
+      }
+    },
+    {
+      "assets_hash": "41589c7ea3b8cb27e7433cffcf0d598b8b467762a51f14b0d8485af0606cdb63",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 55400686,
+        "sha256": "501424c2d7813eabc7c62bf0dcf960bc5b9d0b350954040d4f5e4066ab5ef468"
+      }
+    },
+    {
+      "assets_hash": "a3a9ec177627cf484cb6f0262a51194b1b47c33cee5f35e5b396ae6cebfb1863",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 4511,
+        "sha256": "03682b337811a380ff33118f27f23bd7c5704540aaa1421c97f25c216d56dcef"
+      }
+    },
+    {
+      "assets_hash": "b8d7c20cddcc3c5026ec017f4ea36d338e44545a8bba93dda2df8df4884ed28e",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 4790,
+        "sha256": "6c8a03eac9a20aab4f36ed70ab425e48b382e95cb00ee13817cdf4d7116892f9"
+      }
+    },
+    {
+      "assets_hash": "fa813973819b752f26cc9d6280362de5cd826dbd6d9d14b89f8a46102163e77a",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 5160,
+        "sha256": "f231b5489214ed1148dc263abd1aa011fca42441c26759a6c115ac716bdd7439"
+      }
+    },
+    {
+      "assets_hash": "dfe4823be3cee21e957dc83660b8aa3b4a12af4232c27e328f13c0c4f75370cf",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 5373,
+        "sha256": "74a71668d1e80e666123c6d8de75074f90bf313e2da6e93061cec90f27aaaa35"
+      }
+    },
+    {
+      "assets_hash": "629aef4a9aa6a449acacb90f4e2b9866af125db2a124cc12206b49f71e9dc2ca",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 5652,
+        "sha256": "f996c9ab126f1bc2db28b2d9e745a621c53a692e40ea979ddd330194fbda450b"
+      }
+    },
+    {
+      "assets_hash": "3853f8a89dde371b67fa90f7c8725f783c28b07eb37da414b50c98efeba7a4a9",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 5948,
+        "sha256": "00e9cc0a4fafb2a73ca551cce068190fad641f26d58689053605648079b4d2c2"
+      }
+    },
+    {
+      "assets_hash": "05ee76f1e2f41da006b4a52e85951ef07262aaddd03db64aa0d8d1b0404f15ec",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 6366,
+        "sha256": "b767fc494fdefbf58f42f67fb3b99433712e27536b2105051112e8296f97fb26"
+      }
+    },
+    {
+      "assets_hash": "22a10733e582884f86db5b6cdf2fed7e74383d7ffa4681d8a8b318de8bab3e92",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 6649,
+        "sha256": "dd6fabcdc959bfe4dd44f8094fbbf8c5701068393866bf4444ccd75cb2928d42"
+      }
+    },
+    {
+      "assets_hash": "4e3f3800ae8121778f7f0657daa1795b1dfc21611fa6107544f35bfa26068e99",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 6829,
+        "sha256": "ebdbc4ec48519189aff93cfa591826cf03729f31ca72164cf3d5667390a3f888"
+      }
+    },
+    {
+      "assets_hash": "19f2f435cacf712689c57ac6985c6fdb07009d290a6d9f9b06c51594d443e7f2",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 7146,
+        "sha256": "02248750246c645c73a1cefd027093d6a76bc82719da76045ce9b7e369dd23d8"
+      }
+    },
+    {
+      "assets_hash": "89b59a887325ba23255bf30032c4ccfdf14e080e7c9cc866f51bc1b62e3672c8",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 7438,
+        "sha256": "31cb22f70fff2fc7179427e7d2a37439d3e6236e4fec8e731904846aa4acbf51"
+      }
+    },
+    {
+      "assets_hash": "5db9a2bd757bc2bbbb5f0d61747aec703bf09595cf4c9b1b979edf0730ef588a",
+      "migration_metadata": {
+        "encoding": "zlib-base64-file",
+        "size": 7654,
+        "sha256": "234cc9fec32c48b739b2edd343e6efb2b7872bfe8b6a82fac346b8cc7de2d718"
+      }
+    }
+  ],
+  "metadata_storage": "detached-zlib-base64-v1"
+}

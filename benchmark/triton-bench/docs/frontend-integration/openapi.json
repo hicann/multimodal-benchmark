@@ -1,0 +1,3474 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Triton 提交联调接口",
+    "version": "0.3.0"
+  },
+  "paths": {
+    "/api/v1/catalog": {
+      "get": {
+        "summary": "查询服务绑定的冻结测试集、算子契约及 Worker 配置",
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Catalog"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/submissions": {
+      "post": {
+        "summary": "上传 ZIP；拒收结论也持久化",
+        "responses": {
+          "201": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Submission"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/zip": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 200
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/submissions/{id}": {
+      "get": {
+        "summary": "查询提交内容检查结果",
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Submission"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{32}$"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/evaluations": {
+      "post": {
+        "summary": "创建持久任务",
+        "responses": {
+          "202": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 200
+            }
+          }
+        ]
+      },
+      "get": {
+        "summary": "按创建顺序倒序分页查询任务",
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tasks"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "before",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 30
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/evaluations/{id}": {
+      "get": {
+        "summary": "查询任务和真实用例进度",
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{32}$"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/evaluations/{id}/events": {
+      "get": {
+        "summary": "游标增量事件",
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Events"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{32}$"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/evaluations/{id}/results": {
+      "get": {
+        "summary": "查询用例及评分，认证单独标注",
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Results"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{32}$"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/evaluations/{id}/cancel": {
+      "post": {
+        "summary": "请求取消；运行中须等待 Worker 终止确认",
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{32}$"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/evaluations/{id}/artifacts": {
+      "get": {
+        "summary": "列出允许下载的产物及哈希",
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Artifacts"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{32}$"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/evaluations/{id}/artifacts/{name}": {
+      "get": {
+        "summary": "下载固定白名单产物",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{32}$"
+            }
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "产物；强制附件下载",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/leaderboard": {
+      "get": {
+        "summary": "查看榜单",
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Leaderboard"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "metric",
+            "in": "query",
+            "schema": {
+              "enum": [
+                "functional",
+                "performance"
+              ]
+            }
+          },
+          {
+            "name": "cohort",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          {
+            "name": "task_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{32}$"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/worker/resume": {
+      "post": {
+        "summary": "人工确认健康后解除 Worker 暂停；存在遗留租约时拒绝",
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Catalog"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "acknowledge_health"
+                ],
+                "properties": {
+                  "acknowledge_health": {
+                    "type": "boolean",
+                    "const": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/evaluations/{id}/stream": {
+      "get": {
+        "summary": "SSE：状态和逐用例事件；全局 sequence 续读",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{32}$"
+            }
+          },
+          {
+            "name": "Last-Event-ID",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9]+$"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "retry=2000；15 秒心跳；终态排空后 end；最多 8 条连接",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/evaluations/{id}/recover": {
+      "post": {
+        "summary": "仅补取原远端任务结果，不同步、不重新执行提交",
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "结构化错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "acknowledge_recovery"
+                ],
+                "properties": {
+                  "acknowledge_recovery": {
+                    "type": "boolean",
+                    "const": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{32}$"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Catalog": {
+        "type": "object",
+        "required": [
+          "manifest_hash",
+          "operators",
+          "profiles",
+          "scopes",
+          "submission_policy",
+          "profile_capabilities",
+          "default_profile",
+          "default_scope"
+        ],
+        "properties": {
+          "corpus_version": {
+            "type": "string"
+          },
+          "manifest_hash": {
+            "type": "string"
+          },
+          "case_count": {
+            "type": "integer"
+          },
+          "operator_count": {
+            "type": "integer"
+          },
+          "profiles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "worker_enabled": {
+            "type": "boolean"
+          },
+          "worker_paused": {
+            "type": "boolean"
+          },
+          "device_health": {
+            "enum": [
+              "NOT_PROBED"
+            ]
+          },
+          "full_suite_accepted": {
+            "type": "boolean",
+            "const": false
+          },
+          "operators": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "name",
+                "weight",
+                "case_count"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "weight": {
+                  "type": "number"
+                },
+                "case_count": {
+                  "type": "integer"
+                },
+                "entry": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "params": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "signature": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "execution_backend": {
+            "enum": [
+              "disabled",
+              "local",
+              "remote"
+            ]
+          },
+          "submission_policy": {
+            "$ref": "#/components/schemas/SubmissionPolicy"
+          },
+          "profile_capabilities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProfileCapability"
+            }
+          },
+          "default_profile": {
+            "enum": [
+              "smoke",
+              "standard"
+            ]
+          },
+          "default_scope": {
+            "enum": [
+              "operators",
+              "full"
+            ]
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": [
+              "code",
+              "detail"
+            ],
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "detail": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "Submission": {
+        "type": "object",
+        "required": [
+          "id",
+          "status",
+          "package_sha256",
+          "errors"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "READY",
+              "REJECTED"
+            ]
+          },
+          "package_sha256": {
+            "type": "string"
+          },
+          "declared_submit_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "operators": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "stage": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            }
+          }
+        }
+      },
+      "TaskRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "submission_id"
+        ],
+        "properties": {
+          "submission_id": {
+            "type": "string"
+          },
+          "scope": {
+            "enum": [
+              "operators",
+              "full"
+            ],
+            "default": "operators"
+          },
+          "operators": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "profile": {
+            "enum": [
+              "smoke",
+              "standard"
+            ],
+            "default": "smoke"
+          }
+        }
+      },
+      "Task": {
+        "type": "object",
+        "required": [
+          "id",
+          "status",
+          "planned_cases",
+          "completed_cases",
+          "available_actions"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "submission_id": {
+            "type": "string"
+          },
+          "scope": {
+            "enum": [
+              "operators",
+              "full"
+            ]
+          },
+          "operators": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "enum": [
+              "QUEUED",
+              "RUNNING",
+              "SCORING",
+              "REPORTING",
+              "COMPLETED",
+              "REJECTED",
+              "FAILED",
+              "CANCELLED",
+              "INTERRUPTED"
+            ]
+          },
+          "planned_cases": {
+            "type": "integer"
+          },
+          "completed_cases": {
+            "type": "integer"
+          },
+          "progress": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "manifest_hash": {
+            "type": "string"
+          },
+          "corpus_version": {
+            "type": "string"
+          },
+          "package_sha256": {
+            "type": "string"
+          },
+          "case_codes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "profile": {
+            "enum": [
+              "smoke",
+              "standard"
+            ]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "worker_enabled": {
+            "type": "boolean"
+          },
+          "worker_paused": {
+            "type": "boolean"
+          },
+          "cancel_requested": {
+            "type": "boolean"
+          },
+          "error": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "remote": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "phase": {
+                "type": "string"
+              },
+              "release_state": {
+                "enum": [
+                  "NOT_ACQUIRED",
+                  "UNCONFIRMED",
+                  "SHUTDOWN"
+                ]
+              },
+              "artifacts_verified": {
+                "type": "boolean"
+              },
+              "device_health": {
+                "enum": [
+                  "NOT_PROBED",
+                  "HEALTHY",
+                  "UNHEALTHY"
+                ]
+              },
+              "event_seq": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "bundle_sha256": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "manifest_hash": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "assets_hash": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "available_actions": {
+            "$ref": "#/components/schemas/AvailableActions"
+          }
+        }
+      },
+      "Events": {
+        "type": "object",
+        "properties": {
+          "next_cursor": {
+            "type": "integer"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PublicEvent"
+            }
+          }
+        }
+      },
+      "Results": {
+        "type": "object",
+        "required": [
+          "task_id",
+          "status",
+          "cases",
+          "score",
+          "certification",
+          "performance"
+        ],
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "manifest_hash": {
+            "type": "string"
+          },
+          "counted_cases": {
+            "type": "integer"
+          },
+          "status_counts": {
+            "type": "object"
+          },
+          "corpus_version": {
+            "type": "string"
+          },
+          "package_sha256": {
+            "type": "string"
+          },
+          "planned_cases": {
+            "type": "integer"
+          },
+          "completed_cases": {
+            "type": "integer"
+          },
+          "declared_operators": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "counted_operators": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "scope_operators": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "error": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "engine_error": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "score": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Score"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "score_reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "performance_available": {
+            "type": "boolean"
+          },
+          "certification": {
+            "$ref": "#/components/schemas/Certification"
+          },
+          "validation": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            }
+          },
+          "cases": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseResult"
+            }
+          },
+          "performance": {
+            "$ref": "#/components/schemas/PerformanceView"
+          }
+        }
+      },
+      "ValidationError": {
+        "type": "object",
+        "required": [
+          "rule_id",
+          "stage",
+          "operator",
+          "detail"
+        ],
+        "properties": {
+          "rule_id": {
+            "type": "string"
+          },
+          "stage": {
+            "type": "string"
+          },
+          "operator": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          },
+          "lineno": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        }
+      },
+      "Certification": {
+        "type": "object",
+        "required": [
+          "static",
+          "compilation",
+          "execution",
+          "full_suite_accepted"
+        ],
+        "properties": {
+          "static": {
+            "enum": [
+              "NOT_COMPUTED"
+            ]
+          },
+          "compilation": {
+            "enum": [
+              "NOT_COMPUTED"
+            ]
+          },
+          "execution": {
+            "enum": [
+              "NOT_COMPUTED"
+            ]
+          },
+          "full_suite_accepted": {
+            "type": "boolean",
+            "const": false
+          }
+        }
+      },
+      "Artifacts": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "name",
+                "bytes",
+                "sha256"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "bytes": {
+                  "type": "integer"
+                },
+                "sha256": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "CaseStatus": {
+        "description": "用例终态：8 个值，互斥且完备。\n\n超时不单列——合并进 COMPILE_FAIL / RUNTIME_FAIL，细节留在 compile_err。\n这样状态机不会因为「卡死」和「报错」多出两个分支而让库表与报告变复杂。",
+        "enum": [
+          "SPEC_ERROR",
+          "COMPILE_FAIL",
+          "RUNTIME_FAIL",
+          "PASS",
+          "WRONG_RESULT",
+          "SHAPE_MISMATCH",
+          "ORACLE_FAIL",
+          "ENV_ABORT",
+          "SUBMISSION_INVALID"
+        ],
+        "title": "CaseStatus",
+        "type": "string"
+      },
+      "CaseResult": {
+        "additionalProperties": false,
+        "description": "一条用例结果。对应 results.jsonl 的一行。",
+        "properties": {
+          "run_id": {
+            "description": "所属运行（自增主键）",
+            "title": "Run Id",
+            "type": "integer"
+          },
+          "case_code": {
+            "description": "用例业务键",
+            "title": "Case Code",
+            "type": "string"
+          },
+          "operator": {
+            "description": "所属算子名，冗余便于聚合",
+            "title": "Operator",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/CaseStatus",
+            "description": "终态"
+          },
+          "duration_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "该用例总耗时（毫秒）",
+            "title": "Duration Ms"
+          },
+          "compile_err": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "截断的异常摘要",
+            "title": "Compile Err"
+          },
+          "max_rel_err": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "最大相对误差",
+            "title": "Max Rel Err"
+          },
+          "max_abs_err": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "最大绝对误差",
+            "title": "Max Abs Err"
+          },
+          "samples_ms": {
+            "description": "性能原始计时样本，全留不只存中位数",
+            "items": {
+              "type": "number"
+            },
+            "title": "Samples Ms",
+            "type": "array"
+          },
+          "perf_median_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "样本中位数",
+            "title": "Perf Median Ms"
+          },
+          "perf_cv": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "变异系数",
+            "title": "Perf Cv"
+          },
+          "baseline_median_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "同会话基线中位数",
+            "title": "Baseline Median Ms"
+          },
+          "speedup": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "加速比",
+            "title": "Speedup"
+          },
+          "log_path": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "任务产物文件名，不返回服务器路径",
+            "title": "Log Path"
+          }
+        },
+        "required": [
+          "run_id",
+          "case_code",
+          "operator",
+          "status"
+        ],
+        "title": "CaseResultRecord",
+        "type": "object"
+      },
+      "Score": {
+        "additionalProperties": false,
+        "description": "一次运行的聚合分数。不合成跨赛道总分（规范 §3.3）。",
+        "properties": {
+          "run_id": {
+            "title": "Run Id",
+            "type": "integer"
+          },
+          "coverage_ops_core": {
+            "description": "功能主得分 OpScore（百分制）",
+            "title": "Coverage Ops Core",
+            "type": "number"
+          },
+          "coverage_strict": {
+            "description": "严格通过率 OpStrictPass（百分制）",
+            "title": "Coverage Strict",
+            "type": "number"
+          },
+          "severe_count": {
+            "description": "静默错误用例数",
+            "title": "Severe Count",
+            "type": "integer"
+          },
+          "perf_geo": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "几何平均加速比（裸值，仅统计判对用例）",
+            "title": "Perf Geo"
+          },
+          "perf_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "性能得分：有分算子按权重加权平均（按算子锚点口径）",
+            "title": "Perf Score"
+          },
+          "fast_1": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "加速比 ≥1.0 且正确的占比",
+            "title": "Fast 1"
+          },
+          "fast_1_2": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "加速比 ≥1.2 且正确的占比",
+            "title": "Fast 1 2"
+          },
+          "fast_2": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "加速比 ≥2.0 且正确的占比",
+            "title": "Fast 2"
+          },
+          "unstable_rate": {
+            "default": 0.0,
+            "description": "CV 超标的性能用例占比",
+            "title": "Unstable Rate",
+            "type": "number"
+          },
+          "baseline_anchor_ref": {
+            "description": "锚点口径：PER-OP = 按算子锚点（各算子首次全对轮次）",
+            "title": "Baseline Anchor Ref",
+            "type": "string"
+          },
+          "scorer_version": {
+            "description": "评分器版本",
+            "title": "Scorer Version",
+            "type": "string"
+          },
+          "computed_at": {
+            "description": "计算时间，ISO8601 UTC",
+            "title": "Computed At",
+            "type": "string"
+          },
+          "by_category": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "按算子语义族的加权通过率",
+            "title": "By Category"
+          },
+          "by_level": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "按难度等级的加权通过率",
+            "title": "By Level"
+          }
+        },
+        "required": [
+          "run_id",
+          "coverage_ops_core",
+          "coverage_strict",
+          "severe_count",
+          "baseline_anchor_ref",
+          "scorer_version",
+          "computed_at"
+        ],
+        "title": "RunScoreRecord",
+        "type": "object"
+      },
+      "Tasks": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Task"
+            }
+          },
+          "next_cursor": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        }
+      },
+      "ActionAvailability": {
+        "type": "object",
+        "required": [
+          "enabled",
+          "reason"
+        ],
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "requires_acknowledgement": {
+            "type": "boolean"
+          },
+          "starts_instance": {
+            "type": "boolean"
+          }
+        }
+      },
+      "AvailableActions": {
+        "type": "object",
+        "required": [
+          "cancel",
+          "recover"
+        ],
+        "properties": {
+          "cancel": {
+            "$ref": "#/components/schemas/ActionAvailability"
+          },
+          "recover": {
+            "$ref": "#/components/schemas/ActionAvailability"
+          }
+        }
+      },
+      "SubmissionPolicy": {
+        "type": "object",
+        "required": [
+          "content_type",
+          "max_request_bytes",
+          "max_entries",
+          "max_total_bytes",
+          "max_file_bytes",
+          "max_compression_ratio",
+          "allowed_suffixes",
+          "required_manifest",
+          "rules"
+        ],
+        "properties": {
+          "content_type": {
+            "type": "string",
+            "const": "application/zip"
+          },
+          "max_request_bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "max_entries": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "max_total_bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "max_file_bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "max_compression_ratio": {
+            "type": "number",
+            "minimum": 1
+          },
+          "allowed_suffixes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "required_manifest": {
+            "type": "string"
+          },
+          "rules": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "rule_id",
+                "detail"
+              ],
+              "properties": {
+                "rule_id": {
+                  "type": "string"
+                },
+                "detail": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ProfileCapability": {
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "default",
+          "experimental",
+          "performance_scoring",
+          "performance_accepted",
+          "full_suite_accepted"
+        ],
+        "properties": {
+          "id": {
+            "enum": [
+              "smoke",
+              "standard"
+            ]
+          },
+          "label": {
+            "type": "string"
+          },
+          "default": {
+            "type": "boolean"
+          },
+          "experimental": {
+            "type": "boolean"
+          },
+          "performance_scoring": {
+            "type": "boolean"
+          },
+          "performance_accepted": {
+            "type": "boolean"
+          },
+          "full_suite_accepted": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PerformanceView": {
+        "type": "object",
+        "required": [
+          "measured_cases",
+          "passed_cases",
+          "missing_cases",
+          "unstable_cases",
+          "cv_gate",
+          "geometric_speedup",
+          "score_basis",
+          "cross_task_comparable"
+        ],
+        "properties": {
+          "measured_cases": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "passed_cases": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "missing_cases": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "unstable_cases": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cv_gate": {
+            "type": "number"
+          },
+          "geometric_speedup": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "score_basis": {
+            "const": "TASK_LOCAL_FIRST_ALL_PASS"
+          },
+          "cross_task_comparable": {
+            "const": false
+          }
+        }
+      },
+      "EngineCaseEvent": {
+        "type": "object",
+        "required": [
+          "event",
+          "record"
+        ],
+        "properties": {
+          "event": {
+            "const": "case"
+          },
+          "record": {
+            "$ref": "#/components/schemas/CaseResult"
+          }
+        }
+      },
+      "EngineEvent": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/EngineCaseEvent"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "event": {
+                "type": "string",
+                "not": {
+                  "const": "case"
+                }
+              }
+            },
+            "additionalProperties": true
+          }
+        ],
+        "description": "case 有完整结果模型；其余 meta/env_check/probe/fatal/done 保留扩展字段"
+      },
+      "RemotePhaseEnvelope": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "protocol_version",
+          "job_id",
+          "event_seq",
+          "kind",
+          "payload"
+        ],
+        "properties": {
+          "protocol_version": {
+            "type": "integer",
+            "const": 1
+          },
+          "job_id": {
+            "type": "string"
+          },
+          "event_seq": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "kind": {
+            "const": "phase"
+          },
+          "payload": {
+            "type": "object",
+            "required": [
+              "phase"
+            ],
+            "properties": {
+              "phase": {
+                "enum": [
+                  "running",
+                  "scoring",
+                  "reporting"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "RemoteHealthEnvelope": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "protocol_version",
+          "job_id",
+          "event_seq",
+          "kind",
+          "payload"
+        ],
+        "properties": {
+          "protocol_version": {
+            "type": "integer",
+            "const": 1
+          },
+          "job_id": {
+            "type": "string"
+          },
+          "event_seq": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "kind": {
+            "const": "health"
+          },
+          "payload": {
+            "type": "object",
+            "properties": {
+              "ok": {
+                "type": "boolean"
+              },
+              "torch": {
+                "type": "string"
+              },
+              "torch_npu": {
+                "type": "string"
+              },
+              "triton": {
+                "type": "string"
+              },
+              "devices": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        }
+      },
+      "RemoteEngineEnvelope": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "protocol_version",
+          "job_id",
+          "event_seq",
+          "kind",
+          "payload"
+        ],
+        "properties": {
+          "protocol_version": {
+            "type": "integer",
+            "const": 1
+          },
+          "job_id": {
+            "type": "string"
+          },
+          "event_seq": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "kind": {
+            "const": "engine"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/EngineEvent"
+          }
+        }
+      },
+      "RemoteHeartbeatEnvelope": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "protocol_version",
+          "job_id",
+          "event_seq",
+          "kind",
+          "payload"
+        ],
+        "properties": {
+          "protocol_version": {
+            "type": "integer",
+            "const": 1
+          },
+          "job_id": {
+            "type": "string"
+          },
+          "event_seq": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "kind": {
+            "const": "heartbeat"
+          },
+          "payload": {
+            "type": "object",
+            "properties": {
+              "elapsed_s": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        }
+      },
+      "RemoteFinalEnvelope": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "protocol_version",
+          "job_id",
+          "event_seq",
+          "kind",
+          "payload"
+        ],
+        "properties": {
+          "protocol_version": {
+            "type": "integer",
+            "const": 1
+          },
+          "job_id": {
+            "type": "string"
+          },
+          "event_seq": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "kind": {
+            "const": "final"
+          },
+          "payload": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string"
+              },
+              "error": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "archive_bytes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "archive_sha256": {
+                "type": "string"
+              },
+              "files": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "required": [
+                    "bytes",
+                    "sha256"
+                  ],
+                  "properties": {
+                    "bytes": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "sha256": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "RemoteEnvelope": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/RemotePhaseEnvelope"
+          },
+          {
+            "$ref": "#/components/schemas/RemoteHealthEnvelope"
+          },
+          {
+            "$ref": "#/components/schemas/RemoteEngineEnvelope"
+          },
+          {
+            "$ref": "#/components/schemas/RemoteHeartbeatEnvelope"
+          },
+          {
+            "$ref": "#/components/schemas/RemoteFinalEnvelope"
+          }
+        ]
+      },
+      "StateEvent": {
+        "type": "object",
+        "required": [
+          "sequence",
+          "time",
+          "status"
+        ],
+        "properties": {
+          "sequence": {
+            "type": "integer",
+            "minimum": 1,
+            "format": "int64"
+          },
+          "time": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "QUEUED",
+              "RUNNING",
+              "SCORING",
+              "REPORTING",
+              "COMPLETED",
+              "REJECTED",
+              "FAILED",
+              "CANCELLED",
+              "INTERRUPTED"
+            ]
+          },
+          "kind": {
+            "const": "state"
+          },
+          "error": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "cancel_requested": {
+            "type": "boolean"
+          },
+          "phase": {
+            "type": "string"
+          },
+          "release_state": {
+            "enum": [
+              "NOT_ACQUIRED",
+              "UNCONFIRMED",
+              "SHUTDOWN"
+            ]
+          },
+          "remote": false
+        }
+      },
+      "RemotePublicEvent": {
+        "type": "object",
+        "required": [
+          "sequence",
+          "time",
+          "status",
+          "kind",
+          "remote"
+        ],
+        "properties": {
+          "sequence": {
+            "type": "integer",
+            "minimum": 1,
+            "format": "int64"
+          },
+          "time": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "QUEUED",
+              "RUNNING",
+              "SCORING",
+              "REPORTING",
+              "COMPLETED",
+              "REJECTED",
+              "FAILED",
+              "CANCELLED",
+              "INTERRUPTED"
+            ]
+          },
+          "kind": {
+            "enum": [
+              "phase",
+              "health",
+              "engine",
+              "heartbeat",
+              "final"
+            ]
+          },
+          "remote": {
+            "$ref": "#/components/schemas/RemoteEnvelope"
+          }
+        }
+      },
+      "PublicEvent": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/StateEvent"
+          },
+          {
+            "$ref": "#/components/schemas/RemotePublicEvent"
+          }
+        ],
+        "description": "sequence 是全服务游标；remote.event_seq 是 job 内序号，不可互换"
+      },
+      "LeaderboardEnvironment": {
+        "type": "object",
+        "required": [
+          "compiler_name",
+          "triton_import_version",
+          "cann_version",
+          "npu_model",
+          "driver_version",
+          "clock_locked"
+        ],
+        "properties": {
+          "compiler_name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "triton_import_version": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "cann_version": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "npu_model": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "driver_version": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "clock_locked": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          }
+        }
+      },
+      "LeaderboardCohort": {
+        "type": "object",
+        "required": [
+          "id",
+          "manifest_hash",
+          "assets_hash",
+          "corpus_version",
+          "profile",
+          "scope",
+          "operators",
+          "env_fp",
+          "execution",
+          "scorer_version",
+          "protocol_version",
+          "planned_cases",
+          "task_count",
+          "environment"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "manifest_hash": {
+            "type": "string"
+          },
+          "assets_hash": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "corpus_version": {
+            "type": "string"
+          },
+          "profile": {
+            "enum": [
+              "smoke",
+              "standard"
+            ]
+          },
+          "scope": {
+            "type": "string"
+          },
+          "operators": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "env_fp": {
+            "type": "string"
+          },
+          "execution": {
+            "type": "string"
+          },
+          "scorer_version": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "protocol_version": {
+            "const": 1
+          },
+          "planned_cases": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "task_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "environment": {
+            "$ref": "#/components/schemas/LeaderboardEnvironment"
+          }
+        }
+      },
+      "LeaderboardAnchor": {
+        "type": "object",
+        "required": [
+          "operator",
+          "task_id",
+          "geometric_speedup",
+          "scoreable"
+        ],
+        "properties": {
+          "operator": {
+            "type": "string"
+          },
+          "task_id": {
+            "type": "string"
+          },
+          "geometric_speedup": {
+            "type": "number"
+          },
+          "scoreable": {
+            "type": "boolean"
+          }
+        }
+      },
+      "LeaderboardEntry": {
+        "type": "object",
+        "required": [
+          "rank",
+          "task_id",
+          "submit_id",
+          "package_sha256",
+          "created_at",
+          "functional_score",
+          "strict_score",
+          "passed_cases",
+          "planned_cases",
+          "geometric_speedup",
+          "shared_perf_score",
+          "scored_operators",
+          "total_operators",
+          "unstable_cases",
+          "warnings"
+        ],
+        "properties": {
+          "rank": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "task_id": {
+            "type": "string"
+          },
+          "submit_id": {
+            "type": "string"
+          },
+          "package_sha256": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "functional_score": {
+            "type": "number"
+          },
+          "strict_score": {
+            "type": "number"
+          },
+          "passed_cases": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "planned_cases": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "geometric_speedup": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "shared_perf_score": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "scored_operators": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "total_operators": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "unstable_cases": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "LeaderboardExcluded": {
+        "type": "object",
+        "required": [
+          "task_id",
+          "reason"
+        ],
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      },
+      "Leaderboard": {
+        "type": "object",
+        "required": [
+          "protocol_version",
+          "mode",
+          "metric",
+          "cohorts",
+          "selected_cohort",
+          "baseline_revision",
+          "anchors",
+          "items",
+          "total_entries",
+          "excluded",
+          "rules"
+        ],
+        "properties": {
+          "protocol_version": {
+            "const": 1
+          },
+          "mode": {
+            "const": "trial"
+          },
+          "metric": {
+            "enum": [
+              "functional",
+              "performance"
+            ]
+          },
+          "cohorts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LeaderboardCohort"
+            }
+          },
+          "selected_cohort": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LeaderboardCohort"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "baseline_revision": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "anchors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LeaderboardAnchor"
+            }
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LeaderboardEntry"
+            }
+          },
+          "total_entries": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "excluded": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LeaderboardExcluded"
+            }
+          },
+          "rules": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+# 运行产物：唯一不可重建的资产，不进版本控制，需定期导出归档
+runs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# 数据库由 results.jsonl 重建，不进版本控制
+*.db
+*.sqlite
+*.sqlite3
+
+# 编辑器 / 系统
+.DS_Store
+.idea/
+.vscode/
+
+# 参考实现 / 基线内核：体积较大，作为外部资产不纳入版本控制
+reference/
+
+# Keep bulk reference implementations external; ship only frozen provenance metadata.
+!reference/
+reference/*
+!reference/ascend-official/
+reference/ascend-official/*
+!reference/ascend-official/sources-v08.json
+!reference/ascend-official/cann-correspondence-v08.json
+
+.env
+.env.*
+!.env.example
+.credentials.json
+id_rsa
+id_ed25519
+*.privatekey
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Generated standalone submissions are built from reviewed shared sources.
+frontend/public/examples/*.zip
+frontend/public/examples/packages.json
+
+# Generated API upload fixture; reproduce using the contract export command.
+docs/frontend-integration/submission-valid.zip
+.local-only/
